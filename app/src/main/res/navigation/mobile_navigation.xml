@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="thundersharp.aigs.spectre.ui.activities.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="Events"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
@@ -22,4 +22,10 @@
         android:name="thundersharp.aigs.spectre.ui.activities.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="thundersharp.aigs.spectre.ui.activities.notifications.NotificationsFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
