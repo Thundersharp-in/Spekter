@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpectreAIGS">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".startup.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

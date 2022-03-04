@@ -1,10 +1,12 @@
-package thundersharp.aigs.spectre;
+package thundersharp.aigs.spectre.startup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import thundersharp.aigs.spectre.R;
+
+public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
