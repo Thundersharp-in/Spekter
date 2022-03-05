@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities.home;
+package thundersharp.aigs.spectre.ui.fragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

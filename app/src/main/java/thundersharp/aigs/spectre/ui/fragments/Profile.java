@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.fragments;
 
 import android.os.Bundle;
 
