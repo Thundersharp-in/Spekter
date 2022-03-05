@@ -100,10 +100,8 @@ public class LoginProvider {
                                     .addOnCompleteListener(taask -> {
                                         loginInterface.onLoginSuccess("email", taskA, false);
                                     });
-
-
                         }
-                    }
+                    }else loginInterface.onLoginFailure(taskA.getException());
                 });
     }
 }

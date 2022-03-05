@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.login.IntroActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/edit"
+            android:scaleType="centerCrop"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:elevation="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_launcher_background" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spectre"
+            android:textColor="#fff"
+            android:fontFamily="@font/calibrib"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This panel will hold some descriptive text about the event which needs to be updated later on here we can describe the event in 3-4 lines."
+            android:textColor="#92959A"
+            android:layout_marginHorizontal="45dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/calibri"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="35dp"
+            android:textSize="17sp"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/getStarted"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/button_login_blue"
+            android:textAllCaps="false"
+            android:text="Get started"
+            android:textSize="17sp"
+            android:elevation="7dp"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

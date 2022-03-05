@@ -1,15 +1,12 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -27,8 +24,6 @@ import java.util.ArrayList;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-import thundersharp.aigs.spectre.databinding.FragmentHomeBinding;
-import thundersharp.aigs.spectre.ui.activities.LoginActivity;
 
 
 public class HomeFragment extends Fragment implements
@@ -126,7 +121,7 @@ public class HomeFragment extends Fragment implements
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        startActivity(new Intent(getActivity(), LoginActivity.class));
+
     }
 
     @Override

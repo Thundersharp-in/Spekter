@@ -8,7 +8,7 @@
     android:background="#181920"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".ui.activities.LoginActivity">
+    tools:context=".ui.activities.login.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,8 +20,8 @@
             android:id="@+id/welcome_Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerVertical="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -35,19 +35,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome Back!"
-                android:fontFamily="@font/calibrib"
-                android:textColor="#f4f5fc"
-                android:textStyle="bold"
                 android:layout_marginTop="5dp"
-                android:textSize="19sp" />
+                android:fontFamily="@font/calibrib"
+                android:text="Welcome Back!"
+                android:textColor="#f4f5fc"
+                android:textSize="19sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please sign in to your spectre account."
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/calibri"
+                android:text="Please sign in to your spectre account."
                 android:textColor="#434349" />
 
 
@@ -74,7 +74,7 @@
 
 
             <EditText
-                android:id="@+id/editText_carrierNumber"
+                android:id="@+id/editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -150,6 +150,7 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signIN"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginHorizontal="15dp"
@@ -180,12 +181,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:elevation="7dp"
             android:fontFamily="@font/calibri"
             android:text="By continuing you are agreeing and accepting Thundersharp's data privacy policy."
             android:textAlignment="center"
-            android:textColor="#474b53" />
+            android:textColor="#6A6C71" />
 
 
     </RelativeLayout>
