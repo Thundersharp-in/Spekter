@@ -19,19 +19,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+/*
         LoginProvider
                 .getInstance()
                 .setCredentials(LoginProvider.Builder.getInstance().setEmail_id("").setPassword(""))
                 .attachLoginObserver(new LoginInterface() {
-            @Override
-            public void onLoginSuccess(String provider, Task<AuthResult> authResultTask) {
 
-            }
+                    @Override
+                    public void onLoginSuccess(String provider, Task<AuthResult> authResultTask, boolean verified) {
 
-            @Override
-            public void onLoginFailure(Exception exception) {
+                    }
 
-            }
-        });
+                    @Override
+                    public void onLoginFailure(Exception exception) {
+
+                    }
+                });
+*/
     }
 }

@@ -1,5 +1,6 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.databinding.FragmentHomeBinding;
+import thundersharp.aigs.spectre.ui.activities.LoginActivity;
 
 
 public class HomeFragment extends Fragment implements
@@ -40,6 +42,7 @@ public class HomeFragment extends Fragment implements
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         slider = root.findViewById(R.id.slider);
         setupCrousel();
+
 
         return root;
     }
@@ -123,7 +126,7 @@ public class HomeFragment extends Fragment implements
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     @Override
