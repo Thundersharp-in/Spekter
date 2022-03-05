@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#0c2132"
+    android:theme="@style/Theme.MaterialComponents.DayNight"
     tools:context=".ui.activities.home.HomeFragment">
 
     <RelativeLayout
@@ -78,5 +79,25 @@
 
 
     </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp"
+        app:cardBackgroundColor="#153043">
+
+        <com.glide.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            app:indicator_visibility="visible"
+            app:pager_animation="Default" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

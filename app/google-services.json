@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "736858290408",
+    "project_id": "spectre-aigs",
+    "storage_bucket": "spectre-aigs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736858290408:android:5aa4d17e8a76979ae7b15d",
+        "android_client_info": {
+          "package_name": "thundersharp.aigs.spectre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736858290408-b6fosp49eul055fhnsm6brl614mnq8o3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANTkvY3nU0rRu6_kQH_EBo7WbH3osbRPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736858290408-b6fosp49eul055fhnsm6brl614mnq8o3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
