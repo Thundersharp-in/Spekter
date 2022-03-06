@@ -10,11 +10,15 @@
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_outline_account_circle_24.xml" value="0.104" />
         <entry key="app/src/main/res/drawable/ic_outline_qr_code_scanner_24.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.18635009765625002" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
+        <entry key="app/src/main/res/layout/exit_bottom_sheet.xml" value="0.20179563916203505" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />

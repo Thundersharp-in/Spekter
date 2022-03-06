@@ -29,7 +29,7 @@
                 android:id="@+id/rrr"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@mipmap/ic_launcher"
                 android:textColor="#fff"
                 android:textSize="20sp"
                 app:civ_border_color="#3F51B5"

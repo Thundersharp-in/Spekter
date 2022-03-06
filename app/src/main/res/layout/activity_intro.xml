@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.login.IntroActivity">
+    tools:context=".ui.activities.auth.IntroActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_height="70dp"
             android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/ic_launcher" />
 
 
         <TextView

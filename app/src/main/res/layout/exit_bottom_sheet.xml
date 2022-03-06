@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:background="@null"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:minHeight="150dp"
+        app:cardBackgroundColor="#181920"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="@null"
+            android:minHeight="150dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/calibrib"
+                android:text="Confirm Exit !!"
+                android:textColor="#f4f5fc"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/ic_baseline_power_settings_new_24"
+                app:drawableTint="#E91E63" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/calibri"
+                android:layout_gravity="center_horizontal"
+                android:text="Do you really want to leave the app ?"
+                android:textColor="#77777C" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="2"
+                android:layout_marginTop="19dp"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/exit"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Exit"
+                    android:textColor="#ffff"
+                    android:background="@drawable/button_login_blue"
+                    android:backgroundTint="#AA2250"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/no"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="No, stay here"
+                    android:textColor="#fff"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/button_login_blue"
+                    android:backgroundTint="#017C70"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
