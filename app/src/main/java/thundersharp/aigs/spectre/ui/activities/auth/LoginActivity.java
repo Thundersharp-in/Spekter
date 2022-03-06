@@ -41,11 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             if (edit_email.getText().toString().isEmpty()) {
                 edit_email.setError("Email id is required!");
                 edit_email.requestFocus();
-            } else if (!edit_email.getText().toString().trim().endsWith("@acharya.ac.in")) {
-                edit_email.setError("Sorry only students of acharya can enroll currently :(");
-                edit_email.requestFocus();
-
-            } else if (edit_password.getText().toString().isEmpty()) {
+            }  else if (edit_password.getText().toString().isEmpty()) {
                 edit_password.setError("Password cannot be empty!");
                 edit_password.requestFocus();
 

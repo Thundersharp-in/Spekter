@@ -31,7 +31,9 @@ public class Progressbars {
     public AlertDialog createDefaultProgressBar(Activity activity){
         AlertDialog.Builder b = new AlertDialog.Builder(activity);
         b.setView(LayoutInflater.from(activity).inflate(R.layout.progress_bar,null));
+        b.setCancelable(false);
         AlertDialog alertDialog = b.create();
+
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         return alertDialog;
