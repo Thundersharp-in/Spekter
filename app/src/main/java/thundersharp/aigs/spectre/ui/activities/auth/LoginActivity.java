@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         });
 
-        ((AppCompatButton) findViewById(R.id.signIN)).setOnClickListener(t -> {
+        ((ImageView) findViewById(R.id.signIN)).setOnClickListener(t -> {
             if (edit_email.getText().toString().isEmpty()) {
                 edit_email.setError("Email id is required!");
                 edit_email.requestFocus();

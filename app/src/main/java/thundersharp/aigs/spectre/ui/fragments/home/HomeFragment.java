@@ -1,9 +1,11 @@
 package thundersharp.aigs.spectre.ui.fragments.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
+import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 
 
 public class HomeFragment extends Fragment implements
@@ -37,6 +40,8 @@ public class HomeFragment extends Fragment implements
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         slider = root.findViewById(R.id.slider);
         setupCrousel();
+
+        root.findViewById(R.id.notification).setOnClickListener(u->startActivity(new Intent(getActivity(), BarCodeScanner.class)));
 
 
         return root;

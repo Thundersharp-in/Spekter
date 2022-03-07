@@ -9,13 +9,14 @@
     tools:context=".ui.activities.auth.EmailVerificationActivity">
 
     <ImageView
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        app:tint="#fff"
-        android:src="@drawable/ic_baseline_power_settings_new_24" />
+        android:src="@drawable/ic_baseline_power_settings_new_24"
+        app:tint="#fff" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -63,6 +64,21 @@
             android:textSize="17sp"
             android:elevation="7dp"
             android:textColor="#fff"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/button_login_blue"
+            android:textAllCaps="false"
+            android:backgroundTint="#fff"
+            android:text="Refresh"
+            android:textSize="17sp"
+            android:elevation="7dp"
+            android:textColor="#000000"/>
+
 
 
     </LinearLayout>

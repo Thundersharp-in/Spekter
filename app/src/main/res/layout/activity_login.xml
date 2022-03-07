@@ -1,195 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#181920"
-    android:orientation="vertical"
-    android:weightSum="10"
     tools:context=".ui.activities.auth.LoginActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-
-        <LinearLayout
-            android:id="@+id/welcome_Text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginBottom="10dp"
-                android:src="@mipmap/ic_launcher_round" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/calibrib"
-                android:text="Welcome Back!"
-                android:textColor="#f4f5fc"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/calibri"
-                android:text="Please sign in to your spectre account."
-                android:textColor="#434349" />
-
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:elevation="5dp"
+        android:weightSum="10">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+
+            <LinearLayout
+                android:id="@+id/welcome_Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@mipmap/ic_launcher_round" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/calibrib"
+                    android:text="Welcome Back!"
+                    android:textColor="#f4f5fc"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="Please sign in to your spectre account."
+                    android:textColor="#9D9DA3" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:background="@drawable/edittext_curved"
-            android:elevation="7dp"
-            android:minHeight="60dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-
-            <EditText
-                android:id="@+id/editText_email"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:hint="Acharya Email"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:layout_marginHorizontal="25dp"
-                android:fontFamily="@font/calibri"
-                android:singleLine="true"
-                android:textColor="#BAB9B9"
-                android:textColorHint="#474b53" />
+                android:layout_marginHorizontal="15dp"
+                android:background="@drawable/edittext_curved"
+                android:elevation="7dp"
+                android:minHeight="60dp"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editText_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:hint="Acharya Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:layout_marginHorizontal="25dp"
+                    android:fontFamily="@font/calibri"
+                    android:singleLine="true"
+                    android:textColor="#BAB9B9"
+                    android:textColorHint="#474b53" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@drawable/edittext_curved"
+                android:elevation="7dp"
+                android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editText_password"
+                    android:layout_toStartOf="@id/password_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:hint="Password"
+                    android:layout_centerInParent="true"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:layout_marginStart="25dp"
+                    android:singleLine="true"
+                    android:textColor="#BAB9B9"
+                    android:textColorHint="#474b53" />
+
+                <ImageView
+                    android:id="@+id/password_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_outline_remove_red_eye_24"
+                    app:tint="#474b53"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot password ?"
+                android:textColor="#54565A"
+                android:layout_gravity="end"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:elevation="7dp"/>
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:background="@drawable/edittext_curved"
-            android:elevation="7dp"
-            android:layout_marginTop="10dp"
-            android:minHeight="60dp"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="3.5">
 
-
-            <EditText
-                android:id="@+id/editText_password"
-                android:layout_toStartOf="@id/password_toggle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@null"
-                android:hint="Password"
-                android:layout_centerInParent="true"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:layout_marginStart="25dp"
-                android:singleLine="true"
-                android:textColor="#BAB9B9"
-                android:textColorHint="#474b53" />
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/password_toggle"
+                <ImageView
+                    android:id="@+id/signIN"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@drawable/background_circle"
+                    android:elevation="7dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:textAllCaps="false"
+                    app:tint="#E91E1E" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/register"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_transparent"
+                    android:elevation="7dp"
+                    android:text="Register"
+                    android:textAllCaps="false"
+                    android:textColor="#ffff" />
+
+
+            </LinearLayout>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_outline_remove_red_eye_24"
-                app:tint="#474b53"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"/>
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:elevation="7dp"
+                android:fontFamily="@font/calibri"
+                android:text="By continuing you are agreeing and accepting Thundersharp's data privacy policy."
+                android:textAlignment="center"
+                android:textColor="#6A6C71" />
+
 
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forgot password ?"
-            android:textColor="#54565A"
-            android:layout_gravity="end"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="15dp"
-            android:elevation="7dp"/>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signIN"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="15dp"
-                android:background="@drawable/button_login_blue"
-                android:textAllCaps="false"
-                android:text="Sign in"
-                android:elevation="7dp"
-                android:textColor="#fff"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="15dp"
-                android:background="@drawable/button_login_blue"
-                android:backgroundTint="#E1E1E1"
-                android:textAllCaps="false"
-                android:elevation="7dp"
-                android:text="Register"
-                android:textColor="#2E2C2C"
-                android:layout_marginTop="10dp"/>
 
 
-        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:elevation="7dp"
-            android:fontFamily="@font/calibri"
-            android:text="By continuing you are agreeing and accepting Thundersharp's data privacy policy."
-            android:textAlignment="center"
-            android:textColor="#6A6C71" />
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

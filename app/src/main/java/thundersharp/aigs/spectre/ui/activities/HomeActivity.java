@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.databinding.ActivityHomeBinding;
 
 
@@ -36,4 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    @Override
+    public void onBackPressed() {
+        Progressbars.getInstance().displayExitDialog(this);
+    }
 }

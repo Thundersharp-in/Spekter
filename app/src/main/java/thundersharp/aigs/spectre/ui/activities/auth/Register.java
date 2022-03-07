@@ -38,19 +38,16 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.editText_password);
 
         radioGroup.check(R.id.acharya);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.acharya){
-                    acharya = true;
-                    email.setHint("Acharya Email");
+        radioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i == R.id.acharya){
+                acharya = true;
+                email.setHint("Acharya Email");
 
-                }else if (i == R.id.non_acharya){
-                    acharya = false;
-                    email.setHint("Your Email");
-                }
-
+            }else if (i == R.id.non_acharya){
+                acharya = false;
+                email.setHint("Your Email");
             }
+
         });
 
         ((AppCompatButton) findViewById(R.id.signIN))
