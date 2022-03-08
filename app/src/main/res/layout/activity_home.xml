@@ -32,6 +32,7 @@
         android:layout_marginBottom="15dp"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:visibility="invisible"
         android:layout_above="@id/nav_view"
         android:elevation="5dp">
 
@@ -41,27 +42,24 @@
 
             <VideoView
                 android:id="@+id/videoView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="-"
-                android:layout_marginTop="-"
-                android:layout_marginEnd="-"
-                android:layout_marginBottom="-" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <ImageView
+                android:id="@+id/closeView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_close_24"
-                android:elevation="4dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                app:tint="#fff"/>
+                android:elevation="7dp"
+                android:src="@drawable/ic_baseline_close_24"
+                app:tint="#fff" />
 
         </RelativeLayout>
 

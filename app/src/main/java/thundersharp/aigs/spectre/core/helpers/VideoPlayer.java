@@ -54,11 +54,12 @@ public class VideoPlayer {
         return this;
     }
 
-    public void addOnVideoReadyCallbacksListener(OnVideoReadyCallbacksListener onVideoReadyCallbacksListener){
+    public VideoPlayer addOnVideoReadyCallbacksListener(OnVideoReadyCallbacksListener onVideoReadyCallbacksListener){
         this.onVideoReadyCallbacksListener = onVideoReadyCallbacksListener;
         if (videoView != null)
             playVideo();
         else onVideoReadyCallbacksListener.onVideoError(new VideoPlayerException("No video view found !"));
+        return this;
     }
 
     private void playVideo(){
@@ -72,7 +73,6 @@ public class VideoPlayer {
                 url = "android.resource://" +activity.getPackageName()+ "/"+ resourceId;
                 else
                 url = customUrl;
-
 
             playByCustomUrl(url);
         }
@@ -89,6 +89,7 @@ public class VideoPlayer {
         });
 
         videoView.setOnPreparedListener(mp -> {
+
             float videoRatio = mp.getVideoWidth() / (float) mp.getVideoHeight();
             float screenRatio = videoView.getWidth() / (float)
                     videoView.getHeight();
@@ -98,13 +99,15 @@ public class VideoPlayer {
             } else {
                 videoView.setScaleY(1f / scaleX);
             }
+
+            onVideoReadyCallbacksListener.onVideoPlayBackStarted(videoView);
         });
 
         videoView.setOnCompletionListener(mediaPlayer -> {
             if (playInLoop) videoView.start();
             onVideoReadyCallbacksListener.onVideoCompleated(videoView);
         });
-        onVideoReadyCallbacksListener.onVideoPlayBackStarted(videoView);
+
 
     }
 
@@ -121,7 +124,6 @@ public class VideoPlayer {
             }
         });
         videoView.setOnPreparedListener(mp -> {
-            onVideoReadyCallbacksListener.onVideoPlayBackStarted(videoView);
             float videoRatio = mp.getVideoWidth() / (float) mp.getVideoHeight();
             float screenRatio = videoView.getWidth() / (float)
                     videoView.getHeight();
@@ -131,6 +133,7 @@ public class VideoPlayer {
             } else {
                 videoView.setScaleY(1f / scaleX);
             }
+            onVideoReadyCallbacksListener.onVideoPlayBackStarted(videoView);
         });
 
         videoView.setOnCompletionListener(mediaPlayer -> {
@@ -138,6 +141,11 @@ public class VideoPlayer {
             onVideoReadyCallbacksListener.onVideoCompleated(videoView);
         });
 
+    }
+
+    public void releasePlayer(){
+        videoView.stopPlayback();
+        videoView.clearFocus();
     }
 
 }

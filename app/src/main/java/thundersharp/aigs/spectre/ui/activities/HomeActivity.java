@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import thundersharp.aigs.spectre.R;
@@ -29,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private CardView videoHOlder;
     private VideoView videoView;
+    private ImageView closeView;
+    private VideoPlayer videoPlayer;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -39,57 +41,66 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        videoHOlder = (CardView) findViewById(R.id.videro);
+        videoHOlder = findViewById(R.id.videro);
         videoView = findViewById(R.id.videoView);
+        closeView = findViewById(R.id.closeView);
 
-        videoHOlder.setOnTouchListener(new OnSwipeTouchListener(this){
+        videoHOlder.setVisibility(View.INVISIBLE);
+        videoHOlder.setOnTouchListener(new OnSwipeTouchListener(this) {
 
             @Override
             public void onSwipeTop() {
-                Toast.makeText(HomeActivity.this, "top", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onSwipeRight() {
-                Toast.makeText(HomeActivity.this, "right", Toast.LENGTH_SHORT).show();
+                dismissAdView();
             }
 
             @Override
             public void onSwipeLeft() {
-                Toast.makeText(HomeActivity.this, "left", Toast.LENGTH_SHORT).show();
+                dismissAdView();
             }
 
             @Override
             public void onSwipeBottom() {
-                Toast.makeText(HomeActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+                dismissAdView();
             }
         });
 
-
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        closeView.setOnClickListener(n->{
+            videoPlayer.releasePlayer();
+            AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+            alphaAnimation.setDuration(1000);
+            alphaAnimation.setRepeatCount(0);
+            videoHOlder.setAnimation(alphaAnimation);
+            videoHOlder.setVisibility(View.GONE);
+        });
 
-        VideoPlayer
+        videoPlayer = VideoPlayer
                 .createInstance(this)
                 .playDefaultResource(false)
-                .setCustomUrl("https://rr3---sn-5jucgv5qc5oq-cagr.googlevideo.com/videoplayback?expire=1646737528&ei=GOQmYoa9H8qE0_wP84KIsA0&ip=209.107.204.70&id=o-ACtSaM4sRXasR072ZlJQftOIVrUDK-oaGWEXfytFKImg&itag=135&aitags=133%2C134%2C135%2C136%2C160%2C242%2C243%2C244%2C247%2C278%2C394%2C395%2C396%2C397%2C398&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=0yyZYQbYngpi1U7jKA14UbMG&gir=yes&clen=1156107&dur=44.960&lmt=1627496050116495&keepalive=yes&fexp=24001373,24007246,24162928&c=WEB&txp=5535434&n=z5WfoWKyG2ngfg&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAMa-NwhTlXkIIfAGu0zJqb4Q68hYNRHs202YqDXdGQwjAiEAqkKIMxqM3hzK49FoIEUwecCS_j0uCJoi2qhqV6b6nfQ%3D&redirect_counter=1&rm=sn-hp5yz76&req_id=cd0d24d05973a3ee&cms_redirect=yes&ipbypass=yes&mh=48&mip=49.205.143.58&mm=31&mn=sn-5jucgv5qc5oq-cagr&ms=au&mt=1646715678&mv=m&mvi=3&pl=21&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRgIhALvBVZoqNN-fP-Bwyv3mw6PQtwpYJmQ4clooxRBtNkIcAiEA5ho4gRySPV0m52c1P7syNIKWPWBQ9hU60Gz957fG-l0%3D")
+                .setCustomUrl("https://rr2---sn-npoldn7e.googlevideo.com/videoplayback?expire=1646766788&ei=ZFYnYuO-HoaohgbP_qeQDw&ip=138.219.75.100&id=o-AEK-JQa8isq64_O6oNcgR_tveo4BzvqBnEXThlukx2wv&itag=135&aitags=133%2C134%2C135%2C136%2C160%2C242%2C243%2C244%2C247%2C278%2C298%2C299%2C302%2C303%2C394%2C395%2C396%2C397%2C398%2C399&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=jBweb9wTNEXb0iMzknVFPUoG&gir=yes&clen=782335&dur=28.633&lmt=1615382575380463&keepalive=yes&fexp=24001373,24007246&c=WEB&txp=5535434&n=bMBMtYO1ibto3A&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRQIgXty8LZkDS0F8ukBS48rUc-2iPXcIzJN-vYIxDMqTbo4CIQCKhzD1c3nb1G_nezj8w5nq0EqY6dL4ESdrWUrZNDq3FA%3D%3D&redirect_counter=1&cm2rm=sn-5hnese7s&req_id=4a397946c0d0a3ee&cms_redirect=yes&cmsv=e&mh=Hn&mip=49.205.143.234&mm=34&mn=sn-npoldn7e&ms=ltu&mt=1646744944&mv=m&mvi=2&pl=21&lsparams=mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgXekK0xFgGLWY4Um3H5DGLz9QqRM8briL7V8u4vagHYQCIQD0G8Dgd3fVwf1-YBVwfCE7TGJ1Tz4S9ZCGJnP7_pR7Xw%3D%3D")
                 .playInLoop(true)
                 .setVideoView(videoView)
                 .addOnVideoReadyCallbacksListener(new OnVideoReadyCallbacksListener() {
 
                     @Override
                     public void onVideoPlayBackStarted(VideoView videoView) {
-                        Toast.makeText(HomeActivity.this,"Started",Toast.LENGTH_SHORT).show();
+                        videoHOlder.setVisibility(View.VISIBLE);
+                        AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+                        alphaAnimation.setDuration(1000);
+                        alphaAnimation.setRepeatCount(0);
+                        videoHOlder.setAnimation(alphaAnimation);
                     }
 
                     @Override
                     public void onVideoCompleated(VideoView videoView) {
-                        Toast.makeText(HomeActivity.this, "Compleated", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -102,6 +113,10 @@ public class HomeActivity extends AppCompatActivity {
 
                     }
                 });
+
+    }
+
+    private void dismissAdView() {
 
     }
 
