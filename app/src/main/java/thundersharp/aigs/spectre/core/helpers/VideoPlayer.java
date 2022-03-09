@@ -81,7 +81,7 @@ public class VideoPlayer {
     private void playDefaultVideo() {
         videoView.setVideoURI(Uri.parse("android.resource://" +activity.getPackageName()+ "/"+ R.raw.logo));
 
-        videoView.requestFocus();
+        //videoView.requestFocus();
         videoView.start();
         videoView.setOnErrorListener((mediaPlayer, i, i1) -> {
             onVideoReadyCallbacksListener.onVideoError(new VideoPlayerException("INTERNAL ERROR"));
@@ -89,7 +89,6 @@ public class VideoPlayer {
         });
 
         videoView.setOnPreparedListener(mp -> {
-
             float videoRatio = mp.getVideoWidth() / (float) mp.getVideoHeight();
             float screenRatio = videoView.getWidth() / (float)
                     videoView.getHeight();

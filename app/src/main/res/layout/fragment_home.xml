@@ -95,7 +95,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="7dp"
+                app:cardElevation="5dp"
                 app:cardBackgroundColor="#153043">
 
                 <com.glide.slider.library.SliderLayout
@@ -142,7 +142,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/exh" />
 
                         </androidx.cardview.widget.CardView>
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Exhibitions"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
@@ -178,7 +178,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/startup" />
 
                         </androidx.cardview.widget.CardView>
@@ -188,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Initiatives"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
@@ -215,7 +215,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/female" />
 
                         </androidx.cardview.widget.CardView>
@@ -225,14 +225,13 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Lectures"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
                     </LinearLayout>
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/bottom_cards"
@@ -263,7 +262,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/meeting" />
 
                         </androidx.cardview.widget.CardView>
@@ -273,7 +272,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Workshops"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
@@ -299,7 +298,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/cometation" />
 
                         </androidx.cardview.widget.CardView>
@@ -309,7 +308,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Competitions"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
@@ -336,7 +335,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#82D1F4"
+                                app:tint="#95D6F3"
                                 android:src="@drawable/upcoming" />
 
                         </androidx.cardview.widget.CardView>
@@ -346,7 +345,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Upcoming"
-                            android:textColor="#A8A7A7"
+                            android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 
 
@@ -354,29 +353,231 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/merch_store"
+                <LinearLayout
+                    android:id="@+id/bottom_cards_last"
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:layout_below="@id/bottom_cards"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bottom_cards"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:cardBackgroundColor="#153043"
+                            app:cardCornerRadius="9dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="15dp"
+                                android:src="@drawable/creativity"
+                                app:tint="#95D6F3" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/calibrib"
+                            android:text="IC"
+                            android:textColor="#BCBCBC"
+                            android:textSize="17sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:cardBackgroundColor="#153043"
+                            app:cardCornerRadius="9dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="15dp"
+                                android:src="@drawable/info"
+                                app:tint="#95D6F3" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/calibrib"
+                            android:text="Know us"
+                            android:textColor="#BCBCBC"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/latest_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/bottom_cards_last"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     app:cardBackgroundColor="#153043"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="7dp">
+                    app:cardElevation="5dp">
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/poster"
-                        android:scaleType="centerCrop"/>
+                        android:orientation="vertical"
+                        android:weightSum="5">
+
+                        <fragment
+                            android:id="@+id/map"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2">
+
+                            <TextView
+                                android:id="@+id/upcomming"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="12dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/roboto_medium"
+                                android:maxLines="1"
+                                android:text="Upcoming next"
+                                android:textColor="#95D6F3"
+                                android:textSize="17sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_below="@id/upcomming">
+                                <TextView
+                                    android:id="@+id/time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/calibri"
+                                    android:maxLines="1"
+                                    android:text="26 APR 2020 4:35PM"
+                                    android:textColor="#C1B22E"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/eventName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/calibri"
+                                    android:maxLines="2"
+                                    android:text="AIGS Tech exhibition organised by the BCA Department, click this tab to know more."
+                                    android:textColor="#D3D3D3"
+                                    android:textSize="16sp" />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <LinearLayout
+                    android:id="@+id/merch_store"
+                    android:layout_below="@id/latest_update"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        app:cardBackgroundColor="#153043"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_rawRes="@raw/coming_soon" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_medium"
+                        android:maxLines="1"
+                        android:text="Our Merchandise store"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#95D6F3"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+
+                <include
+                    android:id="@+id/cust_openion"
+                    layout="@layout/cust_openion"
+                    android:layout_below="@+id/merch_store"
+                    android:minHeight="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"/>
 
                 <include layout="@layout/social_media_pannel"
-                    android:layout_below="@id/merch_store"
+                    android:layout_below="@id/cust_openion"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_marginVertical="20dp"/>

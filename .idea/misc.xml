@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_circle.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bluecurve.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bottom.xml" value="0.1055" />
         <entry key="app/src/main/res/drawable/btn_transparent.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/button_login_blue.xml" value="0.1055" />
@@ -24,9 +25,11 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17084808349609376" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
+        <entry key="app/src/main/res/layout/cust_openion.xml" value="0.21124877929687502" />
         <entry key="app/src/main/res/layout/exit_bottom_sheet.xml" value="0.20179563916203505" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18969024658203126" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/pager_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />
         <entry key="app/src/main/res/layout/social_media_pannel.xml" value="0.2175925925925926" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.24322916666666666" />

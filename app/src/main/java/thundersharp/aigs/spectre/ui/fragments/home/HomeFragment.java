@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -16,6 +17,13 @@ import com.glide.slider.library.animations.DescriptionAnimation;
 import com.glide.slider.library.slidertypes.BaseSliderView;
 import com.glide.slider.library.slidertypes.DefaultSliderView;
 import com.glide.slider.library.tricks.ViewPagerEx;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,27 +32,45 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
+import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
+import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
+import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 
 
 public class HomeFragment extends Fragment implements
         BaseSliderView.OnSliderClickListener ,
+        OnMapReadyCallback,
         ViewPagerEx.OnPageChangeListener{
 
     private SliderLayout slider;
+    private GoogleMap mMap;
+    private ViewPager viewPager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         slider = root.findViewById(R.id.slider);
+        viewPager = root.findViewById(R.id.pager);
         setupCrousel();
+
 
         root.findViewById(R.id.notification).setOnClickListener(u->startActivity(new Intent(getActivity(), BarCodeScanner.class)));
 
 
+        viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
+
         return root;
+    }
+
+
+    private Testimonials[] getTempTestimonial(){
+        return new Testimonials[]{new Testimonials("","","",""),new Testimonials("","","",""),new Testimonials("","","","")};
     }
 
     private void setupCrousel(){
@@ -141,6 +167,18 @@ public class HomeFragment extends Fragment implements
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(getActivity(), R.raw.mapstyle_night);
+        //markerOptions = new MarkerOptions();
+        mMap = googleMap;
+        mMap.setMapStyle(style);
+        MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(13.0839376,77.4849723,"Exhibition")).locate();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.0839376,77.4849723), 18));
 
     }
 }

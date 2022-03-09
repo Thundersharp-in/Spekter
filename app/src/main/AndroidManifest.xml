@@ -51,6 +51,10 @@
         </activity>
 
         <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyALXwDGx8r3PISJaxCDwT8YR7a0TXKYYvY"/>
+
+        <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
