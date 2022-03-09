@@ -136,6 +136,8 @@
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardUseCompatPadding="true">
 
                             <ImageView
@@ -167,10 +169,13 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/iniatives"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardElevation="5dp"
                             app:cardUseCompatPadding="true">
 
@@ -204,9 +209,12 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/lectures"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             app:cardUseCompatPadding="true">
@@ -251,10 +259,13 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/workshops"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardElevation="5dp"
                             app:cardUseCompatPadding="true">
 
@@ -287,11 +298,14 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/competations"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardUseCompatPadding="true">
 
                             <ImageView
@@ -324,11 +338,14 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/upcomingEvents"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardUseCompatPadding="true">
 
                             <ImageView
@@ -372,11 +389,14 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/ic"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardUseCompatPadding="true">
 
                             <ImageView
@@ -408,11 +428,14 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/knowUs"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
                             app:cardBackgroundColor="#153043"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
                             app:cardUseCompatPadding="true">
 
                             <ImageView

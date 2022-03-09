@@ -38,6 +38,13 @@ import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
+import thundersharp.aigs.spectre.ui.activities.CompetationHome;
+import thundersharp.aigs.spectre.ui.activities.ExhibitionHome;
+import thundersharp.aigs.spectre.ui.activities.InnovativeChallengeHome;
+import thundersharp.aigs.spectre.ui.activities.KnowUs;
+import thundersharp.aigs.spectre.ui.activities.LecturesHome;
+import thundersharp.aigs.spectre.ui.activities.UpcommingEventsHome;
+import thundersharp.aigs.spectre.ui.activities.WorkshopsHome;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 
 
@@ -61,6 +68,13 @@ public class HomeFragment extends Fragment implements
 
 
         root.findViewById(R.id.notification).setOnClickListener(u->startActivity(new Intent(getActivity(), BarCodeScanner.class)));
+        root.findViewById(R.id.alive).setOnClickListener(u->startActivity(new Intent(getActivity(), ExhibitionHome.class)));
+        root.findViewById(R.id.lectures).setOnClickListener(u->startActivity(new Intent(getActivity(), LecturesHome.class)));
+        root.findViewById(R.id.workshops).setOnClickListener(u->startActivity(new Intent(getActivity(), WorkshopsHome.class)));
+        root.findViewById(R.id.competations).setOnClickListener(u->startActivity(new Intent(getActivity(), CompetationHome.class)));
+        root.findViewById(R.id.upcomingEvents).setOnClickListener(u->startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
+        root.findViewById(R.id.ic).setOnClickListener(u->startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
+        root.findViewById(R.id.knowUs).setOnClickListener(u->startActivity(new Intent(getActivity(), KnowUs.class)));
 
 
         viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));

@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -18,9 +18,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpectreAIGS">
         <activity
-            android:name=".ui.activities.barcode.BarCodeScanner"
-            android:hardwareAccelerated="true"
+            android:name=".ui.activities.InitiativesHomes"
             android:exported="false" />
+        <activity
+            android:name=".ui.activities.LecturesHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.WorkshopsHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.CompetationHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.UpcommingEventsHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.InnovativeChallengeHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.KnowUs"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.ExhibitionHome"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.barcode.BarCodeScanner"
+            android:exported="false"
+            android:hardwareAccelerated="true" />
         <activity
             android:name=".ui.activities.auth.Register"
             android:exported="false" />
@@ -52,8 +76,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyALXwDGx8r3PISJaxCDwT8YR7a0TXKYYvY"/>
-
+            android:value="AIzaSyALXwDGx8r3PISJaxCDwT8YR7a0TXKYYvY" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
