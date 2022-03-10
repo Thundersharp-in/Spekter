@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#0c2132"
+    android:background="#000000"
     android:theme="@style/Theme.MaterialComponents.DayNight"
     tools:context=".ui.fragments.home.HomeFragment">
 
@@ -133,7 +133,7 @@
                             android:id="@+id/alive"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             android:clickable="true"
@@ -144,7 +144,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/exh" />
 
                         </androidx.cardview.widget.CardView>
@@ -172,7 +172,7 @@
                             android:id="@+id/iniatives"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             android:clickable="true"
                             android:focusable="true"
@@ -183,7 +183,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/startup" />
 
                         </androidx.cardview.widget.CardView>
@@ -212,7 +212,7 @@
                             android:id="@+id/lectures"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             android:clickable="true"
                             android:focusable="true"
                             app:cardCornerRadius="9dp"
@@ -223,7 +223,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/female" />
 
                         </androidx.cardview.widget.CardView>
@@ -262,7 +262,7 @@
                             android:id="@+id/workshops"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             android:clickable="true"
                             android:focusable="true"
@@ -273,7 +273,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/meeting" />
 
                         </androidx.cardview.widget.CardView>
@@ -301,7 +301,7 @@
                             android:id="@+id/competations"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             android:clickable="true"
@@ -312,7 +312,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/cometation" />
 
                         </androidx.cardview.widget.CardView>
@@ -341,7 +341,7 @@
                             android:id="@+id/upcomingEvents"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             android:clickable="true"
@@ -352,7 +352,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#95D6F3"
+                                app:tint="#D8D8D8"
                                 android:src="@drawable/upcoming" />
 
                         </androidx.cardview.widget.CardView>
@@ -392,7 +392,7 @@
                             android:id="@+id/ic"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             android:clickable="true"
@@ -404,7 +404,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 android:src="@drawable/creativity"
-                                app:tint="#95D6F3" />
+                                app:tint="#D8D8D8" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -431,7 +431,7 @@
                             android:id="@+id/knowUs"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:cardBackgroundColor="#153043"
+                            app:cardBackgroundColor="#262626"
                             app:cardCornerRadius="9dp"
                             app:cardElevation="5dp"
                             android:clickable="true"
@@ -443,7 +443,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 android:src="@drawable/info"
-                                app:tint="#95D6F3" />
+                                app:tint="#D8D8D8" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -466,7 +466,7 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    app:cardBackgroundColor="#153043"
+                    app:cardBackgroundColor="#262626"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="5dp">
 
@@ -555,7 +555,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="190dp"
-                        app:cardBackgroundColor="#153043"
+                        app:cardBackgroundColor="#262626"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="5dp">
 
@@ -592,12 +592,12 @@
                 <include
                     android:id="@+id/cust_openion"
                     layout="@layout/cust_openion"
-                    android:layout_below="@+id/merch_store"
-                    android:minHeight="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/merch_store"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"/>
+                    android:minHeight="170dp" />
 
                 <include layout="@layout/social_media_pannel"
                     android:layout_below="@id/cust_openion"
