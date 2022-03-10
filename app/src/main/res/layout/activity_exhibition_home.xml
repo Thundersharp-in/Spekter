@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
+    android:theme="@style/Theme.MaterialComponents.DayNight"
     tools:context=".ui.activities.ExhibitionHome">
 
     <RelativeLayout
@@ -229,9 +230,9 @@
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerProjects"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
