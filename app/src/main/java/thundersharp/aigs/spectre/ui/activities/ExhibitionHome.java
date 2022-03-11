@@ -7,9 +7,11 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -27,8 +29,11 @@ import java.util.List;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
+import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.core.models.SliderModel;
+import thundersharp.aigs.spectre.core.models.TicketsData;
+import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.fragments.home.HomeFragment;
 
@@ -55,6 +60,18 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
         setPreAnimation(true);
         setupCrousel();
+
+        //TODO CHECK FOR EXISTING BOOKING
+        ((ImageView)findViewById(R.id.notification)).setOnClickListener(k-> {
+            try {
+                Tickets
+                        .getInstance(this)
+                        .setTicketsData(new TicketsData("","","","","","","","",null,""))
+                        .showTickets();
+            } catch (ArgumentsMissingException e) {
+                e.printStackTrace();
+            }
+        });
 
         new Handler().postDelayed(new Runnable() {
             @Override

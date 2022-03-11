@@ -1,8 +1,10 @@
 package thundersharp.aigs.spectre.core.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,7 @@ import java.util.List;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
+import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 
 public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAdapter.ViewHolder> {
 
@@ -53,6 +56,9 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
         public void onClick(View view) {
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(view.getContext());
             bottomSheetDialog.setContentView(R.layout.bottom_sheet_projects_actions);
+
+            ImageView scanner = bottomSheetDialog.findViewById(R.id.scanner);
+            scanner.setOnClickListener(j->view.getContext().startActivity(new Intent(view.getContext(), BarCodeScanner.class)));
             bottomSheetDialog.show();
         }
     }

@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/circle_green.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_circle.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/background_header.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_ticket.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bluecurve.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bottom.xml" value="0.1055" />
         <entry key="app/src/main/res/drawable/btn_transparent.xml" value="0.107" />
@@ -15,6 +17,7 @@
         <entry key="app/src/main/res/drawable/curved_bottom_nav.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/curved_client_item.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/curved_client_two.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/dash.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
@@ -37,6 +40,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17084808349609376" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
+        <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_workshops_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/bottom_sheet_projects_actions.xml" value="0.19880290722530997" />

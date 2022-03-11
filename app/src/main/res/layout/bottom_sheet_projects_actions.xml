@@ -38,7 +38,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/circle_green"
                 android:elevation="5dp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:src="@drawable/info"
                 app:tint="#fff" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/circle"
                 android:elevation="5dp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_outline_groups_24"
                 app:tint="#fff" />
 
@@ -91,12 +91,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/notification"
+                android:id="@+id/scanner"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:background="@drawable/ffade_white_circle"
                 android:elevation="5dp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_outline_qr_code_scanner_24" />
 
             <TextView
