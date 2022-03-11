@@ -1,6 +1,7 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.activities.exhibition;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.widget.NestedScrollView;
@@ -10,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -35,7 +39,7 @@ import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.TicketsData;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-import thundersharp.aigs.spectre.ui.fragments.home.HomeFragment;
+import thundersharp.aigs.spectre.ui.activities.passes.BookPasses;
 
 public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.OnSliderClickListener {
 
@@ -46,6 +50,8 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
     private RecyclerView recyclerProjects;
     private List<ProjectShortDescription> projectShortDescriptions;
 
+    private ProjectsHolderAdapter projectsHolderAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +61,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         mainContents = findViewById(R.id.mainScroll);
         preAnimation = findViewById(R.id.mainContainer);
         slider = findViewById(R.id.slider);
+        findViewById(R.id.rrr).setOnClickListener(n->finish());
 
         recyclerProjects = findViewById(R.id.recyclerProjects);
 
@@ -62,7 +69,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         setupCrousel();
 
         //TODO CHECK FOR EXISTING BOOKING
-        ((ImageView)findViewById(R.id.notification)).setOnClickListener(k-> {
+        findViewById(R.id.notification).setOnClickListener(k-> {
             try {
                 Tickets
                         .getInstance(this)
@@ -80,15 +87,54 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
             }
         },4000);
 
+        projectsHolderAdapter = new ProjectsHolderAdapter(getProjectShortDescriptions(10));
         recyclerProjects.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerProjects.setAdapter(new ProjectsHolderAdapter(getProjectShortDescriptions(10)));
+        recyclerProjects.setAdapter(projectsHolderAdapter);
+
+        ((EditText)findViewById(R.id.searchbar))
+                .addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (projectsHolderAdapter != null) {
+                    projectsHolderAdapter.getFilter().filter(charSequence);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        findViewById(R.id.book).setOnClickListener(b->startActivity(new Intent(this, BookPasses.class)));
+
+        findViewById(R.id.stallsVisited).setOnClickListener(p->{
+            new AlertDialog.Builder(this)
+                    .setTitle("Stalls visited")
+                    .setMessage("This progress indicator shows how many projects stalls you have visited physically, this data is calculated by the stalls qr code scans.")
+                    .setPositiveButton("OK",((dialogInterface, i) -> dialogInterface.dismiss()))
+                    .show();
+        });
+
+        findViewById(R.id.projectsReviwed).setOnClickListener(p->{
+            new AlertDialog.Builder(this)
+                    .setTitle("Projects reviewed")
+                    .setMessage("This progress indicator shows how many projects you have gone through in the app, this data is calculated by your interaction with the projects in the app.")
+                    .setPositiveButton("OK",((dialogInterface, i) -> dialogInterface.dismiss()))
+                    .show();
+        });
 
     }
 
     private List<ProjectShortDescription> getProjectShortDescriptions(int size){
         projectShortDescriptions = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            projectShortDescriptions.add(new ProjectShortDescription("Hey "+i,"",""+i));
+            projectShortDescriptions.add(new ProjectShortDescription("Hey "+i,"","IOT",""+i));
         }
 
         return projectShortDescriptions;

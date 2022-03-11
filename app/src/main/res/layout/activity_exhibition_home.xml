@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#000"
     android:theme="@style/Theme.MaterialComponents.DayNight"
-    tools:context=".ui.activities.ExhibitionHome">
+    tools:context=".ui.activities.exhibition.ExhibitionHome">
 
     <RelativeLayout
         android:id="@+id/mainContainer"
@@ -221,7 +221,7 @@
                     app:cardElevation="5dp">
 
                     <me.itangqi.waveloadingview.WaveLoadingView
-                        android:id="@+id/waveLoadingView"
+                        android:id="@+id/stallsVisited"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#262626"
@@ -259,7 +259,7 @@
                     app:cardElevation="5dp">
 
                     <me.itangqi.waveloadingview.WaveLoadingView
-                        android:id="@+id/waveLoadingView_p"
+                        android:id="@+id/projectsReviwed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#262626"
@@ -383,7 +383,7 @@
         android:layout_height="55dp"
         android:background="@drawable/curved"
         android:backgroundTint="#A11545"
-        android:text="Book tickets"
+        android:text="GET YOUR PASSES"
         android:textColor="#fff"
         android:fontFamily="@font/calibrib"
         android:layout_alignParentBottom="true"

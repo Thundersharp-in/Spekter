@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.models.TicketsData;
-import thundersharp.aigs.spectre.ui.activities.TicketViewer;
+import thundersharp.aigs.spectre.ui.activities.passes.TicketViewer;
 
 public class Tickets {
 
