@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
@@ -39,10 +41,19 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
         else return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(view.getContext());
+            bottomSheetDialog.setContentView(R.layout.bottom_sheet_projects_actions);
+            bottomSheetDialog.show();
         }
     }
 }
