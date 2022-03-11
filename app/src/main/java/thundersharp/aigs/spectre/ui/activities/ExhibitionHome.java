@@ -3,6 +3,7 @@ package thundersharp.aigs.spectre.ui.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class ExhibitionHome extends AppCompatActivity {
             }
         },4000);
 
+        recyclerProjects.setLayoutManager(new GridLayoutManager(this,2));
         recyclerProjects.setAdapter(new ProjectsHolderAdapter(getProjectShortDescriptions(10)));
 
     }

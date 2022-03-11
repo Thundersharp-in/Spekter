@@ -63,27 +63,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
             android:layout_marginStart="10dp"
             android:layout_marginVertical="6dp"
             android:layout_toStartOf="@+id/notification"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/rrr"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@mipmap/ic_launcher"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                app:civ_border_color="#3F51B5"
-                app:civ_border_width="4dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="#fff" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -140,12 +139,12 @@
                 android:id="@+id/slider_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="#153043">
+                app:cardBackgroundColor="#262626">
 
                 <com.glide.slider.library.SliderLayout
                     android:id="@+id/slider"
@@ -162,12 +161,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="150dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="#153043">
+                app:cardBackgroundColor="#262626">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -189,17 +188,17 @@
 
                     <TextView
                         android:id="@+id/eventName"
-                        android:layout_below="@id/upcomming"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/upcomming"
                         android:layout_marginStart="15dp"
-                        android:layout_marginEnd="10dp"
                         android:layout_marginTop="12dp"
-                        android:textAlignment="viewStart"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/calibri"
                         android:text="Techfest is the annual science and technology festival of Acharya institute of graduate studies, bengaluru. It also refers to the independent body of students who organize this event along with many other social initiatives and outreach programs round the year. Techfest is known for hosting a variety of events that include competitions, exhibitions, lectures as well as workshops.Started in 1998 with the aim of providing a platform for the Indian student community to develop and showcase their technical prowess, it has now grown into Asia\'s Largest Science and Technology Festival with a footfall of 1.65 lakhs in its latest edition."
+                        android:textAlignment="viewStart"
                         android:textColor="#AEAEAE"
-                        android:layout_marginBottom="15dp"
                         android:textSize="16sp" />
 
 
@@ -210,12 +209,98 @@
 
 
             <LinearLayout
+                android:id="@+id/card_view"
+                android:layout_below="@id/descrip_holder"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#F4F4F4"
+                    app:cardCornerRadius="9dp"
+                    app:cardElevation="5dp">
+
+                    <me.itangqi.waveloadingview.WaveLoadingView
+                        android:id="@+id/waveLoadingView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:wlv_borderColor="@color/cardview_light_background"
+                        app:wlv_borderWidth="3dp"
+                        app:wlv_progressValue="0"
+                        app:wlv_round_rectangle="true"
+                        app:wlv_shapeType="rectangle"
+                        app:wlv_titleBottom="Overall Attendance"
+                        app:wlv_titleBottomColor="#ffff"
+                        app:wlv_titleBottomSize="14sp"
+                        app:wlv_titleBottomStrokeColor="#8A8888"
+                        app:wlv_titleBottomStrokeWidth="2dp"
+                        app:wlv_titleCenter="0.00 %"
+                        app:wlv_titleCenterColor="@android:color/white"
+                        app:wlv_titleCenterSize="19sp"
+                        app:wlv_titleCenterStrokeColor="#8A8888"
+                        app:wlv_titleCenterStrokeWidth="2dp"
+                        app:wlv_waveAmplitude="30"
+                        app:wlv_waveColor="#009688" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/detailedAtt"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="#F6F6F6"
+                    app:cardCornerRadius="9dp"
+                    app:cardElevation="5dp">
+
+                    <me.itangqi.waveloadingview.WaveLoadingView
+                        android:id="@+id/waveLoadingView_p"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:wlv_borderColor="@color/cardview_light_background"
+                        app:wlv_borderWidth="3dp"
+                        app:wlv_progressValue="0"
+                        app:wlv_round_rectangle="true"
+                        app:wlv_shapeType="rectangle"
+                        app:wlv_titleBottom="Overall Attendance"
+                        app:wlv_titleBottomColor="#ffff"
+                        app:wlv_titleBottomSize="14sp"
+                        app:wlv_titleBottomStrokeColor="#8A8888"
+                        app:wlv_titleBottomStrokeWidth="2dp"
+                        app:wlv_titleCenter="0.00 %"
+                        app:wlv_titleCenterColor="@android:color/white"
+                        app:wlv_titleCenterSize="19sp"
+                        app:wlv_titleCenterStrokeColor="#8A8888"
+                        app:wlv_titleCenterStrokeWidth="2dp"
+                        app:wlv_waveAmplitude="30"
+                        app:wlv_waveColor="#009688" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginBottom="80dp"
-                android:layout_below="@id/descrip_holder">
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="100dp"
+                android:layout_below="@id/card_view">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,6 +318,7 @@
                     android:id="@+id/recyclerProjects"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
