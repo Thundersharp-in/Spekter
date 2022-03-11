@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_account_circle_24.xml" value="0.104" />
         <entry key="app/src/main/res/drawable/ic_outline_qr_code_scanner_24.xml" value="0.1" />
@@ -25,7 +26,7 @@
         <entry key="app/src/main/res/layout/activity_bar_code_scanner.xml" value="0.21430358886718753" />
         <entry key="app/src/main/res/layout/activity_competation_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/activity_exhibition_home.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_exhibition_home.xml" value="0.3429510498046875" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_initiatives_homes.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_innovative_challenge_home.xml" value="0.2152777777777778" />
