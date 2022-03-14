@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spectre AIGS</string>
+    <string name="app_name">Spekter AIGS</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
