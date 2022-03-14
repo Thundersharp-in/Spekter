@@ -9,8 +9,8 @@
     tools:context=".startup.SplashScreen">
 
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_centerInParent="true"
         android:src="@drawable/spectre" />
 
