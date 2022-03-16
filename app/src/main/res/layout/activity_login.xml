@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/calibri"
-                    android:text="Please sign in to your spectre account."
+                    android:text="Please sign in to your spekter account."
                     android:textColor="#9D9DA3" />
 
 

@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/calibri"
-                android:text="Create a brand new spectre account"
+                android:text="Create a brand new spekter account"
                 android:textColor="#434349" />
 
 
