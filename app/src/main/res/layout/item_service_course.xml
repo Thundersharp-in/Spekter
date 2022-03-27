@@ -52,17 +52,17 @@
                 android:textColor="#BCBCBC"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/CS_by"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="by Thundersharp"
-                android:textSize="13sp"
                 android:layout_below="@id/CS_name"
-                android:maxLines="1"
-                android:textColor="#9098a3"
                 android:ellipsize="end"
-                />
+                android:maxLines="1"
+                android:text="by Thundersharp"
+                android:textColor="#9098a3"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/hashtags"
@@ -70,7 +70,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Updated on 22nd feb 2020"
+                android:text="#bankNifty #stockMarket"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:textIsSelectable="true"
@@ -106,22 +106,46 @@
             android:textSize="15sp"
             />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="end"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             >
-            <ImageView
-                android:id="@+id/iv_lock"
+            <TextView
+                android:id="@+id/CS_lang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tint="#9099a2"
-                android:src="@drawable/ic_outline_lock_24"
+                android:text="English"
+                android:drawablePadding="10dp"
+                android:textColor="#878c92"
+                android:drawableTint="#9099a2"
+                android:gravity="center"
+                android:drawableStart="@drawable/ic_baseline_language_24"
+                />
+            <TextView
+                android:id="@+id/CS_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic"
+                android:drawableStart="@drawable/ic_baseline_speed_24"
+                android:layout_marginStart="20dp"
+                android:textColor="#878c92"
+                android:drawableTint="#9099a2"
+                android:drawablePadding="10dp"
                 android:gravity="center"
                 />
 
+            <TextView
+                android:id="@+id/CS_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="₹3,999.00"
+                android:layout_marginStart="20dp"
+                android:textColor="#2d8d5d"
+                />
 
         </LinearLayout>
     </LinearLayout>
@@ -130,7 +154,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#737373"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         />
 
 </LinearLayout>

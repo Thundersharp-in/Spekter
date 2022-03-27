@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/drawable-v24/circle_green.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_circle.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/background_header.xml" value="0.1" />
@@ -28,6 +29,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_fast_forward_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_filter_list_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock_open_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_motion_photos_paused_24.xml" value="0.1" />
@@ -55,6 +57,7 @@
         <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.3253168661403778" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_exhibition_home.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_filter.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_initiatives_homes.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_innovative_challenge_home.xml" value="0.2152777777777778" />
@@ -72,13 +75,22 @@
         <entry key="app/src/main/res/layout/bottom_sheet_projects_actions.xml" value="0.19880290722530997" />
         <entry key="app/src/main/res/layout/cust_openion.xml" value="0.21124877929687502" />
         <entry key="app/src/main/res/layout/exit_bottom_sheet.xml" value="0.20179563916203505" />
+        <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/fragment_difficulty_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1417979610750695" />
+        <entry key="app/src/main/res/layout/fragment_information_services.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/fragment_language_sorting.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/fragment_live_training.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2152777777777778" />
+        <entry key="app/src/main/res/layout/fragment_tags_sorting.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_filter_tags.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_filter_tags_recycler.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_main_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_projects.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/pager_item.xml" value="0.266302490234375" />
         <entry key="app/src/main/res/layout/player_custom_ui.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />

@@ -21,6 +21,9 @@
         <activity android:name=".ui.activities.VideoPlayer"
             android:screenOrientation="landscape"/>
 
+        <activity android:name=".ui.activities.lectures.FilterActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".ui.activities.lectures.CoarseContents"
             android:exported="false" />
