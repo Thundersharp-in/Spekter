@@ -157,15 +157,14 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
     }
 
-
-
     private void setupCrousel(){
         ArrayList<String> listUrl = new ArrayList<>();
         Bundle bundle = new Bundle();
 
         FirebaseDatabase
                 .getInstance()
-                .getReference(CONSTANTS.DATABASE_EXHIBITION_SLIDER)
+                .getReference(CONSTANTS.SLIDER)
+                .child(CONSTANTS.DATABASE_EXHIBITION_SLIDER)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -41,7 +41,7 @@ import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 import thundersharp.aigs.spectre.ui.activities.InitiativesHomes;
 import thundersharp.aigs.spectre.ui.activities.InnovativeChallengeHome;
 import thundersharp.aigs.spectre.ui.activities.KnowUs;
-import thundersharp.aigs.spectre.ui.activities.LecturesHome;
+import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
 import thundersharp.aigs.spectre.ui.activities.UpcommingEventsHome;
 import thundersharp.aigs.spectre.ui.activities.WorkshopsHome;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;

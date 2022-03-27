@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:id="@+id/contentView"
+    tools:context=".ui.activities.VideoPlayer">
+
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_viewu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:color="#000"
+        android:layout_centerInParent="true"
+        app:showSeekBar="false"
+        app:showVideoDuration="false"
+        app:showYouTubeButton="false"
+        app:enableAutomaticInitialization="true"
+        app:handleNetworkEvents="true"
+        app:showVideoCurrentTime="false"
+        app:showFullScreenButton="false">
+    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+</RelativeLayout>

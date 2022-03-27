@@ -1,0 +1,376 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.activities.lectures.CourseDetailActivity"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#262626"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            android:background="#000"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:elevation="4dp"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:layout_collapseMode="pin" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:elevation="4dp">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/s_img"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="?actionBarSize"
+                        android:src="@drawable/spectre"
+                        app:civ_border_width="1dp"
+                        app:civ_border_color="#fff"
+                        />
+
+                    <TextView
+                        android:id="@+id/s_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Price Action and Swing Trade"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#BCBCBC"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:overScrollMode="never"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/subscribe"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="GET COURSE"
+                    android:fontFamily="@font/calibrib"
+                    android:gravity="center"
+                    android:textColor="#EAEAEA"
+                    android:layout_marginEnd="10dp"
+                    android:paddingVertical="7dp"
+                    android:paddingHorizontal="15dp"
+                    android:background="@drawable/blue_fill_curve"
+                    />
+                <TextView
+                    android:id="@+id/s_chat"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="NEED HELP"
+                    android:fontFamily="@font/calibrib"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#3f7fc9"
+                    android:gravity="center"
+                    android:paddingVertical="7dp"
+                    android:paddingHorizontal="15dp"
+                    android:background="@drawable/blue_stroke_curve"
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Service Creator"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9197a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/s_creator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="by Thundersharp"
+                android:layout_marginTop="10dp"
+                android:textColor="#3e81d0"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About this course"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9098a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/s_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Hi everyone!!!\nI am super exited to launch my online course... Please spread a  word accross and support..."
+                android:layout_marginTop="10dp"
+                android:textColor="#A5A5A5"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pricing"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9098a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/p_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="This coarse is priced ₹ 567/- only"
+                android:layout_marginTop="7dp"
+                android:textStyle="bold"
+                android:textColor="#D84577"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="10dp"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course details"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9099a2"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/s_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium of communication: English"
+                android:drawablePadding="10dp"
+                android:textColor="#A5A5A5"
+                android:drawableTint="#878c92"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:drawableStart="@drawable/ic_baseline_language_24"
+                />
+            <TextView
+                android:id="@+id/s_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulty level: Basic"
+                android:drawablePadding="10dp"
+                android:textColor="#A5A5A5"
+                android:drawableTint="#878c92"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginTop="7dp"
+                android:drawableStart="@drawable/ic_baseline_speed_24"
+                />
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 class in 1 day . Total 2 hours"
+                android:drawablePadding="10dp"
+                android:textColor="#A5A5A5"
+                android:drawableTint="#878c92"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginTop="7dp"
+                android:drawableStart="@drawable/ic_outline_timelapse_24"
+                />
+
+            <TextView
+                android:id="@+id/viewCourseBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW COARSE CONTENTS"
+                android:fontFamily="@font/calibrib"
+                android:textColor="#EAEAEA"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center"
+                android:paddingVertical="7dp"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="15dp"
+                android:background="@drawable/blue_fill_curve"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Topics you will learn"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#8f99a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/s_will_learn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                android:layout_marginTop="15dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Topics you should know before"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9098a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/to_know_before"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginBottom="15dp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#737373"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hashtags"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#9098a3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:id="@+id/hashtags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="#stockMarket"
+                android:layout_marginTop="7dp"
+                android:textColor="#1B71B6"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
