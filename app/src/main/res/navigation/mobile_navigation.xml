@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="thundersharp.aigs.spectre.ui.fragments.notifications.NotificationsFragment"
+        android:name="thundersharp.aigs.spectre.ui.fragments.Profile"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

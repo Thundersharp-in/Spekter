@@ -52,7 +52,7 @@ public class ServiceMain extends AppCompatActivity {
         search_bar_edit_text = findViewById(R.id.search_bar_edit_text);
         search_bar_voice_icon = findViewById(R.id.search_bar_voice_icon);
 
-        ((ImageView)findViewById(R.id.draweropener)).setOnClickListener(h -> finish());
+        findViewById(R.id.draweropener).setOnClickListener(h -> finish());
 
         tl_service.addTab(tl_service.newTab().setText("Courses"));
         tl_service.addTab(tl_service.newTab().setText("Live Trainings"));

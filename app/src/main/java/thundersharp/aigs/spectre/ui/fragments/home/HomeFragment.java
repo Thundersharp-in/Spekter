@@ -1,7 +1,9 @@
 package thundersharp.aigs.spectre.ui.fragments.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +78,25 @@ public class HomeFragment extends Fragment implements
         root.findViewById(R.id.ic).setOnClickListener(u->startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
         root.findViewById(R.id.knowUs).setOnClickListener(u->startActivity(new Intent(getActivity(), KnowUs.class)));
 
+        root.findViewById(R.id.facebook).setOnClickListener(u->{
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/sppekter"));
+            startActivity(intent);
+        });
+
+        root.findViewById(R.id.instagram).setOnClickListener(u->{
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.instagram.com/spekter_aigs"));
+            startActivity(intent);
+        });
+
+        root.findViewById(R.id.youtube).setOnClickListener(u->{
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com"));
+            startActivity(intent);
+        });
+
+        root.findViewById(R.id.linkedIn).setOnClickListener(u->{
+            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://in.linkedin.com/company/spekter/"));
+            startActivity(intent);
+        });
 
         viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
 

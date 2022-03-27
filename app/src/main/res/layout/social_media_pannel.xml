@@ -11,6 +11,7 @@
         android:weightSum="4">
 
         <RelativeLayout
+            android:id="@+id/facebook"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -26,6 +27,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/instagram"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -41,6 +43,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/youtube"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -56,6 +59,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/linkedIn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
