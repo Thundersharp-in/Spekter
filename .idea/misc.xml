@@ -4,10 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1824074074074074" />
+        <entry key="NewsLetter/src/main/res/drawable/blue_fill_curve.xml" value="0.1" />
         <entry key="NewsLetter/src/main/res/drawable/button_curved_round.xml" value="0.1" />
+        <entry key="NewsLetter/src/main/res/drawable/half_circle1.xml" value="0.1" />
+        <entry key="NewsLetter/src/main/res/drawable/ic_baseline_content_copy_24.xml" value="0.1" />
+        <entry key="NewsLetter/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.1" />
+        <entry key="NewsLetter/src/main/res/drawable/ic_outline_library_books_24.xml" value="0.1" />
         <entry key="NewsLetter/src/main/res/drawable/ic_outline_share_24.xml" value="0.1" />
+        <entry key="NewsLetter/src/main/res/drawable/ic_outline_source_24.xml" value="0.1" />
         <entry key="NewsLetter/src/main/res/drawable/ic_outline_timelapse_24.xml" value="0.1" />
-        <entry key="NewsLetter/src/main/res/layout/items_news.xml" value="0.19923044035912782" />
+        <entry key="NewsLetter/src/main/res/layout/bottom_updatefreq.xml" value="0.1996579734929457" />
+        <entry key="NewsLetter/src/main/res/layout/bottomsheet_share.xml" value="0.1996579734929457" />
+        <entry key="NewsLetter/src/main/res/layout/items_news.xml" value="0.165" />
         <entry key="NewsLetter/src/main/res/layout/news_letter_view.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/drawable-v24/circle_green.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_circle.xml" value="0.107" />

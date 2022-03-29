@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minHeight="90dp"
+    android:id="@+id/botomcontainer"
+    android:background="#fff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Share news via ..."
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/ddd"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#202020"
+        android:layout_marginHorizontal="10dp"
+        android:text="News headline data here"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/ddd"
+        android:id="@+id/ddd_news"/>
+
+
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_below="@id/ddd_news"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/whatsapp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/half_circle"
+                android:padding="9dp"
+                android:src="@drawable/whatsapp"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Whatsapp"
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clients"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/facebook_o"
+                android:padding="9dp"
+                android:background="@drawable/half_circle1"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facebook"
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/invoice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/gmail"
+                android:padding="9dp"
+                android:background="@drawable/half_circle2"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gmail"
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_below="@id/row1"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/client_info"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/half_circle3"
+                android:padding="9dp"
+                android:src="@drawable/ic_baseline_content_copy_24"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clipboard"
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/edit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/editquick"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/instagram"
+                android:padding="9dp"
+                android:background="@drawable/half_circle4"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instagram"
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/admin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_more_horiz_24"
+                android:padding="9dp"
+                android:background="@drawable/half_circle5"
+                app:tint="#fff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More optios ..."
+                android:textColor="#333232"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/calibri"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

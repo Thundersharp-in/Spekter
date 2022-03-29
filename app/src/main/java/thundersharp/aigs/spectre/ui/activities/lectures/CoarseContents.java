@@ -78,6 +78,9 @@ public class CoarseContents extends AppCompatActivity {
         shimmer.startShimmer();
         shimmer.setVisibility(View.VISIBLE);
         img_not_found.setVisibility(View.GONE);
+
+        subscribed = true;
+        restricted = false;
         //recyclerView.setAdapter(new CoursesItemAdapter(new ArrayList<>(),"thundersharp",CoarseContents.this, false,true));
         FirebaseDatabase
                 .getInstance()
@@ -114,12 +117,11 @@ public class CoarseContents extends AppCompatActivity {
                     }
                 });
 
-        subscribed = true;
-        restricted = false;
 
     }
 
     private void loadCoarseData(String coarse_id){
+
         courseDatalist.clear();
         FirebaseDatabase
                 .getInstance()

@@ -8,71 +8,11 @@
     android:background="#000"
     tools:context=".ui.fragments.dashboard.DashboardFragment">
 
-    <RelativeLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginVertical="15dp"
-            android:layout_toStartOf="@+id/notification"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibrib"
-                    android:text="Welcome to"
-                    android:textColor="#AEAEAE"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/textName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-3dp"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/roboto_medium"
-                    android:maxLines="1"
-                    android:text="AIGS Newsletter"
-                    android:textColor="#D8D8D8"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/notification"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="15sp"
-            android:background="@drawable/ffade_white_circle"
-            android:elevation="5dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_outline_save_24" />
-
-
-    </RelativeLayout>
 
     <thundersharp.aigs.newsletter.views.NewsLetterView
+        android:id="@+id/newsLetter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"/>
+        />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "736858290408",
+    "firebase_url": "https://spectre-aigs-default-rtdb.firebaseio.com",
     "project_id": "spectre-aigs",
     "storage_bucket": "spectre-aigs.appspot.com"
   },

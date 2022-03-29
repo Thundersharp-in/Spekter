@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minHeight="90dp"
+    android:id="@+id/botomcontainer"
+    android:background="#000">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Update frequency"
+        android:fontFamily="@font/roboto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/ddd"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:textColor="#202020"
+        android:layout_marginHorizontal="10dp"
+        android:text="Update news sync frequency. We will check for new news content after every selected time interval."
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/ddd"
+        android:id="@+id/ddd_news"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/upd_freq"
+        android:layout_below="@id/ddd_news"
+        android:layout_marginTop="15dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Update Frequency"
+        app:hintTextColor="#fff"
+        android:textColorHint="#ACACAC"
+        app:boxStrokeColor="#ACACAC"
+        android:layout_marginHorizontal="15dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/cat_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:textColorHint="#fff"
+            tools:ignore="KeyboardInaccessibleWidget"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh news now"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@+id/last_update"
+        android:id="@+id/chk_now"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:textColor="#434343"
+        android:layout_marginHorizontal="17dp"
+        android:textSize="12sp"
+        android:text="Lase updated on 25/06/2021 12:34"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/upd_freq"
+        android:id="@+id/last_update"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_apply"
+        android:layout_below="@id/chk_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="-10dp"
+        android:text="Update"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:background="@drawable/blue_fill_curve"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+
+</RelativeLayout>

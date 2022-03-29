@@ -78,19 +78,22 @@ public class ServiceMain extends AppCompatActivity {
                         //Bundle bundle = new Bundle();
                         //bundle.putCharSequence("filter_s",s);
                         //courses.setArguments(bundle);
+                        if (courses != null)
                         courses.applyFilter(s.toString());
                         break;
                     case 1:
                         //Bundle bundle1 = new Bundle();
                         //bundle1.putCharSequence("filter_s",s);
                         //liveTraining.setArguments(bundle1);
-                        liveTraining.applyFilter(s.toString());
+                        if (courses != null)
+                            liveTraining.applyFilter(s.toString());
                         break;
                     case 2:
                         //Bundle bundle2 = new Bundle();
                         //bundle2.putCharSequence("filter_s",s);
                         //freeCources.setArguments(bundle2);
-                        freeCources.applyFilter(s.toString());
+                        if (courses != null)
+                            freeCources.applyFilter(s.toString());
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + vp_service.getCurrentItem());
