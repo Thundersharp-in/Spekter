@@ -47,7 +47,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/roboto_medium"
                     android:maxLines="1"
-                    android:text="Spekter Notification"
+                    android:text="Spekter Notifications"
                     android:textColor="#D8D8D8"
                     android:textSize="20sp" />
 
@@ -76,6 +76,7 @@
         android:layout_below="@id/toolbar"
         android:id="@+id/swipe">
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
