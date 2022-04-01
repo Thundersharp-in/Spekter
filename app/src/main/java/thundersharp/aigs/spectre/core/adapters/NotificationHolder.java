@@ -8,10 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alespero.expandablecardview.ExpandableCardView;
-
 import java.util.List;
 
+import thundersharp.aigs.expandablecardview.ExpandableCardView;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.Notifications;
 
@@ -52,11 +51,11 @@ public class NotificationHolder extends RecyclerView.Adapter<NotificationHolder.
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        CardView expandableCardView;
+        ExpandableCardView expandableCardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            expandableCardView = itemView.findViewById(R.id.notifications);
+            expandableCardView = itemView.findViewById(R.id.expandable_card_view);
         }
     }
 }
