@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -98,7 +99,8 @@ public class HomeFragment extends Fragment implements
             startActivity(intent);
         });
 
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
+
+        //viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
 
         return root;
     }

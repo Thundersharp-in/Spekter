@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:minHeight="150dp"
+    android:padding="7dp"
+    android:background="#262626">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#9A9A9A"
+        android:text="One of the commitments of the Government in the CMP was to set up a new
+Commission to look into the issues of Centre-State relations keeping in view
+the sea-changes that have taken place in the polity and economy of India
+since the Sarkaria Commission had last looked at the issue of Centre-State
+relations over two decades ago. In fulfilment of that pledge, Gazette
+Notification was issued on 30.9.2005 indicating Government’s resolve to set
+up the Commission including the terms of reference of the Commission. The
+Commission has been constituted as under vide Gazette Notifications dated
+27.4.2007 and 03.07.2007: "/>
+
+</RelativeLayout>

@@ -56,4 +56,6 @@ public class CONSTANTS {
 
     public static final String PAYMENT_DATA = "PAYMENT_DTA";
     public static final String FOURM = "FOURM";
+    public static final String DATABASE_NOTIFICATIONS = "NOTIFICATIONS";
+
 }

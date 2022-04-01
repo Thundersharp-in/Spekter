@@ -13,4 +13,5 @@ public class KnowUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_know_us);
     }
+
 }

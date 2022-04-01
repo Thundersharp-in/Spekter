@@ -5,7 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.alespero.expandablecardview.ExpandableCardView;
 
 import java.util.List;
 
@@ -16,10 +19,16 @@ public class NotificationHolder extends RecyclerView.Adapter<NotificationHolder.
 
     private List<Notifications> notificationsList;
 
+    public NotificationHolder(){}
+
     public NotificationHolder(List<Notifications> notificationsList) {
         this.notificationsList = notificationsList;
     }
 
+    public NotificationHolder setData(List<Notifications> notifications){
+        this.notificationsList = notifications;
+        return this;
+    }
 
     @NonNull
     @Override
@@ -29,6 +38,7 @@ public class NotificationHolder extends RecyclerView.Adapter<NotificationHolder.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Notifications notifications = notificationsList.get(position);
 
     }
 
@@ -42,8 +52,11 @@ public class NotificationHolder extends RecyclerView.Adapter<NotificationHolder.
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        CardView expandableCardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            expandableCardView = itemView.findViewById(R.id.notifications);
         }
     }
 }
