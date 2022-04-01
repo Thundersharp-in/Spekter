@@ -9,6 +9,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 /**
@@ -20,6 +21,13 @@ import android.widget.RelativeLayout;
 public class ExpandableCardView extends RelativeLayout {
 
     private View view;
+
+    private RelativeLayout top_container;
+    private RelativeLayout bottom_container;
+
+    private ImageView imageView;
+
+    private boolean isExpanded;
 
     public ExpandableCardView(@NonNull Context context) {
         super(context);
@@ -39,6 +47,26 @@ public class ExpandableCardView extends RelativeLayout {
 
     private void inflateViews(@NonNull Context context, @Nullable AttributeSet attrs){
         view = inflate(context, R.layout.expandable_card_view,this);
+
+        top_container = view.findViewById(R.id.top_data_holder);
+        bottom_container = view.findViewById(R.id.nestedView);
+        imageView = view.findViewById(R.id.expand_collapse_icon);
+
+        top_container.setOnClickListener(n -> {
+            if (isExpanded){
+                isExpanded = false;
+                bottom_container.setVisibility(GONE);
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_baseline_expand_more_24));
+            }else {
+                isExpanded = true;
+                bottom_container.setVisibility(VISIBLE);
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_baseline_expand_less_24));
+
+            }
+        });
+
+
+
     }
 
 }
