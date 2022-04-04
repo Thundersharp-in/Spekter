@@ -57,7 +57,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/notification"
+            android:id="@+id/recovery"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
@@ -148,16 +148,16 @@
                         android:textSize="14sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/resync_profile"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
-                        android:text="Re-Sync Profile"
-                        android:background="@drawable/profile_background_white"
                         android:layout_below="@id/profile_description"
                         android:layout_marginHorizontal="15dp"
-                        android:layout_marginBottom="15dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/profile_background_white"
                         android:fontFamily="@font/calibri"
-                        android:id="@+id/resync_profile"/>
+                        android:text="Re-Sync Profile" />
 
 
 
@@ -513,6 +513,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/privacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dp"
@@ -538,7 +539,7 @@
                         android:id="@+id/icon_privicy"/>
 
                     <TextView
-                        android:id="@+id/privacy"
+                        android:id="@+id/privacy_t"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toEndOf="@id/icon_privicy"
@@ -568,6 +569,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/tos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dp"
@@ -596,9 +598,9 @@
                         android:id="@+id/toc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_toc"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_toc"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
@@ -623,6 +625,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/support_n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dp"
@@ -679,6 +682,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/logoutCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dp"

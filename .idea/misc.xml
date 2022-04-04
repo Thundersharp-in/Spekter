@@ -68,6 +68,7 @@
         <entry key="app/src/main/res/layout/about_course.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_bar_code_scanner.xml" value="0.21430358886718753" />
         <entry key="app/src/main/res/layout/activity_book_passes.xml" value="0.19880290722530997" />
+        <entry key="app/src/main/res/layout/activity_browser.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_coarse_contents.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_competation_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.3253168661403778" />
@@ -111,6 +112,9 @@
         <entry key="app/src/main/res/layout/item_projects.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/logout_bottom_sheet.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/pager_item.xml" value="0.266302490234375" />
         <entry key="app/src/main/res/layout/player_custom_ui.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />
