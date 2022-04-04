@@ -1,17 +1,24 @@
 package thundersharp.aigs.spectre.ui.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.browser.Browser;
+import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 
 public class Profile extends Fragment {
@@ -63,6 +70,41 @@ public class Profile extends Fragment {
 
         root.findViewById(R.id.tos).setOnClickListener(n-> Browser.loadUrl(getContext(),"http://thundersharp.in/"));
         root.findViewById(R.id.privacy).setOnClickListener(n-> Browser.loadUrl(getContext(),"http://thundersharp.in/privacy_policy"));
+
+        root.findViewById(R.id.device_tokens).setOnClickListener(nW-> {
+            AlertDialog alertDialog = Progressbars.getInstance().createDefaultProgressBar(getActivity());
+            alertDialog.show();
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+                FirebaseDatabase
+                        .getInstance()
+                        .getReference(CONSTANTS.DATABASE_NODE_ALL_USERS)
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child("FCM_TOKEN")
+                        .setValue(task.getResult())
+                        .addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()){
+                                alertDialog.dismiss();
+                                Toast.makeText(getContext(), "TOKENS REFRESHED", Toast.LENGTH_SHORT).show();
+                            }else {
+                                alertDialog.dismiss();
+                                Toast.makeText(getContext(), "FAILED TO RE_REGISTER TOKEN :"+ task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            });
+        });
+
+        root.findViewById(R.id.device_token_info).setOnClickListener(kl -> {
+            new AlertDialog.Builder(getContext())
+                    .setMessage("If your mobile client is not able to properly receive push notifications, then you can try fixing it by re registering the device's new tokens !")
+                    .setCancelable(true)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).show();
+        });
 
         return root;
     }
