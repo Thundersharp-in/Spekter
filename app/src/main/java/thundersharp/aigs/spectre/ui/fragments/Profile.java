@@ -1,6 +1,7 @@
 package thundersharp.aigs.spectre.ui.fragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.File;
+
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.browser.Browser;
+import thundersharp.aigs.spectre.core.utils.AppUtils;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 
@@ -39,10 +43,13 @@ public class Profile extends Fragment {
             AppCompatButton clearLocal = bottomView.findViewById(R.id.clearLocal);
 
             invalidateCache.setOnClickListener(o->{
-
+                Toast.makeText(getContext(), "Cleared application cache :"+deleteCache(getContext()), Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
             });
             invCacheRestart.setOnClickListener(nA->{
-
+                Toast.makeText(getContext(), "Cleared application cache :"+deleteCache(getContext()), Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
+                AppUtils.restartApp(getActivity());
             });
             resetFirebase.setOnClickListener(t->{
 
@@ -91,6 +98,7 @@ public class Profile extends Fragment {
                             }
                         });
 
+
             });
         });
 
@@ -107,5 +115,31 @@ public class Profile extends Fragment {
         });
 
         return root;
+    }
+
+    public static boolean deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            return deleteDir(dir);
+        } catch (Exception e) {
+            Toast.makeText(context,e.getMessage(),Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if(dir!= null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
     }
 }
