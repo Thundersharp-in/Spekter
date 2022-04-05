@@ -58,4 +58,7 @@ public class CONSTANTS {
     public static final String FOURM = "FOURM";
     public static final String DATABASE_NOTIFICATIONS = "NOTIFICATIONS";
 
+
+    public static final String SHARED_PREF_PROFILE = "PROFILE_DATA";
+
 }

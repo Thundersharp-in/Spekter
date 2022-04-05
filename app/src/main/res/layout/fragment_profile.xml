@@ -48,7 +48,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/roboto_medium"
                     android:maxLines="1"
-                    android:text="Hrishikesh Prateek"
+                    android:text="Spekter user"
                     android:textColor="#D8D8D8"
                     android:textSize="20sp" />
 
@@ -76,23 +76,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="190dp"
                 android:layout_marginHorizontal="10dp"
+                android:minHeight="190dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="190dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bg_card" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/image_Profile_pic"
@@ -112,8 +120,8 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
-                        android:text="Hrishikesh Prateek"
-                        android:textColor="#D8D8D8"
+                        android:text="Refreshing name..."
+                        android:textColor="#100F0F"
                         android:textSize="18sp" />
 
                     <TextView
@@ -126,8 +134,8 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/calibri"
                         android:maxLines="1"
-                        android:text="Acharayan"
-                        android:textColor="#B8B8B8"
+                        android:text="Account status."
+                        android:textColor="#656565"
                         android:textSize="15sp" />
 
 
@@ -142,7 +150,7 @@
                         android:layout_marginBottom="10dp"
                         android:ellipsize="end"
                         android:fontFamily="@font/calibri"
-                        android:text="Hello Hrishikesh prateek if you made some recent changes which are not reflected here then you can click on 'Re-sync profile' below to load the changes."
+                        android:text="Hello spekter user if you made some recent changes which are not reflected here then you can click on 'Re-sync profile' below to load the changes."
                         android:textAlignment="center"
                         android:textColor="#E91E63"
                         android:textSize="14sp" />
@@ -155,11 +163,11 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="15dp"
+                        android:backgroundTint="#070606"
                         android:background="@drawable/profile_background_white"
                         android:fontFamily="@font/calibri"
-                        android:text="Re-Sync Profile" />
-
-
+                        android:text="Re-Sync Profile"
+                        android:textColor="#fff" />
 
                 </RelativeLayout>
 
@@ -168,12 +176,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -181,26 +189,26 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_reg_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_alternate_email_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_reg_email"/>
+                        android:src="@drawable/ic_baseline_alternate_email_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_reg_email"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_reg_email"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
-                        android:text="hrishikeshj.19.abca@acharya.ac.in"
+                        android:text="---"
                         android:textColor="#D3d3d3"
                         android:textSize="15sp" />
 
@@ -215,7 +223,6 @@
                         app:tint="#fff" />
 
 
-
                 </RelativeLayout>
 
 
@@ -224,12 +231,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -237,26 +244,26 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_reg_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_phone_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_reg_phone"/>
+                        android:src="@drawable/ic_outline_phone_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_reg_phone"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_reg_phone"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
-                        android:text="+91 XXXXXXX135"
+                        android:text="+91 XXXXXXXXXX"
                         android:textColor="#D3d3d3"
                         android:textSize="15sp" />
 
@@ -268,8 +275,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:text="Verify"
-                        android:textColor="#FFEB3B"/>
-
+                        android:textColor="#FFEB3B" />
 
 
                 </RelativeLayout>
@@ -281,20 +287,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_marginHorizontal="10dp">
+                android:weightSum="2">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:minHeight="60dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:minHeight="60dp"
+                    app:cardBackgroundColor="#E91E63"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="7dp"
-                    app:cardBackgroundColor="#E91E63">
+                    app:cardElevation="7dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -302,22 +308,22 @@
                         android:minHeight="60dp">
 
                         <ImageView
+                            android:id="@+id/pay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_outline_payment_24"
-                            app:tint="#fff"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
-                            android:id="@+id/pay"/>
+                            android:src="@drawable/ic_outline_payment_24"
+                            app:tint="#fff" />
 
                         <TextView
                             android:id="@+id/payments"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/pay"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@id/pay"
                             android:ellipsize="end"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
@@ -328,13 +334,12 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_outline_info_24"
-                            app:tint="#fff"
-                            android:layout_marginEnd="15dp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginStart="15dp" />
-
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_outline_info_24"
+                            app:tint="#fff" />
 
 
                     </RelativeLayout>
@@ -344,13 +349,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:minHeight="60dp"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:minHeight="60dp"
+                    app:cardBackgroundColor="#009688"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="7dp"
-                    app:cardBackgroundColor="#009688">
+                    app:cardElevation="7dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -358,22 +363,22 @@
                         android:minHeight="60dp">
 
                         <ImageView
+                            android:id="@+id/stat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_baseline_auto_graph_24"
-                            app:tint="#fff"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
-                            android:id="@+id/stat"/>
+                            android:src="@drawable/ic_baseline_auto_graph_24"
+                            app:tint="#fff" />
 
                         <TextView
                             android:id="@+id/stats"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/stat"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@id/stat"
                             android:ellipsize="end"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
@@ -384,13 +389,12 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_outline_info_24"
-                            app:tint="#fff"
-                            android:layout_marginEnd="15dp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginStart="15dp" />
-
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_outline_info_24"
+                            app:tint="#fff" />
 
 
                     </RelativeLayout>
@@ -403,12 +407,12 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -416,22 +420,22 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_subrisction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_subscriptions_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_subrisction"/>
+                        android:src="@drawable/ic_outline_subscriptions_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/subs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_subrisction"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_subrisction"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
@@ -450,7 +454,6 @@
                         app:tint="#fff" />
 
 
-
                 </RelativeLayout>
 
 
@@ -460,12 +463,12 @@
                 android:id="@+id/device_tokens"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -473,22 +476,22 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_token"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_generating_tokens_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_token"/>
+                        android:src="@drawable/ic_outline_generating_tokens_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/token"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_token"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_token"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
@@ -508,7 +511,6 @@
                         app:tint="#fff" />
 
 
-
                 </RelativeLayout>
 
 
@@ -518,12 +520,12 @@
                 android:id="@+id/privacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -531,22 +533,22 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_privicy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_privacy_tip_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_privicy"/>
+                        android:src="@drawable/ic_outline_privacy_tip_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/privacy_t"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_privicy"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_privicy"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
@@ -557,12 +559,12 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                        app:tint="#fff"
-                        android:layout_marginEnd="15dp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="15dp" />
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        app:tint="#fff" />
 
 
                 </RelativeLayout>
@@ -574,12 +576,12 @@
                 android:id="@+id/tos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -587,14 +589,14 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_toc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_category_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_toc"/>
+                        android:src="@drawable/ic_outline_category_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/toc"
@@ -613,12 +615,12 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                        app:tint="#fff"
-                        android:layout_marginEnd="15dp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="15dp" />
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        app:tint="#fff" />
 
 
                 </RelativeLayout>
@@ -630,12 +632,12 @@
                 android:id="@+id/support_n"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -643,22 +645,22 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon_support"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_contact_support_24"
-                        app:tint="#fff"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon_support"/>
+                        android:src="@drawable/ic_outline_contact_support_24"
+                        app:tint="#fff" />
 
                     <TextView
                         android:id="@+id/support"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/icon_support"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/icon_support"
                         android:ellipsize="end"
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
@@ -669,13 +671,12 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                        app:tint="#fff"
-                        android:layout_marginEnd="15dp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="15dp" />
-
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        app:tint="#fff" />
 
 
                 </RelativeLayout>
@@ -687,13 +688,13 @@
                 android:id="@+id/logoutCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="60dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#262626"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="7dp"
-                app:cardBackgroundColor="#262626">
+                app:cardElevation="7dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -701,14 +702,14 @@
                     android:minHeight="60dp">
 
                     <ImageView
+                        android:id="@+id/icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_logout_24"
-                        app:tint="#E91E63"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:id="@+id/icon"/>
+                        android:src="@drawable/ic_baseline_logout_24"
+                        app:tint="#E91E63" />
 
                     <TextView
                         android:id="@+id/logout"

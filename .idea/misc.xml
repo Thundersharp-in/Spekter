@@ -101,7 +101,7 @@
         <entry key="app/src/main/res/layout/fragment_language_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_live_training.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.19923044035912782" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2759970092773438" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/fragment_tags_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_filter_tags.xml" value="0.19923044035912782" />
