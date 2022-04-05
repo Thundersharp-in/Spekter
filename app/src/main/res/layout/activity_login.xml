@@ -170,15 +170,17 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/register"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="55dp"
-                    android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/btn_transparent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:textSize="16sp"
                     android:elevation="7dp"
-                    android:text="Register"
+                    android:fontFamily="@font/calibri"
+                    android:text="Don't have account? Register here."
                     android:textAllCaps="false"
-                    android:textColor="#ffff" />
+                    android:textColor="#FFEB3B" />
 
 
             </LinearLayout>
