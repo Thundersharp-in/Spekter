@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:padding="5dp"
-            android:src="@drawable/iot"/>
+            android:src="@drawable/iot" />
 
         <LinearLayout
             android:layout_below="@id/top_type"

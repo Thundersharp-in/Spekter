@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -34,6 +35,9 @@ import java.util.List;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
 import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
+import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.TicketsData;
@@ -87,9 +91,23 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
             }
         },4000);
 
-        projectsHolderAdapter = new ProjectsHolderAdapter(getProjectShortDescriptions(10));
-        recyclerProjects.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerProjects.setAdapter(projectsHolderAdapter);
+        DatabaseHelpers
+                .getInstance()
+                .setExhibitionListener(new ExhibitionInterface() {
+                    @Override
+                    public void onProjectsFetchSuccess(List<ProjectBasicInfo> projectBasicInfoList) {
+                        projectsHolderAdapter = new ProjectsHolderAdapter(projectBasicInfoList);
+                        recyclerProjects.setLayoutManager(new GridLayoutManager(ExhibitionHome.this,2));
+                        recyclerProjects.setAdapter(projectsHolderAdapter);
+                    }
+
+                    @Override
+                    public void onProjectsFetchFailure(Exception e) {
+                        Toast.makeText(ExhibitionHome.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
 
         ((EditText)findViewById(R.id.searchbar))
                 .addTextChangedListener(new TextWatcher() {
@@ -129,15 +147,6 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                     .show();
         });
 
-    }
-
-    private List<ProjectShortDescription> getProjectShortDescriptions(int size){
-        projectShortDescriptions = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            projectShortDescriptions.add(new ProjectShortDescription("Hey "+i,"","IOT",""+i));
-        }
-
-        return projectShortDescriptions;
     }
 
     private synchronized void setPreAnimation(boolean animation){

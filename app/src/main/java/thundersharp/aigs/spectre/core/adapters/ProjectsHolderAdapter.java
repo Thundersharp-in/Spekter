@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,17 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ProjectsInfo;
 
 public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAdapter.ViewHolder> implements Filterable {
 
-    private List<ProjectShortDescription> projectShortDescription,projectShortDescriptionListCopy;
+    private List<ProjectBasicInfo> projectShortDescription,projectShortDescriptionListCopy;
 
     public ProjectsHolderAdapter(){}
 
-    public ProjectsHolderAdapter(List<ProjectShortDescription> projectShortDescription) {
+    public ProjectsHolderAdapter(List<ProjectBasicInfo> projectShortDescription) {
         this.projectShortDescription = projectShortDescription;
         projectShortDescriptionListCopy = new ArrayList<>(projectShortDescription);
     }
@@ -43,7 +45,19 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ProjectBasicInfo projectBasicInfo = projectShortDescription.get(position);
+        if (projectBasicInfo.TYPE.equalsIgnoreCase("0")){
+            holder.catHolder.setImageResource(R.drawable.iot);
+        }else if (projectBasicInfo.TYPE.equalsIgnoreCase("1")){
+            holder.catHolder.setImageResource(R.drawable.ai);
+        }else if (projectBasicInfo.TYPE.equalsIgnoreCase("2")){
+            holder.catHolder.setImageResource(R.drawable.cyber_sec);
+        }else{
+            holder.catHolder.setImageResource(R.drawable.cyber_sec);
+        }
 
+        holder.name.setText(projectBasicInfo.NAME);
+        holder.description.setText(projectBasicInfo.SHORT_DESCRIPTION);
     }
 
     @Override
@@ -60,15 +74,15 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
     Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<ProjectShortDescription> filterList = new ArrayList<>();
+            List<ProjectBasicInfo> filterList = new ArrayList<>();
             if (constraint == null|| constraint.length() == 0){
                 filterList.addAll(projectShortDescriptionListCopy);
             }else {
                 String text = constraint.toString().toLowerCase().trim();
-                for (ProjectShortDescription data : projectShortDescriptionListCopy){
-                    if (data.name.toLowerCase().contains(text)||
-                            data.category.toLowerCase().contains(text)||
-                            data.description.toLowerCase().contains(text)){
+                for (ProjectBasicInfo data : projectShortDescriptionListCopy){
+                    if (data.NAME.toLowerCase().contains(text)||
+                            data.TYPE.toLowerCase().contains(text)||
+                            data.SHORT_DESCRIPTION.toLowerCase().contains(text)){
                         filterList.add(data);
                     }
                 }
@@ -88,8 +102,14 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        ImageView catHolder;
+        TextView name,description;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            catHolder = itemView.findViewById(R.id.top_type);
+            name = itemView.findViewById(R.id.name);
+            description = itemView.findViewById(R.id.address);
 
             itemView.setOnClickListener(this);
         }

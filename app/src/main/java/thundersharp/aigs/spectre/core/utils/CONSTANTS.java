@@ -61,4 +61,6 @@ public class CONSTANTS {
 
     public static final String SHARED_PREF_PROFILE = "PROFILE_DATA";
 
+    public static final String EXHIBITION = "EXHIBITION";
+    public static final String PROJECTS = "PROJECTS";
 }
