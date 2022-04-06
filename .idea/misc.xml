@@ -109,6 +109,8 @@
         <entry key="app/src/main/res/layout/item_main_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_notification_custom_view.xml" value="0.1996579734929457" />
         <entry key="app/src/main/res/layout/item_notifications.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_participants.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_participants_holder.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_projects.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />

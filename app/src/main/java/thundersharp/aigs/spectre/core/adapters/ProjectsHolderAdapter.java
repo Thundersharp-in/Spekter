@@ -8,6 +8,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
+import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
@@ -122,6 +126,7 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
             ImageView scanner = bottomSheetDialog.findViewById(R.id.scanner);
             scanner.setOnClickListener(j->view.getContext().startActivity(new Intent(view.getContext(), BarCodeScanner.class)));
 
+            ((TextView)bottomSheetDialog.findViewById(R.id.top)).setText(projectShortDescription.get(getAdapterPosition()).NAME);
             bottomSheetDialog.findViewById(R.id.participants).setOnClickListener(n -> ShowOtherBottomSheet(view));
             bottomSheetDialog.findViewById(R.id.info).setOnClickListener(n -> view.getContext().startActivity(new Intent(view.getContext(), ProjectsInfo.class)));
 
@@ -130,7 +135,23 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
 
         private void ShowOtherBottomSheet(View view){
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(view.getContext());
-            bottomSheetDialog.setTitle("Participants details.");
+            bottomSheetDialog.setContentView(R.layout.item_participants);
+
+            DatabaseHelpers
+                    .getInstance()
+                    .setProjectId(Long.parseLong(projectShortDescription.get(getAdapterPosition()).ID))
+                    .setFetchParticipantsListeners(new ProjectListner.fetchParticipants() {
+                        @Override
+                        public void onParticipantsFetchSuccess(List<Participants> participantsList) {
+                            ((RecyclerView)bottomSheetDialog.findViewById(R.id.recycler)).setAdapter(new ParticipantsListAdapter(participantsList));
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            Toast.makeText(view.getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
             bottomSheetDialog.show();
         }
     }
