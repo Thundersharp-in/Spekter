@@ -128,7 +128,8 @@ public class ProjectsHolderAdapter extends RecyclerView.Adapter<ProjectsHolderAd
 
             ((TextView)bottomSheetDialog.findViewById(R.id.top)).setText(projectShortDescription.get(getAdapterPosition()).NAME);
             bottomSheetDialog.findViewById(R.id.participants).setOnClickListener(n -> ShowOtherBottomSheet(view));
-            bottomSheetDialog.findViewById(R.id.info).setOnClickListener(n -> view.getContext().startActivity(new Intent(view.getContext(), ProjectsInfo.class)));
+            bottomSheetDialog.findViewById(R.id.info)
+                    .setOnClickListener(n -> view.getContext().startActivity(new Intent(view.getContext(), ProjectsInfo.class).putExtra("projects_basic_info",projectShortDescription.get(getAdapterPosition()))));
 
             bottomSheetDialog.show();
         }

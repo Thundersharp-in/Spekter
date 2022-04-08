@@ -64,4 +64,5 @@ public class CONSTANTS {
     public static final String EXHIBITION = "EXHIBITION";
     public static final String PROJECTS = "PROJECTS";
     public static final String PROJECT_DETAILS = "PROJECT_DETAILS";
+    public static final String EXHIBITION_VISIT_PROGRESS = "EXHIBITION_VISIT_PROGRESS";
 }

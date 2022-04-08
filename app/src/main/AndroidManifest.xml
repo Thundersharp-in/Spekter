@@ -17,19 +17,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.SpectreAIGS"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
-        <activity android:name=".ui.activities.VideoPlayer"
-            android:screenOrientation="landscape"/>
-
-        <activity android:name=".ui.activities.lectures.FilterActivity"
-            android:exported="false"/>
-
-        <activity android:name=".core.browser.Browser"
-            android:exported="false"/>
-
+        <activity
+            android:name=".ui.activities.deeplinking.DeeplinkingActivity"
+            android:exported="true" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <data
+                    android:host="spekteraigs.page.link"
+                    android:scheme="https"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.VideoPlayer"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.activities.lectures.FilterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".core.browser.Browser"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.lectures.CoarseContents"
             android:exported="false" />

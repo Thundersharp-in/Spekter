@@ -29,18 +29,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
 import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
+import thundersharp.aigs.spectre.core.interfaces.OnProgressChanged;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.TicketsData;
+import thundersharp.aigs.spectre.core.progress.BrowseProgress;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.activities.passes.BookPasses;
@@ -55,6 +59,9 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
     private List<ProjectShortDescription> projectShortDescriptions;
 
     private ProjectsHolderAdapter projectsHolderAdapter;
+    private BrowseProgress browseProgress;
+
+    private WaveLoadingView waveLoadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +72,10 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         mainContents = findViewById(R.id.mainScroll);
         preAnimation = findViewById(R.id.mainContainer);
         slider = findViewById(R.id.slider);
-        findViewById(R.id.rrr).setOnClickListener(n->finish());
+        waveLoadingView = findViewById(R.id.projectsReviwed);
+        waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(0.00)+" %");
+
+        findViewById(R.id.rrr).setOnClickListener(n -> finish());
 
         recyclerProjects = findViewById(R.id.recyclerProjects);
 
@@ -73,11 +83,11 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         setupCrousel();
 
         //TODO CHECK FOR EXISTING BOOKING
-        findViewById(R.id.notification).setOnClickListener(k-> {
+        findViewById(R.id.notification).setOnClickListener(k -> {
             try {
                 Tickets
                         .getInstance(this)
-                        .setTicketsData(new TicketsData("","","","","","","","",null,""))
+                        .setTicketsData(new TicketsData("", "", "", "", "", "", "", "", null, ""))
                         .showTickets();
             } catch (ArgumentsMissingException e) {
                 e.printStackTrace();
@@ -89,15 +99,16 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
             public void run() {
                 setPreAnimation(false);
             }
-        },4000);
+        }, 4000);
 
         DatabaseHelpers
                 .getInstance()
                 .setExhibitionListener(new ExhibitionInterface() {
                     @Override
                     public void onProjectsFetchSuccess(List<ProjectBasicInfo> projectBasicInfoList) {
+                        browseProgress.setProjectsCount(projectBasicInfoList.size()).reSyncStorageWithDatabase(projectBasicInfoList);
                         projectsHolderAdapter = new ProjectsHolderAdapter(projectBasicInfoList);
-                        recyclerProjects.setLayoutManager(new GridLayoutManager(ExhibitionHome.this,2));
+                        recyclerProjects.setLayoutManager(new GridLayoutManager(ExhibitionHome.this, 2));
                         recyclerProjects.setAdapter(projectsHolderAdapter);
                     }
 
@@ -107,54 +118,70 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                     }
                 });
 
+        browseProgress = BrowseProgress
+                .getInstance(this)
+                .selectStorageInstanceByName(CONSTANTS.EXHIBITION_VISIT_PROGRESS)
+                .setOnProgressListener(new OnProgressChanged() {
+                    @Override
+                    public void onProgressUpdated(double finalPercent, ProjectBasicInfo projectBasicInfo) {
+                        Toast.makeText(ExhibitionHome.this, ""+finalPercent, Toast.LENGTH_SHORT).show();
+                        waveLoadingView.setProgressValue((int) finalPercent);
+                        waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(finalPercent)+" %");
+                    }
+
+                    @Override
+                    public void onItemDeletedInReSync(String projectId) {
+                        Toast.makeText(ExhibitionHome.this, "Deleted while re sync. ID:"+projectId , Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
-        ((EditText)findViewById(R.id.searchbar))
+        ((EditText) findViewById(R.id.searchbar))
                 .addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+                    }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (projectsHolderAdapter != null) {
-                    projectsHolderAdapter.getFilter().filter(charSequence);
-                }
-            }
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        if (projectsHolderAdapter != null) {
+                            projectsHolderAdapter.getFilter().filter(charSequence);
+                        }
+                    }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
+                    @Override
+                    public void afterTextChanged(Editable editable) {
 
-            }
-        });
+                    }
+                });
 
-        findViewById(R.id.book).setOnClickListener(b->startActivity(new Intent(this, BookPasses.class)));
+        findViewById(R.id.book).setOnClickListener(b -> startActivity(new Intent(this, BookPasses.class)));
 
-        findViewById(R.id.stallsVisited).setOnClickListener(p->{
+        findViewById(R.id.stallsVisited).setOnClickListener(p -> {
             new AlertDialog.Builder(this)
                     .setTitle("Stalls visited")
                     .setMessage("This progress indicator shows how many projects stalls you have visited physically, this data is calculated by the stalls qr code scans.")
-                    .setPositiveButton("OK",((dialogInterface, i) -> dialogInterface.dismiss()))
+                    .setPositiveButton("OK", ((dialogInterface, i) -> dialogInterface.dismiss()))
                     .show();
         });
 
-        findViewById(R.id.projectsReviwed).setOnClickListener(p->{
+        findViewById(R.id.projectsReviwed).setOnClickListener(p -> {
             new AlertDialog.Builder(this)
                     .setTitle("Projects reviewed")
                     .setMessage("This progress indicator shows how many projects you have gone through in the app, this data is calculated by your interaction with the projects in the app.")
-                    .setPositiveButton("OK",((dialogInterface, i) -> dialogInterface.dismiss()))
+                    .setPositiveButton("OK", ((dialogInterface, i) -> dialogInterface.dismiss()))
                     .show();
         });
 
     }
 
-    private synchronized void setPreAnimation(boolean animation){
-        if (animation){
+    private synchronized void setPreAnimation(boolean animation) {
+        if (animation) {
             book.setVisibility(View.GONE);
             mainContents.setVisibility(View.GONE);
             preAnimation.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             book.setVisibility(View.VISIBLE);
             mainContents.setVisibility(View.VISIBLE);
             preAnimation.setVisibility(View.GONE);
@@ -166,7 +193,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
     }
 
-    private void setupCrousel(){
+    private void setupCrousel() {
         ArrayList<String> listUrl = new ArrayList<>();
         Bundle bundle = new Bundle();
 
@@ -177,10 +204,10 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             RequestOptions requestOptions = new RequestOptions();
                             requestOptions.centerCrop();
-                            for (DataSnapshot dataSnapshot :snapshot.getChildren()){
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                                 DefaultSliderView sliderView = new DefaultSliderView(ExhibitionHome.this);
                                 sliderView
@@ -201,7 +228,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                                 slider.addSlider(sliderView);
                             }
 
-                        }else {
+                        } else {
                             listUrl.add("https://images.unsplash.com/photo-1582513166998-56ed1ea02d13?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80");
                             listUrl.add("https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
 
