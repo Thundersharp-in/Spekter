@@ -1,9 +1,454 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".ui.activities.passes.BookPasses">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/book_button">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/topHolder"
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="4dp">
+
+                    <RelativeLayout
+                        android:id="@+id/top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_toStartOf="@id/profilepic"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/profile_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/allerta"
+                                android:maxLines="1"
+                                android:text="Get Entry Pass"
+                                android:textAllCaps="false"
+                                android:textColor="#FFFFFF"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/profile_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:fontFamily="@font/calibri"
+                                android:text="Acharya Institute Of Graduate Studies\nBangalore - 560107"
+                                android:textAlignment="viewStart"
+                                android:textColor="#FA528B"
+                                android:textSize="15sp" />
+
+
+                        </LinearLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profilepic"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:padding="11dp"
+                            android:src="@drawable/ic_outline_subtitles_24"
+                            android:tint="#000"
+                            app:civ_border_color="#ffff"
+                            app:civ_border_overlay="false"
+                            app:civ_border_width="5dp"
+                            app:civ_circle_background_color="#ffff" />
+
+                    </RelativeLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/top"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="25dp"
+                        app:cardBackgroundColor="#22242c"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_marginHorizontal="5dp"
+                            android:weightSum="5">
+
+                            <ImageView
+                                android:id="@+id/parking"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_outline_qr_code_scanner_24"
+                                app:tint="#D6D6D6" />
+
+                            <ImageView
+                                android:id="@+id/bar"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_outline_sensor_door_24"
+                                app:tint="#D6D6D6" />
+
+                            <ImageView
+                                android:id="@+id/cigreete_bar"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_all_inclusive_24"
+                                app:tint="#D6D6D6" />
+
+                            <ImageView
+                                android:id="@+id/romantic"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_dry_cleaning_24"
+                                app:tint="#D6D6D6" />
+
+                            <ImageView
+                                android:id="@+id/terrace"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_baseline_access_time_24"
+                                app:tint="#D6D6D6" />
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/email_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableStart="@drawable/ic_outline_info_24"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/calibri"
+                        android:gravity="center_vertical"
+                        android:text="Quickly book a free entry pass for the Tech Exhibition organised by Spekter (Only for acharyans) just select the time slot and event date!"
+                        android:textColor="#BCB99C"
+                        app:drawableTint="#BCB99C" />
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/edit" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/custom_gradient_bottom"
+                        android:elevation="4dp" />
+
+                </FrameLayout>
+            </RelativeLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dateHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topHolder"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="25dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#23252e"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="7dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/relative_container_cal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp">
+
+                        <TextView
+                            android:id="@+id/display_data"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/calibri"
+                            android:text="I will visit on  DD/MM/YYYY"
+                            android:textColor="#D5D5D5"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/calendar_toggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_baseline_calendar_today_24"
+                            app:tint="#FFEB3B" />
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/cal_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/relative_container_cal"
+                        android:layout_marginTop="10dp"
+                        android:background="#121315"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/months_display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="15dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="January, 2021"
+                            android:textColor="#BCB99C"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                            android:id="@+id/compactcalendar_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="250dp"
+                            android:elevation="7dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="10dp"
+                            android:visibility="visible"
+                            app:compactCalendarBackgroundColor="#121315"
+                            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+                            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+                            app:compactCalendarDisplayOtherMonthDays="true"
+                            app:compactCalendarMultiEventIndicatorColor="#D5D5D5"
+                            app:compactCalendarShouldSelectFirstDayOfMonthOnScroll="false"
+                            app:compactCalendarTargetHeight="250dp"
+                            app:compactCalendarTextColor="#D5D5D5"
+                            app:compactCalendarTextSize="13sp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/noOfGuest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateHolder"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="13dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#23252e"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="7dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/relative_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp">
+
+                        <TextView
+                            android:id="@+id/display_total_guest"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_toStartOf="@id/drop_icon"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/calibri"
+                            android:maxLines="1"
+                            android:text="I will be in total 1 visitor"
+                            android:textColor="#D5D5D5"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/drop_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_outline_info_24"
+                            app:tint="#FFEB3B" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/guest_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/relative_container"
+                        android:layout_marginTop="10dp"
+                        android:background="#121315">
+
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/timeSlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/noOfGuest"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="13dp"
+                android:minHeight="60dp"
+                app:cardBackgroundColor="#23252e"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="7dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/time_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp">
+
+                        <TextView
+                            android:id="@+id/text_info_time_slot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/calibri"
+                            android:text="Select a time slot for your visit"
+                            android:textColor="#D5D5D5"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/slot_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/ic_baseline_access_time_24"
+                            app:tint="#FFEB3B" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/slot_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time_container"
+                        android:layout_marginTop="10dp"
+                        android:background="#121315">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/time_slots"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/content_Bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeSlot"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/calibri"
+                android:text="An exhibition, in the most general sense, is an organized presentation and display of a selection of items. In practice, exhibitions usually occur within a cultural or educational setting such as a museum, art gallery, park, library, exhibition hall, or World\'s fairs. Exhibitions can include many things such as art in both major museums and smaller galleries, interpretive exhibitions, natural history museums and history museums, and also varieties such as more commercially focused exhibitions and trade fairs.  "
+                android:textColor="#B6B6B6"
+                android:textSize="15sp" />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/book_button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="#232222"
+        android:text="GET MY PASS NOW ->"
+        android:textColor="#DDDDDD" />
+
+
+</RelativeLayout>

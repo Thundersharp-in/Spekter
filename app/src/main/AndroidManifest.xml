@@ -21,15 +21,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activities.feedback.EventFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.feedback.FacultyFeedback"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.deeplinking.DeeplinkingActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
+
                 <data
                     android:host="spekteraigs.page.link"
-                    android:scheme="https"/>
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity

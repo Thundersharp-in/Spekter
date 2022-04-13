@@ -2,17 +2,20 @@ package thundersharp.aigs.spectre.ui.fragments.home;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Browser;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.airbnb.lottie.L;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.animations.DescriptionAnimation;
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,6 +48,8 @@ import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 import thundersharp.aigs.spectre.ui.activities.InitiativesHomes;
 import thundersharp.aigs.spectre.ui.activities.InnovativeChallengeHome;
 import thundersharp.aigs.spectre.ui.activities.KnowUs;
+import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
+import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
 import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
 import thundersharp.aigs.spectre.ui.activities.UpcommingEventsHome;
 import thundersharp.aigs.spectre.ui.activities.WorkshopsHome;
@@ -78,6 +84,40 @@ public class HomeFragment extends Fragment implements
         root.findViewById(R.id.upcomingEvents).setOnClickListener(u->startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
         root.findViewById(R.id.ic).setOnClickListener(u->startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
         root.findViewById(R.id.knowUs).setOnClickListener(u->startActivity(new Intent(getActivity(), KnowUs.class)));
+
+        root.findViewById(R.id.feedBack).setOnClickListener(r->{
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+            bottomSheetDialog.setContentView(R.layout.bottom_sheet_feedback);
+
+            LinearLayout app_feed_Back = bottomSheetDialog.findViewById(R.id.app_feed_Back);
+            LinearLayout event_feedBack = bottomSheetDialog.findViewById(R.id.event_feedBack);
+            LinearLayout facFeedback = bottomSheetDialog.findViewById(R.id.facFeedback);
+
+            app_feed_Back.setOnClickListener(o->{
+                Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("email/rfc822");
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
+            intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
+            intent.putExtra(Intent.EXTRA_TEXT, new String(
+                    "DEVICE: "+Build.DEVICE + "\nMANUFACTURER: "
+                            + Build.MANUFACTURER + "\nBOOTLOADER: "
+                            + Build.BOOTLOADER + "\nPRODUCT: "
+                            + Build.PRODUCT + "\nUSER: "
+                            + Build.USER + "\nDEVICE ID: "
+                            + Build.ID + "\nCPU_ABI: "
+                            + Build.CPU_ABI + "\n"
+                            + "________Your message after here _______\n"));
+            Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
+            startActivity(mailer);
+            });
+
+
+            facFeedback.setOnClickListener(i->startActivity(new Intent(getActivity(), FacultyFeedback.class)));
+            event_feedBack.setOnClickListener(i->startActivity(new Intent(getActivity(), EventFeedback.class)));
+
+
+            bottomSheetDialog.show();
+        });
 
         root.findViewById(R.id.facebook).setOnClickListener(u->{
             Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/sppekter"));

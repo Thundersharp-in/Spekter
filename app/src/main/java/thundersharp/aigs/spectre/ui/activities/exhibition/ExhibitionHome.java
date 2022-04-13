@@ -1,13 +1,5 @@
 package thundersharp.aigs.spectre.ui.activities.exhibition;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +7,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -217,12 +216,11 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                                         .setProgressBarVisible(true)
                                         .setOnSliderClickListener(ExhibitionHome.this);
 
-                                //add your extra information
+                                /* add your extra information */
                                 SliderModel model = dataSnapshot.getValue(SliderModel.class);
                                 Bundle bundle1 = new Bundle();
                                 bundle1.clear();
                                 bundle1.putSerializable("data", model);
-                                //bundle1.putInt("PAGE",dataSnapshot.child("PAGE").getValue(Integer.class));
                                 sliderView.bundle(bundle1);
 
                                 slider.addSlider(sliderView);
@@ -267,7 +265,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         slider.setCustomAnimation(new DescriptionAnimation());
         slider.setDuration(4000);
-        //slider.addOnPageChangeListener(Content_home.this);
+        /* slider.addOnPageChangeListener(Content_home.this); */
         slider.stopCyclingWhenTouch(false);
     }
 

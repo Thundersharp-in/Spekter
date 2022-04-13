@@ -18,8 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginVertical="6dp"
+            android:layout_marginStart="10dp"
             android:layout_toStartOf="@+id/notification"
             android:orientation="horizontal">
 
@@ -27,10 +27,10 @@
                 android:id="@+id/rrr"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:src="@mipmap/ic_launcher"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                android:layout_gravity="center"
                 app:civ_border_color="#3F51B5"
                 app:civ_border_width="4dp" />
 
@@ -96,7 +96,7 @@
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="#153043">
+                app:cardBackgroundColor="#000">
 
                 <com.glide.slider.library.SliderLayout
                     android:id="@+id/slider"
@@ -454,6 +454,44 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
                             android:text="Know us"
+                            android:textColor="#BCBCBC"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/feedBack"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:cardBackgroundColor="#262626"
+                            app:cardCornerRadius="9dp"
+                            app:cardElevation="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="15dp"
+                                android:src="@drawable/feedback"
+                                app:tint="#D8D8D8" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/calibrib"
+                            android:text="Feedback"
                             android:textColor="#BCBCBC"
                             android:textSize="15sp" />
                     </LinearLayout>
