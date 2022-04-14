@@ -12,8 +12,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.core.helpers.LoginProvider;
 import thundersharp.aigs.spectre.core.interfaces.LoginInterface;
@@ -24,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edit_email, edit_password;
     private AlertDialog alertDialog;
 
+    private ProfileDataSync profileDataSync;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
         edit_email = findViewById(R.id.editText_email);
         edit_password = findViewById(R.id.editText_password);
+        profileDataSync = ProfileDataSync.getInstance(this);
 
         ((AppCompatButton) findViewById(R.id.register)).setOnClickListener(p->{
             startActivity(new Intent(this,Register.class));
@@ -59,6 +67,22 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                                 else
                                     startActivity(new Intent(LoginActivity.this, EmailVerificationActivity.class));
+
+                                profileDataSync
+                                        .initializeLocalStorage()
+                                        .setUid(FirebaseAuth.getInstance().getUid())
+                                        .setProfileSyncListener(new ProfileSync() {
+                                            @Override
+                                            public void onProfileDataSyncSuccess(DataSnapshot dataSnapshot) {
+
+                                            }
+
+                                            @Override
+                                            public void onProfileDataSyncFailure(Exception exception) {
+
+                                            }
+                                        });
+
                                 finish();
                                 alertDialog.dismiss();
                             }
