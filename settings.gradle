@@ -22,3 +22,4 @@ rootProject.name = "Spectre AIGS"
 include ':app'
 include ':NewsLetter'
 include ':expandablecardview'
+include ':ratingbar'

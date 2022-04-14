@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/range_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="How will you rate the faculty ?"
+        app:values="@array/initial_slider_values"
+        android:valueFrom="0.0"
+        android:valueTo="100.0" />
+
+</RelativeLayout>

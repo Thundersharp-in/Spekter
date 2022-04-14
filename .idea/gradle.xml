@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/NewsLetter" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/expandablecardview" />
+            <option value="$PROJECT_DIR$/ratingbar" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

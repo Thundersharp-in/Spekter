@@ -141,6 +141,7 @@
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="expandablecardview/src/main/res/layout/expandable_card_view.xml" value="0.165" />
+        <entry key="ratingbar/src/main/res/layout/fac_prog_view.xml" value="0.19752030782385635" />
       </map>
     </option>
   </component>

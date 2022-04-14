@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:background="#000"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".ui.activities.feedback.FacultyFeedback">
 
     <RelativeLayout
@@ -13,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        android:background="#201F1F">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="6dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginStart="10dp"
             android:layout_toStartOf="@+id/notification"
             android:orientation="horizontal">
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_baseline_close_24"/>
+                android:src="@drawable/ic_baseline_close_24" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -77,6 +77,111 @@
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/topImg"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/feedback_big" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/upd_freq"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="25dp"
+            android:hint="Select a faculty"
+            app:endIconTint="#fff"
+            android:textColorHint="#ACACAC"
+            app:boxStrokeColor="@color/sel"
+            app:hintTextColor="#fff">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/cat_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:inputType="text"
+                android:textColorHint="#fff"
+                android:textColor="#d3d3d3"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="15dp"
+            android:weightSum="2">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Select Subject"
+                app:endIconTint="#fff"
+                android:textColorHint="#ACACAC"
+                app:boxStrokeColor="@color/sel"
+                app:hintTextColor="#fff">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/selSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="true"
+                    android:inputType="text"
+                    android:textColor="#d3d3d3"
+                    android:textColorHint="#fff" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="Select Semester"
+                android:textColorHint="#ACACAC"
+                app:endIconTint="#fff"
+                app:boxStrokeColor="@color/sel"
+                app:hintTextColor="#fff">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/selSem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:textColorHint="#fff"
+                    android:textColor="#d3d3d3"
+                    tools:ignore="KeyboardInaccessibleWidget" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <thundersharp.aigs.ratingbar.view.FacultyFeedbackProgressView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/ratingBars"/>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>
