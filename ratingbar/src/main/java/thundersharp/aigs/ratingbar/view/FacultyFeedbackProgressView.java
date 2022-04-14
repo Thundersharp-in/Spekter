@@ -32,7 +32,7 @@ public class FacultyFeedbackProgressView extends RelativeLayout {
         initializeViews(context,attrs);
     }
 
-    protected synchronized void initializeViews(Context context,@Nullable AttributeSet attributeSet){
+    private void initializeViews(Context context,@Nullable AttributeSet attributeSet){
         view = inflate(context,R.layout.fac_prog_view,null);
 
     }

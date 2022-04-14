@@ -25,6 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.feedback.FacultyFeedback"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".ui.activities.deeplinking.DeeplinkingActivity"

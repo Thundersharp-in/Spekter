@@ -2,15 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.slider.RangeSlider
+    <com.google.android.material.slider.Slider
         android:id="@+id/range_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="How will you rate the faculty ?"
+        android:minHeight="30dp"
+        android:layout_centerVertical="true"
+        android:progressTint="#fff"
         app:values="@array/initial_slider_values"
+        android:stepSize="10"
         android:valueFrom="0.0"
         android:valueTo="100.0" />
 

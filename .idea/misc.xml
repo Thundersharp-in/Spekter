@@ -37,6 +37,7 @@
         <entry key="app/src/main/res/drawable/custom_gradient_bottom.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/custom_seekbar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/dash.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
