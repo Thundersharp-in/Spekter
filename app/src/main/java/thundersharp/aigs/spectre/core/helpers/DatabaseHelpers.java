@@ -102,6 +102,7 @@ public class DatabaseHelpers {
             facFeedback.put("ID",facultyFeedback.ID);
             facFeedback.put("MESSAGE",facultyFeedback.MESSAGE);
             facFeedback.put("SUBJECT",facultyFeedback.SUBJECT);
+            facFeedback.put("SEMESTER",facultyFeedback.SEMESTER);
 
             JSONObject stuFeedback = new JSONObject();
             stuFeedback.put("EMAIL",studentsDetails.EMAIL);

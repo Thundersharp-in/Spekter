@@ -121,7 +121,7 @@ public class FacultyFeedback extends AppCompatActivity {
                 DatabaseHelpers
                         .getInstance()
                         .setActivity(this)
-                        .setFacultyFeedback(new thundersharp.aigs.spectre.core.models.FacultyFeedback(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString()))
+                        .setFacultyFeedback(new thundersharp.aigs.spectre.core.models.FacultyFeedback(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString(),sel_Sem.getText().toString()))
                         .setStudentDetails(studentsDetails)
                         .setFeedbackObserver(new FeedbackObserver() {
                             @Override
