@@ -29,6 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.deeplinking.DeeplinkingActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -130,7 +131,8 @@
         <activity
             android:name=".startup.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Translucent"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
