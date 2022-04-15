@@ -1,7 +1,9 @@
 package thundersharp.aigs.spectre.ui.activities.barcode;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -18,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -27,12 +29,22 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.io.IOException;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
+import thundersharp.aigs.spectre.core.utils.CONSTANTS;
+import thundersharp.aigs.spectre.core.utils.Progressbars;
+import thundersharp.aigs.spectre.ui.activities.deeplinking.DeeplinkingActivity;
+import thundersharp.aigs.spectre.ui.activities.exhibition.ProjectsInfo;
+import thundersharp.aigs.spectre.ui.activities.exhibition.ScannerProjectInfo;
 
 public class BarCodeScanner extends AppCompatActivity {
 
@@ -45,11 +57,13 @@ public class BarCodeScanner extends AppCompatActivity {
     private ImageView flashLight;
     private boolean dialog = true;
 
+    private String scanValue = null;
+
     private CameraManager mCameraManager;
     private String mCameraId;
 
     private BottomSheetDialog bottomSheetDialog;
-    private AlertDialog builder;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +71,7 @@ public class BarCodeScanner extends AppCompatActivity {
         setContentView(R.layout.activity_bar_code_scanner);
         isFlashAvailable = getApplicationContext().getPackageManager()
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
+        alertDialog  = Progressbars.getInstance().createDefaultProgressBar(BarCodeScanner.this);
 
         surfaceView = findViewById(R.id.surfaceView);
         flashLight = findViewById(R.id.flash_toogle);
@@ -143,11 +158,56 @@ public class BarCodeScanner extends AppCompatActivity {
                         public void run() {
                             if (dialog) {
                                 dialog = false;
-                                new AlertDialog.Builder(BarCodeScanner.this)
-                                        .setMessage(barcodes.valueAt(0).displayValue)
-                                        .setPositiveButton("OK", ((dialogInterface, i) -> {
-                                            dialog = true;
-                                        })).show();
+                                alertDialog.show();
+                                scanValue = barcodes.valueAt(0).displayValue;
+                                if (scanValue.startsWith("https://spekteraigs.page.link/QR/")){
+                                    String stallId = scanValue.substring(scanValue.indexOf("=")+1);
+
+                                    FirebaseDatabase
+                                            .getInstance()
+                                            .getReference(CONSTANTS.EXHIBITION)
+                                            .child(CONSTANTS.PROJECTS)
+                                            .child(stallId)
+                                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    if (snapshot.exists()){
+
+                                                        startActivity(new Intent(BarCodeScanner.this, ScannerProjectInfo.class)
+                                                                .putExtra("type",true)
+                                                                .putExtra("projects_basic_info",snapshot.getValue(ProjectBasicInfo.class)));
+                                                        alertDialog.dismiss();
+                                                        dialog = true;
+
+                                                    }else {
+                                                        new AlertDialog.Builder(BarCodeScanner.this)
+                                                                .setMessage("Not a valid Spekter events QR Code!!")
+                                                                .setPositiveButton("OK", ((dialogInterface, i) -> {
+                                                                    alertDialog.dismiss();
+                                                                    dialog = true;
+                                                                })).setCancelable(false)
+                                                                .show();
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+                                                    Toast.makeText(BarCodeScanner.this, "ERROR : "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    alertDialog.dismiss();
+                                                    dialog = true;
+                                                }
+                                            });
+
+                                }else {
+                                    new AlertDialog.Builder(BarCodeScanner.this)
+                                            .setMessage("Not a valid Spekter events QR Code!!")
+                                            .setPositiveButton("OK", ((dialogInterface, i) -> {
+                                                alertDialog.dismiss();
+                                                dialog = true;
+                                            })).setCancelable(false)
+                                            .show();
+                                }
+
                             }
                         }
                     });

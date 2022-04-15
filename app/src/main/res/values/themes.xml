@@ -14,11 +14,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">#000</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.SpectreAIGS.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.SpectreAIGS.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.SpectreAIGS.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="MineCustomTabText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">

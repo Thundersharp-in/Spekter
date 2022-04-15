@@ -18,4 +18,5 @@
 
 </string>
     <string name="asc">c</string>
+    <string name="title_activity_scanner_project_info">ScannerProjectInfo</string>
 </resources>

@@ -57,11 +57,10 @@ public class DeeplinkingActivity extends AppCompatActivity {
                                             startActivity(new Intent(DeeplinkingActivity.this, ProjectsInfo.class)
                                                     .putExtra("type",true)
                                                     .putExtra("projects_basic_info",snapshot.getValue(ProjectBasicInfo.class)));
-                                            finish();
                                         }else {
                                             Toast.makeText(DeeplinkingActivity.this, "Cannot go to the project", Toast.LENGTH_SHORT).show();
-                                            finish();
                                         }
+                                        finish();
                                     }
 
                                     @Override
