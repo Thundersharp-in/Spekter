@@ -28,6 +28,7 @@ import java.util.List;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.helpers.ExternalServerHelpers;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
 import thundersharp.aigs.spectre.core.models.NotifyUserRequest;
@@ -118,8 +119,8 @@ public class FacultyFeedback extends AppCompatActivity {
             }else {
                 StudentsDetails studentsDetails = new StudentsDetails(FirebaseAuth.getInstance().getCurrentUser().getEmail(),System.currentTimeMillis()+"",profileDataSync.pullDataBack().name+"",profileDataSync.pullDataBack().phone);
                 alertDialog.show();
-                DatabaseHelpers
-                        .getInstance()
+                ExternalServerHelpers
+                        .main()
                         .setActivity(this)
                         .setFacultyFeedback(new thundersharp.aigs.spectre.core.models.FacultyFeedback(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString(),sel_Sem.getText().toString()))
                         .setStudentDetails(studentsDetails)
