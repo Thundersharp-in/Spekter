@@ -40,6 +40,7 @@
         <entry key="app/src/main/res/drawable/edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/half_cut_twenty_dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_all_inclusive_24.xml" value="0.1" />
@@ -129,6 +130,7 @@
         <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_time_slots.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_workshop_holder.xml" value="0.25" />
         <entry key="app/src/main/res/layout/logout_bottom_sheet.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/pager_item.xml" value="0.266302490234375" />
         <entry key="app/src/main/res/layout/player_custom_ui.xml" value="0.19923044035912782" />
