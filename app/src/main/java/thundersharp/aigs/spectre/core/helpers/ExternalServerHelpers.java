@@ -153,7 +153,7 @@ public class ExternalServerHelpers {
             JSONObject jsonBody = new JSONObject();
 
             JSONObject facFeedback = new JSONObject();
-            facFeedback.put("EVENT",facultyFeedback.FACULTY);
+            facFeedback.put("EVENT",facultyFeedback.EVENT);
             facFeedback.put("EVENT_RATING",facultyFeedback.EVENT_RATING);
             facFeedback.put("ID",facultyFeedback.ID);
             facFeedback.put("MESSAGE",facultyFeedback.MESSAGE);
