@@ -19,7 +19,7 @@ import java.util.Map;
 
 import thundersharp.aigs.spectre.core.interfaces.EventFeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
-import thundersharp.aigs.spectre.core.models.EventFeedback;
+import thundersharp.aigs.spectre.core.models.EventFeedbacks;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
 
@@ -31,7 +31,7 @@ public class ExternalServerHelpers {
     private StudentsDetails studentsDetails;
 
     private EventFeedbackObserver eventFeedbackObserver;
-    private EventFeedback eventFeedback;
+    private EventFeedbacks eventFeedbacks;
 
     private Activity activity;
 
@@ -49,7 +49,7 @@ public class ExternalServerHelpers {
 
     public void setEventFeedbackObserver(EventFeedbackObserver eventFeedbackObserver){
         this.eventFeedbackObserver = eventFeedbackObserver;
-        updateEventFeedbackToServer(eventFeedbackObserver,studentsDetails,eventFeedback);
+        updateEventFeedbackToServer(studentsDetails, eventFeedbacks);
     }
 
     public ExternalServerHelpers setStudentDetails(StudentsDetails studentsDetails){
@@ -62,8 +62,8 @@ public class ExternalServerHelpers {
         return this;
     }
 
-    public ExternalServerHelpers setEventFeedback(EventFeedback eventFeedback){
-        this.eventFeedback = eventFeedback;
+    public ExternalServerHelpers setEventFeedback(EventFeedbacks eventFeedbacks){
+        this.eventFeedbacks = eventFeedbacks;
         return this;
     }
 
@@ -116,7 +116,7 @@ public class ExternalServerHelpers {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
-                    feedbackObserver.OnError(error);
+                    feedbackObserver.OnError(new Exception(error.networkResponse.statusCode+""));
                 }
             }){
 
@@ -139,26 +139,25 @@ public class ExternalServerHelpers {
                 }
             };
             requestQueue.add(stringRequest);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             feedbackObserver.OnError(e);
-            Toast.makeText(activity, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    private void updateEventFeedbackToServer(EventFeedbackObserver eventFeedbackObserver, StudentsDetails studentsDetails, EventFeedback eventFeedback) {
+    private void updateEventFeedbackToServer(StudentsDetails studentsDetails, EventFeedbacks facultyFeedback) {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
-            String URL = "https://spekter-aigs.herokuapp.com/faculty/feedback/post";
+            String URL = "https://spekter-aigs.herokuapp.com/event/feedback/post";
             JSONObject jsonBody = new JSONObject();
 
             JSONObject facFeedback = new JSONObject();
-            facFeedback.put("FACULTY",facultyFeedback.FACULTY);
-            facFeedback.put("FACULTY_RATING",facultyFeedback.FACULTY_RATING);
+            facFeedback.put("EVENT",facultyFeedback.FACULTY);
+            facFeedback.put("EVENT_RATING",facultyFeedback.EVENT_RATING);
             facFeedback.put("ID",facultyFeedback.ID);
             facFeedback.put("MESSAGE",facultyFeedback.MESSAGE);
-            facFeedback.put("SUBJECT",facultyFeedback.SUBJECT);
+            facFeedback.put("DATE",facultyFeedback.DATE);
             facFeedback.put("SEMESTER",facultyFeedback.SEMESTER);
 
             JSONObject stuFeedback = new JSONObject();
@@ -191,7 +190,7 @@ public class ExternalServerHelpers {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
-                    eventFeedbackObserver.OnError(error);
+                    eventFeedbackObserver.OnError(new Exception(error.networkResponse.statusCode+""));
                 }
             }){
 
@@ -214,10 +213,9 @@ public class ExternalServerHelpers {
                 }
             };
             requestQueue.add(stringRequest);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             eventFeedbackObserver.OnError(e);
-            Toast.makeText(activity, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
     }

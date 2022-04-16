@@ -162,9 +162,9 @@
                         android:id="@+id/selSub"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="none"
                         android:clickable="false"
                         android:focusable="false"
-                        android:inputType="date"
                         android:textColor="#d3d3d3"
                         android:textColorHint="#fff" />
                 </com.google.android.material.textfield.TextInputLayout>

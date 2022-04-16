@@ -136,7 +136,7 @@ public class FacultyFeedback extends AppCompatActivity {
                             @Override
                             public void OnError(Exception e) {
                                 alertDialog.dismiss();
-                                Toast.makeText(FacultyFeedback.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FacultyFeedback.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });

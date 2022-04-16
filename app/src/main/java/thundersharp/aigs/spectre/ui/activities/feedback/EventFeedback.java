@@ -33,6 +33,7 @@ import thundersharp.aigs.spectre.core.helpers.ExternalServerHelpers;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.EventFeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.models.EventFeedbacks;
 import thundersharp.aigs.spectre.core.models.NotifyUserRequest;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
 import thundersharp.aigs.spectre.core.notification.NotifiAll;
@@ -61,11 +62,9 @@ public class EventFeedback extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getFacultyList());
         cat_text.setAdapter(adapter);
 
-        TextInputLayout date = findViewById(R.id.date);
         AutoCompleteTextView sel_Sub = findViewById(R.id.selSub);
         //sel_Sub.setAdapter(adapterSub);
-        date.setOnClickListener(vi->{
-            Toast.makeText(this, "clicked" , Toast.LENGTH_SHORT).show();
+        sel_Sub.setOnClickListener(vi->{
             final Calendar calendar = Calendar.getInstance ();
             int mYear = calendar.get ( Calendar.YEAR );
             int mMonth = calendar.get ( Calendar.MONTH );
@@ -75,10 +74,10 @@ public class EventFeedback extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog ( this, new DatePickerDialog.OnDateSetListener () {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    sel_Sub.setText ( dayOfMonth + "-" + (month + 1) + "-" + year );
+                    sel_Sub.setText ( dayOfMonth + "/" + (month + 1) + "/" + year );
                 }
             }, mYear, mMonth, mDay );
-            datePickerDialog.show ();
+            datePickerDialog.show();
         });
 
         AutoCompleteTextView sel_Sem = findViewById(R.id.selSem);
@@ -139,7 +138,7 @@ public class EventFeedback extends AppCompatActivity {
                 ExternalServerHelpers
                         .main()
                         .setActivity(this)
-                        .setEventFeedback(new thundersharp.aigs.spectre.core.models.EventFeedback(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString(),sel_Sem.getText().toString()))
+                        .setEventFeedback(new EventFeedbacks(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString(),sel_Sem.getText().toString()))
                         .setStudentDetails(studentsDetails)
                         .setEventFeedbackObserver(new EventFeedbackObserver() {
                             @Override
@@ -153,7 +152,7 @@ public class EventFeedback extends AppCompatActivity {
                             @Override
                             public void OnError(Exception e) {
                                 alertDialog.dismiss();
-                                Toast.makeText(EventFeedback.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EventFeedback.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
