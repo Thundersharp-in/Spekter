@@ -17,7 +17,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+import thundersharp.aigs.spectre.core.interfaces.EventFeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.models.EventFeedback;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
 
@@ -27,6 +29,9 @@ public class ExternalServerHelpers {
     private FeedbackObserver feedbackObserver;
     private FacultyFeedback facultyFeedback;
     private StudentsDetails studentsDetails;
+
+    private EventFeedbackObserver eventFeedbackObserver;
+    private EventFeedback eventFeedback;
 
     private Activity activity;
 
@@ -42,6 +47,11 @@ public class ExternalServerHelpers {
         updateToServerver(feedbackObserver,studentsDetails,facultyFeedback);
     }
 
+    public void setEventFeedbackObserver(EventFeedbackObserver eventFeedbackObserver){
+        this.eventFeedbackObserver = eventFeedbackObserver;
+        updateEventFeedbackToServer(eventFeedbackObserver,studentsDetails,eventFeedback);
+    }
+
     public ExternalServerHelpers setStudentDetails(StudentsDetails studentsDetails){
         this.studentsDetails = studentsDetails;
         return this;
@@ -49,6 +59,11 @@ public class ExternalServerHelpers {
 
     public ExternalServerHelpers setFacultyFeedback(FacultyFeedback facultyFeedback){
         this.facultyFeedback = facultyFeedback;
+        return this;
+    }
+
+    public ExternalServerHelpers setEventFeedback(EventFeedback eventFeedback){
+        this.eventFeedback = eventFeedback;
         return this;
     }
 
@@ -131,6 +146,81 @@ public class ExternalServerHelpers {
         }
     }
 
+
+    private void updateEventFeedbackToServer(EventFeedbackObserver eventFeedbackObserver, StudentsDetails studentsDetails, EventFeedback eventFeedback) {
+        try {
+            RequestQueue requestQueue = Volley.newRequestQueue(activity);
+            String URL = "https://spekter-aigs.herokuapp.com/faculty/feedback/post";
+            JSONObject jsonBody = new JSONObject();
+
+            JSONObject facFeedback = new JSONObject();
+            facFeedback.put("FACULTY",facultyFeedback.FACULTY);
+            facFeedback.put("FACULTY_RATING",facultyFeedback.FACULTY_RATING);
+            facFeedback.put("ID",facultyFeedback.ID);
+            facFeedback.put("MESSAGE",facultyFeedback.MESSAGE);
+            facFeedback.put("SUBJECT",facultyFeedback.SUBJECT);
+            facFeedback.put("SEMESTER",facultyFeedback.SEMESTER);
+
+            JSONObject stuFeedback = new JSONObject();
+            stuFeedback.put("EMAIL",studentsDetails.EMAIL);
+            stuFeedback.put("ID",studentsDetails.ID);
+            stuFeedback.put("NAME",studentsDetails.NAME);
+            stuFeedback.put("PHONE",studentsDetails.PHONE);
+
+
+            jsonBody.put("facultyFeedback",facFeedback);
+            jsonBody.put("studentsDetails",stuFeedback);
+
+            final String requestBody = jsonBody.toString();
+            //Toast.makeText(activity,requestBody, Toast.LENGTH_LONG).show();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new com.android.volley.Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        if (jsonObject.getBoolean("status")){
+                            eventFeedbackObserver.OnFeedbackSent(jsonObject);
+                        }else eventFeedbackObserver.OnError(new Exception("ERROR IN SETTING DATA TO EXTERNAL SERVERS"));
+                    } catch (JSONException e) {
+                        eventFeedbackObserver.OnError(e);
+                    }
+                }
+            }, new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    eventFeedbackObserver.OnError(error);
+                }
+            }){
+
+                @Override
+                public byte[] getBody() {
+                    return requestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                public String getPostBodyContentType() {
+                    return "application/json;charset=UTF-8";
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String,String> hashMap = new HashMap<>();
+
+                    hashMap.put("Content-Type","application/json;charset=UTF-8");
+                    return hashMap;
+                }
+            };
+            requestQueue.add(stringRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            eventFeedbackObserver.OnError(e);
+            Toast.makeText(activity, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 
 }
