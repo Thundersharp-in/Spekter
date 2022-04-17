@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -16,6 +19,8 @@ import java.util.List;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
 import thundersharp.aigs.spectre.core.adapters.WorkshopItemHolderAdapter;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.models.Workshops;
 
 public class WorkshopsHome extends AppCompatActivity {
@@ -23,6 +28,7 @@ public class WorkshopsHome extends AppCompatActivity {
     private RelativeLayout loader;
     private LinearLayout content;
     private RecyclerView event_Holder;
+    private WorkshopItemHolderAdapter workshopItemHolderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +41,40 @@ public class WorkshopsHome extends AppCompatActivity {
 
         setUpLoader(true);
 
-        event_Holder.setAdapter(new WorkshopItemHolderAdapter(getRandData()));
-        new Handler().postDelayed(new Runnable() {
+        DatabaseHelpers
+                .getInstance()
+                .setOnWorkshopsFetchListener(new OnWorkshopFetchSuccess() {
+                    @Override
+                    public void onFetchProjectsSuccess(List<Workshops> response) {
+                        workshopItemHolderAdapter = new WorkshopItemHolderAdapter(response);
+                        event_Holder.setAdapter(workshopItemHolderAdapter);
+                        setUpLoader(false);
+                    }
+
+                    @Override
+                    public void onFetchError(Exception e) {
+                        setUpLoader(false);
+                    }
+                });
+
+        ((EditText)findViewById(R.id.searchbar)).addTextChangedListener(new TextWatcher() {
             @Override
-            public void run() {
-                setUpLoader(false);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
-        },3000);
 
-    }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (workshopItemHolderAdapter != null)
+                    workshopItemHolderAdapter.getFilter().filter(charSequence);
+            }
 
-    private List<Workshops> getRandData(){
-        return new ArrayList<Workshops>(Arrays.asList(new Workshops(),new Workshops(),new Workshops(),new Workshops(),new Workshops()));
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     private synchronized void setUpLoader(boolean status){

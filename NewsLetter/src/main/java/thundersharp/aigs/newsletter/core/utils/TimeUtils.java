@@ -116,6 +116,26 @@ public class TimeUtils {
 
     }
 
+    public static String getDayFromTimeStamp(String timeStamp) throws NumberFormatException {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        long time;
+        time = Long.parseLong(timeStamp);
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("dd", cal).toString();
+        return date;
+
+    }
+
+    public static String getMonthFromTimeStamp(String timeStamp) throws NumberFormatException {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        long time;
+        time = Long.parseLong(timeStamp);
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("MM", cal).toString();
+        return date;
+
+    }
+
     public static String getDateFromTimeStamp(long time){
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(time);

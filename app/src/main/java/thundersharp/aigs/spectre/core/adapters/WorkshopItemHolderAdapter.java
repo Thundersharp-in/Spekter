@@ -3,6 +3,8 @@ package thundersharp.aigs.spectre.core.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,21 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import thundersharp.aigs.expandablecardview.ExpandableCardView;
+import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.Notifications;
+import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.Workshops;
 
-public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItemHolderAdapter.ViewHolder> {
+public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItemHolderAdapter.ViewHolder> implements Filterable {
 
-    private List<Workshops> notificationsList;
+    private List<Workshops> notificationsList,getNotificationsListCopy;
 
     public WorkshopItemHolderAdapter(){}
 
     public WorkshopItemHolderAdapter(List<Workshops> notificationsList) {
         this.notificationsList = notificationsList;
+        getNotificationsListCopy = new ArrayList<>(notificationsList);
     }
 
     public WorkshopItemHolderAdapter setData(List<Workshops> notifications){
@@ -44,6 +50,17 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
         Workshops notifications = notificationsList.get(position);
         Glide.with(holder.itemView.getContext()).load(notifications.COVER).into(holder.background);
 
+        holder.duramtion.setText(notifications.DURATION);
+        holder.by.setText("By "+notifications.ORGANISED_BY);
+        holder.tittle.setText(notifications.TITTLE);
+        holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Workshop");
+
+        try {
+            holder.day.setText(TimeUtils.getDayFromTimeStamp(notifications.ID));
+            holder.month.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID))).substring(0, 3).toUpperCase());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -54,6 +71,40 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
         else
             return 0;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Workshops> filterList = new ArrayList<>();
+            if (constraint == null|| constraint.length() == 0){
+                filterList.addAll(getNotificationsListCopy);
+            }else {
+                String text = constraint.toString().toLowerCase().trim();
+                for (Workshops data : getNotificationsListCopy){
+                    if (data.TITTLE.toLowerCase().contains(text)||
+                            data.ORGANISED_BY.toLowerCase().contains(text)||
+                            data.MODE.toLowerCase().contains(text)){
+                        filterList.add(data);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            notificationsList.clear();
+            notificationsList.addAll((List)filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
