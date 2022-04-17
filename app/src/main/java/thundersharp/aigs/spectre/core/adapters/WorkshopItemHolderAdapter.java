@@ -49,7 +49,7 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
         Workshops notifications = notificationsList.get(position);
         Glide.with(holder.itemView.getContext()).load(notifications.COVER).into(holder.background);
 
-        holder.duramtion.setText(notifications.DURATION);
+        holder.duramtion.setText("Duration : "+notifications.DURATION);
         holder.by.setText("By "+notifications.ORGANISED_BY);
         holder.tittle.setText(notifications.TITTLE);
         holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Workshop");
