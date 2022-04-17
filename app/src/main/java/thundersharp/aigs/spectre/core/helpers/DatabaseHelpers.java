@@ -28,11 +28,13 @@ import java.util.Map;
 
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
+import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 
 /**
@@ -46,6 +48,7 @@ public class DatabaseHelpers {
     private static DatabaseHelpers databaseHelpers = null;
     private ExhibitionInterface exhibitionInterface;
     private ProjectListner.fetchParticipants fetchParticipants;
+    private OnWorkshopFetchSuccess onWorkshopFetchSuccess;
 
     private Activity activity;
 
@@ -67,19 +70,45 @@ public class DatabaseHelpers {
         return this;
     }
 
-
-
     public DatabaseHelpers setActivity(Activity activity){
         this.activity = activity;
         return this;
     }
 
-
-
-
     public void setFetchParticipantsListeners(ProjectListner.fetchParticipants participantsListeners){
         this.fetchParticipants = participantsListeners;
         fetchParticipantsNow();
+    }
+
+    public DatabaseHelpers setOnWorkshopsFetchListener(OnWorkshopFetchSuccess onWorkshopFetchSuccess){
+        this.onWorkshopFetchSuccess= onWorkshopFetchSuccess;
+        loadWorkshops();
+        return this;
+    }
+
+    private void loadWorkshops() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.WORKSHOPS)
+                .child(CONSTANTS.WORKSHOP_INFO)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            List<Workshops> workshops = new ArrayList<>();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                workshops.add(dataSnapshot.getValue(Workshops.class));
+                            }
+                            onWorkshopFetchSuccess.onFetchProjectsSuccess(workshops);
+
+                        }else onWorkshopFetchSuccess.onFetchError(new Exception("ERROR 404 : NO DATA FOUND."));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        onWorkshopFetchSuccess.onFetchError(error.toException());
+                    }
+                });
     }
 
     private void fetchParticipantsNow() {

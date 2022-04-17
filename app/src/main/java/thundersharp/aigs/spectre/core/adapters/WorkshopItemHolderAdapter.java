@@ -3,9 +3,13 @@ package thundersharp.aigs.spectre.core.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -38,6 +42,8 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Workshops notifications = notificationsList.get(position);
+        Glide.with(holder.itemView.getContext()).load(notifications.COVER).into(holder.background);
+
 
     }
 
@@ -51,11 +57,20 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        ExpandableCardView expandableCardView;
+        ImageView background;
+        private TextView month,day,tittle,duramtion,mode,by;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            expandableCardView = itemView.findViewById(R.id.expandable_card_view);
+            background = itemView.findViewById(R.id.event_poster);
+            month = itemView.findViewById(R.id.month);
+            day = itemView.findViewById(R.id.day);
+
+            by = itemView.findViewById(R.id.by);
+            mode = itemView.findViewById(R.id.mode);
+            tittle = itemView.findViewById(R.id.tittle);
+            duramtion = itemView.findViewById(R.id.duration);
+
         }
     }
 }
