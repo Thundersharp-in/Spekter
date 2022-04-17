@@ -1,5 +1,6 @@
 package thundersharp.aigs.spectre.core.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,10 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import thundersharp.aigs.expandablecardview.ExpandableCardView;
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
-import thundersharp.aigs.spectre.core.models.Notifications;
-import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.Workshops;
+import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
 public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItemHolderAdapter.ViewHolder> implements Filterable {
 
@@ -42,7 +41,7 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_workshop_holder,null,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_workshop_holder,parent,false));
     }
 
     @Override
@@ -54,6 +53,10 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
         holder.by.setText("By "+notifications.ORGANISED_BY);
         holder.tittle.setText(notifications.TITTLE);
         holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Workshop");
+
+        holder.itemView.findViewById(R.id.bottom_w).setOnClickListener(n->{
+            holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), WorkshopDetails.class).putExtra("workshop_info",Workshops.class));
+        });
 
         try {
             holder.day.setText(TimeUtils.getDayFromTimeStamp(notifications.ID));

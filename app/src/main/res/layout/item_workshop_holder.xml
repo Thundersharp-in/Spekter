@@ -147,12 +147,13 @@
                                 android:layout_height="match_parent"
                                 android:layout_alignParentEnd="true"
                                 android:background="@drawable/half_cut_twenty_dp" >
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/ic_media_play_dark"
-                                    android:padding="15dp"/>
+                                    android:padding="15dp"
+                                    android:src="@drawable/ic_media_play_dark" />
                             </RelativeLayout>
 
                         </RelativeLayout>
