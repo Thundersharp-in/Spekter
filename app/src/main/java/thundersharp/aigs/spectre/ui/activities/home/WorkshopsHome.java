@@ -34,6 +34,7 @@ public class WorkshopsHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workshops_home);
+        findViewById(R.id.exit).setOnClickListener(k->finish());
 
         loader = findViewById(R.id.loader);
         content = findViewById(R.id.content);

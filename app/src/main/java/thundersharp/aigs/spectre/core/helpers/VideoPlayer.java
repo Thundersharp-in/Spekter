@@ -81,7 +81,7 @@ public class VideoPlayer {
     private void playDefaultVideo() {
         videoView.setVideoURI(Uri.parse("android.resource://" +activity.getPackageName()+ "/"+ R.raw.logo));
 
-        //videoView.requestFocus();
+        videoView.clearFocus();
         videoView.start();
         videoView.setOnErrorListener((mediaPlayer, i, i1) -> {
             onVideoReadyCallbacksListener.onVideoError(new VideoPlayerException("INTERNAL ERROR"));
@@ -103,6 +103,7 @@ public class VideoPlayer {
         });
 
         videoView.setOnCompletionListener(mediaPlayer -> {
+
             if (playInLoop) videoView.start();
             onVideoReadyCallbacksListener.onVideoCompleated(videoView);
         });
@@ -113,7 +114,7 @@ public class VideoPlayer {
     private void playByCustomUrl(String customUrl) {
         videoView.setVideoURI(Uri.parse(customUrl));
 
-        videoView.requestFocus();
+        //videoView.clearFocus();
         videoView.start();
         videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override

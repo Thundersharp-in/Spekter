@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activities.fwdActivities.WorkshopDetails"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.exhibition.ScannerProjectInfo"
             android:exported="false"
             android:label="@string/title_activity_scanner_project_info"
