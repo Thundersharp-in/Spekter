@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
-import thundersharp.aigs.spectre.ui.activities.HomeActivity;
+import thundersharp.aigs.spectre.ui.activities.home.HomeActivity;
 
 public class EmailVerificationActivity extends AppCompatActivity {
 

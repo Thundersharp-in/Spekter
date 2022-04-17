@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.activities.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import thundersharp.aigs.spectre.R;
 
-public class InitiativesHomes extends AppCompatActivity {
+public class InnovativeChallengeHome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_initiatives_homes);
+        setContentView(R.layout.activity_innovative_challenge_home);
     }
 }

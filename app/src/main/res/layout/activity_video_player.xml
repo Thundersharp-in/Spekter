@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     android:id="@+id/contentView"
-    tools:context=".ui.activities.VideoPlayer">
+    tools:context=".ui.activities.home.VideoPlayer">
 
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView

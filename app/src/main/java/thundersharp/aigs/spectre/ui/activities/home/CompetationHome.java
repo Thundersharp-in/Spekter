@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.activities.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,11 @@ import android.os.Bundle;
 
 import thundersharp.aigs.spectre.R;
 
-public class KnowUs extends AppCompatActivity {
+public class CompetationHome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_know_us);
+        setContentView(R.layout.activity_competation_home);
     }
-
 }

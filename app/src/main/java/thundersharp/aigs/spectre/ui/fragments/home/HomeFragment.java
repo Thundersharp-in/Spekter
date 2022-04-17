@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Browser;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.airbnb.lottie.L;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.animations.DescriptionAnimation;
@@ -37,22 +34,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import thundersharp.aigs.spectre.R;
-import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
 import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
 import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-import thundersharp.aigs.spectre.ui.activities.CompetationHome;
+import thundersharp.aigs.spectre.ui.activities.home.CompetationHome;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
-import thundersharp.aigs.spectre.ui.activities.InitiativesHomes;
-import thundersharp.aigs.spectre.ui.activities.InnovativeChallengeHome;
-import thundersharp.aigs.spectre.ui.activities.KnowUs;
+import thundersharp.aigs.spectre.ui.activities.home.InitiativesHomes;
+import thundersharp.aigs.spectre.ui.activities.home.InnovativeChallengeHome;
+import thundersharp.aigs.spectre.ui.activities.home.KnowUs;
 import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
 import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
 import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
-import thundersharp.aigs.spectre.ui.activities.UpcommingEventsHome;
-import thundersharp.aigs.spectre.ui.activities.WorkshopsHome;
+import thundersharp.aigs.spectre.ui.activities.home.UpcommingEventsHome;
+import thundersharp.aigs.spectre.ui.activities.home.WorkshopsHome;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 
 
