@@ -1,6 +1,8 @@
 package thundersharp.aigs.spectre.core.models;
 
-public class WorkshopFiles {
+import java.io.Serializable;
+
+public class WorkshopFiles implements Serializable {
 
     public String ID, URL, TITLE, SHORT_DESCRIPTION;
 

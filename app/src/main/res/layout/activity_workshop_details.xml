@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -176,6 +176,7 @@
                         android:layout_height="wrap_content"
                         android:text="Workshop highlights"
                         android:textSize="16sp"
+                        android:layout_marginStart="5dp"
                         android:textAllCaps="true"
                         android:textColor="#C51B55"
                         android:layout_gravity="start"
@@ -194,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -203,6 +204,7 @@
                         android:text="Workshop Details"
                         android:textSize="16sp"
                         android:textAllCaps="true"
+                        android:layout_marginStart="5dp"
                         android:textColor="#C51B55"
                         android:layout_gravity="start"
                         android:fontFamily="@font/roboto_medium"/>
@@ -213,6 +215,7 @@
                         android:layout_marginTop="20dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:id="@+id/details"
+                        android:nestedScrollingEnabled="false"
                         android:scrollbars="none"
                         />
 
@@ -223,7 +226,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -231,6 +234,7 @@
                         android:layout_height="wrap_content"
                         android:text="Related Files and Documents"
                         android:textSize="16sp"
+                        android:layout_marginStart="5dp"
                         android:textAllCaps="true"
                         android:textColor="#C51B55"
                         android:layout_gravity="start"
@@ -241,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:orientation="horizontal"
-                        android:scrollbars="horizontal"
+                        android:scrollbars="none"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         android:id="@+id/files"/>
 
@@ -252,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="25dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginHorizontal="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -260,6 +264,7 @@
                         android:layout_height="wrap_content"
                         android:text="More Info"
                         android:textSize="16sp"
+                        android:layout_marginStart="5dp"
                         android:textAllCaps="true"
                         android:textColor="#C51B55"
                         android:layout_gravity="start"

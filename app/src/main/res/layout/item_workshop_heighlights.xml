@@ -22,7 +22,7 @@
         android:drawableTint="#c6c6c6"
         android:drawablePadding="7dp"
         android:gravity="center_vertical|start"
-        android:paddingHorizontal="15dp"
+        android:paddingHorizontal="0dp"
         android:paddingVertical="5dp"
         android:text="7 AM - 10 AM egegeirugirugiegueirghei"/>
 </RelativeLayout>

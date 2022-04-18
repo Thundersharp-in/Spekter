@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context=".PdfViwer">
+
+    <ProgressBar
+        android:id="@+id/progressbokview"
+        android:layout_below="@id/toolbarpdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:indeterminateTint="#3F51B5"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarpdf"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#262626"
+        app:titleTextColor="#D3d3d3"
+        android:elevation="6dp"
+        app:title="Pdf Viwer"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfViewone"
+        android:background="#000"
+        android:layout_below="@id/progressbokview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

@@ -18,6 +18,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+import thundersharp.aigs.pdfviwer.PdfLoader;
+import thundersharp.aigs.pdfviwer.PdfModel;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
@@ -49,10 +51,7 @@ public class WorkshopFileHolderAdapter extends RecyclerView.Adapter<WorkshopFile
         WorkshopFiles projectBasicInfo = projectShortDescription.get(position);
 
         //holder.catHolder.setImageResource(R.drawable.iot);
-        if (projectBasicInfo.URL.equals("")){
-            holder.catHolder.setImageResource(R.drawable.iot);
-        }else
-        Glide.with(context).load(projectBasicInfo.URL).into(holder.catHolder);
+
         holder.name.setText(projectBasicInfo.TITLE);
         holder.description.setText(projectBasicInfo.SHORT_DESCRIPTION);
     }
@@ -79,6 +78,12 @@ public class WorkshopFileHolderAdapter extends RecyclerView.Adapter<WorkshopFile
 
         @Override
         public void onClick(View view) {
+            WorkshopFiles workshopFiles = projectShortDescription.get(getAdapterPosition());
+            PdfLoader
+                    .getInstance(context)
+                    .setSecureMode(false)
+                    .setPdfData(new PdfModel(workshopFiles.ID, workshopFiles.URL, workshopFiles.TITLE, workshopFiles.SHORT_DESCRIPTION))
+                    .loadPdf();
         }
     }
 }
