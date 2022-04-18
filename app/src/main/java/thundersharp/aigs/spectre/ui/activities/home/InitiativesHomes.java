@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.activities.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 

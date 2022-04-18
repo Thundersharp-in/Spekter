@@ -1,4 +1,4 @@
-package thundersharp.aigs.spectre.ui.activities;
+package thundersharp.aigs.spectre.ui.activities.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -6,11 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context=".ui.activities.WorkshopsHome">
+    tools:context=".ui.activities.home.WorkshopsHome">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/loader"
+        android:visibility="gone">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
@@ -41,14 +43,128 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Processing your Request"
+                android:layout_gravity="center"
                 android:fontFamily="@font/calibri"
-                android:textColor="#DDDDDD"
-                android:layout_gravity="center"/>
+                android:text="Processing your Request"
+                android:textColor="#DDDDDD" />
         </LinearLayout>
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#201D1D"
+            android:layout_weight="1.8">
+
+            <TextView
+                android:id="@+id/hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/searchholder"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Spekter Workshops"
+                android:textColor="#d3d3d3"
+                android:textSize="23sp" />
+
+            <ImageView
+                android:id="@+id/exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_baseline_arrow_back_24" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/searchholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:minHeight="45dp"
+                app:cardBackgroundColor="#000"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minHeight="45dp">
+
+                    <EditText
+                        android:id="@+id/searchbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@null"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint="Search for workshops by name, description, category "
+                        android:maxLines="1"
+                        android:paddingHorizontal="5dp"
+                        android:textColor="#C5C3C3"
+                        android:textColorHint="#798127"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/valuesD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="15dp"
+                    android:drawableStart="@drawable/ic_outline_info_24"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="Engage in quality workshops on trending topics taught by leading experts and grow your skills."
+                    android:textColor="#B8B8B8"
+                    android:textSize="14sp"
+                    app:drawableTint="#B8B8B8" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/event_Holder"
+                    android:layout_below="@id/valuesD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -40,6 +40,7 @@
         <entry key="app/src/main/res/drawable/edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/half_cut_twenty_dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_all_inclusive_24.xml" value="0.1" />
@@ -99,7 +100,8 @@
         <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_video_player.xml" value="0.19923044035912782" />
-        <entry key="app/src/main/res/layout/activity_workshops_home.xml" value="0.2152777777777778" />
+        <entry key="app/src/main/res/layout/activity_workshop_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_workshops_home.xml" value="0.16379310344827586" />
         <entry key="app/src/main/res/layout/bottom_sheet_feedback.xml" value="0.165" />
         <entry key="app/src/main/res/layout/bottom_sheet_projects_actions.xml" value="0.19880290722530997" />
         <entry key="app/src/main/res/layout/cust_openion.xml" value="0.21124877929687502" />
@@ -129,6 +131,8 @@
         <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_time_slots.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_workshop_heighlights.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_workshop_holder.xml" value="0.22245178222656253" />
         <entry key="app/src/main/res/layout/logout_bottom_sheet.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/pager_item.xml" value="0.266302490234375" />
         <entry key="app/src/main/res/layout/player_custom_ui.xml" value="0.19923044035912782" />
@@ -153,5 +157,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activities.fwdActivities.WorkshopDetails"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.exhibition.ScannerProjectInfo"
             android:exported="false"
             android:label="@string/title_activity_scanner_project_info"
@@ -48,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.VideoPlayer"
+            android:name=".ui.activities.home.VideoPlayer"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ui.activities.lectures.FilterActivity"
@@ -75,7 +78,7 @@
             android:name=".ui.activities.passes.TicketViewer"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.InitiativesHomes"
+            android:name=".ui.activities.home.InitiativesHomes"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
@@ -83,23 +86,23 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.WorkshopsHome"
+            android:name=".ui.activities.home.WorkshopsHome"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.CompetationHome"
+            android:name=".ui.activities.home.CompetationHome"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.UpcommingEventsHome"
+            android:name=".ui.activities.home.UpcommingEventsHome"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.InnovativeChallengeHome"
+            android:name=".ui.activities.home.InnovativeChallengeHome"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.KnowUs"
+            android:name=".ui.activities.home.KnowUs"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
@@ -129,7 +132,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".ui.activities.HomeActivity"
+            android:name=".ui.activities.home.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />

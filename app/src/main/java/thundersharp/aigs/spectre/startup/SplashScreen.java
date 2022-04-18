@@ -1,9 +1,6 @@
 package thundersharp.aigs.spectre.startup;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -12,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import thundersharp.aigs.spectre.R;
-import thundersharp.aigs.spectre.ui.activities.HomeActivity;
+import thundersharp.aigs.spectre.ui.activities.home.HomeActivity;
 import thundersharp.aigs.spectre.ui.activities.auth.EmailVerificationActivity;
 import thundersharp.aigs.spectre.ui.activities.auth.IntroActivity;
 

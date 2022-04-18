@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="35dp"
+    android:minWidth="120dp"
+    android:background="@drawable/button_curved_round"
+    android:elevation="7dp"
+    android:layout_margin="5dp"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/timeHOlder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#C6C6C6"
+        android:textSize="13sp"
+        android:maxLines="1"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp"
+        android:text="7 AM - 10 AM egegeirugirugiegueirghei"/>
+</RelativeLayout>

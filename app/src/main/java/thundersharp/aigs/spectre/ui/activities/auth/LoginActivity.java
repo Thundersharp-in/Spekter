@@ -18,11 +18,10 @@ import com.google.firebase.database.DataSnapshot;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
-import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.core.helpers.LoginProvider;
 import thundersharp.aigs.spectre.core.interfaces.LoginInterface;
-import thundersharp.aigs.spectre.ui.activities.HomeActivity;
+import thundersharp.aigs.spectre.ui.activities.home.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

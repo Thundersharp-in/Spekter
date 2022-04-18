@@ -20,7 +20,7 @@ import java.util.List;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.CourseData;
 import thundersharp.aigs.spectre.core.utils.TimeUtils;
-import thundersharp.aigs.spectre.ui.activities.VideoPlayer;
+import thundersharp.aigs.spectre.ui.activities.home.VideoPlayer;
 
 public class CoursesItemAdapter extends RecyclerView.Adapter<CoursesItemAdapter.ViewHolder>{
     List<CourseData> modelList;

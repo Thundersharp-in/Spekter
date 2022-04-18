@@ -1,7 +1,6 @@
 package thundersharp.aigs.spectre.core.helpers;
 
 import android.app.Activity;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
