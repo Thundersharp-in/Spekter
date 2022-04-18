@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
+
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
@@ -32,12 +34,12 @@ public class WorkShopHeilightsAdapter extends RecyclerView.Adapter<WorkShopHeili
     @Override
     public ViewHoldr onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ViewHoldr(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_workshop_heighlights,parent,false));
+        return new ViewHoldr(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chip,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        holder.timeH.setText(time.get(position));
+        holder.chip.setText(time.get(position));
     }
 
     @Override
@@ -47,13 +49,15 @@ public class WorkShopHeilightsAdapter extends RecyclerView.Adapter<WorkShopHeili
 
     class ViewHoldr extends RecyclerView.ViewHolder {
 
-        private TextView timeH;
-        private RelativeLayout container;
+        //private TextView timeH;
+        //private RelativeLayout container;
+        private Chip chip;
 
         public ViewHoldr(@NonNull View itemView) {
             super(itemView);
-            timeH = itemView.findViewById(R.id.timeHOlder);
-            container = itemView.findViewById(R.id.container);
+            chip = itemView.findViewById(R.id.chip_items);
+            //timeH = itemView.findViewById(R.id.timeHOlder);
+            //container = itemView.findViewById(R.id.container);
 
         }
 

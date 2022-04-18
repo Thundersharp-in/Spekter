@@ -181,11 +181,11 @@
                         android:layout_gravity="start"
                         android:fontFamily="@font/roboto_medium"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.google.android.material.chip.ChipGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:chipSpacing="7dp"
                         android:id="@+id/heighlights"/>
 
                 </LinearLayout>

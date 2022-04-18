@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +26,7 @@ import thundersharp.aigs.spectre.core.models.Workshops;
 public class WorkshopDetails extends AppCompatActivity {
 
     private Workshops workshops;
-    RecyclerView recyclerView;
+    ChipGroup recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,16 @@ public class WorkshopDetails extends AppCompatActivity {
         Glide.with(this).load(workshops.COVER).into((ImageView)findViewById(R.id.topImage));
 
         recyclerView = findViewById(R.id.heighlights);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerView.setAdapter(new WorkShopHeilightsAdapter(getData()));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+
+
+        for (String s:getData()) {
+            Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip, recyclerView, false);
+            chip.setText(s);
+            recyclerView.addView(chip);
+        }
+        //recyclerView.setAdapter(new WorkShopHeilightsAdapter(getData()));
+
     }
 
     private List<String> getData(){
