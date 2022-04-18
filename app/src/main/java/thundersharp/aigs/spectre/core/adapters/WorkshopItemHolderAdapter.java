@@ -55,7 +55,7 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
         holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Workshop");
 
         holder.itemView.findViewById(R.id.bottom_w).setOnClickListener(n->{
-            holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), WorkshopDetails.class).putExtra("workshop_info",Workshops.class));
+            holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), WorkshopDetails.class).putExtra("workshop_info",notifications));
         });
 
         try {
