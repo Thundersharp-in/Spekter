@@ -17,22 +17,26 @@ import java.util.Arrays;
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.adapters.CompetitionFileHolderAdapter;
 import thundersharp.aigs.spectre.core.adapters.WorkShopDetailsAdapter;
 import thundersharp.aigs.spectre.core.adapters.WorkshopFileHolderAdapter;
+import thundersharp.aigs.spectre.core.models.CompetitionFiles;
+import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.WorkshopFiles;
 import thundersharp.aigs.spectre.core.models.Workshops;
 
-public class WorkshopDetails extends AppCompatActivity {
+public class CompetitionDetail extends AppCompatActivity {
 
-    private Workshops workshops;
+    private Competitions workshops;
     ChipGroup highlights;
     RecyclerView details, extras, files;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workshop_details);
-        workshops = (Workshops) getIntent().getSerializableExtra("workshop_info");
+        setContentView(R.layout.activity_competition_detail);
+
+        workshops = (Competitions) getIntent().getSerializableExtra("workshop_info");
 
         if (workshops == null){
             finish();
@@ -58,7 +62,7 @@ public class WorkshopDetails extends AppCompatActivity {
 
         details.setAdapter(new WorkShopDetailsAdapter(getDetails(),this));
         extras.setAdapter(new WorkShopDetailsAdapter(getExtras(),this));
-        files.setAdapter(new WorkshopFileHolderAdapter(getFileList(),this));
+        files.setAdapter(new CompetitionFileHolderAdapter(getFileList(),this));
     }
 
     private List<String> getDetails(){
@@ -83,12 +87,12 @@ public class WorkshopDetails extends AppCompatActivity {
         return new ArrayList<>(Arrays.asList("Project Discussion","Interactive learning","Hands on to real world projects","Teamwork","Stability","Joyful"));
     }
 
-    private List<WorkshopFiles> getFileList(){
-        List<WorkshopFiles> files = new ArrayList<>();
-        files.add(new WorkshopFiles("12345","https://docs.google.com/uc?export=download&id=0BxyMs1jY42NLd2RFSk51TXBRRzQ","Circular","Should be stable, neat and clean, and suited to the objects on display"));
-        files.add(new WorkshopFiles("12345","https://res-2.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_470,w_760/f_auto,q_auto/v1/sectors/technology/tech_silhouette-woman-globe_889231052_medium_ifjvbc","Time Table","Can be a good way of influencing people traffic"));
-        files.add(new WorkshopFiles("12345","https://res-4.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_340,w_280/f_auto,q_auto/v1/pdfs/codes_of_practice_on_network_security_under_the_telecoms_security_bill_oanba2","Study materials","Should be insect and rodent proof, and lit so as not to cast the exhibits in shadow"));
-        files.add(new WorkshopFiles("12345","https://ak.picdn.net/shutterstock/videos/9597380/thumb/1.jpg","Rules and Regulations","Case lining can be fabric, but avoid wool."));
+    private List<CompetitionFiles> getFileList(){
+        List<CompetitionFiles> files = new ArrayList<>();
+        files.add(new CompetitionFiles("12345","https://docs.google.com/uc?export=download&id=0BxyMs1jY42NLd2RFSk51TXBRRzQ","Circular","Should be stable, neat and clean, and suited to the objects on display"));
+        files.add(new CompetitionFiles("12345","https://res-2.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_470,w_760/f_auto,q_auto/v1/sectors/technology/tech_silhouette-woman-globe_889231052_medium_ifjvbc","Time Table","Can be a good way of influencing people traffic"));
+        files.add(new CompetitionFiles("12345","https://res-4.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_340,w_280/f_auto,q_auto/v1/pdfs/codes_of_practice_on_network_security_under_the_telecoms_security_bill_oanba2","Study materials","Should be insect and rodent proof, and lit so as not to cast the exhibits in shadow"));
+        files.add(new CompetitionFiles("12345","https://ak.picdn.net/shutterstock/videos/9597380/thumb/1.jpg","Rules and Regulations","Case lining can be fabric, but avoid wool."));
 
         return files;
     }

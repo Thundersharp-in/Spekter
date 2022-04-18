@@ -1,12 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context=".ui.activities.fwdActivities.WorkshopDetails"
-    >
+    android:background="#000"
+    tools:context=".ui.activities.fwdActivities.CompetitionDetail">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="Workshops tittle here"
+                        android:text="Competition tittle here"
                         android:textColor="#FFFFFF"
                         android:textSize="25sp" />
 
@@ -281,7 +281,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Workshop highlights"
+                        android:text="Competition highlights"
                         android:textSize="16sp"
                         android:layout_marginStart="5dp"
                         android:textAllCaps="true"
@@ -308,7 +308,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Workshop Details"
+                        android:text="Competition Details"
                         android:textSize="16sp"
                         android:textAllCaps="true"
                         android:layout_marginStart="5dp"
@@ -394,6 +394,5 @@
 
 
     </RelativeLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
