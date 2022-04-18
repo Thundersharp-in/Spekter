@@ -118,6 +118,7 @@
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/fragment_tags_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/layout/item_files.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/item_filter_tags.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_filter_tags_recycler.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_main_coarse_list.xml" value="0.19923044035912782" />
