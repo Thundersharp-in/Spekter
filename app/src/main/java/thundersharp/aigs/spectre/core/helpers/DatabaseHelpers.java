@@ -28,8 +28,10 @@ import java.util.Map;
 
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
+import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
@@ -49,6 +51,7 @@ public class DatabaseHelpers {
     private ExhibitionInterface exhibitionInterface;
     private ProjectListner.fetchParticipants fetchParticipants;
     private OnWorkshopFetchSuccess onWorkshopFetchSuccess;
+    private OnCompetitionFetchSuccess onCompetitionFetchSuccess;
 
     private Activity activity;
 
@@ -84,6 +87,37 @@ public class DatabaseHelpers {
         this.onWorkshopFetchSuccess= onWorkshopFetchSuccess;
         loadWorkshops();
         return this;
+    }
+
+    public DatabaseHelpers setOnCompetitionFetchListener(OnCompetitionFetchSuccess onCompetitionFetchSuccess){
+        this.onCompetitionFetchSuccess= onCompetitionFetchSuccess;
+        loadCompetitions();
+        return this;
+    }
+
+    private void loadCompetitions() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.WORKSHOPS)
+                .child(CONSTANTS.WORKSHOP_INFO)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            List<Competitions> workshops = new ArrayList<>();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                workshops.add(dataSnapshot.getValue(Competitions.class));
+                            }
+                            onCompetitionFetchSuccess.onFetchProjectsSuccess(workshops);
+
+                        }else onCompetitionFetchSuccess.onFetchError(new Exception("ERROR 404 : NO DATA FOUND."));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        onCompetitionFetchSuccess.onFetchError(error.toException());
+                    }
+                });
     }
 
     private void loadWorkshops() {

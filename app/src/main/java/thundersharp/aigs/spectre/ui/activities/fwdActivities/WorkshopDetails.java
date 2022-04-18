@@ -1,6 +1,7 @@
 package thundersharp.aigs.spectre.ui.activities.fwdActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class WorkshopDetails extends AppCompatActivity {
             Toast.makeText(this, "Internal error.", Toast.LENGTH_SHORT).show();
         }
 
+        ((Toolbar)findViewById(R.id.toolbar)).setOnClickListener(view -> finish());
         Glide.with(this).load(workshops.COVER).into((ImageView)findViewById(R.id.topImage));
 
         highlights = findViewById(R.id.heighlights);
