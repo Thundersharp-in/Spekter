@@ -78,6 +78,7 @@
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_coarse_contents.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_competation_home.xml" value="0.2152777777777778" />
+        <entry key="app/src/main/res/layout/activity_competition_detail.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.3253168661403778" />
         <entry key="app/src/main/res/layout/activity_deeplinking.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.125" />
@@ -153,7 +154,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

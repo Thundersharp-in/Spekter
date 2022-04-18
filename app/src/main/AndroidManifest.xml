@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activities.fwdActivities.CompetitionDetail"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.fwdActivities.WorkshopDetails"
             android:exported="false" />
         <activity
