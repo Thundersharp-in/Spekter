@@ -46,7 +46,7 @@ public class WorkshopDetails extends AppCompatActivity {
 
 
         for (String s:getData()) {
-            Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip, recyclerView, false);
+            Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip, recyclerView, false).findViewById(R.id.chip_items);
             chip.setText(s);
             recyclerView.addView(chip);
         }
