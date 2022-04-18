@@ -211,8 +211,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                        android:id="@+id/details"/>
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:id="@+id/details"
+                        android:scrollbars="none"
+                        />
 
                 </LinearLayout>
 
@@ -267,7 +269,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:id="@+id/extras"/>
+                        android:id="@+id/extras"
+                        android:scrollbars="none"
+                        />
 
                 </LinearLayout>
 

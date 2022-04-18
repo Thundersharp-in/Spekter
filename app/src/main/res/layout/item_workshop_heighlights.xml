@@ -7,19 +7,21 @@
     android:layout_height="wrap_content"
     android:minHeight="35dp"
     android:minWidth="120dp"
-    android:background="@drawable/button_curved_round"
+    android:background="@null"
     android:elevation="7dp"
-    android:layout_margin="5dp"
+    android:layout_margin="2dp"
     tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/timeHOlder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textColor="#C6C6C6"
         android:textSize="13sp"
-        android:maxLines="1"
+        android:drawableStart="@drawable/ic_outline_verified_24"
+        android:drawableTint="#c6c6c6"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical|start"
         android:paddingHorizontal="15dp"
         android:paddingVertical="5dp"
         android:text="7 AM - 10 AM egegeirugirugiegueirghei"/>

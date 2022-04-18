@@ -1,32 +1,26 @@
 package thundersharp.aigs.spectre.core.adapters;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.chip.Chip;
-
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
-import thundersharp.aigs.spectre.ui.activities.passes.BookPasses;
 
-public class WorkShopHeilightsAdapter extends RecyclerView.Adapter<WorkShopHeilightsAdapter.ViewHoldr> {
+public class WorkShopDetailsAdapter extends RecyclerView.Adapter<WorkShopDetailsAdapter.ViewHoldr> {
 
     List<String> time;
     Integer selectedPos;
+    Context context;
 
-    public WorkShopHeilightsAdapter(List<String> time) {
+    public WorkShopDetailsAdapter(List<String> time, Context context) {
         this.time = time;
+        this.context = context;
     }
 
 
@@ -34,12 +28,12 @@ public class WorkShopHeilightsAdapter extends RecyclerView.Adapter<WorkShopHeili
     @Override
     public ViewHoldr onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ViewHoldr(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chip,parent,false));
+        return new ViewHoldr(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_workshop_heighlights,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        holder.chip.setText(time.get(position));
+        holder.text.setText(time.get(position));
     }
 
     @Override
@@ -49,14 +43,13 @@ public class WorkShopHeilightsAdapter extends RecyclerView.Adapter<WorkShopHeili
 
     class ViewHoldr extends RecyclerView.ViewHolder {
 
-        //private TextView timeH;
+        private TextView text;
         //private RelativeLayout container;
-        private Chip chip;
+
 
         public ViewHoldr(@NonNull View itemView) {
             super(itemView);
-            chip = itemView.findViewById(R.id.chip_items);
-            //timeH = itemView.findViewById(R.id.timeHOlder);
+            text = itemView.findViewById(R.id.timeHOlder);
             //container = itemView.findViewById(R.id.container);
 
         }
