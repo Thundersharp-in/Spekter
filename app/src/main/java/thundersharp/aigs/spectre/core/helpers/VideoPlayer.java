@@ -11,6 +11,10 @@ import thundersharp.aigs.spectre.core.interfaces.OnVideoReadyCallbacksListener;
 
 public class VideoPlayer {
 
+    private static VideoPlayer videoPlayer = null;
+
+    private int flag = 00;
+
     private VideoView videoView;
     private String customUrl;
     private int resourceId;
@@ -22,11 +26,19 @@ public class VideoPlayer {
     private OnVideoReadyCallbacksListener onVideoReadyCallbacksListener;
 
     public static VideoPlayer createInstance(Activity activity){
-        return new VideoPlayer(activity);
+        if (videoPlayer == null) videoPlayer = new VideoPlayer(activity);
+        return videoPlayer;
     }
 
     public VideoPlayer(Activity activity){
+        flag = 0;
         this.activity = activity;
+    }
+
+    public int getFlag(){return flag;}
+
+    public void updateFlag(int flag){
+        this.flag = flag;
     }
 
     public VideoPlayer setVideoView(VideoView videoView){
@@ -63,19 +75,22 @@ public class VideoPlayer {
     }
 
     private void playVideo(){
-        if (playDefault){
-            playDefaultVideo();
-        }else if (!playDefault && customUrl == null && resourceId == 0){
-            onVideoReadyCallbacksListener.onVideoError(new VideoPlayerException("No video resource found !"));
-        }else {
-            String url = "";
-            if (resourceId != 0)
-                url = "android.resource://" +activity.getPackageName()+ "/"+ resourceId;
-                else
-                url = customUrl;
 
-            playByCustomUrl(url);
-        }
+            if (playDefault) {
+                playDefaultVideo();
+
+            } else if (!playDefault && customUrl == null && resourceId == 0) {
+                onVideoReadyCallbacksListener.onVideoError(new VideoPlayerException("No video resource found !"));
+            } else {
+                String url = "";
+                if (resourceId != 0)
+                    url = "android.resource://" + activity.getPackageName() + "/" + resourceId;
+                else
+                    url = customUrl;
+
+                playByCustomUrl(url);
+            }
+
     }
 
     private void playDefaultVideo() {
@@ -100,6 +115,7 @@ public class VideoPlayer {
             }
 
             onVideoReadyCallbacksListener.onVideoPlayBackStarted(videoView);
+            //flag =90;
         });
 
         videoView.setOnCompletionListener(mediaPlayer -> {
@@ -139,7 +155,10 @@ public class VideoPlayer {
         videoView.setOnCompletionListener(mediaPlayer -> {
             if (playInLoop) videoView.start();
             onVideoReadyCallbacksListener.onVideoCompleated(videoView);
+            //flag =908;
         });
+
+
 
     }
 

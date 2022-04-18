@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,6 +80,7 @@ public class HomeActivity extends AppCompatActivity {
             alphaAnimation.setRepeatCount(0);
             videoHOlder.setAnimation(alphaAnimation);
             videoHOlder.setVisibility(View.GONE);
+            videoPlayer.updateFlag(340);
         });
 
         videoPlayer = VideoPlayer
@@ -91,11 +93,13 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onVideoPlayBackStarted(VideoView videoView) {
-                        videoHOlder.setVisibility(View.VISIBLE);
-                        AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
-                        alphaAnimation.setDuration(1000);
-                        alphaAnimation.setRepeatCount(0);
-                        videoHOlder.setAnimation(alphaAnimation);
+                        if (videoPlayer.getFlag() == 0) {
+                            videoHOlder.setVisibility(View.VISIBLE);
+                            AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+                            alphaAnimation.setDuration(1000);
+                            alphaAnimation.setRepeatCount(0);
+                            videoHOlder.setAnimation(alphaAnimation);
+                        }
                     }
 
                     @Override
@@ -110,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onVideoError(VideoPlayerException videoPlayerException) {
-
+                        Toast.makeText(HomeActivity.this, ""+videoPlayerException.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -120,10 +124,21 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //if (videoView != null )
+    }
 
     @Override
     public void onBackPressed() {
         Progressbars.getInstance().displayExitDialog(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (videoPlayer != null) videoPlayer.updateFlag(0);
     }
 }
 
