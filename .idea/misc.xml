@@ -104,7 +104,7 @@
         <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_video_player.xml" value="0.19923044035912782" />
-        <entry key="app/src/main/res/layout/activity_workshop_details.xml" value="0.2956298334412917" />
+        <entry key="app/src/main/res/layout/activity_workshop_details.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_workshops_home.xml" value="0.16379310344827586" />
         <entry key="app/src/main/res/layout/bottom_sheet_feedback.xml" value="0.165" />
         <entry key="app/src/main/res/layout/bottom_sheet_projects_actions.xml" value="0.19880290722530997" />
@@ -140,7 +140,7 @@
         <entry key="app/src/main/res/layout/item_workshop_heighlights.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_workshop_holder.xml" value="0.22245178222656253" />
         <entry key="app/src/main/res/layout/logout_bottom_sheet.xml" value="0.19752030782385635" />
-        <entry key="app/src/main/res/layout/pager_item.xml" value="0.266302490234375" />
+        <entry key="app/src/main/res/layout/pager_item.xml" value="0.11" />
         <entry key="app/src/main/res/layout/player_custom_ui.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.19923044035912782" />

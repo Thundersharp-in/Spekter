@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -34,22 +34,24 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
 import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
 import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-import thundersharp.aigs.spectre.ui.activities.home.CompetationHome;
+
+import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
+import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
+import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
+import thundersharp.aigs.spectre.ui.activities.home.CompetationHome;
 import thundersharp.aigs.spectre.ui.activities.home.InitiativesHomes;
 import thundersharp.aigs.spectre.ui.activities.home.InnovativeChallengeHome;
 import thundersharp.aigs.spectre.ui.activities.home.KnowUs;
-import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
-import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
-import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
 import thundersharp.aigs.spectre.ui.activities.home.UpcommingEventsHome;
 import thundersharp.aigs.spectre.ui.activities.home.WorkshopsHome;
-import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
+import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
 
 
 public class HomeFragment extends Fragment implements
@@ -59,7 +61,7 @@ public class HomeFragment extends Fragment implements
 
     private SliderLayout slider;
     private GoogleMap mMap;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -136,7 +138,7 @@ public class HomeFragment extends Fragment implements
         });
 
 
-        //viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
+        viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
 
         return root;
     }

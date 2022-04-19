@@ -1,88 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#181920"
+    android:background="#262626"
     android:minHeight="170dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/photo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/instagram"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
-
-    <ImageView
-        android:id="@+id/quote_icon"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/photo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        app:tint="#B3B0B0"
-        android:src="@drawable/ic_outline_format_quote_24" />
+        android:layout_centerInParent="true"
+        android:layout_marginVertical="10dp">
 
-    <TextView
-        android:id="@+id/data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/quote_icon"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="0dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/calibri"
-        android:maxLines="4"
-        android:text="Hi, Hrishikesh Prateek welcome to spectre you are just a step away from the platform! Verify your acharya email id by clicking on the link we have sent you."
-        android:textAlignment="center"
-        android:textColor="#92959A"
-        android:textSize="17sp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/instagram"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/data"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-        <View
-            android:layout_width="200dp"
-            android:layout_height="0.5dp"
-            android:background="#BFBFBF"/>
-
-        <TextView
-            android:id="@+id/name"
+        <ImageView
+            android:id="@+id/quote_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ellipsize="end"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/roboto_medium"
-            android:maxLines="1"
-            android:text="Hrishikesh Prateek"
-            android:textAlignment="center"
-            android:textColor="#C0C1C3"
-            android:textSize="15sp" />
+            android:layout_below="@id/photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            app:tint="#B3B0B0"
+            android:src="@drawable/ic_outline_format_quote_24" />
 
         <TextView
-            android:id="@+id/design"
+            android:id="@+id/data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/quote_icon"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="0dp"
             android:ellipsize="end"
-            android:fontFamily="@font/calibrib"
-            android:layout_gravity="center_horizontal"
-            android:maxLines="1"
-            android:textAllCaps="true"
-            android:text="Director, Thundersharp"
+            android:fontFamily="@font/calibri"
+            android:maxLines="4"
+            android:text="Hi, Hrishikesh Prateek welcome to spectre you are just a step away from the platform! Verify your acharya email id by clicking on the link we have sent you."
             android:textAlignment="center"
-            android:textColor="#DFDFDF"
-            android:textSize="15sp" />
+            android:textColor="#92959A"
+            android:textSize="17sp" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/data"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            <View
+                android:layout_width="200dp"
+                android:layout_height="0.5dp"
+                android:background="#BFBFBF"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_medium"
+                android:maxLines="1"
+                android:text="Hrishikesh Prateek"
+                android:textAlignment="center"
+                android:textColor="#C0C1C3"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/design"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/calibrib"
+                android:layout_gravity="center_horizontal"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:text="Director, Thundersharp"
+                android:textAlignment="center"
+                android:textColor="#DFDFDF"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
 
 
 </RelativeLayout>
