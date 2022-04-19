@@ -19,11 +19,8 @@ import java.util.List;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.CompetitionFileHolderAdapter;
 import thundersharp.aigs.spectre.core.adapters.WorkShopDetailsAdapter;
-import thundersharp.aigs.spectre.core.adapters.WorkshopFileHolderAdapter;
 import thundersharp.aigs.spectre.core.models.CompetitionFiles;
 import thundersharp.aigs.spectre.core.models.Competitions;
-import thundersharp.aigs.spectre.core.models.WorkshopFiles;
-import thundersharp.aigs.spectre.core.models.Workshops;
 
 public class CompetitionDetail extends AppCompatActivity {
 
@@ -65,22 +62,22 @@ public class CompetitionDetail extends AppCompatActivity {
         files.setAdapter(new CompetitionFileHolderAdapter(getFileList(),this));
     }
 
-    private List<String> getDetails(){
-        return new ArrayList<>(Arrays.asList("On-Line Group leader trainings are highly interactive, dynamic small-group training experiences (no more than 15 participants per training).",
+    private String[] getDetails(){
+        return new String[]{"On-Line Group leader trainings are highly interactive, dynamic small-group training experiences (no more than 15 participants per training).",
                 "As more group leaders are exploring how to deliver groups and individual services to families and children online during the Covid-19",
                 "Hands on to real world projects",
                 " Home workshops typically contain a workbench, hand tools, power tools and other hardware. ",
                 "The organisation and contents of laboratories are determined by the differing requirements of the specialists working within. ",
-                "Joyful"));
+                "Joyful"};
     }
 
-    private List<String> getExtras(){
-        return new ArrayList<>(Arrays.asList("Project Discussion",
+    private String[] getExtras(){
+        return new String[]{"Project Discussion",
                 "Have an eye to catch the amazing moments and a mind to turn a waste free world with the following events.",
                 "Hands on to real world projects",
                 "Teamwork",
                 "CORONA The annual technical fest of NIT Patna has become one of the biggest technical fest of the country.",
-                "Creativity is a wild mind and a disciplined eye. It is an art to explore your ideas to extraordinary way from the ordinary work."));
+                "Creativity is a wild mind and a disciplined eye. It is an art to explore your ideas to extraordinary way from the ordinary work."};
     }
 
     private List<String> getData(){

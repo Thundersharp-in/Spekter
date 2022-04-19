@@ -106,6 +106,26 @@ public class TimeUtils {
 
     }
 
+    public static String getTimeInStringFromTimeStamp(String timeStamp) throws NumberFormatException {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        long time;
+        time = Long.parseLong(timeStamp);
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("EEEE, MMM dd, yyyy", cal).toString();
+        return date;
+
+    }
+
+    public static String getClockFromTimeStamp(String timestamp) throws NumberFormatException {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        long time;
+        time = Long.parseLong(timestamp);
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("h:mm a", cal).toString();
+        return date;
+
+    }
+
     public static String getDateFromTimeStamp(String timeStamp) throws NumberFormatException {
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         long time;

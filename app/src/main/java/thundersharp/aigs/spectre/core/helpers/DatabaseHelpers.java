@@ -31,11 +31,13 @@ import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
+import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
+import thundersharp.aigs.spectre.core.models.WorkshopDetail;
 import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 
@@ -52,6 +54,7 @@ public class DatabaseHelpers {
     private ProjectListner.fetchParticipants fetchParticipants;
     private OnWorkshopFetchSuccess onWorkshopFetchSuccess;
     private OnCompetitionFetchSuccess onCompetitionFetchSuccess;
+    private WorkshopDattaLoader workshopDattaLoader;
 
     private Activity activity;
 
@@ -60,6 +63,7 @@ public class DatabaseHelpers {
      *
      */
     private long projectId;
+    private String workshopId;
 
     public static DatabaseHelpers getInstance(){
         if (databaseHelpers == null){
@@ -73,6 +77,11 @@ public class DatabaseHelpers {
         return this;
     }
 
+    public DatabaseHelpers setWorkshopId(String workshopId){
+        this.workshopId = workshopId;
+        return this;
+    }
+
     public DatabaseHelpers setActivity(Activity activity){
         this.activity = activity;
         return this;
@@ -81,6 +90,33 @@ public class DatabaseHelpers {
     public void setFetchParticipantsListeners(ProjectListner.fetchParticipants participantsListeners){
         this.fetchParticipants = participantsListeners;
         fetchParticipantsNow();
+    }
+
+    public void setWorkshopDattaLoader(WorkshopDattaLoader workshopDattaLoader){
+        this.workshopDattaLoader = workshopDattaLoader;
+        fetchWorkShopDetails(workshopId);
+    }
+
+    private void fetchWorkShopDetails(String workshopId) {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.WORKSHOPS)
+                .child(CONSTANTS.WORKSHOP_DETAILS)
+                .child(workshopId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            workshopDattaLoader.onDataFetchSuccess(snapshot.getValue(WorkshopDetail.class));
+                        }else workshopDattaLoader.onDataError(new Exception("No data found for workshop id "+workshopId));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        workshopDattaLoader.onDataError(error.toException());
+                    }
+                });
+
     }
 
     public DatabaseHelpers setOnWorkshopsFetchListener(OnWorkshopFetchSuccess onWorkshopFetchSuccess){

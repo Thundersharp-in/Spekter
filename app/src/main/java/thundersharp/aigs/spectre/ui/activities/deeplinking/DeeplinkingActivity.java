@@ -22,8 +22,10 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
+import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ProjectsInfo;
+import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
 public class DeeplinkingActivity extends AppCompatActivity {
 
@@ -41,34 +43,70 @@ public class DeeplinkingActivity extends AppCompatActivity {
                     Uri deepLink = null;
                     if (pendingDynamicLinkData != null) {
                         deepLink = pendingDynamicLinkData.getLink();
-                        String projectId = deepLink.toString().substring(deepLink.toString().indexOf("=")+1,deepLink.toString().indexOf("&"));
-                        String actionType = deepLink.toString().substring(deepLink.toString().indexOf("%"));
+
+                        if (deepLink.toString().startsWith("https://spekteraigs.page.link/projects/")) {
+
+                            String projectId = deepLink.toString().substring(deepLink.toString().indexOf("=") + 1, deepLink.toString().indexOf("&"));
+                            String actionType = deepLink.toString().substring(deepLink.toString().indexOf("%"));
 
 
-                        FirebaseDatabase
-                                .getInstance()
-                                .getReference(CONSTANTS.EXHIBITION)
-                                .child(CONSTANTS.PROJECTS)
-                                .child(projectId)
-                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        if (snapshot.exists()){
-                                            startActivity(new Intent(DeeplinkingActivity.this, ProjectsInfo.class)
-                                                    .putExtra("type",true)
-                                                    .putExtra("projects_basic_info",snapshot.getValue(ProjectBasicInfo.class)));
-                                        }else {
-                                            Toast.makeText(DeeplinkingActivity.this, "Cannot go to the project", Toast.LENGTH_SHORT).show();
+                            FirebaseDatabase
+                                    .getInstance()
+                                    .getReference(CONSTANTS.EXHIBITION)
+                                    .child(CONSTANTS.PROJECTS)
+                                    .child(projectId)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()) {
+                                                startActivity(new Intent(DeeplinkingActivity.this, ProjectsInfo.class)
+                                                        .putExtra("type", true)
+                                                        .putExtra("projects_basic_info", snapshot.getValue(ProjectBasicInfo.class)));
+                                            } else {
+                                                Toast.makeText(DeeplinkingActivity.this, "Cannot go to the project", Toast.LENGTH_SHORT).show();
+                                            }
+                                            finish();
                                         }
-                                        finish();
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-                                        Toast.makeText(DeeplinkingActivity.this, "Cannot go to the project. "+error.getMessage(), Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                });
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(DeeplinkingActivity.this, "Cannot go to the project. " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    });
+                        }else if (deepLink.toString().startsWith("https://spekteraigs.page.link/workshops/")){
+                            String projectId = deepLink.toString().substring(deepLink.toString().indexOf("=") + 1, deepLink.toString().indexOf("&"));
+
+                            FirebaseDatabase
+                                    .getInstance()
+                                    .getReference(CONSTANTS.WORKSHOPS)
+                                    .child(CONSTANTS.WORKSHOP_INFO)
+                                    .child(projectId)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()){
+                                                startActivity(new Intent(DeeplinkingActivity.this, WorkshopDetails.class)
+                                                        .putExtra("workshop_info", snapshot.getValue(Workshops.class)));
+
+                                            }else {
+                                                Toast.makeText(DeeplinkingActivity.this, "Cannot go to the workshop", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            finish();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(DeeplinkingActivity.this, "Cannot go to the workshop", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    });
+
+
+                        }else {
+                            Toast.makeText(this, "This version of the app couldn't handle this link. ", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
 

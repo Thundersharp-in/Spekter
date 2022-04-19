@@ -68,4 +68,6 @@ public class CONSTANTS {
     public static final String COMMON_DATA = "COMMON_DATA";
     public static final String WORKSHOPS = "WORKSHOPS";
     public static final String WORKSHOP_INFO = "WORKSHOP_INFO";
+    public static final String WORKSHOP_DETAILS = "WORKSHOP_DETAILS";
+
 }

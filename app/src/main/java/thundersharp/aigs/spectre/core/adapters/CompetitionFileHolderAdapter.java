@@ -16,7 +16,6 @@ import thundersharp.aigs.pdfviwer.PdfLoader;
 import thundersharp.aigs.pdfviwer.PdfModel;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.CompetitionFiles;
-import thundersharp.aigs.spectre.core.models.WorkshopFiles;
 
 public class CompetitionFileHolderAdapter extends RecyclerView.Adapter<CompetitionFileHolderAdapter.ViewHolder>{
 

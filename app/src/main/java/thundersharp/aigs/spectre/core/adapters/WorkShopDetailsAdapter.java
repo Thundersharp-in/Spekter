@@ -14,11 +14,11 @@ import thundersharp.aigs.spectre.R;
 
 public class WorkShopDetailsAdapter extends RecyclerView.Adapter<WorkShopDetailsAdapter.ViewHoldr> {
 
-    List<String> time;
+    String[] time;
     Integer selectedPos;
     Context context;
 
-    public WorkShopDetailsAdapter(List<String> time, Context context) {
+    public WorkShopDetailsAdapter(String[] time, Context context) {
         this.time = time;
         this.context = context;
     }
@@ -33,12 +33,12 @@ public class WorkShopDetailsAdapter extends RecyclerView.Adapter<WorkShopDetails
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoldr holder, int position) {
-        holder.text.setText(time.get(position));
+        holder.text.setText(time[position]);
     }
 
     @Override
     public int getItemCount() {
-        if (time != null) return time.size(); else return 0;
+        if (time != null) return time.length; else return 0;
     }
 
     class ViewHoldr extends RecyclerView.ViewHolder {
