@@ -120,9 +120,9 @@ public class InnovativeChallengeHome extends AppCompatActivity {
         String[] chipD = workshopDetails.HIGHLIGHTS.split("\\.");
 
         for (String s:chipD) {
-            //Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip,highlights, false);
-            //chip.setText(s);
-            //highlights.addView(chip);
+            Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip,highlights, false);
+            chip.setText(s);
+            highlights.addView(chip);
         }
 
         ((TextView)findViewById(R.id.loc)).setText(workshopDetails.LOCATION);

@@ -26,6 +26,7 @@ import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ProjectsInfo;
 import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
+import thundersharp.aigs.spectre.ui.activities.home.InnovativeChallengeHome;
 
 public class DeeplinkingActivity extends AppCompatActivity {
 
@@ -104,6 +105,8 @@ public class DeeplinkingActivity extends AppCompatActivity {
                                     });
 
 
+                        }else if (deepLink.toString().startsWith("https://spekteraigs.page.link/ic/")){
+                            startActivity(new Intent(DeeplinkingActivity.this, InnovativeChallengeHome.class));
                         }else {
                             Toast.makeText(this, "This version of the app couldn't handle this link. ", Toast.LENGTH_SHORT).show();
                         }
