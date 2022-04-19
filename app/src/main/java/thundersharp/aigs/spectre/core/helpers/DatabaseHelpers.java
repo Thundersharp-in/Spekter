@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import thundersharp.aigs.spectre.core.interfaces.ChallengeLoader;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
@@ -34,6 +35,7 @@ import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
+import thundersharp.aigs.spectre.core.models.InovativeChallangeDetails;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
@@ -64,6 +66,7 @@ public class DatabaseHelpers {
      */
     private long projectId;
     private String workshopId;
+    private ChallengeLoader challengeLoader;
 
     public static DatabaseHelpers getInstance(){
         if (databaseHelpers == null){
@@ -90,6 +93,32 @@ public class DatabaseHelpers {
     public void setFetchParticipantsListeners(ProjectListner.fetchParticipants participantsListeners){
         this.fetchParticipants = participantsListeners;
         fetchParticipantsNow();
+    }
+
+    public void setChallengeLoader(ChallengeLoader challengeLoader){
+        this.challengeLoader = challengeLoader;
+        loadChallange(challengeLoader);
+    }
+
+    private void loadChallange(ChallengeLoader challengeLoader) {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.CHALLENGES)
+                .child(CONSTANTS.INFO)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            challengeLoader.OnChallengeLoadSuccess(snapshot.getValue(InovativeChallangeDetails.class));
+                        }else challengeLoader.OnLoadError(new Exception("No data found for workshop id "+workshopId));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        challengeLoader.OnLoadError(error.toException());
+                    }
+                });
+
     }
 
     public void setWorkshopDattaLoader(WorkshopDattaLoader workshopDattaLoader){

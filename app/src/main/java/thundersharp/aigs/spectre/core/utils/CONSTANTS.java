@@ -70,4 +70,6 @@ public class CONSTANTS {
     public static final String WORKSHOP_INFO = "WORKSHOP_INFO";
     public static final String WORKSHOP_DETAILS = "WORKSHOP_DETAILS";
 
+    public static final String CHALLENGES = "CHALLENGES";
+    public static final String INFO = "INFO";
 }
