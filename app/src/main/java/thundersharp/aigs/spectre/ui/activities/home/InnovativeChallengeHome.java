@@ -159,7 +159,7 @@ public class InnovativeChallengeHome extends AppCompatActivity {
         findViewById(R.id.register).setOnClickListener(n->{
             new AlertDialog.Builder(this)
                     .setCancelable(false)
-                    .setMessage("Payment for this workshop (If required) will be collected later after submission of this form.")
+                    .setMessage("One account can submit a solution for the problem statement only once.")
                     .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -170,13 +170,20 @@ public class InnovativeChallengeHome extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                                alertDialog.show();
-                                dialogInterface.dismiss();
-                                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                                builder.setToolbarColor(Color.parseColor("#262626"));
-                                CustomTabsIntent customTabsIntent = builder.build();
-                                customTabsIntent.launchUrl(InnovativeChallengeHome.this, Uri.parse(workshopDetails.SUBMISSION_LINK));
-                                alertDialog.dismiss();
+                                try {
+                                    if (Long.parseLong(workshopDetails.SUBMISSION_DATE) > System.currentTimeMillis()) {
+                                        alertDialog.show();
+                                        dialogInterface.dismiss();
+                                        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                                        builder.setToolbarColor(Color.parseColor("#262626"));
+                                        CustomTabsIntent customTabsIntent = builder.build();
+                                        customTabsIntent.launchUrl(InnovativeChallengeHome.this, Uri.parse(workshopDetails.SUBMISSION_LINK));
+                                        alertDialog.dismiss();
+                                    } else
+                                        Toast.makeText(InnovativeChallengeHome.this, "Last date has passed", Toast.LENGTH_SHORT).show();
+                                }catch (Exception e){
+                                    Toast.makeText(InnovativeChallengeHome.this, "INTERNAL ERROR ", Toast.LENGTH_SHORT).show();
+                                }
                             }else{
                                 Toast.makeText(InnovativeChallengeHome.this, "Please log in ", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(InnovativeChallengeHome.this, IntroActivity.class));

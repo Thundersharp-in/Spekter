@@ -107,6 +107,7 @@ public class DeeplinkingActivity extends AppCompatActivity {
 
                         }else if (deepLink.toString().startsWith("https://spekteraigs.page.link/ic/")){
                             startActivity(new Intent(DeeplinkingActivity.this, InnovativeChallengeHome.class));
+                            finish();
                         }else {
                             Toast.makeText(this, "This version of the app couldn't handle this link. ", Toast.LENGTH_SHORT).show();
                         }
