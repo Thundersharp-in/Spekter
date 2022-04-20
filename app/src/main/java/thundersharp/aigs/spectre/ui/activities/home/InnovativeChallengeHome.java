@@ -1,24 +1,22 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,12 +44,9 @@ import thundersharp.aigs.spectre.core.interfaces.ChallengeLoader;
 import thundersharp.aigs.spectre.core.models.InovativeChallangeDetails;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.RELATED_FILES;
-import thundersharp.aigs.spectre.core.models.WorkshopDetail;
-import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.ui.activities.auth.IntroActivity;
-import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
 public class InnovativeChallengeHome extends AppCompatActivity {
 

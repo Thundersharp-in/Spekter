@@ -10,6 +10,7 @@
 
     <RelativeLayout
         android:id="@+id/loader"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -113,7 +114,7 @@
                         android:drawablePadding="10dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint="Search for workshops by name, description, category "
+                        android:hint="Search for Events by name, description "
                         android:maxLines="1"
                         android:paddingHorizontal="5dp"
                         android:textColor="#C5C3C3"
@@ -127,6 +128,7 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/event_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"

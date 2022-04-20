@@ -136,6 +136,8 @@
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_time_slots.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_upcomming_events.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_upcomming_holder.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_workshop_heighlights.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_workshop_holder.xml" value="0.22245178222656253" />
