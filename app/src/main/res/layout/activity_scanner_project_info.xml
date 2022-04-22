@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20sp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/calibrib"
                     android:gravity="center_vertical"
@@ -197,13 +197,47 @@
                         android:layout_width="0dp"
                         android:layout_height="220dp"
                         app:cardCornerRadius="20dp"
-                        android:elevation="5dp"
+                        android:elevation="0dp"
+                        app:cardBackgroundColor="#000"
                         app:cardUseCompatPadding="true"
                         android:layout_weight="1">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Read in depth,\nSee here :)"
+                                android:layout_marginHorizontal="10dp"
+                                android:elevation="5dp"
+                                android:textSize="18sp"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/go_one"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:elevation="4dp"
+                                android:tint="#fff"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:background="@drawable/button_curved_round"/>
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/blk_gradiant"
+                                android:elevation="3dp"/>
+
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -223,12 +257,46 @@
                         android:layout_height="220dp"
                         app:cardCornerRadius="20dp"
                         app:cardUseCompatPadding="true"
-                        android:elevation="5dp"
+                        android:elevation="0dp"
+                        app:cardBackgroundColor="#000"
                         android:layout_weight="1">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#fff"
+                                android:text="Meet the Team,\nMeet here !"
+                                android:layout_marginHorizontal="10dp"
+                                android:elevation="5dp"
+                                android:textSize="18sp"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/roboto_medium"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/go_two"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:elevation="4dp"
+                                android:tint="#fff"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:background="@drawable/button_curved_round"/>
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/blk_gradiant"
+                                android:elevation="3dp"/>
 
                             <FrameLayout
                                 android:layout_width="match_parent"
@@ -258,30 +326,163 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="130dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="5dp"
                         app:cardBackgroundColor="#262626">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginTop="20dp"
+                                android:textColor="#d3d3d3"
+                                android:text="Make it yourself"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="18sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_toStartOf="@id/go_three"
+                                android:fontFamily="@font/roboto"
+                                android:maxLines="3"
+                                android:ellipsize="end"
+                                android:includeFontPadding="true"
+                                android:text="Liked and want to make it yourself?\nFind the complete parts list and instructions here."
+                                android:textColor="#BABABA"
+                                android:textSize="14sp" />
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/go_three"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/button_curved_round"
+                                android:backgroundTint="#000"
+                                android:gravity="center"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:tint="#fff" />
+
+                        </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="130dp"
                         app:cardCornerRadius="20dp"
                         android:layout_marginTop="10dp"
                         app:cardElevation="5dp"
                         app:cardBackgroundColor="#262626">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginTop="20dp"
+                                android:textColor="#d3d3d3"
+                                android:text="Project Gallery"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="18sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginBottom="20dp"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="true"
+                                android:text="See project's Images and videos\nwhile it was made and tested."
+                                android:textColor="#BABABA"
+                                android:textSize="14sp" />
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/go_five"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:backgroundTint="#000"
+                                android:tint="#fff"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:background="@drawable/button_curved_round"/>
+
+                        </RelativeLayout>
+
 
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="130dp"
                         app:cardCornerRadius="20dp"
                         android:layout_marginTop="10dp"
                         app:cardElevation="5dp"
                         app:cardBackgroundColor="#262626">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginTop="20dp"
+                                android:textColor="#d3d3d3"
+                                android:text="Donate to the team"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="18sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20sp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_alignParentBottom="true"
+                                android:textColor="#BABABA"
+                                android:includeFontPadding="true"
+                                android:text="Liked the project, Donate to the team\nTo cheer them up."
+                                android:fontFamily="@font/roboto"
+                                android:textSize="14sp"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/go_four"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:backgroundTint="#000"
+                                android:tint="#fff"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:background="@drawable/button_curved_round"/>
+
+                        </RelativeLayout>
+
 
                     </androidx.cardview.widget.CardView>
 
