@@ -104,7 +104,6 @@ public class BarCodeScanner extends AppCompatActivity {
     }
 
     private void initialiseDetectorsAndSources() {
-
         Toast.makeText(getApplicationContext(), "Scanner started", Toast.LENGTH_SHORT).show();
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.ALL_FORMATS)

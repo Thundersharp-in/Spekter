@@ -100,7 +100,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_projects_info.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
-        <entry key="app/src/main/res/layout/activity_scanner_project_info.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_scanner_project_info.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_service_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
