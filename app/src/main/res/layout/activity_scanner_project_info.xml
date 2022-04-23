@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".ui.activities.exhibition.ScannerProjectInfo"
-    >
+    tools:context=".ui.activities.exhibition.ScannerProjectInfo">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -124,8 +123,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -178,8 +176,6 @@
                         android:text="This section will hold the small description about the project and can be updated dynamically."
                         android:textColor="#d3d3d3"
                         android:textSize="16sp" />
-
-
 
                 </LinearLayout>
 
@@ -269,7 +265,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="#fff"
-                                android:text="Meet the Team,\nMeet here !"
+                                android:text="Meet the Team,\nClick below !"
                                 android:layout_marginHorizontal="10dp"
                                 android:elevation="5dp"
                                 android:textSize="18sp"
@@ -429,7 +425,6 @@
 
                         </RelativeLayout>
 
-
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
@@ -471,15 +466,15 @@
                                 android:id="@+id/go_four"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:layout_alignParentBottom="true"
                                 android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:gravity="center"
+                                android:background="@drawable/button_curved_round"
                                 android:backgroundTint="#000"
-                                android:tint="#fff"
+                                android:gravity="center"
                                 android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-                                android:background="@drawable/button_curved_round"/>
+                                android:tint="#fff" />
 
                         </RelativeLayout>
 

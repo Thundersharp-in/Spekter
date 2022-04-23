@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="#000">
+
+    <TextView
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/calibrib"
+        android:text="Select a amount to donate"
+        android:textColor="#EAEAEA"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/top"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:weightSum="3">
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressTint="#E91E63"
+            android:thumbTint="#E91E63"
+            android:progressBackgroundTint="#fff"
+            android:max="2000"/>
+
+        <EditText
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:minWidth="120dp"
+            android:background="@drawable/edittext_curved"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="#fff"
+            android:maxLines="1"
+            android:paddingHorizontal="15dp"
+            android:ellipsize="end"
+            android:text="₹150"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/curved_button"
+            android:text="Donate"
+            android:textColor="#fff" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
