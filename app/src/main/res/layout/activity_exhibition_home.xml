@@ -39,6 +39,7 @@
                 android:indeterminate="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:indeterminateTint="#E91E63"
                 android:progress="50"
                 android:progressTint="#fff" />
 

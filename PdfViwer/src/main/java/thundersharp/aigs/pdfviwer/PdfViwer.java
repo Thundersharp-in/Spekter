@@ -69,12 +69,15 @@ public class PdfViwer extends AppCompatActivity implements OnPageChangeListener,
             }
         });
 
+
         progressbokview=findViewById(R.id.progressbokview);
         pdfView= findViewById(R.id.pdfViewone);
         booksDisplayModel = (PdfModel) getIntent().getSerializableExtra("data");
         bookkeys = booksDisplayModel.ID;
         pdfFileNameUrl = booksDisplayModel.SHORT_DESCRIPTION;
         pdfFileUrl = booksDisplayModel.URL;
+
+        toolbar.setTitle(booksDisplayModel.TITLE);
 
         if (dofileexistinStorage(bookkeys)){
             File mybook = new File(getExternalFilesDir(null), bookkeys+".pdf");
@@ -162,10 +165,12 @@ public class PdfViwer extends AppCompatActivity implements OnPageChangeListener,
                         public void loadComplete(int nbPages) {
                             PdfDocument.Meta meta = pdfView.getDocumentMeta();
                             printBookmarksTree(pdfView.getTableOfContents(), "-");
+                            progressbokview.setVisibility(View.GONE);
                         }
                     })
                     .scrollHandle(new DefaultScrollHandle(PdfViwer.this))
                     .load();
+
         }
     }
 

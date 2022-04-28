@@ -21,13 +21,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".ui.activities.fwdActivities.CompetitionDetail"
-            android:screenOrientation="portrait"
+            android:name=".ui.activities.exhibition.ProjectGallery"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.fwdActivities.WorkshopDetails"
-            android:screenOrientation="portrait"
+            android:name=".ui.activities.fwdActivities.CompetitionDetail"
             android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.fwdActivities.WorkshopDetails"
+            android:exported="false"
+            android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.activities.exhibition.ScannerProjectInfo"
@@ -37,12 +40,12 @@
             android:theme="@style/Theme.SpectreAIGS.NoActionBar" />
         <activity
             android:name=".ui.activities.feedback.EventFeedback"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.feedback.FacultyFeedback"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activities.deeplinking.DeeplinkingActivity"
@@ -65,36 +68,36 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ui.activities.lectures.FilterActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".core.browser.Browser"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.lectures.CoarseContents"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.lectures.CourseDetailActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.lectures.ServiceMain"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.passes.BookPasses"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.exhibition.ProjectsInfo"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.passes.TicketViewer"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.home.InitiativesHomes"
             android:exported="false"
@@ -138,8 +141,8 @@
         <activity
             android:name=".ui.activities.barcode.BarCodeScanner"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ui.activities.auth.Register"
@@ -154,8 +157,8 @@
         <activity
             android:name=".ui.activities.auth.IntroActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ui.activities.auth.LoginActivity"
@@ -165,8 +168,8 @@
         <activity
             android:name=".ui.activities.home.HomeActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".startup.SplashScreen"
