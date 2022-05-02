@@ -151,6 +151,7 @@ public class HomeFragment extends Fragment implements
     private void setupCrousel(){
         ArrayList<String> listUrl = new ArrayList<>();
         Bundle bundle = new Bundle();
+        int d;
 
         FirebaseDatabase
                 .getInstance()
