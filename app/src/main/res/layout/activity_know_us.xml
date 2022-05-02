@@ -59,16 +59,17 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true">
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tabTextAppearance="@style/MineCustomTabText"
+                android:background="#262626"
                 app:tabSelectedTextColor="#9C27B0"
-                android:background="#41295a"/>
+                app:tabTextAppearance="@style/MineCustomTabText" />
 
         </androidx.viewpager.widget.ViewPager>
 

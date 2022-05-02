@@ -44,7 +44,7 @@ public class KnowUs extends AppCompatActivity {
         tab_layout.addTab(tab_layout.newTab().setText("Sponsors"));
         tab_layout.addTab(tab_layout.newTab().setText("Advisors"));
 
-        gettabs();
+        getTabs();
 
         setPreAnimation(true);
 
@@ -62,39 +62,36 @@ public class KnowUs extends AppCompatActivity {
         }
     }
 
-    private void gettabs(){
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),tab_layout.getTabCount());
-                viewPagerAdapter.addFragment(new AboutApp(),"About App");
-                viewPagerAdapter.addFragment(new AboutSpekter(),"About Spekter");
-                viewPagerAdapter.addFragment(new Commitee(),"Committee");
-                viewPagerAdapter.addFragment(new Organisers(),"Organisers");
-                viewPagerAdapter.addFragment(new Sponsors(),"Sponsors");
-                viewPagerAdapter.addFragment(new Advisors(),"Advisors");
+    private void getTabs(){
+        new Handler().post(() -> {
+            final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),tab_layout.getTabCount());
+            viewPagerAdapter.addFragment(new AboutApp(),"About App");
+            viewPagerAdapter.addFragment(new AboutSpekter(),"About Spekter");
+            viewPagerAdapter.addFragment(new Commitee(),"Committee");
+            viewPagerAdapter.addFragment(new Organisers(),"Organisers");
+            viewPagerAdapter.addFragment(new Sponsors(),"Sponsors");
+            viewPagerAdapter.addFragment(new Advisors(),"Advisors");
 
 
-                viewPager.setAdapter(viewPagerAdapter);
-                tab_layout.setupWithViewPager(viewPager);
-                tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-                        viewPager.setCurrentItem(tab.getPosition());
-                    }
+            viewPager.setAdapter(viewPagerAdapter);
+            tab_layout.setupWithViewPager(viewPager);
+            tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
 
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-                    }
-                });
+                }
+            });
 
-            }
         });
     }
 

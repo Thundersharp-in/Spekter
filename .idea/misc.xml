@@ -113,6 +113,8 @@
         <entry key="app/src/main/res/layout/bottom_sheet_projects_actions.xml" value="0.19880290722530997" />
         <entry key="app/src/main/res/layout/cust_openion.xml" value="0.21124877929687502" />
         <entry key="app/src/main/res/layout/exit_bottom_sheet.xml" value="0.20179563916203505" />
+        <entry key="app/src/main/res/layout/fragment_about_app.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/fragment_commitee.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_difficulty_sorting.xml" value="0.19923044035912782" />
