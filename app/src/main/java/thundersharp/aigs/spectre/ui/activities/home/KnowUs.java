@@ -1,17 +1,29 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.google.android.material.tabs.TabLayout;
+
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.adapters.ViewPagerAdapter;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.AboutApp;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.AboutSpekter;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.Advisors;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.Commitee;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.Organisers;
+import thundersharp.aigs.spectre.ui.fragments.knowUs.Sponsors;
 
 public class KnowUs extends AppCompatActivity {
 
     private RelativeLayout loader,mainContents;
+    private ViewPager viewPager;
+    private TabLayout tab_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +32,19 @@ public class KnowUs extends AppCompatActivity {
 
         loader = findViewById(R.id.container);
         mainContents = findViewById(R.id.mainContents);
+        viewPager = findViewById(R.id.pager);
+        tab_layout = findViewById(R.id.tab_layout);
+        tab_layout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
+        tab_layout.addTab(tab_layout.newTab().setText("About App"));
+        tab_layout.addTab(tab_layout.newTab().setText("About Spekter"));
+        tab_layout.addTab(tab_layout.newTab().setText("Committee"));
+        tab_layout.addTab(tab_layout.newTab().setText("Organisers"));
+        tab_layout.addTab(tab_layout.newTab().setText("Sponsors"));
+        tab_layout.addTab(tab_layout.newTab().setText("Advisors"));
+
+        gettabs();
 
         setPreAnimation(true);
 
@@ -35,6 +60,42 @@ public class KnowUs extends AppCompatActivity {
             mainContents.setVisibility(View.VISIBLE);
             loader.setVisibility(View.GONE);
         }
+    }
+
+    private void gettabs(){
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),tab_layout.getTabCount());
+                viewPagerAdapter.addFragment(new AboutApp(),"About App");
+                viewPagerAdapter.addFragment(new AboutSpekter(),"About Spekter");
+                viewPagerAdapter.addFragment(new Commitee(),"Committee");
+                viewPagerAdapter.addFragment(new Organisers(),"Organisers");
+                viewPagerAdapter.addFragment(new Sponsors(),"Sponsors");
+                viewPagerAdapter.addFragment(new Advisors(),"Advisors");
+
+
+                viewPager.setAdapter(viewPagerAdapter);
+                tab_layout.setupWithViewPager(viewPager);
+                tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        viewPager.setCurrentItem(tab.getPosition());
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+
+                    }
+                });
+
+            }
+        });
     }
 
 }
