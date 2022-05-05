@@ -42,7 +42,7 @@ public class KnowUs extends AppCompatActivity {
         tab_layout.addTab(tab_layout.newTab().setText("Committee"));
         tab_layout.addTab(tab_layout.newTab().setText("Organisers"));
         tab_layout.addTab(tab_layout.newTab().setText("Sponsors"));
-        tab_layout.addTab(tab_layout.newTab().setText("Advisors"));
+        //tab_layout.addTab(tab_layout.newTab().setText("Advisors"));
 
         getTabs();
 
@@ -70,7 +70,7 @@ public class KnowUs extends AppCompatActivity {
             viewPagerAdapter.addFragment(new Commitee(),"Committee");
             viewPagerAdapter.addFragment(new Organisers(),"Organisers");
             viewPagerAdapter.addFragment(new Sponsors(),"Sponsors");
-            viewPagerAdapter.addFragment(new Advisors(),"Advisors");
+            //viewPagerAdapter.addFragment(new Advisors(),"Advisors");
 
 
             viewPager.setAdapter(viewPagerAdapter);

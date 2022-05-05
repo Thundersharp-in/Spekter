@@ -114,6 +114,7 @@
         <entry key="app/src/main/res/layout/cust_openion.xml" value="0.21124877929687502" />
         <entry key="app/src/main/res/layout/exit_bottom_sheet.xml" value="0.20179563916203505" />
         <entry key="app/src/main/res/layout/fragment_about_app.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/fragment_advisors.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_commitee.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19923044035912782" />
@@ -124,8 +125,10 @@
         <entry key="app/src/main/res/layout/fragment_language_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_live_training.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/fragment_organisers.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2152777777777778" />
+        <entry key="app/src/main/res/layout/fragment_sponsors.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_tags_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.5187788527457313" />
         <entry key="app/src/main/res/layout/item_files.xml" value="0.4326567213980751" />
@@ -136,6 +139,7 @@
         <entry key="app/src/main/res/layout/item_notifications.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_participants.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_participants_holder.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_person_holder.xml" value="0.2228483717887001" />
         <entry key="app/src/main/res/layout/item_projects.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />

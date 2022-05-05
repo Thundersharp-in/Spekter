@@ -2,65 +2,68 @@ package thundersharp.aigs.spectre.ui.fragments.knowUs;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.adapters.CommitteeListAdapter;
+import thundersharp.aigs.spectre.core.models.Committee;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Organisers#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Organisers extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Organisers() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Organisers.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Organisers newInstance(String param1, String param2) {
-        Organisers fragment = new Organisers();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_organisers, container, false);
+        View view =  inflater.inflate(R.layout.fragment_organisers, container, false);
+        recyclerView = view.findViewById(R.id.recyclerData);
+
+        loadOrganisers();
+
+        return view;
+    }
+
+    private void loadOrganisers() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference("KNOW_US")
+                .child("ORGANISERS")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            List<Committee> data = new ArrayList<>();
+
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                data.add(dataSnapshot.getValue(Committee.class));
+                            }
+                            recyclerView.setAdapter(new CommitteeListAdapter(data,getContext()));
+
+                        }else
+                            Toast.makeText(getContext(), "Data cannot be rendered!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getContext(), "ERROR : "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 }
