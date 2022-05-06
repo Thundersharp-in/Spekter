@@ -84,7 +84,6 @@ public class SlotTimeHolderAdapter extends RecyclerView.Adapter<SlotTimeHolderAd
         @Override
         public void onClick(View view) {
             view.getContext().sendBroadcast(new Intent("posSlot").putExtra("timeSlot",time.get(getAdapterPosition())).putExtra("pos",getAdapterPosition()));
-
         }
     }
 

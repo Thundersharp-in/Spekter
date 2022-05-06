@@ -79,7 +79,7 @@
         <entry key="app/src/main/res/font/allerta.xml" value="0.1835032437442076" />
         <entry key="app/src/main/res/layout/about_course.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_bar_code_scanner.xml" value="0.21430358886718753" />
-        <entry key="app/src/main/res/layout/activity_book_passes.xml" value="0.34059906005859375" />
+        <entry key="app/src/main/res/layout/activity_book_passes.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_browser.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_coarse_contents.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_competation_home.xml" value="0.2152777777777778" />

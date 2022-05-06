@@ -11,6 +11,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,12 +34,14 @@ import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
 import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
+import thundersharp.aigs.spectre.core.interfaces.PassIssueWatcher;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
 import thundersharp.aigs.spectre.core.models.InovativeChallangeDetails;
 import thundersharp.aigs.spectre.core.models.Participants;
+import thundersharp.aigs.spectre.core.models.PassData;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
 import thundersharp.aigs.spectre.core.models.WorkshopDetail;
@@ -59,6 +63,7 @@ public class DatabaseHelpers {
     private OnCompetitionFetchSuccess onCompetitionFetchSuccess;
     private WorkshopDattaLoader workshopDattaLoader;
     private BasicDataInterface basicDataInterface;
+    private PassIssueWatcher passIssueWatcher;
 
     private Activity activity;
 
@@ -69,6 +74,7 @@ public class DatabaseHelpers {
     private long projectId;
     private String workshopId;
     private ChallengeLoader challengeLoader;
+    private PassData passData;
 
     public static DatabaseHelpers getInstance(){
         if (databaseHelpers == null){
@@ -95,6 +101,32 @@ public class DatabaseHelpers {
     public void setFetchParticipantsListeners(ProjectListner.fetchParticipants participantsListeners){
         this.fetchParticipants = participantsListeners;
         fetchParticipantsNow();
+    }
+
+    public DatabaseHelpers setPassData(PassData passData){
+        this.passData = passData;
+        return this;
+    }
+
+    public void setPassIssueWatcher(PassIssueWatcher passIssueWatcher){
+        this.passIssueWatcher = passIssueWatcher;
+        updatePassToServer();
+    }
+
+    private void updatePassToServer() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.PASSES)
+                .child(passData.ID)
+                .setValue(passData)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            passIssueWatcher.OnPassIssued(passData);
+                        }else passIssueWatcher.OnPassNotIssued(task.getException());
+                    }
+                });
     }
 
     public void setChallengeLoader(ChallengeLoader challengeLoader){

@@ -39,6 +39,7 @@ import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
 import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.interfaces.BasicDataInterface;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.OnProgressChanged;
 import thundersharp.aigs.spectre.core.models.ProfileData;
@@ -50,6 +51,7 @@ import thundersharp.aigs.spectre.core.progress.BrowseProgress;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
+import thundersharp.aigs.spectre.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.ui.activities.passes.BookPasses;
 
 public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.OnSliderClickListener {
@@ -94,7 +96,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
         //TODO CHECK FOR EXISTING BOOKING
         findViewById(R.id.notification).setOnClickListener(k -> {
-
+            alertDialog.show();
             FirebaseDatabase
                     .getInstance()
                     .getReference(CONSTANTS.PASSES)
@@ -104,14 +106,36 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
 
-                                try {
-                                    Tickets
-                                            .getInstance(ExhibitionHome.this)
-                                            .setTicketsData(new TicketsData("", "", "", "", "", "", "", "", null, ""))
-                                            .showTickets();
-                                } catch (ArgumentsMissingException e) {
-                                    e.printStackTrace();
-                                }
+                                DatabaseHelpers
+                                        .getInstance()
+                                        .setBasicDataInterface(new BasicDataInterface() {
+                                            @Override
+                                            public void dataFetchSuccess(DataSnapshot snapshotBasic) {
+                                                try {
+                                                    Tickets
+                                                            .getInstance(ExhibitionHome.this)
+                                                            .setTicketsData(new TicketsData(
+                                                                    TimeUtils.getTimeFromTimeStamp(snapshotBasic.child("EVENT_DATE").getValue(String.class)),
+                                                                    snapshot.child("SLOT").getValue(String.class),
+                                                                    "TECH EXHIBITION",
+                                                                    "Spekter is the technical fest of AIGS with over thousands of visitors it provides students with a plethora of opportunities for students to experience the beauty and amalgamations of science and technology.",
+                                                                    snapshot.child("NAME").getValue(String.class),
+                                                                    snapshot.child("EMAIL").getValue(String.class),
+                                                                    snapshot.child("PHONE").getValue(String.class),
+                                                                    snapshotBasic.child("VENUE").getValue(String.class),
+                                                                    null,
+                                                                    snapshot.child("ID").getValue(String.class)))
+                                                            .showTickets();
+                                                } catch (ArgumentsMissingException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFetchError(Exception e) {
+                                                Toast.makeText(ExhibitionHome.this, "Server error : "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
 
                             }else {
                                 Toast.makeText(ExhibitionHome.this, "No passes issued kindly issue a pass first.", Toast.LENGTH_LONG).show();

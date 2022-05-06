@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +22,7 @@ import android.widget.Toast;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,6 +36,12 @@ import java.util.List;
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.SlotTimeHolderAdapter;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.interfaces.PassIssueWatcher;
+import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
+import thundersharp.aigs.spectre.core.models.PassData;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 
@@ -44,18 +55,21 @@ public class BookPasses extends AppCompatActivity {
     private AlertDialog alertDialog;
     private boolean isSafe = false;
     private String bookingData,bookingTimestamp;
+    private String timeSlot =null;
 
     public static Object time_slot;
 
     private ImageView slot_Icon;
     private List<String> timeSlotsda;
 
+    private ProfileData profileData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_passes);
 
-
+        profileData = ProfileDataSync.getInstance(this).initializeLocalStorage().pullDataBack();
         compactCalendar_view = findViewById(R.id.compactcalendar_view);
         guest_container = findViewById(R.id.guest_container);
         slot_Icon = findViewById(R.id.slot_icon);
@@ -122,7 +136,7 @@ public class BookPasses extends AppCompatActivity {
         findViewById(R.id.noOfGuest).setOnClickListener(b -> {
             Snackbar
                     .make(findViewById(R.id.container),"Currently entry is restricted to one person per account !!", BaseTransientBottomBar.LENGTH_LONG)
-                    .setBackgroundTint(Color.RED)
+                    .setBackgroundTint(Color.GREEN)
                     .show();
           /*  if (toggle_no_of_guest){
                 guest_container.setVisibility(View.VISIBLE);
@@ -207,5 +221,66 @@ public class BookPasses extends AppCompatActivity {
                 toggle_time_slot = true;
             }
         });
+
+        findViewById(R.id.book_button).setOnClickListener(n->{
+            if (!isSafe || timeSlot == null){
+                Snackbar
+                        .make(findViewById(R.id.container),"Select all parameters correctly.", BaseTransientBottomBar.LENGTH_LONG)
+                        .setBackgroundTint(Color.RED)
+                        .show();
+
+            }else issuePass();
+        });
+
+        registerReceiver(broadcastReceiver,new IntentFilter("posSlot"));
+    }
+
+    private void issuePass() {
+        if (!profileData.acharyan) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Sorry :( you cant book passes for this event as this event is only for acharyan.")
+                    .setPositiveButton("UNDERSTOOD", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+        }else {
+            new AlertDialog.Builder(this)
+                    .setTitle("If you have previous booking for the event it will be automatically canceled with this booking !!")
+                    .setPositiveButton("PROCEED", (dialogInterface, i) -> {
+                        dialogInterface.dismiss();
+                        issuePassDb();
+                    }).setNegativeButton("CANCEL", (dialogInterface, i) -> dialogInterface.dismiss()).show();
+
+        }
+    }
+
+    private void issuePassDb() {
+        alertDialog.show();
+        DatabaseHelpers
+                .getInstance()
+                .setPassData(new PassData(timeSlot,profileData.name, profileData.phone, FirebaseAuth.getInstance().getUid(),profileData.email))
+                .setPassIssueWatcher(new PassIssueWatcher() {
+                    @Override
+                    public void OnPassIssued(PassData passData) {
+                        Toast.makeText(BookPasses.this, "Pass generated view from top pass view icon.", Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void OnPassNotIssued(Exception e) {
+                        alertDialog.dismiss();
+                        Toast.makeText(BookPasses.this, "Pass not issued : "+e.getMessage() , Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            timeSlot = intent.getStringExtra("timeSlot");
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 }
