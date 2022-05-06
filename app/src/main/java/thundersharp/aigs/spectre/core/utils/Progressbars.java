@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.ui.activities.auth.IntroActivity;
 
 public class Progressbars {
@@ -74,12 +75,11 @@ public class Progressbars {
         AlertDialog alertDialog = b.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-
-
         if (appCompatButtonCancel != null && appCompatButton != null) {
             appCompatButtonCancel.setOnClickListener(e->alertDialog.dismiss());
             appCompatButton.setOnClickListener(f-> {
                 FirebaseAuth.getInstance().signOut();
+                ProfileDataSync.getInstance(activity).initializeLocalStorage().clearAllData();
                 activity.finish();
                 activity.startActivity(new Intent(activity, IntroActivity.class));
             });

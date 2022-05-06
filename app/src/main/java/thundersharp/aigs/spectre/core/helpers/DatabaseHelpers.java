@@ -49,7 +49,7 @@ import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 
 /**
- *
+ * @author hrishikeshprateek
  */
 public class DatabaseHelpers {
 

@@ -107,4 +107,8 @@ public class ProfileDataSync {
                     }
                 });
     }
+
+    public void clearAllData() {
+        sharedPreferences.edit().clear().apply();
+    }
 }

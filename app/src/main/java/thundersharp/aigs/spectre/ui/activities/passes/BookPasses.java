@@ -237,11 +237,11 @@ public class BookPasses extends AppCompatActivity {
 
     private void issuePass() {
         if (!profileData.acharyan) {
-            new AlertDialog.Builder(this)
+            new androidx.appcompat.app.AlertDialog.Builder(this)
                     .setTitle("Sorry :( you cant book passes for this event as this event is only for acharyan.")
                     .setPositiveButton("UNDERSTOOD", (dialogInterface, i) -> dialogInterface.dismiss()).show();
         }else {
-            new AlertDialog.Builder(this)
+            new androidx.appcompat.app.AlertDialog.Builder(this)
                     .setTitle("If you have previous booking for the event it will be automatically canceled with this booking !!")
                     .setPositiveButton("PROCEED", (dialogInterface, i) -> {
                         dialogInterface.dismiss();

@@ -124,6 +124,7 @@
                         android:padding="20dp">
 
                         <TextView
+                            android:id="@+id/event_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Spectre TECH Exhibition"
@@ -142,14 +143,16 @@
                                 android:layout_weight="1"
                                 android:orientation="vertical">
                                 <TextView
+                                    android:id="@+id/dec"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:text="Techfest is the annual science and technology festival of Acharya institute of graduate studies,"
+                                    android:text="Spekter is the annual science and technology festival of Acharya institute of graduate studies,"
                                     android:textSize="12sp"
                                     android:textAlignment="center"/>
 
                                 <TextView
+                                    android:id="@+id/venue"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
@@ -210,6 +213,7 @@
                                 android:textSize="12sp"/>
 
                             <TextView
+                                android:id="@+id/guest_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
@@ -235,6 +239,7 @@
                                 android:textSize="12sp"/>
 
                             <TextView
+                                android:id="@+id/guest_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
@@ -270,6 +275,7 @@
                                 android:textSize="12sp"/>
 
                             <TextView
+                                android:id="@+id/event_starts"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
@@ -294,6 +300,7 @@
                                 android:textSize="12sp"/>
 
                             <TextView
+                                android:id="@+id/entry_gate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
@@ -320,6 +327,7 @@
                                 android:textSize="12sp"/>
 
                             <TextView
+                                android:id="@+id/slot"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
@@ -357,6 +365,7 @@
                             android:textSize="12sp"/>
 
                         <TextView
+                            android:id="@+id/id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
