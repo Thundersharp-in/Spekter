@@ -23,6 +23,7 @@ import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.animations.DescriptionAnimation;
 import com.glide.slider.library.slidertypes.BaseSliderView;
 import com.glide.slider.library.slidertypes.DefaultSliderView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,8 +38,10 @@ import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ProjectsHolderAdapter;
 import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.OnProgressChanged;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.core.models.SliderModel;
@@ -46,6 +49,7 @@ import thundersharp.aigs.spectre.core.models.TicketsData;
 import thundersharp.aigs.spectre.core.progress.BrowseProgress;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
+import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.ui.activities.passes.BookPasses;
 
 public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.OnSliderClickListener {
@@ -61,12 +65,18 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
     private BrowseProgress browseProgress;
 
     private WaveLoadingView waveLoadingView;
+    private android.app.AlertDialog alertDialog;
+
+    private ProfileDataSync profileDataSync;
+    private ProfileData profileData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exhibition_home);
 
+        alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
         book = findViewById(R.id.book);
         mainContents = findViewById(R.id.mainScroll);
         preAnimation = findViewById(R.id.mainContainer);
@@ -75,6 +85,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
         waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(0.00)+" %");
 
         findViewById(R.id.rrr).setOnClickListener(n -> finish());
+        profileData = ProfileDataSync.getInstance(this).initializeLocalStorage().pullDataBack();
 
         recyclerProjects = findViewById(R.id.recyclerProjects);
 
@@ -83,14 +94,38 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
         //TODO CHECK FOR EXISTING BOOKING
         findViewById(R.id.notification).setOnClickListener(k -> {
-            try {
-                Tickets
-                        .getInstance(this)
-                        .setTicketsData(new TicketsData("", "", "", "", "", "", "", "", null, ""))
-                        .showTickets();
-            } catch (ArgumentsMissingException e) {
-                e.printStackTrace();
-            }
+
+            FirebaseDatabase
+                    .getInstance()
+                    .getReference(CONSTANTS.PASSES)
+                    .child(FirebaseAuth.getInstance().getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()){
+
+                                try {
+                                    Tickets
+                                            .getInstance(ExhibitionHome.this)
+                                            .setTicketsData(new TicketsData("", "", "", "", "", "", "", "", null, ""))
+                                            .showTickets();
+                                } catch (ArgumentsMissingException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }else {
+                                Toast.makeText(ExhibitionHome.this, "No passes issued kindly issue a pass first.", Toast.LENGTH_LONG).show();
+                            }
+
+                            alertDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(ExhibitionHome.this, "Error : "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                            alertDialog.dismiss();
+                        }
+                    });
         });
 
         new Handler().postDelayed(new Runnable() {

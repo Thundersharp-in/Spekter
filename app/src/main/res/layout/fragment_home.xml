@@ -31,8 +31,8 @@
                 android:src="@mipmap/ic_launcher"
                 android:textColor="#fff"
                 android:textSize="20sp"
-                app:civ_border_color="#3F51B5"
-                app:civ_border_width="4dp" />
+                app:civ_border_color="#D8D8D8"
+                app:civ_border_width="2dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -67,12 +67,11 @@
 
         <ImageView
             android:id="@+id/notification"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15sp"
-            android:background="@drawable/ffade_white_circle"
             android:elevation="5dp"
             android:padding="8dp"
             android:src="@drawable/ic_outline_qr_code_scanner_24" />
@@ -538,7 +537,7 @@
                                 android:fontFamily="@font/roboto_medium"
                                 android:maxLines="1"
                                 android:text="Upcoming next"
-                                android:textColor="#95D6F3"
+                                android:textColor="#FF0000"
                                 android:textSize="17sp" />
 
                             <LinearLayout
@@ -634,7 +633,7 @@
                         android:maxLines="1"
                         android:text="Our Merchandise store"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#95D6F3"
+                        android:textColor="#FF0000"
                         android:textSize="16sp" />
 
 

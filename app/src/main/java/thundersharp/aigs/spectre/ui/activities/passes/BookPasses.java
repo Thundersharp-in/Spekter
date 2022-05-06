@@ -55,6 +55,7 @@ public class BookPasses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_passes);
 
+
         compactCalendar_view = findViewById(R.id.compactcalendar_view);
         guest_container = findViewById(R.id.guest_container);
         slot_Icon = findViewById(R.id.slot_icon);
@@ -71,6 +72,7 @@ public class BookPasses extends AppCompatActivity {
         timeSlotsda.add("12-13");
         timeSlotsda.add("13-14");
         timeSlotsda.add("14-15");
+
 
 
         Date date = new Date();

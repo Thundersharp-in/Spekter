@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import thundersharp.aigs.spectre.core.interfaces.BasicDataInterface;
 import thundersharp.aigs.spectre.core.interfaces.ChallengeLoader;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
@@ -57,6 +58,7 @@ public class DatabaseHelpers {
     private OnWorkshopFetchSuccess onWorkshopFetchSuccess;
     private OnCompetitionFetchSuccess onCompetitionFetchSuccess;
     private WorkshopDattaLoader workshopDattaLoader;
+    private BasicDataInterface basicDataInterface;
 
     private Activity activity;
 
@@ -98,6 +100,30 @@ public class DatabaseHelpers {
     public void setChallengeLoader(ChallengeLoader challengeLoader){
         this.challengeLoader = challengeLoader;
         loadChallange(challengeLoader);
+    }
+
+    public void setBasicDataInterface(BasicDataInterface basicDataInterface){
+        this.basicDataInterface = basicDataInterface;
+        loadExhibitionBasicData();
+    }
+
+    private void loadExhibitionBasicData() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.EXHIBITION)
+                .child(CONSTANTS.COMMON_DATA)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) basicDataInterface.dataFetchSuccess(snapshot);
+                        else basicDataInterface.onFetchError(new Exception("No data found"));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        basicDataInterface.onFetchError(new Exception("Server Error : "+error.getMessage()));
+                    }
+                });
     }
 
     private void loadChallange(ChallengeLoader challengeLoader) {

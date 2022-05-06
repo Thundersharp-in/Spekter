@@ -75,4 +75,6 @@ public class CONSTANTS {
     public static final String PROJECT_DETAILED_DESCRIPTION = "PROJECT_DETAILED_DESCRIPTION";
     public static final String HOW_TO_MAKE = "HOW_TO_MAKE";
     public static final String COVER = "COVER";
+    public static final String PASSES = "PASSES";
+
 }

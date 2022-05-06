@@ -6,7 +6,11 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +28,9 @@ public class Register extends AppCompatActivity {
     private RadioGroup radioGroup;
     private boolean acharya = true;
     private EditText name,email,phone,password;
+    boolean passwordVis = false;
+
+    private ImageView password_toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,8 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.editText_email);
         phone = findViewById(R.id.editText_auid);
         password = findViewById(R.id.editText_password);
+
+        password_toggle = findViewById(R.id.password_toggle);
 
         radioGroup.check(R.id.acharya);
         radioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
@@ -50,7 +59,19 @@ public class Register extends AppCompatActivity {
 
         });
 
-        ((AppCompatButton) findViewById(R.id.signIN))
+        ((ImageView)findViewById(R.id.password_toggle)).setOnClickListener(g->{
+            if (passwordVis){
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                password_toggle.setImageDrawable(getDrawable(R.drawable.ic_outline_visibility_off_24));
+                passwordVis = false;
+            }else {
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                password_toggle.setImageDrawable(getDrawable(R.drawable.ic_outline_remove_red_eye_24));
+                passwordVis = true;
+            }
+        });
+
+        ((ImageView) findViewById(R.id.signIN))
                 .setOnClickListener(n->{
                     if (acharya){
                         if (!email.getText().toString().trim().endsWith("@acharya.ac.in")) {
@@ -148,7 +169,7 @@ public class Register extends AppCompatActivity {
                     }
         });
 
-        ((TextView)findViewById(R.id.sign_in_btn))
+        ((AppCompatButton)findViewById(R.id.sign_in_btn))
                 .setOnClickListener(n->{
                     startActivity(new Intent(this,LoginActivity.class));
                     finish();

@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -27,8 +29,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edit_email, edit_password;
     private AlertDialog alertDialog;
+    private ImageView password_toggle;
 
     private ProfileDataSync profileDataSync;
+    private boolean passwordVis = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +42,27 @@ public class LoginActivity extends AppCompatActivity {
         alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
         edit_email = findViewById(R.id.editText_email);
         edit_password = findViewById(R.id.editText_password);
+        password_toggle = findViewById(R.id.password_toggle);
+
         profileDataSync = ProfileDataSync.getInstance(this);
 
         ((AppCompatButton) findViewById(R.id.register)).setOnClickListener(p->{
             startActivity(new Intent(this,Register.class));
             finish();
         });
+
+        ((ImageView)findViewById(R.id.password_toggle)).setOnClickListener(g->{
+            if (passwordVis){
+                edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                password_toggle.setImageDrawable(getDrawable(R.drawable.ic_outline_visibility_off_24));
+                passwordVis = false;
+            }else {
+                edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                password_toggle.setImageDrawable(getDrawable(R.drawable.ic_outline_remove_red_eye_24));
+                passwordVis = true;
+            }
+        });
+
 
         ((ImageView) findViewById(R.id.signIN)).setOnClickListener(t -> {
             if (edit_email.getText().toString().isEmpty()) {

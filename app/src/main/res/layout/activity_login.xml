@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#181920"
+    android:background="#000"
     tools:context=".ui.activities.auth.LoginActivity">
 
 
@@ -18,22 +18,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
+            android:layout_weight="2.3">
 
 
             <LinearLayout
                 android:id="@+id/welcome_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:src="@mipmap/ic_launcher_round" />
 
 
@@ -64,7 +63,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.5"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -84,14 +83,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
-                    android:hint="Spekter userId"
+                    android:hint="Spekter User ID"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:layout_marginHorizontal="25dp"
                     android:fontFamily="@font/calibri"
                     android:singleLine="true"
-                    android:textColor="#BAB9B9"
-                    android:textColorHint="#474b53" />
+                    android:textColor="#f4f5fc"
+                    android:textColorHint="#CFCFCF" />
             </LinearLayout>
 
             <RelativeLayout
@@ -107,29 +106,29 @@
 
                 <EditText
                     android:id="@+id/editText_password"
-                    android:layout_toStartOf="@id/password_toggle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="25dp"
+                    android:layout_toStartOf="@id/password_toggle"
                     android:background="@null"
                     android:hint="Password"
-                    android:layout_centerInParent="true"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:layout_marginStart="25dp"
                     android:singleLine="true"
-                    android:textColor="#BAB9B9"
-                    android:textColorHint="#474b53" />
+                    android:textColor="#f4f5fc"
+                    android:textColorHint="#CFCFCF" />
 
                 <ImageView
                     android:id="@+id/password_toggle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_outline_remove_red_eye_24"
-                    app:tint="#474b53"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"/>
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_outline_visibility_off_24"
+                    app:tint="#CFCFCF" />
 
             </RelativeLayout>
 
@@ -137,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Forgot password ?"
-                android:textColor="#54565A"
+                android:textColor="#CFCFCF"
                 android:layout_gravity="end"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="15dp"
@@ -147,12 +146,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3.5">
+            android:layout_weight="2.7">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -162,25 +161,25 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginHorizontal="15dp"
                     android:background="@drawable/background_circle"
+                    android:backgroundTint="#404040"
                     android:elevation="7dp"
                     android:padding="4dp"
                     android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:textAllCaps="false"
-                    app:tint="#E91E1E" />
+                    app:tint="#FF0000" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/register"
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
-                    android:layout_marginTop="20dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@null"
-                    android:textSize="16sp"
                     android:elevation="7dp"
                     android:fontFamily="@font/calibri"
                     android:text="Don't have account? Register here."
                     android:textAllCaps="false"
-                    android:textColor="#FFEB3B" />
+                    android:textColor="#fff"
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
