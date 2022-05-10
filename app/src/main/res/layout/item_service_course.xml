@@ -27,7 +27,7 @@
                 android:id="@+id/c_s_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/spectre"
+                android:src="@drawable/spekter"
                 android:scaleType="centerCrop"
                 />
         </androidx.cardview.widget.CardView>

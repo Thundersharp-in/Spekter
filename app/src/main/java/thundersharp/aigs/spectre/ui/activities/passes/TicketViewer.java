@@ -3,10 +3,12 @@ package thundersharp.aigs.spectre.ui.activities.passes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import thundersharp.aigs.spectre.R;
+import thundersharp.aigs.spectre.core.helpers.QRCodeGenerator;
 import thundersharp.aigs.spectre.core.models.TicketsData;
 import thundersharp.aigs.spectre.core.utils.TimeUtils;
 
@@ -29,6 +31,8 @@ public class TicketViewer extends AppCompatActivity {
             ((TextView) findViewById(R.id.venue)).setText(ticketsData.venue.toUpperCase());
             ((TextView) findViewById(R.id.guest_phone)).setText("XXXX" + ticketsData.guest_phone.substring(7));
             ((TextView) findViewById(R.id.entry_gate)).setText("1B");
+
+            ((ImageView) findViewById(R.id.qr)).setImageBitmap(QRCodeGenerator.getQrCodeFromData(ticketsData.booking_id));
 
             String startTime = ticketsData.guest_time.substring(0,ticketsData.guest_time.indexOf("-"));
             String endTime = ticketsData.guest_time.substring(ticketsData.guest_time.indexOf("-")+1);

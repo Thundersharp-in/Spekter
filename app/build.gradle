@@ -75,6 +75,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.3'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
     implementation 'androidx.navigation:navigation-ui:2.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'

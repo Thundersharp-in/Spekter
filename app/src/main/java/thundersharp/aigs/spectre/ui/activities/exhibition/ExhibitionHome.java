@@ -102,6 +102,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                     .getReference(CONSTANTS.PASSES)
                     .child(FirebaseAuth.getInstance().getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
+
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()){
