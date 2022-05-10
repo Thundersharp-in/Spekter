@@ -72,6 +72,7 @@
         <entry key="app/src/main/res/drawable/rectangle.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/seekbar_progress.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/test_border.xml" value="0.111" />
+        <entry key="app/src/main/res/drawable/test_gradient.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/time_slot_bprder.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/time_slot_bprder_selected.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_rectangle.xml" value="0.1" />
@@ -91,7 +92,7 @@
         <entry key="app/src/main/res/layout/activity_faculty_feedback.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_filter.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_initiatives_homes.xml" value="0.2152777777777778" />
+        <entry key="app/src/main/res/layout/activity_initiatives_homes.xml" value="0.2692474365234375" />
         <entry key="app/src/main/res/layout/activity_innovative_challenge_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.18635009765625002" />
         <entry key="app/src/main/res/layout/activity_know_us.xml" value="0.2152777777777778" />
@@ -130,6 +131,7 @@
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/fragment_sponsors.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_tags_sorting.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_aigs_initiatives.xml" value="0.17453267101674347" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.5187788527457313" />
         <entry key="app/src/main/res/layout/item_files.xml" value="0.4326567213980751" />
         <entry key="app/src/main/res/layout/item_filter_tags.xml" value="0.19923044035912782" />

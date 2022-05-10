@@ -135,27 +135,31 @@ public class EventFeedback extends AppCompatActivity {
             }else {
                 StudentsDetails studentsDetails = new StudentsDetails(FirebaseAuth.getInstance().getCurrentUser().getEmail(),System.currentTimeMillis()+"",profileDataSync.pullDataBack().name+"",profileDataSync.pullDataBack().phone);
                 alertDialog.show();
-                ExternalServerHelpers
-                        .main()
-                        .setActivity(this)
-                        .setEventFeedback(new EventFeedbacks(cat_text.getText().toString(),values.getText().toString(),studentsDetails.ID,message.getText().toString(),sel_Sub.getText().toString(),sel_Sem.getText().toString()))
-                        .setStudentDetails(studentsDetails)
-                        .setEventFeedbackObserver(new EventFeedbackObserver() {
-                            @Override
-                            public void OnFeedbackSent(JSONObject jsonObject) {
-                                new NotifiAll().doInBackground(new NotifyUserRequest("",EventFeedback.this,"New Event feedback received","Feedback about "+cat_text.getText().toString()+": "+message.getText().toString()));
-                                alertDialog.dismiss();
-                                finish();
-                                Toast.makeText(EventFeedback.this, "Sent feedback.\n\n"+jsonObject.toString(), Toast.LENGTH_SHORT).show();
-                            }
+                try {
+                    ExternalServerHelpers
+                            .main()
+                            .setActivity(this)
+                            .setEventFeedback(new EventFeedbacks(cat_text.getText().toString(), values.getText().toString(), studentsDetails.ID, message.getText().toString(), sel_Sub.getText().toString(), sel_Sem.getText().toString()))
+                            .setStudentDetails(studentsDetails)
+                            .setEventFeedbackObserver(new EventFeedbackObserver() {
+                                @Override
+                                public void OnFeedbackSent(JSONObject jsonObject) {
+                                    new NotifiAll().doInBackground(new NotifyUserRequest("", EventFeedback.this, "New Event feedback received", "Feedback about " + cat_text.getText().toString() + ": " + message.getText().toString()));
+                                    alertDialog.dismiss();
+                                    finish();
+                                    Toast.makeText(EventFeedback.this, "Sent feedback.\n\n" + jsonObject.toString(), Toast.LENGTH_SHORT).show();
+                                }
 
-                            @Override
-                            public void OnError(Exception e) {
-                                alertDialog.dismiss();
-                                Toast.makeText(EventFeedback.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        });
+                                @Override
+                                public void OnError(Exception e) {
+                                    alertDialog.dismiss();
+                                    Toast.makeText(EventFeedback.this, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            });
+                }catch (Exception b){
+                    Toast.makeText(this, ""+b.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

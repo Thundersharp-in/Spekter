@@ -77,4 +77,5 @@ public class CONSTANTS {
     public static final String COVER = "COVER";
     public static final String PASSES = "PASSES";
 
+    public static final String DATABASE_INITIATIVE_SLIDER = "DATABASE_INITIATIVE_SLIDER";
 }

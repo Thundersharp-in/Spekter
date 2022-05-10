@@ -4,13 +4,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.DayNight"
     android:layout_height="match_parent"
     android:background="#000"
     tools:context=".ui.activities.home.InitiativesHomes">
 
     <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginVertical="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_toStartOf="@+id/notification"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/rrr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="#fff" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibrib"
+                    android:text="Welcome to,"
+                    android:textColor="#AEAEAE"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-3dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_medium"
+                    android:maxLines="1"
+                    android:text="Acharya Initiatives"
+                    android:textColor="#D8D8D8"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15sp"
+            android:background="@drawable/ffade_white_circle"
+            android:elevation="5dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_outline_info_24"
+            app:tint="#fff" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/preAnim">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
@@ -51,5 +124,168 @@
 
     </RelativeLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/slider_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="#262626">
+
+                <com.glide.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    app:indicator_visibility="visible"
+                    app:pager_animation="Default" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/descrip_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/slider_holder"
+                android:minHeight="130dp"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/upcomming"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_medium"
+                    android:maxLines="1"
+                    android:text="Acharya Initiatives"
+                    android:textColor="#E3E3E3"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/eventName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/calibri"
+                    android:text="An initiative is the start of something, with the hope that it will continue. Government and business start initiatives all the time. You can also talk about initiative as a personal quality. A person with initiative is motivated to do things."
+                    android:textAlignment="center"
+                    android:textColor="#B8B8B8"
+                    android:textSize="15sp" />
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="100dp"
+                android:layout_below="@id/descrip_holder">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/schedule_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    app:cardBackgroundColor="#1E1E1E"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:ellipsize="end"
+                        android:layout_marginVertical="10dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:maxLines="1"
+                        android:textAllCaps="true"
+                        android:text="AIGS'S Initiatives"
+                        android:textColor="#D1D3D5"
+                        android:textSize="18sp" />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="15dp"
+                    android:minHeight="50dp"
+                    app:cardBackgroundColor="#262626"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:minHeight="50dp">
+
+                        <EditText
+                            android:id="@+id/searchbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            android:layout_marginHorizontal="10dp"
+                            android:background="@null"
+                            android:drawableStart="@drawable/ic_baseline_search_24"
+                            android:drawablePadding="10dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:hint="Search for initiatives by name."
+                            android:maxLines="1"
+                            android:paddingHorizontal="5dp"
+                            android:textColor="#C5C3C3"
+                            android:textColorHint="#798127"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerInit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="5dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
