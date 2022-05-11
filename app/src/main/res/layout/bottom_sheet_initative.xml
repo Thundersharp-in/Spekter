@@ -48,6 +48,7 @@
                 app:tint="#fff" />
 
             <TextView
+                android:id="@+id/pledgeT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

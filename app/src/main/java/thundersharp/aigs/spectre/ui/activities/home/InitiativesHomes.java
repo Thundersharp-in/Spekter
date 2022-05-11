@@ -1,13 +1,15 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
@@ -25,9 +27,9 @@ import java.util.List;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.InitiativeAdapter;
+import thundersharp.aigs.spectre.core.models.Initiative;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 
 public class InitiativesHomes extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener{
 
@@ -44,6 +46,8 @@ public class InitiativesHomes extends AppCompatActivity  implements BaseSliderVi
         mainContents = findViewById(R.id.container);
         preAnimation  = findViewById(R.id.preAnim);
         recyclerView = findViewById(R.id.recyclerInit);
+        findViewById(R.id.rrr).setOnClickListener(n->finish());
+        findViewById(R.id.notification).setOnClickListener(y->showInfo());
 
         setPreAnimation(true);
 
@@ -58,8 +62,23 @@ public class InitiativesHomes extends AppCompatActivity  implements BaseSliderVi
         setupCrousel();
     }
 
-    private List<Object> getRandData(){
-        return new ArrayList<Object>(Arrays.asList("","","",""));
+    private void showInfo() {
+        new AlertDialog.Builder(this)
+                .setMessage("")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
+    }
+
+    private List<Initiative> getRandData(){
+        return new ArrayList<Initiative>(Arrays.asList(
+                new Initiative("Beti bachao Beti Padhao","Pledge","https://google.com","","1589174136000","Initiative started by AIGS",""),
+                new Initiative("Save dogs Initiative","External","https://google.com","","158917413877","Initiative started by AIGS","https://content3.jdmagicbox.com/comp/bangalore/h9/080pxx80.xx80.171027163415.c2h9/catalogue/save-animals-bangalore-dog-adoption-centres-y61crzorvt.jpg?clr=333333"),
+                new Initiative("Swaksha Bharat initiative","Rights","https://google.com","","1589174136003","Initiative started by AIGS","https://www.theindianwire.com/wp-content/uploads/2019/10/swachh-bharat-abhiyan.jpg"),
+                new Initiative("Save Trees Initiative","Pledge","https://google.com","","1589174136078","Initiative started by AIGS","https://cdn.mycrafts.com/i/1/9/31/drawing-tutorial-save-trees-kF8f-o.jpg")));
     }
 
     private synchronized void setPreAnimation(boolean animation) {

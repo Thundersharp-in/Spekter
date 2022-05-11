@@ -66,7 +66,7 @@ public class InnovativeChallengeHome extends AppCompatActivity {
         mainContents = findViewById(R.id.container);
         ((Toolbar)findViewById(R.id.toolbar)).setNavigationOnClickListener(view -> finish());
         ((ImageView)findViewById(R.id.share)).setOnClickListener(n->{
-            generateShareLink(null);
+            generateShareLink();
         });
 
         setPreAnimation(true);
@@ -191,7 +191,7 @@ public class InnovativeChallengeHome extends AppCompatActivity {
 
     }
 
-    protected synchronized void generateShareLink(ProjectBasicInfo projectsInfo) {
+    protected synchronized void generateShareLink() {
         String url = "https://spekteraigs.page.link/ic/";
         FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLink(Uri.parse(url))
