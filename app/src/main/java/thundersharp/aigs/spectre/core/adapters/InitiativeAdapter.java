@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -55,12 +56,14 @@ public class InitiativeAdapter extends RecyclerView.Adapter<InitiativeAdapter.Vi
             super(itemView);
             pinItem = itemView.findViewById(R.id.pinner);
             itemView.setOnClickListener(this);
-
         }
 
         @Override
         public void onClick(View view) {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(view.getContext());
+            bottomSheetDialog.setContentView(R.layout.bottom_sheet_initative);
 
+            bottomSheetDialog.show();
         }
     }
 }
