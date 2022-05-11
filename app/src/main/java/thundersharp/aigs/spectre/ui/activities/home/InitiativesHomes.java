@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -27,6 +28,8 @@ import java.util.List;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.InitiativeAdapter;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.interfaces.InitiativesListner;
 import thundersharp.aigs.spectre.core.models.Initiative;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
@@ -51,14 +54,20 @@ public class InitiativesHomes extends AppCompatActivity  implements BaseSliderVi
 
         setPreAnimation(true);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                setPreAnimation(false);
-                recyclerView.setAdapter(new InitiativeAdapter(InitiativesHomes.this,getRandData()));
-            }
-        },3000);
+        DatabaseHelpers
+                .getInstance()
+                .fetchAllInitiatives(new InitiativesListner() {
+                    @Override
+                    public void OnInitiativesFetched(List<Initiative> initiativeList) {
+                        setPreAnimation(false);
+                        recyclerView.setAdapter(new InitiativeAdapter(InitiativesHomes.this,initiativeList));
+                    }
 
+                    @Override
+                    public void OnDataFetchError(Exception e) {
+                        Toast.makeText(InitiativesHomes.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
         setupCrousel();
     }
 

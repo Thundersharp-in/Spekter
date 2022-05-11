@@ -32,6 +32,7 @@ import thundersharp.aigs.spectre.core.interfaces.BasicDataInterface;
 import thundersharp.aigs.spectre.core.interfaces.ChallengeLoader;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.interfaces.InitiativesListner;
 import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.PassIssueWatcher;
@@ -39,6 +40,7 @@ import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
+import thundersharp.aigs.spectre.core.models.Initiative;
 import thundersharp.aigs.spectre.core.models.InovativeChallangeDetails;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.PassData;
@@ -75,6 +77,7 @@ public class DatabaseHelpers {
     private String workshopId;
     private ChallengeLoader challengeLoader;
     private PassData passData;
+    private InitiativesListner initiativesListner;
 
     public static DatabaseHelpers getInstance(){
         if (databaseHelpers == null){
@@ -86,6 +89,36 @@ public class DatabaseHelpers {
     public DatabaseHelpers setProjectId(long projectId){
         this.projectId = projectId;
         return this;
+    }
+
+    public DatabaseHelpers fetchAllInitiatives(InitiativesListner initiativesListner){
+        this.initiativesListner = initiativesListner;
+        fetchAllInitiativesDb();
+        return this;
+    }
+
+    private void fetchAllInitiativesDb() {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.INITIATIVES)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            List<Initiative> initiativeList = new ArrayList<>();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                initiativeList.add(dataSnapshot.getValue(Initiative.class));
+                            }
+
+                            initiativesListner.OnInitiativesFetched(initiativeList);
+                        }else initiativesListner.OnDataFetchError(new Exception("No data found."));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        initiativesListner.OnDataFetchError(error.toException());
+                    }
+                });
     }
 
     public DatabaseHelpers setWorkshopId(String workshopId){

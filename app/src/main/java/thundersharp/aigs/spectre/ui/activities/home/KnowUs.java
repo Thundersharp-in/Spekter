@@ -1,6 +1,7 @@
 package thundersharp.aigs.spectre.ui.activities.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class KnowUs extends AppCompatActivity {
     private RelativeLayout loader,mainContents;
     private ViewPager viewPager;
     private TabLayout tab_layout;
+
+    CardView aa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
