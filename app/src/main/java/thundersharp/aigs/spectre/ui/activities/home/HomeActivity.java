@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private VideoView videoView;
     private ImageView closeView;
     private VideoPlayer videoPlayer;
-
+    public static NavController navController;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
@@ -121,7 +121,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void dismissAdView() {
-
+        videoPlayer.releasePlayer();
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+        alphaAnimation.setDuration(1000);
+        alphaAnimation.setRepeatCount(0);
+        videoHOlder.setAnimation(alphaAnimation);
+        videoHOlder.setVisibility(View.GONE);
+        videoPlayer.updateFlag(340);
     }
 
     @Override

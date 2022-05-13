@@ -78,6 +78,9 @@ dependencies {
     implementation 'com.itextpdf:itextg:5.5.10'
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+    implementation ('com.mapbox.maps:android:10.5.0'){
+        exclude group: 'group_name', module: 'module_name'
+    }
 
     implementation 'androidx.navigation:navigation-ui:2.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

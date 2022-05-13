@@ -19,6 +19,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.Style;
+import com.mapbox.maps.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,6 +115,7 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
 
         ImageView background;
         private TextView month,day,tittle,duramtion,mode,by;
+        private MapView mapView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -123,6 +127,9 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
             by = itemView.findViewById(R.id.by);
             tittle = itemView.findViewById(R.id.tittle);
             duramtion = itemView.findViewById(R.id.duration);
+
+            mapView = itemView.findViewById(R.id.mapView);
+            mapView.getMapboxMap().loadStyleUri(Style.DARK);
 
         }
 

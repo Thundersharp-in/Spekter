@@ -46,6 +46,7 @@ import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
 import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
 import thundersharp.aigs.spectre.ui.activities.home.CompetationHome;
+import thundersharp.aigs.spectre.ui.activities.home.HomeActivity;
 import thundersharp.aigs.spectre.ui.activities.home.InitiativesHomes;
 import thundersharp.aigs.spectre.ui.activities.home.InnovativeChallengeHome;
 import thundersharp.aigs.spectre.ui.activities.home.KnowUs;
@@ -72,6 +73,7 @@ public class HomeFragment extends Fragment implements
         viewPager = root.findViewById(R.id.pager);
         setupCrousel();
 
+       // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
 
         root.findViewById(R.id.notification).setOnClickListener(u->startActivity(new Intent(getActivity(), BarCodeScanner.class)));
         root.findViewById(R.id.alive).setOnClickListener(u->startActivity(new Intent(getActivity(), ExhibitionHome.class)));
