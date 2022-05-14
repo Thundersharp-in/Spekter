@@ -1,6 +1,7 @@
 package thundersharp.aigs.spectre.ui.activities.auth;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -25,28 +26,37 @@ public class EmailVerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_email_verification);
         alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
 
-        refreshAdminData();
-
         ((AppCompatButton)findViewById(R.id.getStarted)).setOnClickListener(n->{
             alertDialog.show();
             refreshAdminData();
-            if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                Toast.makeText(this,"Email verified",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, HomeActivity.class));
-                finish();
-                alertDialog.dismiss();
-            }else {
-                FirebaseAuth
-                        .getInstance()
-                        .getCurrentUser()
-                        .sendEmailVerification()
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()){
-                                Toast.makeText(EmailVerificationActivity.this, "Verification link resent. ", Toast.LENGTH_SHORT).show();
-                            }else
-                                Toast.makeText(EmailVerificationActivity.this, "Failed to send verification link. ", Toast.LENGTH_SHORT).show();
-                            alertDialog.dismiss();
-                        });
+            if (!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                new AlertDialog.Builder(this)
+                        .setCancelable(false)
+                                .setMessage("Email id is not yet verified, Resend verification Link ?")
+                                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                dialogInterface.dismiss();
+                                            }
+                                        })
+                                                .setPositiveButton("RESEND", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        FirebaseAuth
+                                                                .getInstance()
+                                                                .getCurrentUser()
+                                                                .sendEmailVerification()
+                                                                .addOnCompleteListener(task -> {
+                                                                    if (task.isSuccessful()){
+                                                                        Toast.makeText(EmailVerificationActivity.this, "Verification link resent. ", Toast.LENGTH_SHORT).show();
+                                                                    }else
+                                                                        Toast.makeText(EmailVerificationActivity.this, "Failed to send verification link. ", Toast.LENGTH_SHORT).show();
+                                                                    dialogInterface.dismiss();
+                                                                    alertDialog.dismiss();
+                                                                });
+                                                    }
+                                                }).show();
+
             }
         });
 

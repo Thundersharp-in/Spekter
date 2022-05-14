@@ -83,8 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                             public void onLoginSuccess(String provider, Task<AuthResult> authResultTask, boolean verified) {
                                 if (verified)
                                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                                else
+                                else{
                                     startActivity(new Intent(LoginActivity.this, EmailVerificationActivity.class));
+                                    Toast.makeText(LoginActivity.this, "Email not verified, verification link resent !!", Toast.LENGTH_SHORT).show();
+                                }
+
 
                                 profileDataSync
                                         .initializeLocalStorage()
