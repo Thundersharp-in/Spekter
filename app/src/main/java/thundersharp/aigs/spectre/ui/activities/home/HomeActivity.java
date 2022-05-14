@@ -19,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.exceptions.VideoPlayerException;
+import thundersharp.aigs.spectre.core.helpers.AdsHelper;
 import thundersharp.aigs.spectre.core.helpers.VideoPlayer;
 import thundersharp.aigs.spectre.core.interfaces.OnVideoReadyCallbacksListener;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
@@ -83,40 +84,53 @@ public class HomeActivity extends AppCompatActivity {
             videoPlayer.updateFlag(340);
         });
 
-        videoPlayer = VideoPlayer
-                .createInstance(this)
-                .playDefaultResource(false)
-                .setCustomUrl("https://vod-progressive.akamaized.net/exp=1652554806~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F102%2F15%2F375510056%2F1565755682.mp4~hmac=5335f7c1e4720422e9ce6d5b9fd672fbbfa00e041af25069526c775495e13100/vimeo-prod-skyfire-std-us/01/102/15/375510056/1565755682.mp4?download=1&filename=video.mp4")
-                .playInLoop(true)
-                .setVideoView(videoView)
-                .addOnVideoReadyCallbacksListener(new OnVideoReadyCallbacksListener() {
+        AdsHelper
+                .getInstance()
+                .setAdsLoader(new AdsHelper.AdsLoader() {
+            @Override
+            public void OnLoadSuccess(String uri) {
+                videoPlayer = VideoPlayer
+                        .createInstance(HomeActivity.this)
+                        .playDefaultResource(false)
+                        .setCustomUrl(uri)
+                        .playInLoop(true)
+                        .setVideoView(videoView)
+                        .addOnVideoReadyCallbacksListener(new OnVideoReadyCallbacksListener() {
 
-                    @Override
-                    public void onVideoPlayBackStarted(VideoView videoView) {
-                        if (videoPlayer.getFlag() == 0) {
-                            videoHOlder.setVisibility(View.VISIBLE);
-                            AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
-                            alphaAnimation.setDuration(1000);
-                            alphaAnimation.setRepeatCount(0);
-                            videoHOlder.setAnimation(alphaAnimation);
-                        }
-                    }
+                            @Override
+                            public void onVideoPlayBackStarted(VideoView videoView) {
+                                if (videoPlayer.getFlag() == 0) {
+                                    videoHOlder.setVisibility(View.VISIBLE);
+                                    AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+                                    alphaAnimation.setDuration(1000);
+                                    alphaAnimation.setRepeatCount(0);
+                                    videoHOlder.setAnimation(alphaAnimation);
+                                }
+                            }
 
-                    @Override
-                    public void onVideoCompleated(VideoView videoView) {
+                            @Override
+                            public void onVideoCompleated(VideoView videoView) {
 
-                    }
+                            }
 
-                    @Override
-                    public void onVideoSeek(VideoView videoView) {
+                            @Override
+                            public void onVideoSeek(VideoView videoView) {
 
-                    }
+                            }
 
-                    @Override
-                    public void onVideoError(VideoPlayerException videoPlayerException) {
-                        Toast.makeText(HomeActivity.this, ""+videoPlayerException.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                            @Override
+                            public void onVideoError(VideoPlayerException videoPlayerException) {
+                                Toast.makeText(HomeActivity.this, ""+videoPlayerException.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+
+            @Override
+            public void OnError(Exception e) {
+                Toast.makeText(HomeActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

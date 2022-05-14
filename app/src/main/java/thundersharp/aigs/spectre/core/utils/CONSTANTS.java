@@ -79,4 +79,7 @@ public class CONSTANTS {
 
     public static final String DATABASE_INITIATIVE_SLIDER = "DATABASE_INITIATIVE_SLIDER";
     public static final String INITIATIVES = "INITIATIVES";
+    public static final String SPONSORS = "SPONSORS";
+    public static final String ADS = "ADS";
+    public static final String URI = "URI";
 }
