@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         videoPlayer = VideoPlayer
                 .createInstance(this)
                 .playDefaultResource(false)
-                .setCustomUrl("https://images.all-free-download.com/footage_preview/mp4/satellite_with_its_orbit_around_earth_6892430.mp4")
+                .setCustomUrl("https://vod-progressive.akamaized.net/exp=1652554806~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F102%2F15%2F375510056%2F1565755682.mp4~hmac=5335f7c1e4720422e9ce6d5b9fd672fbbfa00e041af25069526c775495e13100/vimeo-prod-skyfire-std-us/01/102/15/375510056/1565755682.mp4?download=1&filename=video.mp4")
                 .playInLoop(true)
                 .setVideoView(videoView)
                 .addOnVideoReadyCallbacksListener(new OnVideoReadyCallbacksListener() {
