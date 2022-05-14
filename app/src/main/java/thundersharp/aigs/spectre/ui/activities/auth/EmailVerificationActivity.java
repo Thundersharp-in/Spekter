@@ -84,6 +84,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
                     Toast.makeText(this,"Email verified",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, HomeActivity.class));
+                    alertDialog.dismiss();
                     finish();
                 }else Toast.makeText(this, "Email not yet verified", Toast.LENGTH_SHORT).show();
             }
