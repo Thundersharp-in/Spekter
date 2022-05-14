@@ -129,7 +129,9 @@ public class ServiceTopicAdapter extends RecyclerView.Adapter<ServiceTopicAdapte
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()){
                                     dialog.dismiss();
-                                    context.startActivity(new Intent(context, CourseDetailActivity.class).putExtra("course_detail",snapshot.getValue(ServiceItemModel.class)).putExtra("Ctype",CONSTANTS.DATABASE_COURSES));
+                                    context.startActivity(new Intent(context, CourseDetailActivity.class)
+                                            .putExtra("course_detail",snapshot.getValue(ServiceItemModel.class))
+                                            .putExtra("Ctype",CONSTANTS.DATABASE_COURSES));
                                 }else {
                                     dialog.dismiss();
                                     Toast.makeText(context, "Data Not found", Toast.LENGTH_SHORT).show();

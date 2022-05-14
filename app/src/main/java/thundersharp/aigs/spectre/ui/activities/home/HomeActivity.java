@@ -89,6 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                 .setAdsLoader(new AdsHelper.AdsLoader() {
             @Override
             public void OnLoadSuccess(String uri) {
+
                 videoPlayer = VideoPlayer
                         .createInstance(HomeActivity.this)
                         .playDefaultResource(false)

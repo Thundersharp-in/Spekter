@@ -1,10 +1,5 @@
 package thundersharp.aigs.spectre.ui.activities.lectures;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,26 +11,18 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import thundersharp.aigs.spectre.R;
@@ -70,14 +57,14 @@ public class CourseDetailActivity extends AppCompatActivity {
             finish();
         }
 
-        subscribe.setText("VIEW COURSE");
+        subscribe.setText("SUBSCRIBE");
 
        /* if (getIntent().getSerializableExtra("payment_status") != null){
             //paymentdata = (PurchaseData) getIntent().getSerializableExtra("payment_status");
             if (paymentdata.PAYMENT.PAYMENT_STATUS.equals("1")) subscribe.setText("VIEW COURSE");
             else subscribe.setText("GET COURSE");
         }else {
-            subscribe.setText("GET COURSE");
+            subscribe.setText("SUBSCRIBE");
         }*/
 
         Glide.with(this).load(model.COURSE_ICON).into(s_img);
@@ -213,42 +200,6 @@ public class CourseDetailActivity extends AppCompatActivity {
         return ssb;
 
     }
-
-/*    private void showPaymentSheet() {
-
-        bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(R.layout.payment_sheet_admin);
-
-        ImageView s_image = bottomSheetDialog.findViewById(R.id.s_image);
-
-        TextView ser_name = bottomSheetDialog.findViewById(R.id.ser_name);
-        TextView ser_desc = bottomSheetDialog.findViewById(R.id.ser_desc);
-        TextView ser_price = bottomSheetDialog.findViewById(R.id.ser_price);
-        TextView discount = bottomSheetDialog.findViewById(R.id.discount);
-
-        LinearLayout discount_btn = bottomSheetDialog.findViewById(R.id.discount_btn);
-
-        TextView s_tc = bottomSheetDialog.findViewById(R.id.s_tc);
-        AppCompatButton btn_buy = bottomSheetDialog.findViewById(R.id.btn_buy);
-
-        ser_name.setText(model.COURSE_NAME);
-        Glide.with(this).load(model.COURSE_ICON).into(s_image);
-
-        ser_desc.setText("By "+model.COARSE_BY);
-        ser_price.setText("₹"+model.PRICE);
-
-        btn_buy.setOnClickListener( view-> {
-
-
-        });
-
-        bottomSheetDialog.show();
-
-        bottomSheetDialog.setOnDismissListener(dialog -> {
-            // Instructions on bottomSheetDialog Dismiss
-        });
-
-    }*/
 
     public static class MySpannable extends ClickableSpan {
 

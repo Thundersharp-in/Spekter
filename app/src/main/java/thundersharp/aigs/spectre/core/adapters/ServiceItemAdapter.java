@@ -124,7 +124,9 @@ public class ServiceItemAdapter extends RecyclerView.Adapter<ServiceItemAdapter.
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context, CourseDetailActivity.class).putExtra("course_detail",modelList.get(getAdapterPosition())).putExtra("Ctype",course_type));
+            context.startActivity(new Intent(context, CourseDetailActivity.class)
+                    .putExtra("course_detail",modelList.get(getAdapterPosition()))
+                    .putExtra("Ctype",course_type));
         }
     }
 }
