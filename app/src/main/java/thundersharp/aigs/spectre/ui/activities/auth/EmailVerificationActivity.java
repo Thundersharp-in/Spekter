@@ -37,6 +37,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 dialogInterface.dismiss();
+                                                alertDialog.dismiss();
                                             }
                                         })
                                                 .setPositiveButton("RESEND", new DialogInterface.OnClickListener() {
