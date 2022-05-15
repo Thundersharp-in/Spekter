@@ -14,8 +14,6 @@ import com.google.android.material.tabs.TabLayout;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.ViewPagerAdapter;
 import thundersharp.aigs.spectre.ui.fragments.knowUs.AboutApp;
-import thundersharp.aigs.spectre.ui.fragments.knowUs.AboutSpekter;
-import thundersharp.aigs.spectre.ui.fragments.knowUs.Advisors;
 import thundersharp.aigs.spectre.ui.fragments.knowUs.Commitee;
 import thundersharp.aigs.spectre.ui.fragments.knowUs.Organisers;
 import thundersharp.aigs.spectre.ui.fragments.knowUs.Sponsors;
@@ -41,7 +39,6 @@ public class KnowUs extends AppCompatActivity {
 
 
         tab_layout.addTab(tab_layout.newTab().setText("About App"));
-        tab_layout.addTab(tab_layout.newTab().setText("About Spekter"));
         tab_layout.addTab(tab_layout.newTab().setText("Committee"));
         tab_layout.addTab(tab_layout.newTab().setText("Organisers"));
         tab_layout.addTab(tab_layout.newTab().setText("Sponsors"));
@@ -69,7 +66,6 @@ public class KnowUs extends AppCompatActivity {
         new Handler().post(() -> {
             final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),tab_layout.getTabCount());
             viewPagerAdapter.addFragment(new AboutApp(),"About App");
-            viewPagerAdapter.addFragment(new AboutSpekter(),"About Spekter");
             viewPagerAdapter.addFragment(new Commitee(),"Committee");
             viewPagerAdapter.addFragment(new Organisers(),"Organisers");
             viewPagerAdapter.addFragment(new Sponsors(),"Sponsors");
