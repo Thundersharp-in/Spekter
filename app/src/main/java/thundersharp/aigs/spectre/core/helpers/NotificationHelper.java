@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import thundersharp.aigs.spectre.core.adapters.NotificationHolder;
@@ -63,7 +64,7 @@ public class NotificationHelper {
                             for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                                 notificationsList.add(dataSnapshot.getValue(Notifications.class));
                             }
-
+                            Collections.sort(notificationsList);
                             adapter.setData(notificationsList);
                             recyclerView.setAdapter(adapter);
                             notificationListener.notificationFetchSuccess(notificationsList,adapter);

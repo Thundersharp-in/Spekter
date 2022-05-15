@@ -1,6 +1,8 @@
 package thundersharp.aigs.newsletter.core.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -135,7 +137,14 @@ public class HeadlinesAdapter extends RecyclerView.Adapter<HeadlinesAdapter.View
             update_frequency.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    new AlertDialog.Builder(context)
+                            .setMessage("Author : "+articles.get(getAdapterPosition()).AUTHOR+"\n\n"+"Published at Acharya Institutes of graduate studies.")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            }).show();
                 }
             });
 
@@ -143,29 +152,17 @@ public class HeadlinesAdapter extends RecyclerView.Adapter<HeadlinesAdapter.View
 
         @Override
         public void onClick(View view) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(articles.get(getAdapterPosition()).TITLE).append("\n");
+            stringBuilder.append("By "+articles.get(getAdapterPosition()).AUTHOR).append("\n\n");
+            stringBuilder.append(""+articles.get(getAdapterPosition()).DESCRIPTION).append("\n\n");
+            stringBuilder.append("Published on : "+TimeUtils.getTimeInStringFromTimeStamp(articles.get(getAdapterPosition()).PUBLISHED_AT)).append("\n\n\n");
+            stringBuilder.append("Full article link : "+articles.get(getAdapterPosition()).URL).append("\n\n");
+            stringBuilder.append("Sent from Spekter AIGS application, for more information download the Spekter AIGS app now from playstore.").append("\n\n");
+            stringBuilder.append("https://play.google.com/store/apps/details?id=thundersharp.aigs.spectre");
 
-            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-            View bottomview = LayoutInflater.from(context).inflate(R.layout.bottomsheet_share,itemView.findViewById(R.id.botomcontainer));
+            shareExternally(stringBuilder,"com.whatsapp");
 
-            TextView ddd_news = bottomview.findViewById(R.id.ddd_news);
-            ddd_news.setText(articles.get(getAdapterPosition()).DESCRIPTION);
-
-            ((ImageView)bottomview.findViewById(R.id.whatsapp)).setOnClickListener(n->{
-                /*StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append(articles.get(getAdapterPosition()).getNews_title()).append("\n");
-                stringBuilder.append("By"+articles.get(getAdapterPosition()).getNews_author()).append("\n\n");
-                stringBuilder.append(""+articles.get(getAdapterPosition()).getNews_description()).append("\n\n");
-                stringBuilder.append("Published on"+articles.get(getAdapterPosition()).getNews_publishedAt()).append("\n\n\n");
-                stringBuilder.append("Full article link: "+articles.get(getAdapterPosition()).getNews_url()).append("\n\n");
-                stringBuilder.append("Sent from Warrior bulls application, for more stock related stuffs and news download now from playstore.").append("\n\n");
-                stringBuilder.append("https://warriorbulls.page.link/download");*/
-
-                shareExternally(new StringBuilder(),"com.whatsapp");
-
-            });
-
-            bottomSheetDialog.setContentView(bottomview);
-            bottomSheetDialog.show();
 
         }
     }

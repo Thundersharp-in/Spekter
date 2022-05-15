@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * @author hrishikeshprateek
@@ -24,6 +25,7 @@ public class ExpandableCardView extends RelativeLayout {
 
     private RelativeLayout top_container;
     private RelativeLayout bottom_container;
+    private TextView tittle,desc;
 
     private ImageView imageView;
 
@@ -45,12 +47,22 @@ public class ExpandableCardView extends RelativeLayout {
     }
 
 
+    public void setTittle(String tittleText){
+        tittle.setText(tittleText);
+    }
+
+    public void setDescription(String description){
+        desc.setText(description);
+    }
+
     private void inflateViews(@NonNull Context context, @Nullable AttributeSet attrs){
         view = inflate(context, R.layout.expandable_card_view,this);
 
         top_container = view.findViewById(R.id.top_data_holder);
         bottom_container = view.findViewById(R.id.nestedView);
         imageView = view.findViewById(R.id.expand_collapse_icon);
+        tittle = view.findViewById(R.id.tittle);
+        desc = view.findViewById(R.id.desc);
 
         top_container.setOnClickListener(n -> {
             if (isExpanded){

@@ -55,17 +55,6 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/notification"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="15sp"
-            android:background="@drawable/ffade_white_circle"
-            android:elevation="5dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_outline_save_24" />
 
 
     </RelativeLayout>

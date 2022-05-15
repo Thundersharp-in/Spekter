@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import thundersharp.aigs.expandablecardview.ExpandableCardView;
+import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.Notifications;
 
@@ -38,7 +39,10 @@ public class NotificationHolder extends RecyclerView.Adapter<NotificationHolder.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Notifications notifications = notificationsList.get(position);
-
+        holder.expandableCardView.setTittle(notifications.TITTLE);
+        try {
+            holder.expandableCardView.setDescription(notifications.NOTIFICATION + "\n\nBy : " + notifications.PUBLISHER + "\nPublished on : " + TimeUtils.getTimeInStringFromTimeStamp(notifications.ID));
+        }catch (Exception e){}
     }
 
     @Override

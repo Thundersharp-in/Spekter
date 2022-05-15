@@ -2,7 +2,7 @@ package thundersharp.aigs.spectre.core.models;
 
 import java.io.Serializable;
 
-public class Notifications implements Serializable {
+public class Notifications implements Serializable,Comparable {
 
     public Notifications(){}
 
@@ -18,5 +18,10 @@ public class Notifications implements Serializable {
         this.PAYLOAD = PAYLOAD;
         this.ID = ID;
         this.PUBLISHER = PUBLISHER;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return ID.compareTo(o.toString());
     }
 }

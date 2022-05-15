@@ -5,8 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <thundersharp.aigs.expandablecardview.ExpandableCardView
+        android:id="@+id/expandable_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/expandable_card_view"/>
+        />
 
 </RelativeLayout>

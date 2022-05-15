@@ -76,7 +76,7 @@
                 app:tint="#fff"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="5dp"
-                android:src="@drawable/ic_outline_save_24"
+                android:src="@drawable/ic_outline_info_24"
                 android:layout_marginStart="10dp"/>
 
         </LinearLayout>
