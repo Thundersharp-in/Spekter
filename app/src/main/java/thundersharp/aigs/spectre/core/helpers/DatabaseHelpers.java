@@ -254,17 +254,17 @@ public class DatabaseHelpers {
     private void loadCompetitions() {
         FirebaseDatabase
                 .getInstance()
-                .getReference(CONSTANTS.WORKSHOPS)
-                .child(CONSTANTS.WORKSHOP_INFO)
+                .getReference(CONSTANTS.GENERAL_EVENTS)
+                .child(CONSTANTS.GENERAL_EVENTS_INFO)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            List<Competitions> workshops = new ArrayList<>();
+                            List<Competitions> genEve = new ArrayList<>();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                workshops.add(dataSnapshot.getValue(Competitions.class));
+                                genEve.add(dataSnapshot.getValue(Competitions.class));
                             }
-                            onCompetitionFetchSuccess.onFetchProjectsSuccess(workshops);
+                            onCompetitionFetchSuccess.onFetchProjectsSuccess(genEve);
 
                         }else onCompetitionFetchSuccess.onFetchError(new Exception("ERROR 404 : NO DATA FOUND."));
                     }

@@ -315,7 +315,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 app:tint="#D8D8D8"
-                                android:src="@drawable/cometation" />
+                                android:src="@drawable/cometaation" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -323,7 +323,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/calibrib"
-                            android:text="Competitions"
+                            android:text="General Events"
                             android:textColor="#BCBCBC"
                             android:textSize="15sp" />
 

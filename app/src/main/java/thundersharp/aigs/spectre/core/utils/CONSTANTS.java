@@ -82,4 +82,6 @@ public class CONSTANTS {
     public static final String SPONSORS = "SPONSORS";
     public static final String ADS = "ADS";
     public static final String URI = "URI";
+    public static final String GENERAL_EVENTS = "GENERAL_EVENTS";
+    public static final String GENERAL_EVENTS_INFO = "GENERAL_EVENTS_INFO";
 }

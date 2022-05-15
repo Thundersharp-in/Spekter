@@ -53,7 +53,7 @@ public class CompetitionItemHolderAdapter extends RecyclerView.Adapter<Competiti
         holder.duramtion.setText("Duration : "+notifications.DURATION);
         holder.by.setText("By "+notifications.ORGANISED_BY);
         holder.tittle.setText(notifications.TITTLE);
-        holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Workshop");
+        holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Event");
 
         holder.itemView.findViewById(R.id.bottom_w).setOnClickListener(n->{
             holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), CompetitionDetail.class).putExtra("workshop_info",notifications));
