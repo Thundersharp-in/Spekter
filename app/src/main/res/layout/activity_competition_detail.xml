@@ -55,7 +55,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:text="Competition tittle here"
+                        android:text="Event tittle here"
                         android:textColor="#FFFFFF"
                         android:textSize="25sp" />
 
@@ -149,6 +149,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -161,6 +162,7 @@
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/register"
                 android:layout_width="140dp"
                 android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
@@ -195,6 +197,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/date"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:fontFamily="@font/roboto_medium"
@@ -205,6 +208,7 @@
                             android:textSize="35sp" />
 
                         <TextView
+                            android:id="@+id/month"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="NOV"
@@ -225,6 +229,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/time_full"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
@@ -239,6 +244,7 @@
                             android:textSize="14sp"/>
 
                         <TextView
+                            android:id="@+id/event_start"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
@@ -254,6 +260,7 @@
                             android:textSize="14sp"/>
 
                         <TextView
+                            android:id="@+id/loc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
@@ -281,7 +288,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Competition highlights"
+                        android:text="Event highlights"
                         android:textSize="16sp"
                         android:layout_marginStart="5dp"
                         android:textAllCaps="true"
@@ -308,7 +315,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Competition Details"
+                        android:text="Event Details"
                         android:textSize="16sp"
                         android:textAllCaps="true"
                         android:layout_marginStart="5dp"

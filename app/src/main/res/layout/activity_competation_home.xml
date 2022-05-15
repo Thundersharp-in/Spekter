@@ -117,7 +117,7 @@
                         android:drawablePadding="10dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint="Search for competitions by name, description, category "
+                        android:hint="Search for event by name, description, category "
                         android:maxLines="1"
                         android:paddingHorizontal="5dp"
                         android:textColor="#C5C3C3"

@@ -2,7 +2,7 @@ package thundersharp.aigs.newsletter.core.model;
 
 import java.io.Serializable;
 
-public class NewsLetters implements Serializable {
+public class NewsLetters implements Serializable,Comparable {
 
     public String AUTHOR;
     public String TITLE;
@@ -38,5 +38,10 @@ public class NewsLetters implements Serializable {
                 ", SOURCE_NAME='" + SOURCE_NAME + '\'' +
                 ", SHORT_DESCRIPTION='" + SHORT_DESCRIPTION + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return PUBLISHED_AT.compareTo(o.toString());
     }
 }

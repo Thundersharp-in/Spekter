@@ -1,47 +1,73 @@
 package thundersharp.aigs.spectre.ui.activities.fwdActivities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.CompetitionFileHolderAdapter;
 import thundersharp.aigs.spectre.core.adapters.WorkShopDetailsAdapter;
+import thundersharp.aigs.spectre.core.adapters.WorkshopFileHolderAdapter;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
+import thundersharp.aigs.spectre.core.interfaces.GeneralEventsLoader;
 import thundersharp.aigs.spectre.core.models.CompetitionFiles;
 import thundersharp.aigs.spectre.core.models.Competitions;
+import thundersharp.aigs.spectre.core.models.GeneralEventsDetails;
+import thundersharp.aigs.spectre.core.models.RELATED_FILES;
+import thundersharp.aigs.spectre.core.models.WorkshopDetail;
+import thundersharp.aigs.spectre.core.utils.CONSTANTS;
+import thundersharp.aigs.spectre.core.utils.Progressbars;
+import thundersharp.aigs.spectre.ui.activities.auth.IntroActivity;
 
 public class CompetitionDetail extends AppCompatActivity {
 
-    private Competitions workshops;
+    private Competitions GENERAL_EVENTS;
     ChipGroup highlights;
     RecyclerView details, extras, files;
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_competition_detail);
+        alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
+        alertDialog.show();
 
-        workshops = (Competitions) getIntent().getSerializableExtra("workshop_info");
+        GENERAL_EVENTS = (Competitions) getIntent().getSerializableExtra(CONSTANTS.GENERAL_EVENTS_INFO);
 
-        if (workshops == null){
+        if (GENERAL_EVENTS == null){
             finish();
             Toast.makeText(this, "Internal error.", Toast.LENGTH_SHORT).show();
         }
 
         ((Toolbar)findViewById(R.id.toolbar)).setOnClickListener(view -> finish());
-        Glide.with(this).load(workshops.COVER).into((ImageView)findViewById(R.id.topImage));
+        Glide.with(this).load(GENERAL_EVENTS.COVER).into((ImageView)findViewById(R.id.topImage));
 
         highlights = findViewById(R.id.heighlights);
         details = findViewById(R.id.details);
@@ -49,48 +75,118 @@ public class CompetitionDetail extends AppCompatActivity {
         files = findViewById(R.id.files);
         //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
+        TextView textView = findViewById(R.id.tittle);
+        TextView by = findViewById(R.id.by);
+        TextView date = findViewById(R.id.month);
+        TextView day = findViewById(R.id.date);
+        TextView timeFull = findViewById(R.id.time_full);
+        TextView event_start = findViewById(R.id.event_start);
 
-        for (String s:getData()) {
+        try {
+            timeFull.setText(TimeUtils.getTimeInStringFromTimeStamp(GENERAL_EVENTS.ID));
+            event_start.setText("Starts from : "+TimeUtils.getClockFromTimeStamp(GENERAL_EVENTS.ID));
+            day.setText(TimeUtils.getDayFromTimeStamp(GENERAL_EVENTS.ID));
+            date.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(GENERAL_EVENTS.ID))));
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        textView.setText(GENERAL_EVENTS.TITTLE);
+        by.setText("By "+GENERAL_EVENTS.ORGANISED_BY.trim());
+
+        DatabaseHelpers
+                .getInstance()
+                .setEventId(GENERAL_EVENTS.ID)
+                .fetchGeneralEvents(new GeneralEventsLoader() {
+                    @Override
+                    public void onGeneralEventsFetchSuccess(GeneralEventsDetails workshopDetails) {
+                        updateUI(workshopDetails);
+                        alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onDataError(Exception e) {
+                        alertDialog.dismiss();
+                        Toast.makeText(CompetitionDetail.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
+    private void updateUI(GeneralEventsDetails workshopDetails) {
+        String[] detailsO = workshopDetails.DETAILS.split("\\.");
+        String[] extrasD = workshopDetails.MORE.split("\\.");
+        String[] chipD = workshopDetails.HIGHLIGHTS.split("\\.");
+
+        for (String s:chipD) {
             Chip chip = (Chip) getLayoutInflater().inflate(R.layout.item_chip, highlights, false);
             chip.setText(s);
             highlights.addView(chip);
         }
 
+        ((TextView)findViewById(R.id.loc)).setText(workshopDetails.LOCATION);
+        ((TextView)findViewById(R.id.price)).setText("₹ "+workshopDetails.PRICE);
+        details.setAdapter(new WorkShopDetailsAdapter(detailsO,this));
+        extras.setAdapter(new WorkShopDetailsAdapter(extrasD,this));
 
-        details.setAdapter(new WorkShopDetailsAdapter(getDetails(),this));
-        extras.setAdapter(new WorkShopDetailsAdapter(getExtras(),this));
-        files.setAdapter(new CompetitionFileHolderAdapter(getFileList(),this));
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.WORKSHOPS)
+                .child("WORKSHOP_FILES")
+                .child(workshopDetails.ID)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            List<RELATED_FILES> related_files = new ArrayList<>();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                related_files.add(dataSnapshot.getValue(RELATED_FILES.class));
+                            }
+                            files.setAdapter(new WorkshopFileHolderAdapter(related_files,CompetitionDetail.this));
+                        }else
+                            Toast.makeText(CompetitionDetail.this, "Files not found.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(CompetitionDetail.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+        findViewById(R.id.register).setOnClickListener(n->{
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setMessage("Payment for this workshop (If required) will be collected later after submission of this form.")
+                    .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .setPositiveButton("PROCEED", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                                alertDialog.show();
+                                dialogInterface.dismiss();
+                                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                                builder.setToolbarColor(Color.parseColor("#262626"));
+                                CustomTabsIntent customTabsIntent = builder.build();
+                                customTabsIntent.launchUrl(CompetitionDetail.this, Uri.parse(workshopDetails.REG_LINK));
+                                alertDialog.dismiss();
+                            }else{
+                                Toast.makeText(CompetitionDetail.this, "Please log in ", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(CompetitionDetail.this, IntroActivity.class));
+                            }
+
+                        }
+                    }).show();
+
+        });
+
     }
 
-    private String[] getDetails(){
-        return new String[]{"On-Line Group leader trainings are highly interactive, dynamic small-group training experiences (no more than 15 participants per training).",
-                "As more group leaders are exploring how to deliver groups and individual services to families and children online during the Covid-19",
-                "Hands on to real world projects",
-                " Home workshops typically contain a workbench, hand tools, power tools and other hardware. ",
-                "The organisation and contents of laboratories are determined by the differing requirements of the specialists working within. ",
-                "Joyful"};
-    }
 
-    private String[] getExtras(){
-        return new String[]{"Project Discussion",
-                "Have an eye to catch the amazing moments and a mind to turn a waste free world with the following events.",
-                "Hands on to real world projects",
-                "Teamwork",
-                "CORONA The annual technical fest of NIT Patna has become one of the biggest technical fest of the country.",
-                "Creativity is a wild mind and a disciplined eye. It is an art to explore your ideas to extraordinary way from the ordinary work."};
-    }
-
-    private List<String> getData(){
-        return new ArrayList<>(Arrays.asList("Project Discussion","Interactive learning","Hands on to real world projects","Teamwork","Stability","Joyful"));
-    }
-
-    private List<CompetitionFiles> getFileList(){
-        List<CompetitionFiles> files = new ArrayList<>();
-        files.add(new CompetitionFiles("12345","https://docs.google.com/uc?export=download&id=0BxyMs1jY42NLd2RFSk51TXBRRzQ","Circular","Should be stable, neat and clean, and suited to the objects on display"));
-        files.add(new CompetitionFiles("12345","https://res-2.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_470,w_760/f_auto,q_auto/v1/sectors/technology/tech_silhouette-woman-globe_889231052_medium_ifjvbc","Time Table","Can be a good way of influencing people traffic"));
-        files.add(new CompetitionFiles("12345","https://res-4.cloudinary.com/fieldfisher/image/upload/c_lfill,dpr_1,g_auto,h_340,w_280/f_auto,q_auto/v1/pdfs/codes_of_practice_on_network_security_under_the_telecoms_security_bill_oanba2","Study materials","Should be insect and rodent proof, and lit so as not to cast the exhibits in shadow"));
-        files.add(new CompetitionFiles("12345","https://ak.picdn.net/shutterstock/videos/9597380/thumb/1.jpg","Rules and Regulations","Case lining can be fabric, but avoid wool."));
-
-        return files;
-    }
 }

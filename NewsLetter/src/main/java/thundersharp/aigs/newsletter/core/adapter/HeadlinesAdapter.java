@@ -2,6 +2,8 @@ package thundersharp.aigs.newsletter.core.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.provider.Browser;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -63,38 +66,37 @@ public class HeadlinesAdapter extends RecyclerView.Adapter<HeadlinesAdapter.View
         //Article a = articles.get(position);
 
         holder.title.setText(model.TITLE);
-        Log.e("TITTLE"," "+model.TITLE);
+        //Log.e("TITTLE"," "+model.TITLE);
         holder.description.setText(model.DESCRIPTION);
         holder.source.setText(model.SOURCE_NAME);
 
         String date = model.PUBLISHED_AT;
-        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
-        Date parsedDate = null;
+
+        String parsedDate = null;
         try {
-            parsedDate = inputFormat.parse(date);
-        } catch (ParseException e) {
+            parsedDate = TimeUtils.getTimeInStringFromTimeStamp(date);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (parsedDate!=null) {
-            String formattedDate = outputFormat.format(parsedDate);
 
-            //System.out.println(formattedDate);
-
-            holder.date.setText(formattedDate);
+            holder.date.setText(parsedDate);
         }else {
             holder.date.setText(model.PUBLISHED_AT);
         }
 
         holder.view_source.setOnClickListener(b->{
-            //Browser.loadUrl(context,model.getNews_url());
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            builder.setToolbarColor(Color.parseColor("#262626"));
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(context, Uri.parse(model.URL));
         });
-        //String imageUrl = model.getNews_url();
+
         Glide.with(context)
                 .load(model.URL_TO_IMAGE)
                 .into(holder.imageView);
 
-        Log.e("DATA",model.toString());
+        //Log.e("DATA",model.toString());
 
 
     }

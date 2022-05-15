@@ -84,4 +84,5 @@ public class CONSTANTS {
     public static final String URI = "URI";
     public static final String GENERAL_EVENTS = "GENERAL_EVENTS";
     public static final String GENERAL_EVENTS_INFO = "GENERAL_EVENTS_INFO";
+    public static final String GENERAL_EVENTS_DETAILS = "GENERAL_EVENTS_DETAILS";
 }

@@ -32,6 +32,7 @@ import thundersharp.aigs.spectre.core.interfaces.BasicDataInterface;
 import thundersharp.aigs.spectre.core.interfaces.ChallengeLoader;
 import thundersharp.aigs.spectre.core.interfaces.ExhibitionInterface;
 import thundersharp.aigs.spectre.core.interfaces.FeedbackObserver;
+import thundersharp.aigs.spectre.core.interfaces.GeneralEventsLoader;
 import thundersharp.aigs.spectre.core.interfaces.InitiativesListner;
 import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
@@ -40,6 +41,7 @@ import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
+import thundersharp.aigs.spectre.core.models.GeneralEventsDetails;
 import thundersharp.aigs.spectre.core.models.Initiative;
 import thundersharp.aigs.spectre.core.models.InovativeChallangeDetails;
 import thundersharp.aigs.spectre.core.models.Participants;
@@ -67,6 +69,8 @@ public class DatabaseHelpers {
     private BasicDataInterface basicDataInterface;
     private PassIssueWatcher passIssueWatcher;
 
+    private GeneralEventsLoader generalEventsLoader;
+
     private Activity activity;
 
 
@@ -78,6 +82,7 @@ public class DatabaseHelpers {
     private ChallengeLoader challengeLoader;
     private PassData passData;
     private InitiativesListner initiativesListner;
+    private String eventId;
 
     public static DatabaseHelpers getInstance(){
         if (databaseHelpers == null){
@@ -89,6 +94,38 @@ public class DatabaseHelpers {
     public DatabaseHelpers setProjectId(long projectId){
         this.projectId = projectId;
         return this;
+    }
+
+    public DatabaseHelpers setEventId(String eventId){
+        this.eventId = eventId;
+        return this;
+    }
+
+    public void fetchGeneralEvents(GeneralEventsLoader generalEventsLoader){
+        this.generalEventsLoader = generalEventsLoader;
+        fetchDetailsGeneral(eventId);
+    }
+
+    private void fetchDetailsGeneral(String eventId) {
+        FirebaseDatabase
+                .getInstance()
+                .getReference(CONSTANTS.GENERAL_EVENTS)
+                .child(CONSTANTS.GENERAL_EVENTS_DETAILS)
+                .child(eventId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            generalEventsLoader.onGeneralEventsFetchSuccess(snapshot.getValue(GeneralEventsDetails.class));
+                        }else generalEventsLoader.onDataError(new Exception("No data found for event id "+eventId));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        generalEventsLoader.onDataError(error.toException());
+                    }
+                });
+
     }
 
     public DatabaseHelpers fetchAllInitiatives(InitiativesListner initiativesListner){

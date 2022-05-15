@@ -16,6 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collections;
+import java.util.List;
+
 import thundersharp.aigs.newsletter.R;
 import thundersharp.aigs.newsletter.core.adapter.HeadlinesAdapter;
 import thundersharp.aigs.newsletter.core.helper.OfflineNewsHelper;
@@ -65,7 +68,7 @@ public class NewsLetterView extends RelativeLayout {
         FirebaseDatabase
                 .getInstance()
                 .getReference("NEWS_LETTERS")
-                .child("123456789876")
+                .limitToLast(30)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,8 +80,9 @@ public class NewsLetterView extends RelativeLayout {
                                 offlineNewsHelper.addContact(newsLetters,i);
                                 i++;
                             }
-
-                            adapter = new HeadlinesAdapter(getContext(),offlineNewsHelper.getAllNews());
+                            List<NewsLetters> data = offlineNewsHelper.getAllNews();
+                            Collections.sort(data);
+                            adapter = new HeadlinesAdapter(getContext(),data);
                             offlineNewsHelper.saveCurrentUpdateTime();
                             viewPager2.setAdapter(adapter);
                         }else Toast.makeText(getContext(), "Data not found", Toast.LENGTH_SHORT).show();

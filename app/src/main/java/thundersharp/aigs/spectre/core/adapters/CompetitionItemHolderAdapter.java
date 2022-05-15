@@ -20,6 +20,7 @@ import java.util.List;
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.Competitions;
+import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.ui.activities.fwdActivities.CompetitionDetail;
 import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
@@ -56,7 +57,7 @@ public class CompetitionItemHolderAdapter extends RecyclerView.Adapter<Competiti
         holder.mode.setText("This is a "+notifications.MODE.toUpperCase()+" Event");
 
         holder.itemView.findViewById(R.id.bottom_w).setOnClickListener(n->{
-            holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), CompetitionDetail.class).putExtra("workshop_info",notifications));
+            holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), CompetitionDetail.class).putExtra(CONSTANTS.GENERAL_EVENTS_INFO,notifications));
         });
 
         try {
