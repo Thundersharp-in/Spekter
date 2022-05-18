@@ -68,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#262626"
+                app:tabGravity="center"
                 app:tabSelectedTextColor="#9C27B0"
                 app:tabTextAppearance="@style/MineCustomTabText" />
 

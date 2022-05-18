@@ -56,9 +56,9 @@ import thundersharp.aigs.spectre.ui.activities.lectures.LecturesHome;
 
 
 public class HomeFragment extends Fragment implements
-        BaseSliderView.OnSliderClickListener ,
+        BaseSliderView.OnSliderClickListener,
         OnMapReadyCallback,
-        ViewPagerEx.OnPageChangeListener{
+        ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout slider;
     private GoogleMap mMap;
@@ -73,19 +73,19 @@ public class HomeFragment extends Fragment implements
         viewPager = root.findViewById(R.id.pager);
         setupCrousel();
 
-       // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
+        // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
 
-        root.findViewById(R.id.notification).setOnClickListener(u->startActivity(new Intent(getActivity(), BarCodeScanner.class)));
-        root.findViewById(R.id.alive).setOnClickListener(u->startActivity(new Intent(getActivity(), ExhibitionHome.class)));
-        root.findViewById(R.id.iniatives).setOnClickListener(u->startActivity(new Intent(getActivity(), InitiativesHomes.class)));
-        root.findViewById(R.id.lectures).setOnClickListener(u->startActivity(new Intent(getActivity(), LecturesHome.class)));
-        root.findViewById(R.id.workshops).setOnClickListener(u->startActivity(new Intent(getActivity(), WorkshopsHome.class)));
-        root.findViewById(R.id.competations).setOnClickListener(u->startActivity(new Intent(getActivity(), CompetationHome.class)));
-        root.findViewById(R.id.upcomingEvents).setOnClickListener(u->startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
-        root.findViewById(R.id.ic).setOnClickListener(u->startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
-        root.findViewById(R.id.knowUs).setOnClickListener(u->startActivity(new Intent(getActivity(), KnowUs.class)));
+        root.findViewById(R.id.notification).setOnClickListener(u -> startActivity(new Intent(getActivity(), BarCodeScanner.class)));
+        root.findViewById(R.id.alive).setOnClickListener(u -> startActivity(new Intent(getActivity(), ExhibitionHome.class)));
+        root.findViewById(R.id.iniatives).setOnClickListener(u -> startActivity(new Intent(getActivity(), InitiativesHomes.class)));
+        root.findViewById(R.id.lectures).setOnClickListener(u -> startActivity(new Intent(getActivity(), LecturesHome.class)));
+        root.findViewById(R.id.workshops).setOnClickListener(u -> startActivity(new Intent(getActivity(), WorkshopsHome.class)));
+        root.findViewById(R.id.competations).setOnClickListener(u -> startActivity(new Intent(getActivity(), CompetationHome.class)));
+        root.findViewById(R.id.upcomingEvents).setOnClickListener(u -> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
+        root.findViewById(R.id.ic).setOnClickListener(u -> startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
+        root.findViewById(R.id.knowUs).setOnClickListener(u -> startActivity(new Intent(getActivity(), KnowUs.class)));
 
-        root.findViewById(R.id.feedBack).setOnClickListener(r->{
+        root.findViewById(R.id.feedBack).setOnClickListener(r -> {
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
             bottomSheetDialog.setContentView(R.layout.bottom_sheet_feedback);
 
@@ -93,64 +93,64 @@ public class HomeFragment extends Fragment implements
             LinearLayout event_feedBack = bottomSheetDialog.findViewById(R.id.event_feedBack);
             LinearLayout facFeedback = bottomSheetDialog.findViewById(R.id.facFeedback);
 
-            app_feed_Back.setOnClickListener(o->{
+            app_feed_Back.setOnClickListener(o -> {
                 Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("email/rfc822");
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
-            intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
-            intent.putExtra(Intent.EXTRA_TEXT, new String(
-                    "DEVICE: "+Build.DEVICE + "\nMANUFACTURER: "
-                            + Build.MANUFACTURER + "\nBOOTLOADER: "
-                            + Build.BOOTLOADER + "\nPRODUCT: "
-                            + Build.PRODUCT + "\nUSER: "
-                            + Build.USER + "\nDEVICE ID: "
-                            + Build.ID + "\nCPU_ABI: "
-                            + Build.CPU_ABI + "\n"
-                            + "________Your message after here _______\n"));
-            Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
-            startActivity(mailer);
+                intent.setType("email/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
+                intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
+                intent.putExtra(Intent.EXTRA_TEXT, new String(
+                        "DEVICE: " + Build.DEVICE + "\nMANUFACTURER: "
+                                + Build.MANUFACTURER + "\nBOOTLOADER: "
+                                + Build.BOOTLOADER + "\nPRODUCT: "
+                                + Build.PRODUCT + "\nUSER: "
+                                + Build.USER + "\nDEVICE ID: "
+                                + Build.ID + "\nCPU_ABI: "
+                                + Build.CPU_ABI + "\n"
+                                + "________Your message after here _______\n"));
+                Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
+                startActivity(mailer);
             });
 
 
-            facFeedback.setOnClickListener(i->startActivity(new Intent(getActivity(), FacultyFeedback.class)));
-            event_feedBack.setOnClickListener(i->startActivity(new Intent(getActivity(), EventFeedback.class)));
+            facFeedback.setOnClickListener(i -> startActivity(new Intent(getActivity(), FacultyFeedback.class)));
+            event_feedBack.setOnClickListener(i -> startActivity(new Intent(getActivity(), EventFeedback.class)));
 
 
             bottomSheetDialog.show();
         });
 
-        root.findViewById(R.id.facebook).setOnClickListener(u->{
+        root.findViewById(R.id.facebook).setOnClickListener(u -> {
             Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/sppekter"));
             startActivity(intent);
         });
 
-        root.findViewById(R.id.instagram).setOnClickListener(u->{
+        root.findViewById(R.id.instagram).setOnClickListener(u -> {
             Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.instagram.com/spekter_aigs"));
             startActivity(intent);
         });
 
-        root.findViewById(R.id.youtube).setOnClickListener(u->{
+        root.findViewById(R.id.youtube).setOnClickListener(u -> {
             Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com"));
             startActivity(intent);
         });
 
-        root.findViewById(R.id.linkedIn).setOnClickListener(u->{
+        root.findViewById(R.id.linkedIn).setOnClickListener(u -> {
             Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://in.linkedin.com/company/spekter/"));
             startActivity(intent);
         });
 
 
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity(),getTempTestimonial()));
+        viewPager.setAdapter(new CustomPagerAdapter(getActivity(), getTempTestimonial()));
 
         return root;
     }
 
 
-    private Testimonials[] getTempTestimonial(){
-        return new Testimonials[]{new Testimonials("","","",""),new Testimonials("","","",""),new Testimonials("","","","")};
+    private Testimonials[] getTempTestimonial() {
+        return new Testimonials[]{new Testimonials("", "", "", ""), new Testimonials("", "", "", ""), new Testimonials("", "", "", "")};
     }
 
-    private void setupCrousel(){
+    private void setupCrousel() {
         ArrayList<String> listUrl = new ArrayList<>();
         Bundle bundle = new Bundle();
         int d;
@@ -161,10 +161,10 @@ public class HomeFragment extends Fragment implements
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             RequestOptions requestOptions = new RequestOptions();
                             requestOptions.centerCrop();
-                            for (DataSnapshot dataSnapshot :snapshot.getChildren()){
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                                 DefaultSliderView sliderView = new DefaultSliderView(getActivity());
                                 sliderView
@@ -185,7 +185,7 @@ public class HomeFragment extends Fragment implements
                                 slider.addSlider(sliderView);
                             }
 
-                        }else {
+                        } else {
                             listUrl.add("https://vidya-india.org/wp-content/uploads/2021/02/ai.jpg");
                             listUrl.add("https://images.squarespace-cdn.com/content/v1/5d7187438c38e20001dcc19b/1624733785132-4ZPPKZH7IC3RNSPAOTWX/GTF_TicketsGTF2022.jpg?format=2500w");
 
@@ -254,9 +254,9 @@ public class HomeFragment extends Fragment implements
         //markerOptions = new MarkerOptions();
         mMap = googleMap;
         mMap.setMapStyle(style);
-        MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(13.0839376,77.4849723,"Exhibition")).locate();
+        MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(13.0839376, 77.4849723, "Exhibition")).locate();
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.0839376,77.4849723), 18));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.0839376, 77.4849723), 18));
 
     }
 }

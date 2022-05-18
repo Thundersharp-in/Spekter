@@ -19,11 +19,17 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.mapbox.geojson.Point;
+import com.mapbox.maps.CameraOptions;
+import com.mapbox.maps.MapInitOptions;
+import com.mapbox.maps.MapOptions;
 import com.mapbox.maps.MapView;
+import com.mapbox.maps.ResourceOptions;
 import com.mapbox.maps.Style;
 import com.mapbox.maps.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
@@ -34,18 +40,19 @@ import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
 public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAdapter.ViewHolder> implements Filterable {
 
-    private List<Upcomming> notificationsList,getNotificationsListCopy;
+    private List<Upcomming> notificationsList, getNotificationsListCopy;
     private FragmentManager activity;
 
-    public UpcomingHolderAdapter(){}
+    public UpcomingHolderAdapter() {
+    }
 
-    public UpcomingHolderAdapter(List<Upcomming> notificationsList,FragmentManager fragmentManager) {
+    public UpcomingHolderAdapter(List<Upcomming> notificationsList, FragmentManager fragmentManager) {
         this.activity = fragmentManager;
         this.notificationsList = notificationsList;
         getNotificationsListCopy = new ArrayList<>(notificationsList);
     }
 
-    public UpcomingHolderAdapter setData(List<Upcomming> notifications){
+    public UpcomingHolderAdapter setData(List<Upcomming> notifications) {
         this.notificationsList = notifications;
         return this;
     }
@@ -53,7 +60,7 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcomming_holder,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_upcomming_holder, parent, false));
     }
 
     @Override
@@ -63,7 +70,7 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
         try {
             holder.day.setText(TimeUtils.getDayFromTimeStamp(notifications.ID));
             holder.month.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID))).substring(0, 3).toUpperCase());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -86,13 +93,13 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<Upcomming> filterList = new ArrayList<>();
-            if (constraint == null|| constraint.length() == 0){
+            if (constraint == null || constraint.length() == 0) {
                 filterList.addAll(getNotificationsListCopy);
-            }else {
+            } else {
                 String text = constraint.toString().toLowerCase().trim();
-                for (Upcomming data : getNotificationsListCopy){
-                    if (data.TITTLE.toLowerCase().contains(text)||
-                            data.DESCRIPTION.toLowerCase().contains(text)){
+                for (Upcomming data : getNotificationsListCopy) {
+                    if (data.TITTLE.toLowerCase().contains(text) ||
+                            data.DESCRIPTION.toLowerCase().contains(text)) {
                         filterList.add(data);
                     }
                 }
@@ -105,16 +112,16 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             notificationsList.clear();
-            notificationsList.addAll((List)filterResults.values);
+            notificationsList.addAll((List) filterResults.values);
             notifyDataSetChanged();
         }
     };
 
 
-    class ViewHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView background;
-        private TextView month,day,tittle,duramtion,mode,by;
+        private TextView month, day, tittle, duramtion, mode, by;
         private MapView mapView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -130,12 +137,8 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
 
             mapView = itemView.findViewById(R.id.mapView);
             mapView.getMapboxMap().loadStyleUri(Style.DARK);
-
         }
 
-        @Override
-        public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        }
     }
 }

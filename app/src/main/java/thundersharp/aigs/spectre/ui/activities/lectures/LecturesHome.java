@@ -6,7 +6,9 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -64,6 +66,14 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
         preAnimation = findViewById(R.id.mainContainer);
         slider = findViewById(R.id.slider);
         service_l = findViewById(R.id.service_l);
+
+        findViewById(R.id.rrr).setOnClickListener(t->finish());
+        findViewById(R.id.notification).setOnClickListener(t->new AlertDialog.Builder(this).setMessage("Only available for students of Acharya institutes at free of cost.").setPositiveButton("UNDERSTOOD", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        }).show());
 
         rv_LT = findViewById(R.id.rv_LT);
         rv_LLT = findViewById(R.id.rv_LLT);
