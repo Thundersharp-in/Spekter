@@ -32,6 +32,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.AboutCourseAdapter;
 import thundersharp.aigs.spectre.core.exceptions.InternalException;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.models.ServiceItemModel;
 import thundersharp.aigs.spectre.core.models.SubscriptionDetails;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
@@ -48,25 +50,70 @@ public class CourseDetailActivity extends AppCompatActivity {
     private Intent intent;
     BottomSheetDialog bottomSheetDialog;
     private AlertDialog alertDialog;
+    private ProfileData profileDataSync;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
         alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
+        profileDataSync = ProfileDataSync.getInstance(this).initializeLocalStorage().pullDataBack();
 
         ((Toolbar) findViewById(R.id.tool)).setNavigationOnClickListener(t -> finish());
         initViews();
 
-        if (getIntent().getSerializableExtra("course_detail") != null) {
+        if (getIntent().getSerializableExtra("course_detail") != null && profileDataSync != null) {
             model = (ServiceItemModel) getIntent().getSerializableExtra("course_detail");
             Ctype = getIntent().getStringExtra("Ctype");
         } else {
-            Toast.makeText(this, "Currently Course unavailable!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Currently Course unavailable for you !", Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        subscribe.setText("SUBSCRIBE");
+        ServiceChecker
+                .getInstance()
+                .setServiceId(model.COARSE_ID)
+                .build()
+                .setListner(new ServiceChecker.listner() {
+                    @Override
+                    public void onDataPathOk() {
+                        //showSubSheet();
+                        subscribe.setText("SUBSCRIBE");
+                        alertDialog.dismiss();
+                    }
+
+                    @Override
+                    public void dataExists(SubscriptionDetails payment_data) {
+                        if (profileDataSync.acharyan) {
+
+                            if (payment_data.SUB_STATUS.equals("1")) {
+                                subscribe.setText("UNSUBSCRIBE");
+                                alertDialog.dismiss();
+
+                            } else {
+                                Toast.makeText(CourseDetailActivity.this, "Previous subscription failed retry", Toast.LENGTH_SHORT).show();
+                                //showSubSheet();
+                                subscribe.setText("SUBSCRIBE");
+
+                            }
+                        }else {
+                            Toast.makeText(CourseDetailActivity.this, "Accessible only by acharyans.", Toast.LENGTH_SHORT).show();
+                            subscribe.setText("UNAVAILABLE");
+                        }
+                    }
+
+                    @Override
+                    public void dataError(Exception e) {
+                        subscribe.setText("ERROR");
+                        if (e instanceof InternalException) {
+
+                            Toast.makeText(CourseDetailActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        } else
+                            Toast.makeText(CourseDetailActivity.this, "Filed error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
        /* if (getIntent().getSerializableExtra("payment_status") != null){
             //paymentdata = (PurchaseData) getIntent().getSerializableExtra("payment_status");
@@ -101,44 +148,11 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         subscribe.setOnClickListener(view -> {
             alertDialog.show();
-            ServiceChecker
-                    .getInstance()
-                    .setServiceId(model.COARSE_ID)
-                    .build()
-                    .setListner(new ServiceChecker.listner() {
-                        @Override
-                        public void onDataPathOk() {
-                            showSubSheet();
-                        }
+            if (subscribe.getText().toString().equalsIgnoreCase("SUBSCRIBE")){
 
-                        @Override
-                        public void dataExists(SubscriptionDetails payment_data) {
-                            if (payment_data.SUB_STATUS.equals("1")) {
-                                Toast.makeText(CourseDetailActivity.this, "Already subscribed taking you in...", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(CourseDetailActivity.this, CoarseContents.class)
-                                        .putExtra("coarse_id", model.COARSE_ID)
-                                        .putExtra("coarse_name", model.COURSE_NAME)
-                                        .putExtra("by", model.COARSE_BY));
-                                alertDialog.dismiss();
+            }else if (subscribe.getText().toString().equalsIgnoreCase("UNSUBSCRIBE")){
 
-                            } else {
-                                Toast.makeText(CourseDetailActivity.this, "Previous subscription failed retry", Toast.LENGTH_SHORT).show();
-                                showSubSheet();
-
-                            }
-                        }
-
-                        @Override
-                        public void dataError(Exception e) {
-                            if (e instanceof InternalException) {
-
-                                Toast.makeText(CourseDetailActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                            } else
-                                Toast.makeText(CourseDetailActivity.this, "Filed error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
+            }else Toast.makeText(this, "Action restricted for you !", Toast.LENGTH_SHORT).show();
         });
 
         s_chat.setOnClickListener(t -> {
