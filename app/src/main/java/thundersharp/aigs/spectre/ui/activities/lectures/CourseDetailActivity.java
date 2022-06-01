@@ -23,9 +23,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,9 +36,13 @@ import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.AboutCourseAdapter;
 import thundersharp.aigs.spectre.core.exceptions.InternalException;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.models.Payment_Data;
 import thundersharp.aigs.spectre.core.models.ProfileData;
+import thundersharp.aigs.spectre.core.models.PurchaseData;
 import thundersharp.aigs.spectre.core.models.ServiceItemModel;
 import thundersharp.aigs.spectre.core.models.SubscriptionDetails;
+import thundersharp.aigs.spectre.core.models.TransactionModel;
+import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.core.utils.ServiceChecker;
 
@@ -83,10 +90,10 @@ public class CourseDetailActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void dataExists(SubscriptionDetails payment_data) {
+                    public void dataExists(Payment_Data payment_data) {
                         if (profileDataSync.acharyan) {
 
-                            if (payment_data.SUB_STATUS.equals("1")) {
+                            if (payment_data.PAYMENT_STATUS.equals("1")) {
                                 subscribe.setText("UNSUBSCRIBE");
                                 alertDialog.dismiss();
 
@@ -148,11 +155,16 @@ public class CourseDetailActivity extends AppCompatActivity {
 
         subscribe.setOnClickListener(view -> {
             alertDialog.show();
-            if (subscribe.getText().toString().equalsIgnoreCase("SUBSCRIBE")){
-
-            }else if (subscribe.getText().toString().equalsIgnoreCase("UNSUBSCRIBE")){
-
-            }else Toast.makeText(this, "Action restricted for you !", Toast.LENGTH_SHORT).show();
+            if (profileDataSync.acharyan) {
+                if (subscribe.getText().toString().equalsIgnoreCase("SUBSCRIBE")) {
+                    showSubSheet();
+                } else if (subscribe.getText().toString().equalsIgnoreCase("UNSUBSCRIBE")) {
+                    showUnSubSheet();
+                }
+            }else {
+                Toast.makeText(this, "Action restricted for you !", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
         });
 
         s_chat.setOnClickListener(t -> {
@@ -177,10 +189,15 @@ public class CourseDetailActivity extends AppCompatActivity {
         });
 
         viewCourseBtn.setOnClickListener(view -> {
-            startActivity(new Intent(this, CoarseContents.class)
-                    .putExtra("coarse_id", model.COARSE_ID)
-                    .putExtra("coarse_name", model.COURSE_NAME)
-                    .putExtra("by", model.COARSE_BY));
+            if (profileDataSync.acharyan) {
+                startActivity(new Intent(this, CoarseContents.class)
+                        .putExtra("coarse_id", model.COARSE_ID)
+                        .putExtra("coarse_name", model.COURSE_NAME)
+                        .putExtra("by", model.COARSE_BY));
+            }else {
+                Toast.makeText(this, "Action restricted for you !", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
         });
     }
 
@@ -192,7 +209,29 @@ public class CourseDetailActivity extends AppCompatActivity {
                 .setPositiveButton("SUBSCRIBE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        setSubscribe("pay_1234567");
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+    }
 
+    private void showUnSubSheet() {
+        alertDialog.dismiss();
+        new AlertDialog.Builder(this)
+                .setMessage("Unsubscribe from " + model.COURSE_NAME + "\nby " + model.COARSE_BY)
+                .setCancelable(false)
+                .setPositiveButton("UNSUBSCRIBE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.show();
+                        setUnSubscribe();
+                        alertDialog.dismiss();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -325,4 +364,134 @@ public class CourseDetailActivity extends AppCompatActivity {
         }
     }
 
+    private void setSubscribe(String s){
+        alertDialog.show();
+        Integer type = 0;
+        switch (Ctype){
+            case CONSTANTS.DATABASE_COURSES:
+                type = 1;
+                break;
+            case CONSTANTS.DATABASE_COURSES_FREE:
+                type = 2;
+                break;
+            case CONSTANTS.DATABASE_COURSES_LIVE:
+                type = 3;
+                break;
+            default:
+                type = 1;
+                break;
+        }
+        HashMap<String, Object> updateDataRequest = new HashMap<>();
+        Payment_Data payment_data = new Payment_Data(s,"1","");
+
+        PurchaseData purchaseData = new PurchaseData(model.COARSE_ID,
+                model.PRICE,
+                model.COURSE_NAME,
+                Ctype,
+                "false",
+                payment_data);
+        TransactionModel transactionModel = new TransactionModel(String.valueOf(type),
+                s,
+                "1",
+                model.COARSE_ID);
+
+        updateDataRequest.put(CONSTANTS.DATABASE_USER_DATA
+                        +"/"+FirebaseAuth.getInstance().getUid()
+                        +"/"+CONSTANTS.DATABASE_PURCHASED_SERVICES
+                        +"/"+model.COARSE_ID,
+                purchaseData);
+
+        updateDataRequest.put(CONSTANTS.DATABASE_PLAN_COURSE_ENROLLMENT_DATA
+                        +"/"+Ctype
+                        +"/"+model.COARSE_ID
+                        +"/"+FirebaseAuth.getInstance().getUid(),
+                FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
+                        +"Ѱ"+ FirebaseAuth.getInstance().getCurrentUser().getEmail()
+                        +"π"+ FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()
+                        +"Ω1ηfalse");
+
+        updateDataRequest.put(CONSTANTS.DATABASE_USER_DATA
+                        +"/"+FirebaseAuth.getInstance().getUid()
+                        +"/"+CONSTANTS.DATABASE_TRANSACTIONS
+                        +"/"+model.COARSE_ID,
+                transactionModel);
+
+        FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .updateChildren(updateDataRequest)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(CourseDetailActivity.this, "Subscription completed!", Toast.LENGTH_LONG).show();
+                        subscribe.setText("UNSUBSCRIBE");
+                        alertDialog.dismiss();
+                        startActivity(new Intent(CourseDetailActivity.this,CoarseContents.class)
+                                .putExtra("coarse_id",model.COARSE_ID)
+                                .putExtra("coarse_name",model.COURSE_NAME)
+                                .putExtra("by",model.COARSE_BY));
+                    } else {
+                        subscribe.setText("GET COURSE");
+                        Toast.makeText(CourseDetailActivity.this,
+                                "Could not complete subscription contact support for your refund if not generated automatically",
+                                Toast.LENGTH_LONG).show();
+                        alertDialog.dismiss();
+                    }
+                });
+    }
+
+    private synchronized void setUnSubscribe(){
+        alertDialog.show();
+        Integer type = 0;
+        switch (Ctype){
+            case CONSTANTS.DATABASE_COURSES:
+                type = 1;
+                break;
+            case CONSTANTS.DATABASE_COURSES_FREE:
+                type = 2;
+                break;
+            case CONSTANTS.DATABASE_COURSES_LIVE:
+                type = 3;
+                break;
+            default:
+                type = 1;
+                break;
+        }
+        HashMap<String, Object> updateDataRequest = new HashMap<>();
+
+        updateDataRequest.put(CONSTANTS.DATABASE_USER_DATA
+                        +"/"+FirebaseAuth.getInstance().getUid()
+                        +"/"+CONSTANTS.DATABASE_PURCHASED_SERVICES
+                        +"/"+model.COARSE_ID,
+                null);
+
+        updateDataRequest.put(CONSTANTS.DATABASE_PLAN_COURSE_ENROLLMENT_DATA
+                        +"/"+Ctype
+                        +"/"+model.COARSE_ID
+                        +"/"+FirebaseAuth.getInstance().getUid(),
+                null);
+
+        updateDataRequest.put(CONSTANTS.DATABASE_USER_DATA
+                        +"/"+FirebaseAuth.getInstance().getUid()
+                        +"/"+CONSTANTS.DATABASE_TRANSACTIONS
+                        +"/"+model.COARSE_ID,
+                null);
+
+        FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .updateChildren(updateDataRequest)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(CourseDetailActivity.this, "Unsubscribed!", Toast.LENGTH_LONG).show();
+                        subscribe.setText("SUBSCRIBE");
+
+                    } else {
+                        subscribe.setText("UNSUBSCRIBE");
+                        Toast.makeText(CourseDetailActivity.this,
+                                "Could not complete action contact support for your refund if not generated automatically",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    alertDialog.dismiss();
+                });
+    }
 }

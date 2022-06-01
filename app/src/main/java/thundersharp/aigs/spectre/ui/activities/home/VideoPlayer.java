@@ -143,6 +143,7 @@ public class VideoPlayer extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (intent != null)
         stopService(intent);
         youTubePlayerView.release();
     }

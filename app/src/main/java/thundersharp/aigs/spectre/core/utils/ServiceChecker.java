@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import thundersharp.aigs.spectre.core.exceptions.InternalException;
+import thundersharp.aigs.spectre.core.models.Payment_Data;
 import thundersharp.aigs.spectre.core.models.SubscriptionDetails;
 
 public class ServiceChecker {
@@ -54,7 +55,7 @@ public class ServiceChecker {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                             if (snapshot.exists()){
-                                listner.dataExists(snapshot.getValue(SubscriptionDetails.class));
+                                listner.dataExists(snapshot.getValue(Payment_Data.class));
                             }else listner.onDataPathOk();
 
                         }
@@ -69,7 +70,7 @@ public class ServiceChecker {
     public interface listner{
 
         void onDataPathOk();
-        void dataExists(SubscriptionDetails subscriptionDetails);
+        void dataExists(Payment_Data subscriptionDetails);
         void dataError(Exception e);
     }
 }
