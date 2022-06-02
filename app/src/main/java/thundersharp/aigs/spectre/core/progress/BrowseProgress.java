@@ -87,6 +87,11 @@ public class BrowseProgress {
         }
     }
 
+    public double getOverviewProgress(){
+        Map<String, ?> prefsMap = sharedPreferences.getAll();
+        return ((double)prefsMap.size()/totalProjects)*100;
+    }
+
     private boolean checkIfExists(String projectId) {
         if (sharedPreferences.getString(projectId, null) == null)
             return false;

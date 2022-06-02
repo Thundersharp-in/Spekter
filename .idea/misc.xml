@@ -106,6 +106,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
         <entry key="app/src/main/res/layout/activity_scanner_project_info.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_service_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_subsribed_lectures.xml" value="0.1838392475416845" />
         <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_video_player.xml" value="0.19923044035912782" />
@@ -147,6 +148,7 @@
         <entry key="app/src/main/res/layout/item_participants_holder.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_person_holder.xml" value="0.2228483717887001" />
         <entry key="app/src/main/res/layout/item_projects.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_purchased_services.xml" value="0.195382642154767" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
@@ -162,6 +164,7 @@
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.20701754385964913" />
         <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/service_holder.xml" value="0.2543822146216332" />
+        <entry key="app/src/main/res/layout/shimmer_plan.xml" value="0.195382642154767" />
         <entry key="app/src/main/res/layout/shimmer_service.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/social_media_pannel.xml" value="0.2175925925925926" />
         <entry key="app/src/main/res/layout/time_slot_bprder.xml" value="0.1" />

@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.activities.lectures.SubsribedLectures"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.exhibition.ProjectGallery"
             android:exported="false" />
         <activity

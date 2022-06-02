@@ -36,14 +36,18 @@ import java.util.List;
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.SlotTimeHolderAdapter;
+import thundersharp.aigs.spectre.core.exceptions.ArgumentsMissingException;
 import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.PassIssueWatcher;
 import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
 import thundersharp.aigs.spectre.core.models.PassData;
 import thundersharp.aigs.spectre.core.models.ProfileData;
+import thundersharp.aigs.spectre.core.models.TicketsData;
+import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
+import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 
 public class BookPasses extends AppCompatActivity {
 
@@ -237,11 +241,11 @@ public class BookPasses extends AppCompatActivity {
 
     private void issuePass() {
         if (!profileData.acharyan) {
-            new androidx.appcompat.app.AlertDialog.Builder(this)
+            new AlertDialog.Builder(this)
                     .setTitle("Sorry :( you cant book passes for this event as this event is only for acharyan.")
                     .setPositiveButton("UNDERSTOOD", (dialogInterface, i) -> dialogInterface.dismiss()).show();
         }else {
-            new androidx.appcompat.app.AlertDialog.Builder(this)
+            new AlertDialog.Builder(this)
                     .setTitle("If you have previous booking for the event it will be automatically canceled with this booking !!")
                     .setPositiveButton("PROCEED", (dialogInterface, i) -> {
                         dialogInterface.dismiss();
@@ -253,14 +257,35 @@ public class BookPasses extends AppCompatActivity {
 
     private void issuePassDb() {
         alertDialog.show();
+        PassData passData = new PassData(timeSlot,profileData.name, profileData.phone, FirebaseAuth.getInstance().getUid(),profileData.email);
         DatabaseHelpers
                 .getInstance()
-                .setPassData(new PassData(timeSlot,profileData.name, profileData.phone, FirebaseAuth.getInstance().getUid(),profileData.email))
+                .setPassData(passData)
                 .setPassIssueWatcher(new PassIssueWatcher() {
                     @Override
                     public void OnPassIssued(PassData passData) {
                         Toast.makeText(BookPasses.this, "Pass generated view from top pass view icon.", Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
+
+                        try {
+                            Tickets
+                                    .getInstance(BookPasses.this)
+                                    .setTicketsData(new TicketsData(
+                                            bookingData,
+                                            timeSlot,
+                                            "TECH EXHIBITION",
+                                            "Spekter is the technical fest of AIGS with over thousands of visitors it provides students with a plethora of opportunities for students to experience the beauty and amalgamations of science and technology.",
+                                            passData.NAME,
+                                            passData.EMAIL,
+                                            profileData.phone,
+                                            "AIGS",
+                                            null,
+                                            FirebaseAuth.getInstance().getUid()))
+                                    .showTickets();
+                        } catch (ArgumentsMissingException e) {
+                            e.printStackTrace();
+                        }
+
                     }
 
                     @Override

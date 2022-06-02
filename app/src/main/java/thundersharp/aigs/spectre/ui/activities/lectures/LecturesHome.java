@@ -75,6 +75,8 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
             }
         }).show());
 
+        findViewById(R.id.purchased).setOnClickListener(o->startActivity(new Intent(this,SubsribedLectures.class)));
+
         rv_LT = findViewById(R.id.rv_LT);
         rv_LLT = findViewById(R.id.rv_LLT);
         rv_FC = findViewById(R.id.rv_FC);
@@ -98,7 +100,7 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
         });
 
 
-        new Handler().postDelayed(() -> setPreAnimation(false),4000);
+        //new Handler().postDelayed(() -> ,4000);
 
         see_all_c.setOnClickListener(v -> startActivity(new Intent(this, ServiceMain.class).putExtra("pos", 0)));
         seeAllLT.setOnClickListener(v -> startActivity(new Intent(this, ServiceMain.class).putExtra("pos", 1)));
@@ -141,6 +143,7 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
                         rv_LT.setLayoutManager(new GridLayoutManager(LecturesHome.this, 2));
                         rv_LT.setAdapter(adapter);
                         rv_LT.setHasFixedSize(true);
+                        setPreAnimation(false);
                     }
 
                     @Override
@@ -153,6 +156,7 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
                         rv_LLT.setLayoutManager(new GridLayoutManager(LecturesHome.this, 2));
                         rv_LLT.setAdapter(adapter);
                         rv_LLT.setHasFixedSize(true);
+                        setPreAnimation(false);
                     }
 
                     @Override
@@ -165,6 +169,7 @@ public class LecturesHome extends AppCompatActivity implements  BaseSliderView.O
                         rv_FC.setLayoutManager(new GridLayoutManager(LecturesHome.this, 2));
                         rv_FC.setAdapter(adapter);
                         rv_FC.setHasFixedSize(true);
+                        setPreAnimation(false);
 
                     }
 

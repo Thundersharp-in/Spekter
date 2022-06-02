@@ -65,7 +65,10 @@
       ".read" : "true",
       ".write" : "false"
     },
-
+    "SLIDERS": {
+      ".read" : "true",
+      ".write" : "false"
+    },
     "TOP_CAROUSEL" : {
       ".read" : "auth != null",
       ".write" : "false"

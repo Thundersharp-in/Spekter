@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#46395C"
+    android:background="#000"
     tools:context=".ui.activities.passes.TicketViewer">
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -61,18 +61,19 @@
         android:layout_below="@id/toolbar">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
             <LinearLayout
-                android:paddingHorizontal="50dp"
-                android:paddingVertical="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="50dp"
+                android:paddingVertical="30dp">
 
+                <!--
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
@@ -91,6 +92,7 @@
                         android:src="@drawable/spekter"/>
 
                 </androidx.cardview.widget.CardView>
+-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -102,19 +104,20 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="75dp"
-                        android:background="@drawable/background_header">
+                        android:background="@drawable/background_header"
+                        android:backgroundTint="#A38C11">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Entry Pass"
                             android:fontFamily="@font/roboto_medium"
-                            android:textAllCaps="true"
+                            android:text="Entry Pass"
                             android:textAlignment="center"
+                            android:textAllCaps="true"
                             android:textColor="@android:color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -122,8 +125,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="20dp">
 
                         <TextView
@@ -131,28 +134,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Spectre TECH Exhibition"
-                            android:textSize="16sp"
+                            android:textAlignment="center"
                             android:textColor="#191919"
-                            android:textAlignment="center"/>
+                            android:textSize="16sp" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
+
                                 <TextView
                                     android:id="@+id/dec"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
+                                    android:textColor="#838383"
                                     android:text="Spekter is the annual science and technology festival of Acharya institute of graduate studies,"
-                                    android:textSize="12sp"
-                                    android:textAlignment="center"/>
+                                    android:textAlignment="center"
+                                    android:textSize="12sp" />
 
                                 <TextView
                                     android:id="@+id/venue"
@@ -160,18 +166,19 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:text="AIGS"
-                                    android:textColor="#FF0000"
                                     android:textAlignment="center"
+                                    android:textColor="#FF0000"
                                     android:textSize="23sp"
-                                    android:textStyle="bold"/>
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:text="Venue"
-                                    android:textSize="12sp"
-                                    android:textAlignment="center"/>
+                                    android:textColor="#838383"
+                                    android:textAlignment="center"
+                                    android:textSize="12sp" />
 
 
                             </LinearLayout>
@@ -187,15 +194,15 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@drawable/dash"
-                    android:layout_marginHorizontal="20dp"/>
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@drawable/dash" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_ticket"
-                    android:orientation="vertical"
                     android:elevation="4dp"
+                    android:orientation="vertical"
                     android:padding="20dp">
 
                     <LinearLayout
@@ -213,18 +220,21 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="GUEST NAME"
-                                android:textSize="12sp"/>
+                                android:textColor="#838383"
+                                android:text="Guest Name"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/guest_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
-                                android:maxLines="1"
                                 android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="Hrishikesh prateek"
-                                android:textSize="15sp"/>
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
 
                         </LinearLayout>
@@ -239,8 +249,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="PHONE"
+                                android:textColor="#838383"
                                 android:textAlignment="textEnd"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/guest_phone"
@@ -248,9 +259,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
                                 android:text="XXXX135"
+                                android:textStyle="bold"
                                 android:textAlignment="textEnd"
-                                android:textSize="15sp"/>
-
+                                android:textColor="#000"
+                                android:textSize="15sp" />
 
 
                         </LinearLayout>
@@ -274,9 +286,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="EVENT STARTS"
+                                android:text="Event Starts"
                                 android:textAlignment="textStart"
-                                android:textSize="12sp"/>
+                                android:textColor="#838383"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/event_starts"
@@ -284,8 +297,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
                                 android:text="03:30 PM"
+                                android:textStyle="bold"
                                 android:textAlignment="textStart"
-                                android:textSize="15sp"/>
+                                android:textColor="#000"
+                                android:textSize="15sp" />
 
                         </LinearLayout>
 
@@ -299,9 +314,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="GATE"
+                                android:text="Gate"
+                                android:textColor="#838383"
                                 android:textAlignment="center"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/entry_gate"
@@ -309,9 +325,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
                                 android:text="1F"
+                                android:textStyle="bold"
                                 android:textAlignment="center"
-                                android:textSize="16sp"/>
-
+                                android:textColor="#000"
+                                android:textSize="16sp" />
 
 
                         </LinearLayout>
@@ -326,9 +343,10 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="YOUR SLOT"
+                                android:text="Your Slot"
+                                android:textColor="#838383"
                                 android:textAlignment="textEnd"
-                                android:textSize="12sp"/>
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/slot"
@@ -336,8 +354,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
                                 android:text="03:30 PM"
+                                android:textStyle="bold"
                                 android:textAlignment="textEnd"
-                                android:textSize="16sp"/>
+                                android:textColor="#000"
+                                android:textSize="16sp" />
 
 
                         </LinearLayout>
@@ -348,40 +368,41 @@
                         android:id="@+id/qr"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#fff"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="#fff"
                         android:padding="7dp"
-                        android:src="@drawable/df"/>
+                        android:src="@drawable/df" />
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="0dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="BOOKING ID"
+                            android:textColor="#838383"
                             android:textAlignment="center"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:textAllCaps="true"
                             android:text="AAFQ123EFGTA349"
+                            android:textColor="#838383"
                             android:textAlignment="center"
-                            android:textSize="14sp"/>
+                            android:textAllCaps="true"
+                            android:textSize="13sp" />
 
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>

@@ -20,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 import thundersharp.aigs.spectre.core.helpers.LoginProvider;
 import thundersharp.aigs.spectre.core.interfaces.LoginInterface;
@@ -95,7 +96,8 @@ public class LoginActivity extends AppCompatActivity {
                                         .setProfileSyncListener(new ProfileSync() {
                                             @Override
                                             public void onProfileDataSyncSuccess(DataSnapshot dataSnapshot) {
-
+                                                ProfileData profileData = dataSnapshot.getValue(ProfileData.class);
+                                                profileDataSync.saveDataLocally(profileData);
                                             }
 
                                             @Override
