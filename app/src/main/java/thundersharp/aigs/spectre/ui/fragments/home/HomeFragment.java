@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -64,84 +65,90 @@ public class HomeFragment extends Fragment implements
     private GoogleMap mMap;
     private ViewPager2 viewPager;
 
+    private View root;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        slider = root.findViewById(R.id.slider);
-        viewPager = root.findViewById(R.id.pager);
-        setupCrousel();
+        try {
 
-        // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
+             root = inflater.inflate(R.layout.fragment_home, container, false);
+            SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+            slider = root.findViewById(R.id.slider);
+            viewPager = root.findViewById(R.id.pager);
+            setupCrousel();
 
-        root.findViewById(R.id.notification).setOnClickListener(u -> startActivity(new Intent(getActivity(), BarCodeScanner.class)));
-        root.findViewById(R.id.alive).setOnClickListener(u -> startActivity(new Intent(getActivity(), ExhibitionHome.class)));
-        root.findViewById(R.id.iniatives).setOnClickListener(u -> startActivity(new Intent(getActivity(), InitiativesHomes.class)));
-        root.findViewById(R.id.lectures).setOnClickListener(u -> startActivity(new Intent(getActivity(), LecturesHome.class)));
-        root.findViewById(R.id.workshops).setOnClickListener(u -> startActivity(new Intent(getActivity(), WorkshopsHome.class)));
-        root.findViewById(R.id.competations).setOnClickListener(u -> startActivity(new Intent(getActivity(), CompetationHome.class)));
-        root.findViewById(R.id.upcomingEvents).setOnClickListener(u -> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
-        root.findViewById(R.id.ic).setOnClickListener(u -> startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
-        root.findViewById(R.id.knowUs).setOnClickListener(u -> startActivity(new Intent(getActivity(), KnowUs.class)));
+            // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
 
-        root.findViewById(R.id.feedBack).setOnClickListener(r -> {
-            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
-            bottomSheetDialog.setContentView(R.layout.bottom_sheet_feedback);
+            root.findViewById(R.id.notification).setOnClickListener(u -> startActivity(new Intent(getActivity(), BarCodeScanner.class)));
+            root.findViewById(R.id.alive).setOnClickListener(u -> startActivity(new Intent(getActivity(), ExhibitionHome.class)));
+            root.findViewById(R.id.iniatives).setOnClickListener(u -> startActivity(new Intent(getActivity(), InitiativesHomes.class)));
+            root.findViewById(R.id.lectures).setOnClickListener(u -> startActivity(new Intent(getActivity(), LecturesHome.class)));
+            root.findViewById(R.id.workshops).setOnClickListener(u -> startActivity(new Intent(getActivity(), WorkshopsHome.class)));
+            root.findViewById(R.id.competations).setOnClickListener(u -> startActivity(new Intent(getActivity(), CompetationHome.class)));
+            root.findViewById(R.id.upcomingEvents).setOnClickListener(u -> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
+            root.findViewById(R.id.ic).setOnClickListener(u -> startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
+            root.findViewById(R.id.knowUs).setOnClickListener(u -> startActivity(new Intent(getActivity(), KnowUs.class)));
 
-            LinearLayout app_feed_Back = bottomSheetDialog.findViewById(R.id.app_feed_Back);
-            LinearLayout event_feedBack = bottomSheetDialog.findViewById(R.id.event_feedBack);
-            LinearLayout facFeedback = bottomSheetDialog.findViewById(R.id.facFeedback);
+            root.findViewById(R.id.feedBack).setOnClickListener(r -> {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+                bottomSheetDialog.setContentView(R.layout.bottom_sheet_feedback);
 
-            app_feed_Back.setOnClickListener(o -> {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("email/rfc822");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
-                intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
-                intent.putExtra(Intent.EXTRA_TEXT, new String(
-                        "DEVICE: " + Build.DEVICE + "\nMANUFACTURER: "
-                                + Build.MANUFACTURER + "\nBOOTLOADER: "
-                                + Build.BOOTLOADER + "\nPRODUCT: "
-                                + Build.PRODUCT + "\nUSER: "
-                                + Build.USER + "\nDEVICE ID: "
-                                + Build.ID + "\nCPU_ABI: "
-                                + Build.CPU_ABI + "\n"
-                                + "________Your message after here _______\n"));
-                Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
-                startActivity(mailer);
+                LinearLayout app_feed_Back = bottomSheetDialog.findViewById(R.id.app_feed_Back);
+                LinearLayout event_feedBack = bottomSheetDialog.findViewById(R.id.event_feedBack);
+                LinearLayout facFeedback = bottomSheetDialog.findViewById(R.id.facFeedback);
+
+                app_feed_Back.setOnClickListener(o -> {
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("email/rfc822");
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
+                    intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
+                    intent.putExtra(Intent.EXTRA_TEXT, new String(
+                            "DEVICE: " + Build.DEVICE + "\nMANUFACTURER: "
+                                    + Build.MANUFACTURER + "\nBOOTLOADER: "
+                                    + Build.BOOTLOADER + "\nPRODUCT: "
+                                    + Build.PRODUCT + "\nUSER: "
+                                    + Build.USER + "\nDEVICE ID: "
+                                    + Build.ID + "\nCPU_ABI: "
+                                    + Build.CPU_ABI + "\n"
+                                    + "________Your message after here _______\n"));
+                    Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
+                    startActivity(mailer);
+                });
+
+
+                facFeedback.setOnClickListener(i -> startActivity(new Intent(getActivity(), FacultyFeedback.class)));
+                event_feedBack.setOnClickListener(i -> startActivity(new Intent(getActivity(), EventFeedback.class)));
+
+
+                bottomSheetDialog.show();
+            });
+
+            root.findViewById(R.id.facebook).setOnClickListener(u -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/sppekter"));
+                startActivity(intent);
+            });
+
+            root.findViewById(R.id.instagram).setOnClickListener(u -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.instagram.com/spekter_aigs"));
+                startActivity(intent);
+            });
+
+            root.findViewById(R.id.youtube).setOnClickListener(u -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com"));
+                startActivity(intent);
+            });
+
+            root.findViewById(R.id.linkedIn).setOnClickListener(u -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://in.linkedin.com/company/spekter/"));
+                startActivity(intent);
             });
 
 
-            facFeedback.setOnClickListener(i -> startActivity(new Intent(getActivity(), FacultyFeedback.class)));
-            event_feedBack.setOnClickListener(i -> startActivity(new Intent(getActivity(), EventFeedback.class)));
-
-
-            bottomSheetDialog.show();
-        });
-
-        root.findViewById(R.id.facebook).setOnClickListener(u -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.facebook.com/sppekter"));
-            startActivity(intent);
-        });
-
-        root.findViewById(R.id.instagram).setOnClickListener(u -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.instagram.com/spekter_aigs"));
-            startActivity(intent);
-        });
-
-        root.findViewById(R.id.youtube).setOnClickListener(u -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com"));
-            startActivity(intent);
-        });
-
-        root.findViewById(R.id.linkedIn).setOnClickListener(u -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://in.linkedin.com/company/spekter/"));
-            startActivity(intent);
-        });
-
-
-        viewPager.setAdapter(new CustomPagerAdapter(getActivity(), getTempTestimonial()));
-
+            viewPager.setAdapter(new CustomPagerAdapter(getActivity(), getTempTestimonial()));
+        }catch (Exception e){
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         return root;
     }
 

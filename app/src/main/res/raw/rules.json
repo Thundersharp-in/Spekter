@@ -1,0 +1,90 @@
+{
+  "rules": {
+    ".read": "false",
+    ".write": "false",
+
+    "CHALLENGES": {
+      ".read" : "true",
+      ".write" : "false"
+    },
+    "COURSES_ALL": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "COURSES_DATA": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "DEVICE_GROUPS": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "EVENTS": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "EXHIBITION": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "GENERAL_EVENTS": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "INITIATIVES": {
+      ".read" : "true",
+      ".write" : "false"
+    },
+    "KNOW_US": {
+      ".read" : "true",
+      ".write" : "false"
+    },
+    "NEWS_LETTERS": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "NOTIFICATIONS": {
+      ".read" : "true",
+      ".write" : "false"
+    },
+    "PASSES": {
+      "$uid" : {
+        ".read" : "$uid == auth.uid",
+        ".write" : "$uid == auth.uid"
+      }
+    },
+    "PLAN_COURSE_ENROLLMENT_DATA": {
+      ".read" : "false",
+      ".write" : "false"
+    },
+    "SERVICES_HOME": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "SPONSORS": {
+      ".read" : "true",
+      ".write" : "false"
+    },
+
+    "TOP_CAROUSEL" : {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+    "USERS": {
+      "$uid" : {
+        ".read" : "$uid == auth.uid",
+        ".write" : "$uid == auth.uid"
+      }
+    },
+    "USER_DATA": {
+      "$uid" : {
+        ".read" : "$uid == auth.uid",
+        ".write" : "$uid == auth.uid"
+      }
+    },
+    "WORKSHOPS": {
+      ".read" : "auth != null",
+      ".write" : "false"
+    },
+  }
+}
