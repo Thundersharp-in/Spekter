@@ -232,7 +232,7 @@
                         app:wlv_titleBottom="Stalls visited"
                         app:wlv_titleBottomColor="#ffff"
                         app:wlv_titleBottomSize="14sp"
-                        app:wlv_titleBottomStrokeColor="#8A8888"
+                        app:wlv_titleBottomStrokeColor="#A11545"
                         app:wlv_titleBottomStrokeWidth="2dp"
                         app:wlv_titleCenter="0 %"
                         app:wlv_titleCenterColor="@android:color/white"
@@ -240,7 +240,7 @@
                         app:wlv_titleCenterStrokeColor="#8A8888"
                         app:wlv_titleCenterStrokeWidth="2dp"
                         app:wlv_waveAmplitude="50"
-                        app:wlv_waveColor="#03A9F4" />
+                        app:wlv_waveColor="#A11545" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -270,7 +270,7 @@
                         app:wlv_titleBottom="Projects reviewed"
                         app:wlv_titleBottomColor="#ffff"
                         app:wlv_titleBottomSize="14sp"
-                        app:wlv_titleBottomStrokeColor="#8A8888"
+                        app:wlv_titleBottomStrokeColor="#D2AF26"
                         app:wlv_titleBottomStrokeWidth="2dp"
                         app:wlv_titleCenter="0 %"
                         app:wlv_titleCenterColor="@android:color/white"
@@ -278,7 +278,7 @@
                         app:wlv_titleCenterStrokeColor="#8A8888"
                         app:wlv_titleCenterStrokeWidth="2dp"
                         app:wlv_waveAmplitude="50"
-                        app:wlv_waveColor="#009688" />
+                        app:wlv_waveColor="#D2AF26" />
 
 
                 </androidx.cardview.widget.CardView>

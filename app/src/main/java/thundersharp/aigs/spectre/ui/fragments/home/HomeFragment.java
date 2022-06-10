@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ import java.util.ArrayList;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
 import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
 import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
@@ -71,7 +73,7 @@ public class HomeFragment extends Fragment implements
                              ViewGroup container, Bundle savedInstanceState) {
         try {
 
-             root = inflater.inflate(R.layout.fragment_home, container, false);
+            root = inflater.inflate(R.layout.fragment_home, container, false);
             SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
             slider = root.findViewById(R.id.slider);
@@ -80,6 +82,7 @@ public class HomeFragment extends Fragment implements
 
             // root.findViewById(R.id.rrr).setOnClickListener(n->HomeActivity.navController.navigate(R.id.navigation_profile));
 
+            ((TextView) root.findViewById(R.id.textName)).setText(ProfileDataSync.getInstance(getActivity()).initializeLocalStorage().pullDataBack().name);
             root.findViewById(R.id.notification).setOnClickListener(u -> startActivity(new Intent(getActivity(), BarCodeScanner.class)));
             root.findViewById(R.id.alive).setOnClickListener(u -> startActivity(new Intent(getActivity(), ExhibitionHome.class)));
             root.findViewById(R.id.iniatives).setOnClickListener(u -> startActivity(new Intent(getActivity(), InitiativesHomes.class)));
@@ -146,7 +149,7 @@ public class HomeFragment extends Fragment implements
 
 
             viewPager.setAdapter(new CustomPagerAdapter(getActivity(), getTempTestimonial()));
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return root;

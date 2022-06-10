@@ -7,7 +7,7 @@
     android:layout_marginTop="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="5dp"
-    app:cardCornerRadius="7dp"
+    app:cardCornerRadius="10dp"
     app:cardBackgroundColor="#262626"
     app:cardElevation="5dp">
 
@@ -102,7 +102,7 @@
                 android:layout_marginEnd="10dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/calibri"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:maxLines="3"
                 android:text="Hi everyone!!! I am super excited to launch my online course.. Please spread a word across and support.. ..."
                 android:textColor="#9F9F9F"

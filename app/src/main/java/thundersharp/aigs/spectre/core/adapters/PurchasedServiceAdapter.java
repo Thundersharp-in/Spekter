@@ -58,7 +58,7 @@ public class PurchasedServiceAdapter extends RecyclerView.Adapter<PurchasedServi
                 holder.payment_status.setTextColor(Color.RED);
                 break;
             case "1" :
-                holder.payment_status.setText("Lifetime course access is available for this course.\nProceed further to get key of success");
+                holder.payment_status.setText("Lifetime course access is available for this course.");
                 Glide.with(context).load(R.drawable.goodtogo).into(holder.c_s_img);
                 break;
             case "4" :

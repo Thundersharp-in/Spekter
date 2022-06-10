@@ -90,7 +90,7 @@
         <entry key="app/src/main/res/layout/activity_deeplinking.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.307147216796875" />
         <entry key="app/src/main/res/layout/activity_event_feedback.xml" value="0.19752030782385635" />
-        <entry key="app/src/main/res/layout/activity_exhibition_home.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_exhibition_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_faculty_feedback.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_filter.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
@@ -151,11 +151,11 @@
         <entry key="app/src/main/res/layout/item_purchased_services.xml" value="0.195382642154767" />
         <entry key="app/src/main/res/layout/item_service_coarse_list.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_service_course.xml" value="0.19923044035912782" />
-        <entry key="app/src/main/res/layout/item_support.xml" value="0.19752030782385635" />
+        <entry key="app/src/main/res/layout/item_support.xml" value="0.25838926174496646" />
         <entry key="app/src/main/res/layout/item_time_slots.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_upcomming_events.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/item_upcomming_holder.xml" value="0.19752030782385635" />
-        <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_view_recovery.xml" value="0.34375" />
         <entry key="app/src/main/res/layout/item_workshop_heighlights.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_workshop_holder.xml" value="0.22245178222656253" />
         <entry key="app/src/main/res/layout/logout_bottom_sheet.xml" value="0.19752030782385635" />

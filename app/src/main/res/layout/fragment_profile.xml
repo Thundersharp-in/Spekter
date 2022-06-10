@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="13dp"
             android:layout_marginStart="15dp"
-            android:layout_toStartOf="@+id/notification"
             android:orientation="horizontal">
 
 
@@ -212,6 +211,7 @@
                         android:textColor="#D3d3d3"
                         android:textSize="15sp" />
 
+<!--
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -221,6 +221,7 @@
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/ic_outline_info_24"
                         app:tint="#fff" />
+-->
 
 
                 </RelativeLayout>
@@ -267,6 +268,7 @@
                         android:textColor="#D3d3d3"
                         android:textSize="15sp" />
 
+<!--
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,6 +278,7 @@
                         android:layout_marginEnd="15dp"
                         android:text="Verify"
                         android:textColor="#FFEB3B" />
+-->
 
 
                 </RelativeLayout>
@@ -292,6 +295,7 @@
                 android:weightSum="2">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/paymentsD"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -348,6 +352,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/evenr"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -369,7 +374,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="15dp"
-                            android:src="@drawable/ic_baseline_auto_graph_24"
+                            android:src="@drawable/ic_outline_attractions_24"
                             app:tint="#fff" />
 
                         <TextView
@@ -382,7 +387,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
-                            android:text="Statistics"
+                            android:text="Your events"
                             android:textColor="#ffff"
                             android:textSize="15sp" />
 
@@ -415,6 +420,7 @@
                 app:cardElevation="7dp">
 
                 <RelativeLayout
+                    android:id="@+id/subscription"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:minHeight="60dp">
@@ -722,7 +728,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:maxLines="1"
                         android:text="Logout from this device"
-                        android:textColor="#E91E63"
+                        android:textColor="#E91E1E"
                         android:textSize="15sp" />
 
 
