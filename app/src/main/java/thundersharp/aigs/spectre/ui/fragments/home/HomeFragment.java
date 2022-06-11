@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
 import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
@@ -44,6 +46,7 @@ import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 
+import thundersharp.aigs.spectre.core.utils.LatLongConverter;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
@@ -66,6 +69,8 @@ public class HomeFragment extends Fragment implements
     private SliderLayout slider;
     private GoogleMap mMap;
     private ViewPager2 viewPager;
+    private MaterialCardView materialCardView;
+    private TextView tittleUpcoming,descriptionUpcoming;
 
     private View root;
 
@@ -92,6 +97,9 @@ public class HomeFragment extends Fragment implements
             root.findViewById(R.id.upcomingEvents).setOnClickListener(u -> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
             root.findViewById(R.id.ic).setOnClickListener(u -> startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
             root.findViewById(R.id.knowUs).setOnClickListener(u -> startActivity(new Intent(getActivity(), KnowUs.class)));
+            materialCardView = root.findViewById(R.id.latest_update);
+            tittleUpcoming = root.findViewById(R.id.time);
+            descriptionUpcoming = root.findViewById(R.id.eventName);
 
             root.findViewById(R.id.feedBack).setOnClickListener(r -> {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
@@ -264,9 +272,31 @@ public class HomeFragment extends Fragment implements
         //markerOptions = new MarkerOptions();
         mMap = googleMap;
         mMap.setMapStyle(style);
-        MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(13.0839376, 77.4849723, "Exhibition")).locate();
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(13.0839376, 77.4849723), 18));
+        FirebaseDatabase
+                .getInstance()
+                .getReference("UPCOMING")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            descriptionUpcoming.setText(snapshot.child("DESCRIPTION").getValue(String.class));
+                            tittleUpcoming.setText(snapshot.child("TITTLE").getValue(String.class)+"\n\n"+TimeUtils.getTimeInStringFromTimeStamp(snapshot.child("ID").getValue(String.class)));
+                            MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(LatLongConverter.initialize().getlat(snapshot.child("LOCATION").getValue(String.class)), LatLongConverter.initialize().getlang(snapshot.child("LOCATION").getValue(String.class)), snapshot.child("TITTLE").getValue(String.class))).locate();
+
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLongConverter.initialize().getlatlang(snapshot.child("LOCATION").getValue(String.class)), 18));
+
+                        }else{
+                            materialCardView.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
     }
 }

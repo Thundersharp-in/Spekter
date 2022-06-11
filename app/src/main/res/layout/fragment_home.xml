@@ -47,7 +47,7 @@
                     android:fontFamily="@font/roboto_medium"
                     android:maxLines="1"
                     android:text="Acharyan"
-                    android:textColor="#D8D8D8"
+                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -132,7 +132,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#FFFFFF"
                                 android:src="@drawable/exh" />
 
                         </androidx.cardview.widget.CardView>
@@ -171,7 +171,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#FFFFFF"
                                 android:src="@drawable/startup" />
 
                         </androidx.cardview.widget.CardView>
@@ -213,7 +213,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#FFFFFF"
                                 android:src="@drawable/female" />
 
                         </androidx.cardview.widget.CardView>
@@ -263,7 +263,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#FFFFFF"
                                 android:src="@drawable/meeting" />
 
                         </androidx.cardview.widget.CardView>
@@ -302,7 +302,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#FFFFFF"
                                 android:src="@drawable/cometaation" />
 
                         </androidx.cardview.widget.CardView>
@@ -342,7 +342,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="17dp"
-                                app:tint="#D8D8D8"
+                                app:tint="#F8F8F8"
                                 android:src="@drawable/upcoming" />
 
                         </androidx.cardview.widget.CardView>
@@ -394,7 +394,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 android:src="@drawable/creativity"
-                                app:tint="#D8D8D8" />
+                                app:tint="#FFFFFF" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -433,7 +433,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 android:src="@drawable/info"
-                                app:tint="#D8D8D8" />
+                                app:tint="#FFFFFF" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -471,7 +471,7 @@
                                 android:layout_height="match_parent"
                                 android:padding="15dp"
                                 android:src="@drawable/feedback"
-                                app:tint="#D8D8D8" />
+                                app:tint="#FFFFFF" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -489,7 +489,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/latest_update"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="360dp"
+                    android:minHeight="300dp"
                     android:layout_below="@id/bottom_cards_last"
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="10dp"
@@ -502,19 +503,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:weightSum="5">
+                        android:weightSum="7">
 
                         <fragment
                             android:id="@+id/map"
                             android:name="com.google.android.gms.maps.SupportMapFragment"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="3"/>
+                            android:layout_weight="4"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="2">
+                            android:layout_weight="3">
 
                             <TextView
                                 android:id="@+id/upcomming"
@@ -532,10 +533,11 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginStart="15dp"
+                                android:layout_below="@id/upcomming"
+                                android:layout_marginHorizontal="15dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_below="@id/upcomming">
+                                android:orientation="vertical">
+
                                 <TextView
                                     android:id="@+id/time"
                                     android:layout_width="wrap_content"
@@ -543,8 +545,8 @@
                                     android:layout_marginTop="5dp"
                                     android:ellipsize="end"
                                     android:fontFamily="@font/calibri"
-                                    android:maxLines="1"
-                                    android:text="26 APR 2020 4:35PM"
+                                    android:maxLines="3"
+                                    android:text="-------"
                                     android:textColor="#C1B22E"
                                     android:textSize="15sp" />
 
@@ -556,7 +558,7 @@
                                     android:ellipsize="end"
                                     android:fontFamily="@font/calibri"
                                     android:maxLines="2"
-                                    android:text="AIGS Tech exhibition organised by the BCA Department, click this tab to know more."
+                                    android:text="----------------------------------"
                                     android:textColor="#D3D3D3"
                                     android:textSize="16sp" />
 
