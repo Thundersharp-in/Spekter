@@ -2,6 +2,8 @@ package thundersharp.aigs.spectre.core.models;
 
 public class Testimonials {
 
+    public Testimonials(){}
+
     public String photoUri;
     public String message;
     public String name;

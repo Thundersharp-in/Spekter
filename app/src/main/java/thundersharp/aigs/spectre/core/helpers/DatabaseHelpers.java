@@ -38,6 +38,7 @@ import thundersharp.aigs.spectre.core.interfaces.OnCompetitionFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.OnWorkshopFetchSuccess;
 import thundersharp.aigs.spectre.core.interfaces.PassIssueWatcher;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
+import thundersharp.aigs.spectre.core.interfaces.TestimonialLoader;
 import thundersharp.aigs.spectre.core.interfaces.WorkshopDattaLoader;
 import thundersharp.aigs.spectre.core.models.Competitions;
 import thundersharp.aigs.spectre.core.models.FacultyFeedback;
@@ -48,6 +49,7 @@ import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.PassData;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.models.StudentsDetails;
+import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.models.WorkshopDetail;
 import thundersharp.aigs.spectre.core.models.Workshops;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
@@ -68,6 +70,7 @@ public class DatabaseHelpers {
     private WorkshopDattaLoader workshopDattaLoader;
     private BasicDataInterface basicDataInterface;
     private PassIssueWatcher passIssueWatcher;
+    private TestimonialLoader testimonialLoader;
 
     private GeneralEventsLoader generalEventsLoader;
 
@@ -104,6 +107,32 @@ public class DatabaseHelpers {
     public void fetchGeneralEvents(GeneralEventsLoader generalEventsLoader){
         this.generalEventsLoader = generalEventsLoader;
         fetchDetailsGeneral(eventId);
+    }
+
+    public void fechTestimonials(TestimonialLoader testimonialLoader){
+        FirebaseDatabase
+                .getInstance()
+                .getReference("TESTIMONIALS")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            int count = 0;
+                            Testimonials[] data = new Testimonials[(int)snapshot.getChildrenCount()];
+                            for (DataSnapshot da : snapshot.getChildren()) {
+                                data[count] = da.getValue(Testimonials.class);
+                                count++;
+                            }
+
+                            testimonialLoader.OnTestimonialsLoaded(data);
+                        }else testimonialLoader.onDatabaseError(new Exception("No Testimonial data found."));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        testimonialLoader.onDatabaseError(error.toException());
+                    }
+                });
     }
 
     private void fetchDetailsGeneral(String eventId) {

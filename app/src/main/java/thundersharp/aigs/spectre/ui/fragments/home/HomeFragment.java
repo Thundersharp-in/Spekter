@@ -34,12 +34,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.adapters.CustomPagerAdapter;
+import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.helpers.MapsHelpers;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.interfaces.TestimonialLoader;
 import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
@@ -67,7 +70,7 @@ public class HomeFragment extends Fragment implements
     private GoogleMap mMap;
     private ViewPager2 viewPager;
     private MaterialCardView materialCardView;
-    private TextView tittleUpcoming,descriptionUpcoming;
+    private TextView tittleUpcoming, descriptionUpcoming;
 
     private View root;
 
@@ -151,18 +154,26 @@ public class HomeFragment extends Fragment implements
                 startActivity(intent);
             });
 
+            DatabaseHelpers
+                    .getInstance()
+                    .fechTestimonials(new TestimonialLoader() {
+                        @Override
+                        public void OnTestimonialsLoaded(Testimonials... testimonialsList) {
+                            viewPager.setAdapter(new CustomPagerAdapter(getActivity(), testimonialsList));
+                        }
 
-            viewPager.setAdapter(new CustomPagerAdapter(getActivity(), getTempTestimonial()));
+                        @Override
+                        public void onDatabaseError(Exception e) {
+                            Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
         } catch (Exception e) {
             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return root;
     }
 
-
-    private Testimonials[] getTempTestimonial() {
-        return new Testimonials[]{new Testimonials("", "", "", ""), new Testimonials("", "", "", ""), new Testimonials("", "", "", "")};
-    }
 
     private void setupCrousel() {
         ArrayList<String> listUrl = new ArrayList<>();
@@ -275,21 +286,21 @@ public class HomeFragment extends Fragment implements
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             descriptionUpcoming.setText(snapshot.child("DESCRIPTION").getValue(String.class));
-                            tittleUpcoming.setText(snapshot.child("TITTLE").getValue(String.class)+"\n\n"+TimeUtils.getTimeInStringFromTimeStamp(snapshot.child("ID").getValue(String.class)));
+                            tittleUpcoming.setText(snapshot.child("TITTLE").getValue(String.class) + "\n\n" + TimeUtils.getTimeInStringFromTimeStamp(snapshot.child("ID").getValue(String.class)));
                             MapsHelpers.getInstance().setGoogleMaps(mMap).setMarkers(new MarkersData(LatLongConverter.initialize().getlat(snapshot.child("LOCATION").getValue(String.class)), LatLongConverter.initialize().getlang(snapshot.child("LOCATION").getValue(String.class)), snapshot.child("TITTLE").getValue(String.class))).locate();
 
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLongConverter.initialize().getlatlang(snapshot.child("LOCATION").getValue(String.class)), 18));
 
-                        }else{
+                        } else {
                             materialCardView.setVisibility(View.GONE);
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
