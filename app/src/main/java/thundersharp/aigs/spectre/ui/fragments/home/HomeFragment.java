@@ -25,7 +25,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
@@ -45,14 +44,12 @@ import thundersharp.aigs.spectre.core.models.MarkersData;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.Testimonials;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
-
 import thundersharp.aigs.spectre.core.utils.LatLongConverter;
 import thundersharp.aigs.spectre.ui.activities.barcode.BarCodeScanner;
 import thundersharp.aigs.spectre.ui.activities.exhibition.ExhibitionHome;
 import thundersharp.aigs.spectre.ui.activities.feedback.EventFeedback;
 import thundersharp.aigs.spectre.ui.activities.feedback.FacultyFeedback;
 import thundersharp.aigs.spectre.ui.activities.home.CompetationHome;
-import thundersharp.aigs.spectre.ui.activities.home.HomeActivity;
 import thundersharp.aigs.spectre.ui.activities.home.InitiativesHomes;
 import thundersharp.aigs.spectre.ui.activities.home.InnovativeChallengeHome;
 import thundersharp.aigs.spectre.ui.activities.home.KnowUs;
@@ -113,16 +110,15 @@ public class HomeFragment extends Fragment implements
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("email/rfc822");
                     intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact_spekter@acharya.ac.in"});
-                    intent.putExtra(Intent.EXTRA_TEXT, new String("__________________________________________________________\n"));
-                    intent.putExtra(Intent.EXTRA_TEXT, new String(
-                            "DEVICE: " + Build.DEVICE + "\nMANUFACTURER: "
-                                    + Build.MANUFACTURER + "\nBOOTLOADER: "
-                                    + Build.BOOTLOADER + "\nPRODUCT: "
-                                    + Build.PRODUCT + "\nUSER: "
-                                    + Build.USER + "\nDEVICE ID: "
-                                    + Build.ID + "\nCPU_ABI: "
-                                    + Build.CPU_ABI + "\n"
-                                    + "________Your message after here _______\n"));
+                    intent.putExtra(Intent.EXTRA_TEXT, "__________________________________________________________\n");
+                    intent.putExtra(Intent.EXTRA_TEXT, "DEVICE: " + Build.DEVICE + "\nMANUFACTURER: "
+                            + Build.MANUFACTURER + "\nBOOTLOADER: "
+                            + Build.BOOTLOADER + "\nPRODUCT: "
+                            + Build.PRODUCT + "\nUSER: "
+                            + Build.USER + "\nDEVICE ID: "
+                            + Build.ID + "\nCPU_ABI: "
+                            + Build.CPU_ABI + "\n"
+                            + "________Your message after here _______\n");
                     Intent mailer = Intent.createChooser(intent, "Choose a email app to send Feedback/Report Bug");
                     startActivity(mailer);
                 });

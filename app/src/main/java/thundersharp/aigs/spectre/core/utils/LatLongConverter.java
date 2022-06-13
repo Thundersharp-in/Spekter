@@ -15,13 +15,10 @@ public class LatLongConverter {
     }
 
     public double getlat(String lat_long) {
-        double lat = Double.parseDouble(lat_long.substring(0,lat_long.indexOf(",") ));
-        double longitude = Double.parseDouble(lat_long.substring(lat_long.indexOf(",")+1));
-        return lat;
+        return Double.parseDouble(lat_long.substring(0,lat_long.indexOf(",") ));
     }
+
     public double getlang(String lat_long) {
-        double lat = Double.parseDouble(lat_long.substring(0,lat_long.indexOf(",") ));
-        double longitude = Double.parseDouble(lat_long.substring(lat_long.indexOf(",")+1));
-        return longitude;
+        return Double.parseDouble(lat_long.substring(lat_long.indexOf(",")+1));
     }
 }
