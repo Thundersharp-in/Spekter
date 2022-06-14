@@ -3,6 +3,8 @@ package thundersharp.aigs.spectre.core.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,12 +32,15 @@ import com.mapbox.maps.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.models.Upcomming;
 import thundersharp.aigs.spectre.core.models.Workshops;
+import thundersharp.aigs.spectre.core.utils.LatLongConverter;
+import thundersharp.aigs.spectre.core.utils.Location;
 import thundersharp.aigs.spectre.ui.activities.fwdActivities.WorkshopDetails;
 
 public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAdapter.ViewHolder> implements Filterable {
@@ -68,6 +73,37 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
         Upcomming notifications = notificationsList.get(position);
 
         try {
+            holder.mapView.getMapboxMap().setCamera(new CameraOptions.Builder().center(Point.fromLngLat(LatLongConverter.initialize().getlang(notifications.LOCATION), LatLongConverter.initialize().getlat(notifications.LOCATION))).zoom(13.0).build());
+            //holder.mapView.getMapboxMap().(Point.fromLngLat(LatLongConverter.initialize().getlang(notifications.LOCATION),LatLongConverter.initialize().getlat(notifications.LOCATION)),14);
+
+            holder.cal.setOnClickListener(k->{
+                Intent calIntent = new Intent(Intent.ACTION_INSERT);
+                calIntent.setType("vnd.android.cursor.item/event");
+                calIntent.putExtra(CalendarContract.Events.TITLE, notifications.TITTLE);
+                calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, holder.by.getText().toString());
+                calIntent.putExtra(CalendarContract.Events.DESCRIPTION, notifications.TITTLE+" at "+holder.by.getText().toString());
+
+                GregorianCalendar calDate = new GregorianCalendar(Integer.parseInt(TimeUtils.getYearFromTimeStamp(notifications.ID)),
+                        Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID)),
+                Integer.parseInt(TimeUtils.getDayFromTimeStamp(notifications.ID)));
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                        calDate.getTimeInMillis());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                        calDate.getTimeInMillis());
+
+                holder.itemView.getContext().startActivity(calIntent);
+            });
+
+            holder.by.setOnClickListener(p->{
+                String geoUri = "http://maps.google.com/maps?q=loc:" + notifications.LOCATION+ " (" + notifications.TITTLE + ")";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                holder.itemView.getContext().startActivity(intent);
+            });
+            holder.by.setText(Location.getInstance(holder.itemView.getContext()).getAddressFromCoOrdinates(LatLongConverter.initialize().getlat(notifications.LOCATION),LatLongConverter.initialize().getlang(notifications.LOCATION) ));
+            holder.tittle.setText(notifications.TITTLE);
+            holder.duramtion.setText("Duration : "+notifications.DESCRIPTION);
+
             holder.day.setText(TimeUtils.getDayFromTimeStamp(notifications.ID));
             holder.month.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID))).substring(0, 3).toUpperCase());
         } catch (Exception e) {
@@ -120,7 +156,7 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView background;
+        ImageView background,cal;
         private TextView month, day, tittle, duramtion, mode, by;
         private MapView mapView;
 
@@ -134,9 +170,11 @@ public class UpcomingHolderAdapter extends RecyclerView.Adapter<UpcomingHolderAd
             by = itemView.findViewById(R.id.by);
             tittle = itemView.findViewById(R.id.tittle);
             duramtion = itemView.findViewById(R.id.duration);
+            cal = itemView.findViewById(R.id.cal);
 
             mapView = itemView.findViewById(R.id.mapView);
             mapView.getMapboxMap().loadStyleUri(Style.DARK);
+
         }
 
 

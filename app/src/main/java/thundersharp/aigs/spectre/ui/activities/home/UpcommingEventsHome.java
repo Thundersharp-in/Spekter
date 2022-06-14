@@ -36,6 +36,8 @@ public class UpcommingEventsHome extends AppCompatActivity {
         loader = findViewById(R.id.loader);
         recyclerView = findViewById(R.id.event_holder);
 
+        findViewById(R.id.exit).setOnClickListener(k->finish());
+
 
         setPreAnimation(true);
 
