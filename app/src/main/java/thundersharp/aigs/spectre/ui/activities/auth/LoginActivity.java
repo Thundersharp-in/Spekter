@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         alertDialog = Progressbars.getInstance().createDefaultProgressBar(this);
+
         edit_email = findViewById(R.id.editText_email);
         edit_password = findViewById(R.id.editText_password);
         password_toggle = findViewById(R.id.password_toggle);

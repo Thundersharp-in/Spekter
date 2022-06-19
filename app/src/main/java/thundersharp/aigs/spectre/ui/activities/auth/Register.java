@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import java.util.Collections;
+
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.LoginProvider;
 import thundersharp.aigs.spectre.core.interfaces.RegisterPresenter;

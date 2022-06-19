@@ -86,7 +86,7 @@
         <entry key="app/src/main/res/layout/activity_coarse_contents.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/activity_competation_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_competition_detail.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.3253168661403778" />
+        <entry key="app/src/main/res/layout/activity_course_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_deeplinking.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.307147216796875" />
         <entry key="app/src/main/res/layout/activity_event_feedback.xml" value="0.19752030782385635" />
@@ -110,7 +110,7 @@
         <entry key="app/src/main/res/layout/activity_ticket_viewer.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_upcomming_events_home.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/activity_video_player.xml" value="0.19923044035912782" />
-        <entry key="app/src/main/res/layout/activity_workshop_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_workshop_details.xml" value="0.23681182861328126" />
         <entry key="app/src/main/res/layout/activity_workshops_home.xml" value="0.16379310344827586" />
         <entry key="app/src/main/res/layout/bottom_sheet_donate.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/bottom_sheet_feedback.xml" value="0.165" />
@@ -126,7 +126,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_difficulty_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2152777777777778" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1966033935546875" />
         <entry key="app/src/main/res/layout/fragment_information_services.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_language_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_live_training.xml" value="0.19923044035912782" />
