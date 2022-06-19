@@ -2,6 +2,7 @@ package thundersharp.aigs.spectre.ui.activities.exhibition;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import thundersharp.aigs.newsletter.core.utils.TimeUtils;
 import thundersharp.aigs.pdfviwer.PdfLoader;
 import thundersharp.aigs.pdfviwer.PdfModel;
 import thundersharp.aigs.spectre.R;
@@ -63,6 +65,7 @@ public class ScannerProjectInfo extends AppCompatActivity {
         category = findViewById(R.id.by);
         ((TextView) findViewById(R.id.tittle)).setText(projectBasicInfo.NAME);
         ((TextView) findViewById(R.id.short_desc)).setText(projectBasicInfo.SHORT_DESCRIPTION);
+        ((TextView) findViewById(R.id.visitTime)).setText("This stall was last visited on "+TimeUtils.getTimeInStringFromTimeStamp(System.currentTimeMillis()+""));
 
         if (projectBasicInfo.TYPE.equalsIgnoreCase("0")) {
             category.setText("Category : IOT");
@@ -75,6 +78,12 @@ public class ScannerProjectInfo extends AppCompatActivity {
         }
         loadCover();
 
+        findViewById(R.id.share).setOnClickListener(i->{
+            new AlertDialog.Builder(this)
+                    .setMessage("Project id :"+projectBasicInfo.ID)
+                    .setCancelable(true)
+                    .setPositiveButton("OK", (dialogInterface, i12) -> dialogInterface.dismiss()).show();
+        });
         findViewById(R.id.team_members).setOnClickListener(n->ShowOtherBottomSheet());
         findViewById(R.id.go_two).setOnClickListener(n->ShowOtherBottomSheet());
 
