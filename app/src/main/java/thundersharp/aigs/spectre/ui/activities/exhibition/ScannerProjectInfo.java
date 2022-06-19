@@ -37,6 +37,8 @@ import thundersharp.aigs.spectre.core.helpers.DatabaseHelpers;
 import thundersharp.aigs.spectre.core.interfaces.ProjectListner;
 import thundersharp.aigs.spectre.core.models.Participants;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
+import thundersharp.aigs.spectre.core.progress.BrowseProgress;
+import thundersharp.aigs.spectre.core.progress.BrowseProgressStall;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 
@@ -66,6 +68,9 @@ public class ScannerProjectInfo extends AppCompatActivity {
         ((TextView) findViewById(R.id.tittle)).setText(projectBasicInfo.NAME);
         ((TextView) findViewById(R.id.short_desc)).setText(projectBasicInfo.SHORT_DESCRIPTION);
         ((TextView) findViewById(R.id.visitTime)).setText("This stall was last visited on "+TimeUtils.getTimeInStringFromTimeStamp(System.currentTimeMillis()+""));
+
+        BrowseProgressStall.getInstance(this).selectStorageInstanceByName(CONSTANTS.STALLS_VISIT_PROGRESS).setPageBrowsed(projectBasicInfo);
+
 
         if (projectBasicInfo.TYPE.equalsIgnoreCase("0")) {
             category.setText("Category : IOT");

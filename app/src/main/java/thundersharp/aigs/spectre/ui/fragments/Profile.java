@@ -37,6 +37,8 @@ import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
 import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.models.SubscriptionDetails;
 import thundersharp.aigs.spectre.core.models.TicketsData;
+import thundersharp.aigs.spectre.core.progress.BrowseProgress;
+import thundersharp.aigs.spectre.core.progress.BrowseProgressStall;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.AppUtils;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
@@ -156,6 +158,8 @@ public class Profile extends Fragment {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         FirebaseAuth.getInstance().signOut();
                                         profileDataSync.initializeLocalStorage().clearAllData();
+                                        BrowseProgressStall.getInstance(getActivity()).clear();
+                                        BrowseProgress.getInstance(getActivity()).clear();
                                         getActivity().finish();
                                         startActivity(new Intent(getContext(), IntroActivity.class));
                                     }

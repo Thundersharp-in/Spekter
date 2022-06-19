@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -48,6 +49,7 @@ import thundersharp.aigs.spectre.core.models.ProjectShortDescription;
 import thundersharp.aigs.spectre.core.models.SliderModel;
 import thundersharp.aigs.spectre.core.models.TicketsData;
 import thundersharp.aigs.spectre.core.progress.BrowseProgress;
+import thundersharp.aigs.spectre.core.progress.BrowseProgressStall;
 import thundersharp.aigs.spectre.core.starters.Tickets;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
@@ -65,13 +67,14 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
     private ProjectsHolderAdapter projectsHolderAdapter;
     private BrowseProgress browseProgress;
+    private BrowseProgressStall browseProgressStall;
 
-    private WaveLoadingView waveLoadingView;
+    private WaveLoadingView waveLoadingView,waveLoadingViewStall;
     private android.app.AlertDialog alertDialog;
 
     private ProfileDataSync profileDataSync;
     private ProfileData profileData;
-    private double progress;
+    private double progress,progressStalls;
 
 
     @Override
@@ -86,7 +89,9 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
             preAnimation = findViewById(R.id.mainContainer);
             slider = findViewById(R.id.slider);
             waveLoadingView = findViewById(R.id.projectsReviwed);
+            waveLoadingViewStall = findViewById(R.id.stallsVisited);
             waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(0.00) + " %");
+            waveLoadingViewStall.setCenterTitle(new DecimalFormat("#.##").format(0.00) + " %");
 
             findViewById(R.id.rrr).setOnClickListener(n -> finish());
             profileData = ProfileDataSync.getInstance(this).initializeLocalStorage().pullDataBack();
@@ -162,6 +167,8 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                         public void onProjectsFetchSuccess(List<ProjectBasicInfo> projectBasicInfoList) {
                             setPreAnimation(false);
                             browseProgress.setProjectsCount(projectBasicInfoList.size()).reSyncStorageWithDatabase(projectBasicInfoList);
+                            browseProgressStall.setProjectsCount(projectBasicInfoList.size()).reSyncStorageWithDatabase(projectBasicInfoList);
+
                             projectsHolderAdapter = new ProjectsHolderAdapter(projectBasicInfoList);
                             recyclerProjects.setLayoutManager(new GridLayoutManager(ExhibitionHome.this, 2));
                             recyclerProjects.setAdapter(projectsHolderAdapter);
@@ -178,7 +185,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                     .selectStorageInstanceByName(CONSTANTS.EXHIBITION_VISIT_PROGRESS)
                     .getOverviewProgress();
             new Handler().postDelayed(() -> {
-                if (progress > 100.0) {
+                if (progress > 100.0 || progress < 0.0) {
                     progress = BrowseProgress
                             .getInstance(this)
                             .selectStorageInstanceByName(CONSTANTS.EXHIBITION_VISIT_PROGRESS)
@@ -203,10 +210,43 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
                         @Override
                         public void onItemDeletedInReSync(String projectId) {
-                            Toast.makeText(ExhibitionHome.this, "Deleted while re sync. ID:" + projectId, Toast.LENGTH_SHORT).show();
+                            Log.e("Deleted while re sync. ",projectId);
                         }
                     });
 
+            progressStalls = BrowseProgressStall
+                    .getInstance(this)
+                    .selectStorageInstanceByName(CONSTANTS.STALLS_VISIT_PROGRESS)
+                    .getOverviewProgress();
+            new Handler().postDelayed(() -> {
+                if (progressStalls > 100.0 || progressStalls < 0.0) {
+                    progressStalls = BrowseProgressStall
+                            .getInstance(this)
+                            .selectStorageInstanceByName(CONSTANTS.STALLS_VISIT_PROGRESS)
+                            .getOverviewProgress();
+
+                }
+                waveLoadingViewStall.setProgressValue((int) progressStalls);
+                waveLoadingViewStall.setCenterTitle(new DecimalFormat("#.##").format(progressStalls) + " %");
+            }, 1000);
+
+
+            browseProgressStall = BrowseProgressStall
+                    .getInstance(this)
+                    .selectStorageInstanceByName(CONSTANTS.STALLS_VISIT_PROGRESS)
+                    .setOnProgressListener(new OnProgressChanged() {
+                        @Override
+                        public void onProgressUpdated(double finalPercent, ProjectBasicInfo projectBasicInfo) {
+                            //Toast.makeText(ExhibitionHome.this, "" + finalPercent, Toast.LENGTH_SHORT).show();
+                            waveLoadingViewStall.setProgressValue((int) finalPercent);
+                            waveLoadingViewStall.setCenterTitle(new DecimalFormat("#.##").format(finalPercent) + " %");
+                        }
+
+                        @Override
+                        public void onItemDeletedInReSync(String projectId) {
+                            Log.e("Deleted while re sync. ",projectId);
+                        }
+                    });
 
             ((EditText) findViewById(R.id.searchbar))
                     .addTextChangedListener(new TextWatcher() {

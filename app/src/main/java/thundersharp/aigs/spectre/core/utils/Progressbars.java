@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.progress.BrowseProgress;
+import thundersharp.aigs.spectre.core.progress.BrowseProgressStall;
 import thundersharp.aigs.spectre.ui.activities.auth.IntroActivity;
 
 public class Progressbars {
@@ -80,6 +82,8 @@ public class Progressbars {
             appCompatButton.setOnClickListener(f-> {
                 FirebaseAuth.getInstance().signOut();
                 ProfileDataSync.getInstance(activity).initializeLocalStorage().clearAllData();
+                BrowseProgress.getInstance(activity).clear();
+                BrowseProgressStall.getInstance(activity).clear();
                 activity.finish();
                 activity.startActivity(new Intent(activity, IntroActivity.class));
             });

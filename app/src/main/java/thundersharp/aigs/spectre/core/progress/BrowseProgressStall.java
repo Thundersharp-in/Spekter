@@ -11,9 +11,9 @@ import thundersharp.aigs.spectre.core.interfaces.OnProgressChanged;
 import thundersharp.aigs.spectre.core.models.ProjectBasicInfo;
 import thundersharp.aigs.spectre.core.utils.CONSTANTS;
 
-public class BrowseProgress {
+public class BrowseProgressStall {
 
-    private static BrowseProgress browseProgress = null;
+    private static BrowseProgressStall browseProgress = null;
     private static int totalProjects;
 
     private String writerName;
@@ -23,16 +23,16 @@ public class BrowseProgress {
     private OnProgressChanged onProgressChangedListener;
 
 
-    public static BrowseProgress getInstance(Activity activity) {
-        if (browseProgress == null) browseProgress = new BrowseProgress(activity);
+    public static BrowseProgressStall getInstance(Activity activity) {
+        if (browseProgress == null) browseProgress = new BrowseProgressStall(activity);
         return browseProgress;
     }
 
-    public BrowseProgress(Activity activity) {
+    public BrowseProgressStall(Activity activity) {
         this.activity = activity;
     }
 
-    public BrowseProgress selectStorageInstanceByName(String writerName) {
+    public BrowseProgressStall selectStorageInstanceByName(String writerName) {
         this.writerName = writerName;
         sharedPreferences = createStorageInstance(writerName);
         return this;
@@ -44,12 +44,12 @@ public class BrowseProgress {
         }
     }
 
-    public BrowseProgress setProjectsCount(int count){
+    public BrowseProgressStall setProjectsCount(int count){
         totalProjects = count;
         return this;
     }
 
-    public BrowseProgress setOnProgressListener(OnProgressChanged onProgressChangedListener) {
+    public BrowseProgressStall setOnProgressListener(OnProgressChanged onProgressChangedListener) {
         this.onProgressChangedListener = onProgressChangedListener;
         return this;
     }
