@@ -71,6 +71,7 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
 
     private ProfileDataSync profileDataSync;
     private ProfileData profileData;
+    private double progress;
 
 
     @Override
@@ -172,12 +173,22 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                         }
                     });
 
-            double progress = BrowseProgress
+            progress = BrowseProgress
                     .getInstance(this)
                     .selectStorageInstanceByName(CONSTANTS.EXHIBITION_VISIT_PROGRESS)
                     .getOverviewProgress();
-            waveLoadingView.setProgressValue((int) progress);
-            waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(progress) + " %");
+            new Handler().postDelayed(() -> {
+                if (progress > 100.0) {
+                    progress = BrowseProgress
+                            .getInstance(this)
+                            .selectStorageInstanceByName(CONSTANTS.EXHIBITION_VISIT_PROGRESS)
+                            .getOverviewProgress();
+
+                }
+                waveLoadingView.setProgressValue((int) progress);
+                waveLoadingView.setCenterTitle(new DecimalFormat("#.##").format(progress) + " %");
+            }, 1000);
+
 
             browseProgress = BrowseProgress
                     .getInstance(this)
@@ -234,8 +245,8 @@ public class ExhibitionHome extends AppCompatActivity implements BaseSliderView.
                         .setPositiveButton("OK", ((dialogInterface, i) -> dialogInterface.dismiss()))
                         .show();
             });
-        }catch (Exception e){
-            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
     }
