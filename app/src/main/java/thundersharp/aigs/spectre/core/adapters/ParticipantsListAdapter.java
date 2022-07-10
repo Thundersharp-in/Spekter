@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,14 +77,23 @@ public class ParticipantsListAdapter extends RecyclerView.Adapter<ParticipantsLi
 
         @Override
         public void onClick(View view) {
-             Intent intent = new Intent(Intent.ACTION_VIEW)
-                    .setType("plain/text")
-                    .setData(Uri.parse(projectShortDescription.get(getAdapterPosition()).EMAIL))
-                    .setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
-                    .putExtra(Intent.EXTRA_EMAIL, new String[]{projectShortDescription.get(getAdapterPosition()).EMAIL});
-            view.getContext().startActivity(intent);
+
+            final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+            emailIntent.setType("text/plain");
+            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{projectShortDescription.get(getAdapterPosition()).EMAIL});
+            //emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Not able to start the app.");
+
+            emailIntent.setType("message/rfc822");
+            try {
+                view.getContext().startActivity(Intent.createChooser(emailIntent,
+                        "Send email using..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(view.getContext(),
+                        "No email clients installed.",
+                        Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
         }
-
-
-    }
 }

@@ -101,6 +101,7 @@
         <entry key="app/src/main/res/layout/activity_lectures_home.xml" value="0.2313239203559028" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.17084808349609376" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.195382642154767" />
         <entry key="app/src/main/res/layout/activity_project_gallery.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_projects_info.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.16055694580078125" />
@@ -124,6 +125,7 @@
         <entry key="app/src/main/res/layout/fragment_commitee.xml" value="0.19752030782385635" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/fragment_developers.xml" value="0.195382642154767" />
         <entry key="app/src/main/res/layout/fragment_difficulty_sorting.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2152777777777778" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1966033935546875" />
@@ -141,6 +143,7 @@
         <entry key="app/src/main/res/layout/item_files.xml" value="0.4326567213980751" />
         <entry key="app/src/main/res/layout/item_filter_tags.xml" value="0.19923044035912782" />
         <entry key="app/src/main/res/layout/item_filter_tags_recycler.xml" value="0.19923044035912782" />
+        <entry key="app/src/main/res/layout/item_gallary_holder.xml" value="0.19452757588713127" />
         <entry key="app/src/main/res/layout/item_main_coarse_list.xml" value="0.22412210295678409" />
         <entry key="app/src/main/res/layout/item_notification_custom_view.xml" value="0.1996579734929457" />
         <entry key="app/src/main/res/layout/item_notifications.xml" value="0.335" />

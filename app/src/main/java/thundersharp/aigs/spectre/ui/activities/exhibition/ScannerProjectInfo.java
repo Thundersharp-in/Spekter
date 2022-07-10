@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,14 +17,21 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.ShortDynamicLink;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +100,11 @@ public class ScannerProjectInfo extends AppCompatActivity {
         findViewById(R.id.team_members).setOnClickListener(n->ShowOtherBottomSheet());
         findViewById(R.id.go_two).setOnClickListener(n->ShowOtherBottomSheet());
 
+        findViewById(R.id.fab).setOnClickListener(n->{
+            generateShareLink(projectBasicInfo.ID,projectBasicInfo);
+        });
+        ((Toolbar)findViewById(R.id.toolbar)).setNavigationOnClickListener(r->finish());
+
         findViewById(R.id.details).setOnClickListener(n->openPdfDetails());
         findViewById(R.id.go_one).setOnClickListener(n->openPdfDetails());
 
@@ -151,6 +164,17 @@ public class ScannerProjectInfo extends AppCompatActivity {
                 public void afterTextChanged(Editable editable) {
 
                 }
+            });
+
+            bottomSheetDialog.findViewById(R.id.register).setOnClickListener(k->{
+                new AlertDialog.Builder(ScannerProjectInfo.this)
+                        .setMessage("Online donation option is currently disabled by the admin. If you still wish to donate then you can donate to tis project on the Reception.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        }).setCancelable(false).show();
             });
 
             bottomSheetDialog.show();
@@ -279,5 +303,42 @@ public class ScannerProjectInfo extends AppCompatActivity {
 
         bottomSheetDialog.show();
     }
+
+    protected synchronized void generateShareLink(String projectId, ProjectBasicInfo projectsInfo) {
+        String url = "https://spekteraigs.page.link/projects/?projectId="+projectId+"&type%1";
+        FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setLink(Uri.parse(url))
+                .setDomainUriPrefix("https://spekteraigs.page.link")
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder().build())
+                .buildShortDynamicLink()
+                .addOnCompleteListener(this, new OnCompleteListener<ShortDynamicLink>() {
+                    @Override
+                    public void onComplete(@NonNull Task<ShortDynamicLink> task) {
+                        if (task.isSuccessful()) {
+                            // Short link created
+                            Uri shortLink = task.getResult().getShortLink();
+                            Uri flowchartLink = task.getResult().getPreviewLink();
+
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT,"Hey,\n\nLook at this awesome project which is hosted in the Spekter Tech Fest "+
+                                    "\n\nProject name : "+projectsInfo.NAME+
+                                    "\nDescription : "+projectsInfo.SHORT_DESCRIPTION+
+                                    "\nCategory : "+projectsInfo.TYPE+
+                                    "\n\nTo view more about this project download the Spekter app or visit the event and scan the stall QR codes."+
+                                    "\nProject link : "+shortLink+
+                                    "\n\nSpekter App link : https://play.google.com/store/apps/details?id=thundersharp.aigs.spectre");
+                            sendIntent.setType("text/plain");
+                            startActivity(sendIntent);
+                        } else {
+                            Toast.makeText(ScannerProjectInfo.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            // Error
+                            // ...
+                        }
+                    }
+                });
+
+    }
+
 
 }

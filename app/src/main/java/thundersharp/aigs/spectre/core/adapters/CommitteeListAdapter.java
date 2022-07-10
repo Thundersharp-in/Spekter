@@ -1,11 +1,13 @@
 package thundersharp.aigs.spectre.core.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,7 +75,20 @@ public class CommitteeListAdapter extends RecyclerView.Adapter<CommitteeListAdap
 
         @Override
         public void onClick(View view) {
+            final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+            emailIntent.setType("text/plain");
+            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{projectShortDescription.get(getAdapterPosition()).EMAIL});
+            //emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Not able to start the app.");
 
+            emailIntent.setType("message/rfc822");
+            try {
+                view.getContext().startActivity(Intent.createChooser(emailIntent,
+                        "Send email using..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(view.getContext(),
+                        "No email clients installed.",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
 

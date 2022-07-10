@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment implements
             });
 
             root.findViewById(R.id.youtube).setOnClickListener(u -> {
-                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com"));
+                Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://www.youtube.com/channel/UCMdjjf3FhIoxCrtk3RXvexA"));
                 startActivity(intent);
             });
 

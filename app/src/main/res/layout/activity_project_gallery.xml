@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
     tools:context=".ui.activities.exhibition.ProjectGallery">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:elevation="7dp"
+        android:background="#262626"
+        app:navigationIcon="@drawable/ic_baseline_close_24"
+        app:title="Gallery"
+        android:id="@+id/toolbar"
+        app:titleTextColor="#ffff"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"/>
+
+</RelativeLayout>

@@ -199,7 +199,11 @@ public class DatabaseHelpers {
 
     public void setFetchParticipantsListeners(ProjectListner.fetchParticipants participantsListeners){
         this.fetchParticipants = participantsListeners;
-        fetchParticipantsNow();
+        try {
+            fetchParticipantsNow();
+        }catch (Exception e) {
+            Toast.makeText(activity, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public DatabaseHelpers setPassData(PassData passData){
@@ -367,7 +371,7 @@ public class DatabaseHelpers {
                 });
     }
 
-    private void fetchParticipantsNow() {
+    private void fetchParticipantsNow(){
         FirebaseDatabase
                 .getInstance()
                 .getReference(CONSTANTS.EXHIBITION)
