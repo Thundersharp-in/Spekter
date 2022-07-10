@@ -100,6 +100,8 @@ public class InitiativeAdapter extends RecyclerView.Adapter<InitiativeAdapter.Vi
                 LinearLayout readMore = bottomSheetDialog.findViewById(R.id.readMore);
                 LinearLayout share = bottomSheetDialog.findViewById(R.id.share);
                 TextView plegge = bottomSheetDialog.findViewById(R.id.pledgeT);
+                TextView top = bottomSheetDialog.findViewById(R.id.top);
+                top.setText(list.get(getAdapterPosition()).NAME);
                 plegge.setText(list.get(getAdapterPosition()).PLEDGE);
 
                 pledge.setOnClickListener(h -> {

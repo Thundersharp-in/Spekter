@@ -181,14 +181,7 @@ public class EventFeedback extends AppCompatActivity {
 
     private List<String> getFacultyList() {
         return new ArrayList<String>(Arrays.asList("Events",
-                "Exihibition",
-                "Events 1",
-                "Event 2",
-                "Event3",
-                "Event 4",
-                "Event 5",
-                "Event 6",
-                "xyz Event"));
+                "TECH Exhibition"));
     }
 
     private List<String> getSemList() {

@@ -161,7 +161,6 @@ public class FacultyFeedback extends AppCompatActivity {
 
     private List<String> getFacultyList() {
         return new ArrayList<String>(Arrays.asList("Prof Yamuna P",
-                "Prof Archana Bhaskar",
                 "Prof Ranjana K K",
                 "Prof Shweta",
                 "Prof Pavitra",
