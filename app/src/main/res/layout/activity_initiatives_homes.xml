@@ -190,7 +190,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/calibri"
-                    android:text="An initiative is the start of something, with the hope that it will continue. Government and business start initiatives all the time. You can also talk about initiative as a personal quality. A person with initiative is motivated to do things."
+                    android:text="An initiative is the start of something, with the hope that it will continue. Here in this section of the application you can fing list of various initiatives started by the Acharya institute of graduate studies."
                     android:textAlignment="center"
                     android:textColor="#B8B8B8"
                     android:textSize="15sp" />

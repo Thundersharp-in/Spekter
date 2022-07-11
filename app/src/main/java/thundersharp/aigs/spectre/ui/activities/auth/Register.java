@@ -17,12 +17,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 
 import java.util.Collections;
 
 import thundersharp.aigs.spectre.R;
 import thundersharp.aigs.spectre.core.helpers.LoginProvider;
+import thundersharp.aigs.spectre.core.helpers.ProfileDataSync;
+import thundersharp.aigs.spectre.core.interfaces.ProfileSync;
 import thundersharp.aigs.spectre.core.interfaces.RegisterPresenter;
+import thundersharp.aigs.spectre.core.models.ProfileData;
 import thundersharp.aigs.spectre.core.utils.Progressbars;
 
 public class Register extends AppCompatActivity {
@@ -108,6 +113,24 @@ public class Register extends AppCompatActivity {
                                         public void onRegisterSuccess(Task<AuthResult> authResultTask, boolean verificationLinkSent) {
                                             if (verificationLinkSent)
                                                 Toast.makeText(Register.this, "Verification link sent", Toast.LENGTH_SHORT).show();
+                                            ProfileDataSync
+                                                    .getInstance(Register.this)
+                                                    .initializeLocalStorage()
+                                                    .setUid(FirebaseAuth.getInstance().getUid())
+                                                    .setProfileSyncListener(new ProfileSync() {
+                                                        @Override
+                                                        public void onProfileDataSyncSuccess(DataSnapshot dataSnapshot) {
+                                                            ProfileData profileData = dataSnapshot.getValue(ProfileData.class);
+                                                            ProfileDataSync.getInstance(Register.this).saveDataLocally(profileData);
+                                                        }
+
+                                                        @Override
+                                                        public void onProfileDataSyncFailure(Exception exception) {
+                                                            Toast.makeText(Register.this, ""+exception.toString(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+
+
                                             startActivity(new Intent(Register.this,EmailVerificationActivity.class));
                                             finish();
                                             alertDialog.dismiss();

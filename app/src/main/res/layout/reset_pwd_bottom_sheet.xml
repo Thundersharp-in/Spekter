@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="245dp"
+    android:background="@null"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="225dp"
+        app:cardBackgroundColor="#0B0B0C"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@null"
+            android:minHeight="225dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/calibrib"
+                android:text="Reset password !!"
+                android:textColor="#f4f5fc"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/ic_baseline_lock_reset_24"
+                app:drawableTint="#E91E63" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/calibri"
+                android:layout_marginHorizontal="15dp"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="Find your account from the email associated to your spekter account here."
+                android:textColor="#77777C" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@drawable/edittext_curved"
+                android:elevation="7dp"
+                android:layout_marginTop="15dp"
+                android:minHeight="50dp"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editText_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:hint="Spekter User ID"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:layout_marginHorizontal="25dp"
+                    android:fontFamily="@font/calibri"
+                    android:singleLine="true"
+                    android:textColor="#f4f5fc"
+                    android:textColorHint="#CFCFCF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="2"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/exit"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="CANCEL"
+                    android:textColor="#ffff"
+                    android:background="@drawable/button_login_blue"
+                    android:backgroundTint="#AA2250"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/no"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:text="RESET"
+                    android:textColor="#fff"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/button_login_blue"
+                    android:backgroundTint="#017C70"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

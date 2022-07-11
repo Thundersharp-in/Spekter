@@ -290,8 +290,8 @@ public class Profile extends Fragment {
 
         root.findViewById(R.id.paymentsD).setOnClickListener(o->new AlertDialog.Builder(getContext()).setMessage("This option is currently not available for your account.").setPositiveButton("OK",(dialogInterface, i) -> dialogInterface.dismiss()).show());
         root.findViewById(R.id.subscription).setOnClickListener(j->startActivity(new Intent(getActivity(), SubsribedLectures.class)));
-        root.findViewById(R.id.tos).setOnClickListener(n-> Browser.loadUrl(getContext(),"http://thundersharp.in/"));
-        root.findViewById(R.id.privacy).setOnClickListener(n-> Browser.loadUrl(getContext(),"http://thundersharp.in/privacy_policy"));
+        root.findViewById(R.id.tos).setOnClickListener(n-> Browser.loadUrl(getContext(),"https://spekteraigs.in/tos"));
+        root.findViewById(R.id.privacy).setOnClickListener(n-> Browser.loadUrl(getContext(),"https://thundersharp.in/privacy_policy"));
 
         root.findViewById(R.id.device_tokens).setOnClickListener(nW-> {
             AlertDialog alertDialog = Progressbars.getInstance().createDefaultProgressBar(getActivity());

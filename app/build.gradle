@@ -10,8 +10,8 @@ android {
         applicationId "thundersharp.aigs.spectre"
         minSdk 21
         targetSdk 31
-        versionCode 3
-        versionName "1.03.0"
+        versionCode 1032
+        versionName "1.03.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -75,6 +75,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.4'
     implementation 'com.google.firebase:firebase-auth:21.0.3'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    implementation 'com.jsibbold:zoomage:1.3.1'
 
     implementation 'com.itextpdf:itextg:5.5.10'
     implementation 'com.google.zxing:core:3.2.1'

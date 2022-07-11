@@ -191,7 +191,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/calibri"
-                    android:text="Techfest is the annual science and technology festival of Acharya institute of graduate studies, bengaluru. It also refers to the independent body of students who organize this event along with many other social initiatives and outreach programs round the year. Techfest is known for hosting a variety of events that include competitions, exhibitions, lectures as well as workshops.Started in 1998 with the aim of providing a platform for the Indian student community to develop and showcase their technical prowess, it has now grown into Asia\'s Largest Science and Technology Festival with a footfall of 1.65 lakhs in its latest edition."
+                    android:text="Spekter Tech fest is the annual science and technology festival of Acharya institute of graduate studies, bengaluru. It also refers to the independent body of students who organize this event along with many other social initiatives and outreach programs round the year. Spekter Tech fest is known for hosting a variety of events that include competitions, exhibitions, lectures as well as workshops."
                     android:textAlignment="center"
                     android:textColor="#B8B8B8"
                     android:textSize="15sp" />

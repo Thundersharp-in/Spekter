@@ -133,14 +133,15 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/forgotPwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot password ?"
-                android:textColor="#CFCFCF"
                 android:layout_gravity="end"
-                android:layout_marginEnd="15dp"
                 android:layout_marginTop="15dp"
-                android:elevation="7dp"/>
+                android:layout_marginEnd="15dp"
+                android:elevation="7dp"
+                android:text="Forgot password ?"
+                android:textColor="#CFCFCF" />
         </LinearLayout>
 
         <RelativeLayout

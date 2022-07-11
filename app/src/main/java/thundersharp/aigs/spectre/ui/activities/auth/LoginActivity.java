@@ -10,6 +10,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
@@ -32,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     private AlertDialog alertDialog;
     private ImageView password_toggle;
 
+    private TextView forgotPwd;
+
     private ProfileDataSync profileDataSync;
     private boolean passwordVis = false;
 
@@ -45,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         edit_email = findViewById(R.id.editText_email);
         edit_password = findViewById(R.id.editText_password);
         password_toggle = findViewById(R.id.password_toggle);
+        forgotPwd = findViewById(R.id.forgotPwd);
 
         profileDataSync = ProfileDataSync.getInstance(this);
 
@@ -65,6 +69,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forgotPwd.setOnClickListener(o->{
+            Progressbars.getInstance().displayResetPwdDialog(this);
+        });
 
         ((ImageView) findViewById(R.id.signIN)).setOnClickListener(t -> {
             if (edit_email.getText().toString().isEmpty()) {

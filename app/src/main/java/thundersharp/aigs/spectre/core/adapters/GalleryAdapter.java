@@ -1,6 +1,7 @@
 package thundersharp.aigs.spectre.core.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.jsibbold.zoomage.ZoomageView;
 
+import java.net.URI;
 import java.util.List;
 
 import thundersharp.aigs.spectre.R;
@@ -60,7 +64,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
+            View view1 = LayoutInflater.from(context).inflate(R.layout.view_one_image,null,false);
+            ZoomageView zoomageView = view1.findViewById(R.id.myZoomageView);
+            //zoomageView.setImageURI(Uri.parse(projectShortDescription.get(getAdapterPosition())));
+            Glide.with(context).load(projectShortDescription.get(getAdapterPosition())).into(zoomageView);
+
+            new AlertDialog.Builder(context)
+                    .setView(view1)
+                    .show();
         }
 
 

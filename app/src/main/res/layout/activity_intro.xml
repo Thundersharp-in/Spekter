@@ -46,15 +46,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This panel will hold some descriptive text about the event which needs to be updated later on here we can describe the event in 3-4 lines."
-            android:textColor="#92959A"
-            android:layout_marginHorizontal="45dp"
-            android:textAlignment="center"
-            android:fontFamily="@font/calibri"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="35dp"
-            android:textSize="17sp"
-            android:layout_gravity="center_horizontal"/>
+            android:fontFamily="@font/calibri"
+            android:text="Spekter is a committee-based organization started with the goal to enhance the learning culture in college. Responsible for keeping track of all the technical events of the college"
+            android:textAlignment="center"
+            android:textColor="#92959A"
+            android:textSize="17sp" />
 
 
         <androidx.appcompat.widget.AppCompatButton
