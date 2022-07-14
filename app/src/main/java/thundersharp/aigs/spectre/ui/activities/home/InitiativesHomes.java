@@ -124,11 +124,11 @@ public class InitiativesHomes extends AppCompatActivity  implements BaseSliderVi
                                         .setOnSliderClickListener(InitiativesHomes.this);
 
                                 /* add your extra information */
-                                SliderModel model = dataSnapshot.getValue(SliderModel.class);
-                                Bundle bundle1 = new Bundle();
-                                bundle1.clear();
-                                bundle1.putSerializable("data", model);
-                                sliderView.bundle(bundle1);
+                                //SliderModel model = dataSnapshot.getValue(SliderModel.class);
+                                //Bundle bundle1 = new Bundle();
+                                //bundle1.clear();
+                                //bundle1.putSerializable("data", model);
+                                sliderView.bundle(bundle);
 
                                 slider.addSlider(sliderView);
                             }

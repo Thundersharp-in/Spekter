@@ -10,8 +10,8 @@ android {
         applicationId "thundersharp.aigs.spectre"
         minSdk 21
         targetSdk 31
-        versionCode 1032
-        versionName "1.03.2"
+        versionCode 1034
+        versionName "1.03.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

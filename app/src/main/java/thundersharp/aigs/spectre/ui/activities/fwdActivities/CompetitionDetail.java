@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +26,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.ShortDynamicLink;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,6 +87,10 @@ public class CompetitionDetail extends AppCompatActivity {
         TextView timeFull = findViewById(R.id.time_full);
         TextView event_start = findViewById(R.id.event_start);
 
+        findViewById(R.id.share).setOnClickListener(t->{
+            generateShareLink(GENERAL_EVENTS);
+        });
+
         try {
             timeFull.setText(TimeUtils.getTimeInStringFromTimeStamp(GENERAL_EVENTS.ID));
             event_start.setText("Starts from : "+TimeUtils.getClockFromTimeStamp(GENERAL_EVENTS.ID));
@@ -112,6 +121,39 @@ public class CompetitionDetail extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void generateShareLink(Competitions general_events) {
+        String url = "https://spekteraigs.page.link/general_events/?eventId="+general_events.ID+"&type%1";
+        FirebaseDynamicLinks.getInstance().createDynamicLink()
+                .setLink(Uri.parse(url))
+                .setDomainUriPrefix("https://spekteraigs.page.link")
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder().build())
+                .buildShortDynamicLink()
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Short link created
+                        Uri shortLink = task.getResult().getShortLink();
+                        Uri flowchartLink = task.getResult().getPreviewLink();
+
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT,"Hey,\n\nLook at this awesome event which is hosted by "+general_events.ORGANISED_BY+
+                                "\n\nWorkshop name : "+general_events.TITTLE+
+                                "\nOrganiser : "+general_events.ORGANISED_BY+
+                                "\nDuration : "+general_events.DURATION+
+                                "\nMode : "+general_events.MODE+
+                                "\n\nTo view more about this event and to register download the Spekter app."+
+                                "\nWorkshop link : "+shortLink+
+                                "\n\nSpekter App link : https://play.google.com/store/apps/details?id=thundersharp.aigs.spectre");
+                        sendIntent.setType("text/plain");
+                        startActivity(sendIntent);
+                    } else {
+                        Toast.makeText(CompetitionDetail.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        // Error
+                        // ...
+                    }
+                });
     }
 
     private void updateUI(GeneralEventsDetails workshopDetails) {
@@ -158,7 +200,7 @@ public class CompetitionDetail extends AppCompatActivity {
         findViewById(R.id.register).setOnClickListener(n->{
             new androidx.appcompat.app.AlertDialog.Builder(this)
                     .setCancelable(false)
-                    .setMessage("Payment for this workshop (If required) will be collected later after submission of this form.")
+                    .setMessage("Payment for this event (If required) will be collected later after submission of this form.")
                     .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
