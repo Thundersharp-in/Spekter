@@ -132,8 +132,8 @@ public class CompetitionDetail extends AppCompatActivity {
 
         FirebaseDatabase
                 .getInstance()
-                .getReference(CONSTANTS.WORKSHOPS)
-                .child("WORKSHOP_FILES")
+                .getReference(CONSTANTS.GENERAL_EVENTS)
+                .child("GENERAL_EVENTS_FILES")
                 .child(workshopDetails.ID)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
