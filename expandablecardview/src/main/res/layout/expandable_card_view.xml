@@ -76,6 +76,7 @@
                     android:textAlignment="viewStart"
                     android:paddingTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:textIsSelectable="true"
                     android:text="The basic auth credentials for the /token endpoint are the client-id and client-secret. The user credentials are the normal Spring Security user details (which default in Spring Boot to “user” and a random password).
 To switch off the auto-configuration and configure the Authorization Server features yourself just add a @Bean of type AuthorizationServerConfigurer.
 If you use your own authorization server configuration to configure the list of valid clients through an instance of ClientDetailsServiceConfigurer as shown below, take note that the passwords you configure here are subject to the modernized password storage that came with Spring Security 5"

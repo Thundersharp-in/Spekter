@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void OnError(Exception e) {
-                Toast.makeText(HomeActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(HomeActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
 

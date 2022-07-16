@@ -12,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.animations.DescriptionAnimation;
@@ -32,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jsibbold.zoomage.ZoomageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +100,8 @@ public class HomeFragment extends Fragment implements
             root.findViewById(R.id.upcomingEvents).setOnClickListener(u -> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
             root.findViewById(R.id.ic).setOnClickListener(u -> startActivity(new Intent(getActivity(), InnovativeChallengeHome.class)));
             root.findViewById(R.id.knowUs).setOnClickListener(u -> startActivity(new Intent(getActivity(), KnowUs.class)));
+
+            root.findViewById(R.id.latest_update).setOnClickListener(o-> startActivity(new Intent(getActivity(), UpcommingEventsHome.class)));
             materialCardView = root.findViewById(R.id.latest_update);
             tittleUpcoming = root.findViewById(R.id.time);
             descriptionUpcoming = root.findViewById(R.id.eventName);
@@ -255,7 +260,14 @@ public class HomeFragment extends Fragment implements
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
+        View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.view_one_image,null,false);
+        ZoomageView zoomageView = view1.findViewById(R.id.myZoomageView);
+        //zoomageView.setImageURI(Uri.parse(projectShortDescription.get(getAdapterPosition())));
+        Glide.with(getActivity()).load(slider.getUrl()).into(zoomageView);
 
+        new AlertDialog.Builder(getActivity())
+                .setView(view1)
+                .show();
     }
 
     @Override

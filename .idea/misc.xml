@@ -43,11 +43,13 @@
         <entry key="app/src/main/res/drawable/dash.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edit.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_curved.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/edittext_curved_one.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ffade_white_circle.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/half_cut_twenty_dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/hexa.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_all_inclusive_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_fast_forward_24.xml" value="0.1" />
@@ -60,10 +62,12 @@
         <entry key="app/src/main/res/drawable/ic_baseline_speed_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_account_circle_24.xml" value="0.104" />
+        <entry key="app/src/main/res/drawable/ic_outline_email_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_fast_forward_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_home_repair_service_24.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_outline_keyboard_voice_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_lock_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_outline_notifications_active_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_qr_code_scanner_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_save_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_outline_timelapse_24.xml" value="0.1" />
