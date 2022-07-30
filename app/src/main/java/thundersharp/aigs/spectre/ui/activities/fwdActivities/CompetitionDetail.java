@@ -95,7 +95,7 @@ public class CompetitionDetail extends AppCompatActivity {
             timeFull.setText(TimeUtils.getTimeInStringFromTimeStamp(GENERAL_EVENTS.ID));
             event_start.setText("Starts from : "+TimeUtils.getClockFromTimeStamp(GENERAL_EVENTS.ID));
             day.setText(TimeUtils.getDayFromTimeStamp(GENERAL_EVENTS.ID));
-            date.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(GENERAL_EVENTS.ID))));
+            date.setText(TimeUtils.getMonthNameSecond(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(GENERAL_EVENTS.ID))));
         }catch (Exception e){
             e.printStackTrace();
             Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();

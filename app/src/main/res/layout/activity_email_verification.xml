@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi,welcome to spekter you are just a step away from the platform! Verify your acharya email id by clicking on the link we have sent you.\n\nPlease check the Spam folder if the verification message is not received."
+            android:text="Hi, welcome to spekter you are just a step away from the platform! Verify your email id by clicking on the link we have sent you.\n\nPlease check the Spam folder if the verification message is not received."
             android:textColor="#92959A"
             android:layout_marginHorizontal="35dp"
             android:textAlignment="center"

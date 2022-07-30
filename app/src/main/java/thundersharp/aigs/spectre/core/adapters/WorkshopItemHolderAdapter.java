@@ -60,7 +60,7 @@ public class WorkshopItemHolderAdapter extends RecyclerView.Adapter<WorkshopItem
 
         try {
             holder.day.setText(TimeUtils.getDayFromTimeStamp(notifications.ID));
-            holder.month.setText(TimeUtils.getMonthName(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID))).substring(0, 3).toUpperCase());
+            holder.month.setText(TimeUtils.getMonthNameSecond(Integer.parseInt(TimeUtils.getMonthFromTimeStamp(notifications.ID))).substring(0, 3).toUpperCase());
         }catch (Exception e){
             e.printStackTrace();
         }
